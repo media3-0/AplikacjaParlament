@@ -20,4 +20,4 @@ Poszukujemy ludzi do współpracy! Najbardziej poszukiwanymi specjalistami są a
 
 ## Rozwój
 
-Projekt finansowany jest przez [Ministerstwo Administracji i Cyfryzacji](https://mac.gov.pl/) i rozwijany jest jako Open Source na licencji GNU GPL 3 (więcej informacji w pliku [LICENSE](https://github.com/media3-0/AplikacjaParlament/blob/master/LICENSE))
+Projekt jest współfinansowany przez [Ministerstwo Administracji i Cyfryzacji](https://mac.gov.pl/) i rozwijany jest jako Open Source na licencji GNU GPL 3 (więcej informacji w pliku [LICENSE](https://github.com/media3-0/AplikacjaParlament/blob/master/LICENSE))
