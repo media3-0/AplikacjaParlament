@@ -32,7 +32,7 @@ using Com.Lilarcor.Cheeseknife;
 
 namespace AplikacjaParlament
 {
-	[Activity (Label = "Aplikacja Parlament", MainLauncher = true, Icon = "@drawable/icon")]
+	[Activity (Label = "Aplikacja Parlament", MainLauncher = true, Icon = "@drawable/icon", Theme = "@android:style/Theme.Holo.Light")]
 	public class MainActivity : Activity
 	{
 		int count = 1;
