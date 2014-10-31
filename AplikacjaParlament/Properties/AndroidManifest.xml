@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="0.1" package="pl.media30.android.parlament">
 	<uses-sdk android:minSdkVersion="15" android:targetSdkVersion="19" />
-	<application android:label="Aplikacja Parlament" android:icon="@drawable/icon">
+	<application android:label="Aplikacja Parlament" 
+		android:icon="@drawable/icon"
+		android:theme="@android:style/Theme.Holo.Light">
 	</application>
 	<uses-permission android:name="android.permission.INTERNET" />
 </manifest>

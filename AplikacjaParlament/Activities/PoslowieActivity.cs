@@ -1,10 +1,10 @@
 ﻿//
-//  MainActivity.cs
+//  PoslowieActivity.cs
 //
 //  Author:
 //       Jakub Syty <j.syty@media30.pl>
 //
-//  Copyright (c) 2014 Fundacja Media 3.0
+//  Copyright (c) 2014 
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -20,40 +20,39 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using Android.OS;
-
-using Com.Lilarcor.Cheeseknife;
+using Android.Support.V4.View;
 
 namespace AplikacjaParlament
 {
-	[Activity (Label = "Aplikacja Parlament", MainLauncher = true, Icon = "@drawable/icon", Theme = "@android:style/Theme.Holo.Light")]
-	public class MainActivity : Activity
+	[Activity (Label = "Posłowie")]			
+	public class PoslowieActivity : BaseActivity
 	{
-		int count = 1;
-
-		[InjectView(Resource.Id.myButton)]
-		Button button;
-
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
 
-			// Set our view from the "main" layout resource
-			SetContentView (Resource.Layout.Main);
+			SetContentView (Resource.Layout.PoslowieActivityLayout);
 
-			Cheeseknife.Inject (this);
-			
-			button.Click += delegate {
-				button.Text = string.Format ("{0} clicks!", count++);
-			};
+			ActionBar.NavigationMode = ActionBarNavigationMode.Tabs;
+	
+			var pager = FindViewById<ViewPager>(Resource.Id.fragmentContainer);
+			pager.Adapter = new PoslowieListsPagerAdapter(FragmentManager);
+			pager.SetOnPageChangeListener(new ViewPageListenerForActionBar(ActionBar));
+
+			ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "Sejm"));
+			ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "Senat"));
 		}
+			
 	}
 }
-
 
