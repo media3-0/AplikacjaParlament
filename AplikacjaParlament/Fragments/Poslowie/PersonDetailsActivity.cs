@@ -1,5 +1,5 @@
 ﻿//
-//  SejmListFragment.cs
+//  PersonDetailsActivity.cs
 //
 //  Author:
 //       Jakub Syty <j.syty@media30.pl>
@@ -28,34 +28,27 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
-using Android.Util;
 using Android.Views;
 using Android.Widget;
 
 namespace AplikacjaParlament
 {
-	public class SejmListFragment : ListFragment
+	[Activity (Label = "Detale")]			
+	public class PersonDetailsActivity : BaseActivity
 	{
 
-		private string[] values;
+		private PersonTypeEnumeration personType;
 
-		public override void OnCreate (Bundle savedInstanceState)
+		protected override void OnCreate (Bundle bundle)
 		{
-			base.OnCreate (savedInstanceState);
-			values = new[] { "Poseł 1", "Poseł 2 ", "Poseł 3" };
-			this.ListAdapter = new ArrayAdapter<string>(Activity, Android.Resource.Layout.SimpleExpandableListItem1, values);
-		}
+			base.OnCreate (bundle);
 
-		public override void OnListItemClick(ListView l, View v, int index, long id)
-		{
-			// We can display everything in place with fragments.
-			// Have the list highlight this item and show the data.
-			ListView.SetItemChecked(index, true);
+			personType = (PersonTypeEnumeration)Intent.GetIntExtra ("persontype", (int)PersonTypeEnumeration.Posel);
+			string name = Intent.GetStringExtra ("name") ?? "data not passed";
 
-			var detailsActivity = new Intent (Activity, typeof(PersonDetailsActivity));
-			detailsActivity.PutExtra ("persontype", (int)PersonTypeEnumeration.Posel);
-			detailsActivity.PutExtra ("name", values [index]);
-			StartActivity (detailsActivity);
+			ActionBar.Title = name;
+
+			//TODO : Zakładki ViewPagerIndication na bibliotece PagerSlidingTabStrip.Net
 		}
 	}
 }

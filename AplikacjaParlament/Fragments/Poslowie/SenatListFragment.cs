@@ -34,17 +34,28 @@ using Android.Widget;
 
 namespace AplikacjaParlament
 {
-	public class SenatListFragment : Fragment
+	public class SenatListFragment : ListFragment
 	{
+
+		private String[] values;
+
 		public override void OnCreate (Bundle savedInstanceState)
 		{
 			base.OnCreate (savedInstanceState);
-
+			values = new[] { "Senator 1", "Senator 2 ", "Senator 3" };
+			this.ListAdapter = new ArrayAdapter<string>(Activity, Android.Resource.Layout.SimpleExpandableListItem1, values);
 		}
 
-		public override View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+		public override void OnListItemClick(ListView l, View v, int index, long id)
 		{
-			return inflater.Inflate (Resource.Layout.SenatListFragmentLayout, container, false);
+			// We can display everything in place with fragments.
+			// Have the list highlight this item and show the data.
+			ListView.SetItemChecked(index, true);
+
+			var detailsActivity = new Intent (Activity, typeof(PersonDetailsActivity));
+			detailsActivity.PutExtra ("persontype", (int)PersonTypeEnumeration.Senator);
+			detailsActivity.PutExtra ("name", values [index]);
+			StartActivity (detailsActivity);
 		}
 	}
 }
