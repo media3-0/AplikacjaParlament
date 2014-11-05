@@ -88,6 +88,8 @@
     <Compile Include="Fragments\Poslowie\PoslowieListsPagerAdapter.cs" />
     <Compile Include="Fragments\Poslowie\PersonDetailsActivity.cs" />
     <Compile Include="Models\PersonTypeEnumeration.cs" />
+    <Compile Include="Fragments\Poslowie\PoselViewFragmentPagerAdapter.cs" />
+    <Compile Include="Helpers\Collections\GenericOrderedDictionary.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -100,8 +102,7 @@
     <AndroidResource Include="Resources\values\Strings.xml" />
     <AndroidResource Include="Resources\drawable\Icon.png" />
     <AndroidResource Include="Resources\layout\PoslowieActivityLayout.axml" />
-    <AndroidResource Include="Resources\layout\SejmListFragmentLayout.axml" />
-    <AndroidResource Include="Resources\layout\SenatListFragmentLayout.axml" />
+    <AndroidResource Include="Resources\layout\PersonDetailsLayout.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
@@ -127,6 +128,8 @@
     <Folder Include="Fragments\" />
     <Folder Include="Fragments\Poslowie\" />
     <Folder Include="Models\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Helpers\Collections\" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>

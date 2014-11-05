@@ -30,6 +30,8 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Android.Support.V4.View;
+using Android.Util;
 
 namespace AplikacjaParlament
 {
@@ -43,12 +45,21 @@ namespace AplikacjaParlament
 		{
 			base.OnCreate (bundle);
 
+			SetContentView (Resource.Layout.PersonDetailsLayout);
+
 			personType = (PersonTypeEnumeration)Intent.GetIntExtra ("persontype", (int)PersonTypeEnumeration.Posel);
 			string name = Intent.GetStringExtra ("name") ?? "data not passed";
 
 			ActionBar.Title = name;
 
-			//TODO : Zakładki ViewPagerIndication na bibliotece PagerSlidingTabStrip.Net
+			var tabs = FindViewById<PagerSlidingTabStrip.PagerSlidingTabStrip> (Resource.Id.tabs);
+			var pager = FindViewById<ViewPager> (Resource.Id.pager);
+
+			int pageMargin = (int)TypedValue.ApplyDimension(ComplexUnitType.Dip, 4, Resources.DisplayMetrics);
+			pager.PageMargin = pageMargin;
+
+			pager.Adapter = new PoselViewFragmentPagerAdapter (FragmentManager);
+			tabs.SetViewPager (pager);
 		}
 	}
 }
