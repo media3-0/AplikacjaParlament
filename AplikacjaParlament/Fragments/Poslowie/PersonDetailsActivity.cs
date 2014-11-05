@@ -44,12 +44,9 @@ namespace AplikacjaParlament
 
 		private GenericOrderedDictionary<String, Fragment> fragmentsTabs = new GenericOrderedDictionary<String, Fragment> (){
 			// ** Fragmenty czysto testowe!!
-			{ "Sejm", new SejmListFragment() },
-			{ "Senat", new SenatListFragment() },
-			{ "Sejm2", new SejmListFragment() },
-			{ "Senat2", new SenatListFragment() },
-			{ "Sejm3", new SejmListFragment() },
-			{ "Senat3", new SenatListFragment() }
+			{ "Profil", new SejmListFragment() },
+			{ "Głosowania", new SenatListFragment() },
+			{ "Wystąpienia", new SejmListFragment() }
 			// ** Fragmenty czysto testowe!!
 		};
 
@@ -64,8 +61,14 @@ namespace AplikacjaParlament
 
 			ActionBar.Title = name;
 
+			//jeżeli jest posłem do dodaj zakładkę interpelacje
+			if(personType.Equals(PersonTypeEnumeration.Posel))
+				fragmentsTabs.Add ("Interpelacje", new SenatListFragment ());
+
 			var tabs = FindViewById<PagerSlidingTabStrip.PagerSlidingTabStrip> (Resource.Id.tabs);
 			var pager = FindViewById<ViewPager> (Resource.Id.pager);
+
+			tabs.ShouldExpand = false;
 
 			pager.Adapter = new UniversalFragmentPagerAdapter (FragmentManager, fragmentsTabs);
 			tabs.SetViewPager (pager);
