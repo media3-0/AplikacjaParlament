@@ -32,6 +32,7 @@ using Android.Views;
 using Android.Widget;
 using Android.Support.V4.View;
 using Android.Util;
+using AplikacjaParlament.Collections;
 
 namespace AplikacjaParlament
 {
@@ -40,6 +41,17 @@ namespace AplikacjaParlament
 	{
 
 		private PersonTypeEnumeration personType;
+
+		private GenericOrderedDictionary<String, Fragment> fragmentsTabs = new GenericOrderedDictionary<String, Fragment> (){
+			// ** Fragmenty czysto testowe!!
+			{ "Sejm", new SejmListFragment() },
+			{ "Senat", new SenatListFragment() },
+			{ "Sejm2", new SejmListFragment() },
+			{ "Senat2", new SenatListFragment() },
+			{ "Sejm3", new SejmListFragment() },
+			{ "Senat3", new SenatListFragment() }
+			// ** Fragmenty czysto testowe!!
+		};
 
 		protected override void OnCreate (Bundle bundle)
 		{
@@ -55,10 +67,7 @@ namespace AplikacjaParlament
 			var tabs = FindViewById<PagerSlidingTabStrip.PagerSlidingTabStrip> (Resource.Id.tabs);
 			var pager = FindViewById<ViewPager> (Resource.Id.pager);
 
-			int pageMargin = (int)TypedValue.ApplyDimension(ComplexUnitType.Dip, 4, Resources.DisplayMetrics);
-			pager.PageMargin = pageMargin;
-
-			pager.Adapter = new PoselViewFragmentPagerAdapter (FragmentManager);
+			pager.Adapter = new UniversalFragmentPagerAdapter (FragmentManager, fragmentsTabs);
 			tabs.SetViewPager (pager);
 		}
 	}

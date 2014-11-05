@@ -31,26 +31,30 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.Support.V4.View;
+using Android.Util;
+using AplikacjaParlament.Collections;
 
 namespace AplikacjaParlament
 {
-	[Activity (Label = "Posłowie")]			
-	public class PoslowieActivity : BaseActivity
+	[Activity (Label = "Parlament")]			
+	public class PeopleActivity : BaseActivity
 	{
+		private GenericOrderedDictionary<String, Fragment> fragmentsTabs = new GenericOrderedDictionary<String, Fragment> (){
+			{ "Sejm", new SejmListFragment() },
+			{ "Senat", new SenatListFragment() }
+		};
+
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
 
 			SetContentView (Resource.Layout.PoslowieActivityLayout);
 
-			ActionBar.NavigationMode = ActionBarNavigationMode.Tabs;
-	
-			var pager = FindViewById<ViewPager>(Resource.Id.fragmentContainer);
-			pager.Adapter = new PoslowieListsPagerAdapter(FragmentManager);
-			pager.SetOnPageChangeListener(new ViewPageListenerForActionBar(ActionBar));
+			var tabs = FindViewById<PagerSlidingTabStrip.PagerSlidingTabStrip> (Resource.Id.tabs);
+			var pager = FindViewById<ViewPager> (Resource.Id.pager);
 
-			ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "Sejm"));
-			ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "Senat"));
+			pager.Adapter = new UniversalFragmentPagerAdapter (FragmentManager, fragmentsTabs);
+			tabs.SetViewPager (pager);
 		}
 			
 	}

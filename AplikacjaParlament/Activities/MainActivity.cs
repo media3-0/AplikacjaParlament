@@ -49,7 +49,7 @@ namespace AplikacjaParlament
 			Cheeseknife.Inject (this);
 			
 			button.Click += delegate {
-				StartActivity(typeof(PoslowieActivity));
+				StartActivity(typeof(PeopleActivity));
 			};
 		}
 	}

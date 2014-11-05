@@ -1,5 +1,5 @@
 ﻿//
-//  PoselViewFragmentPagerAdapter.cs
+//  UniversalFragmentPagerAdapter.cs
 //
 //  Author:
 //       Jakub Syty <j.syty@media30.pl>
@@ -25,12 +25,12 @@ using Android.App;
 
 namespace AplikacjaParlament
 {
-	public class PoselViewFragmentPagerAdapter : Android.Support.V13.App.FragmentPagerAdapter
+	public class UniversalFragmentPagerAdapter : Android.Support.V13.App.FragmentPagerAdapter
 	{
 
-		public PoselViewFragmentPagerAdapter (Android.App.FragmentManager fm) : base (fm)
+		public UniversalFragmentPagerAdapter (FragmentManager fm, GenericOrderedDictionary<String, Fragment> _fragmentsTabs) : base (fm)
 		{
-
+			fragmentsTabs = _fragmentsTabs;
 		} 
 
 		public override int Count
@@ -38,16 +38,7 @@ namespace AplikacjaParlament
 			get { return fragmentsTabs.Count; }
 		}
 
-		private GenericOrderedDictionary<String, Fragment> fragmentsTabs = new GenericOrderedDictionary<String, Fragment> (){
-			// ** Fragmenty czysto testowe!!
-			{ "Sejm", new SejmListFragment() },
-			{ "Senat", new SenatListFragment() },
-			{ "Sejm2", new SejmListFragment() },
-			{ "Senat2", new SenatListFragment() },
-			{ "Sejm3", new SejmListFragment() },
-			{ "Senat3", new SenatListFragment() }
-			// ** Fragmenty czysto testowe!!
-		};
+		private GenericOrderedDictionary<String, Fragment> fragmentsTabs;
 
 		public override Java.Lang.ICharSequence GetPageTitleFormatted(int position)
 		{
@@ -56,9 +47,7 @@ namespace AplikacjaParlament
 
 		public override Fragment GetItem(int position)
 		{
-			Android.Util.Log.Info("MyPagerAdapter", string.Format("GetItem being called for position {0}", position));
 			return fragmentsTabs [position];
 		}
 	}
 }
-

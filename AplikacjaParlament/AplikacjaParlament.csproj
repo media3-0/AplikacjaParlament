@@ -80,16 +80,15 @@
   <ItemGroup>
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Activities\PoslowieActivity.cs" />
     <Compile Include="Activities\MainActivity.cs" />
     <Compile Include="Activities\BaseActivity.cs" />
     <Compile Include="Fragments\Poslowie\SejmListFragment.cs" />
     <Compile Include="Fragments\Poslowie\SenatListFragment.cs" />
-    <Compile Include="Fragments\Poslowie\PoslowieListsPagerAdapter.cs" />
     <Compile Include="Fragments\Poslowie\PersonDetailsActivity.cs" />
     <Compile Include="Models\PersonTypeEnumeration.cs" />
-    <Compile Include="Fragments\Poslowie\PoselViewFragmentPagerAdapter.cs" />
     <Compile Include="Helpers\Collections\GenericOrderedDictionary.cs" />
+    <Compile Include="Fragments\UniversalFragmentPagerAdapter.cs" />
+    <Compile Include="Activities\PeopleActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
