@@ -1,5 +1,5 @@
 ﻿//
-//  BaseActivity.cs
+//  SenatListFragment.cs
 //
 //  Author:
 //       Jakub Syty <j.syty@media30.pl>
@@ -28,34 +28,36 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Util;
 using Android.Views;
 using Android.Widget;
-using Android.Support.V4.App;
 
-namespace AplikacjaParlament
+using AplikacjaParlamentShared.Models;
+
+namespace AplikacjaParlamentAndroid
 {
-	[Activity (Label = "BaseActivity")]			
-	public class BaseActivity : FragmentActivity
+	public class SenatListFragment : ListFragment
 	{
-		protected override void OnCreate (Bundle bundle)
-		{
-			base.OnCreate (bundle);
 
-			ActionBar.SetHomeButtonEnabled(true);
-			ActionBar.SetDisplayHomeAsUpEnabled(true);
+		private String[] values;
+
+		public override void OnCreate (Bundle savedInstanceState)
+		{
+			base.OnCreate (savedInstanceState);
+			values = new[] { "Senator 1", "Senator 2 ", "Senator 3" };
+			this.ListAdapter = new ArrayAdapter<string>(Activity, Android.Resource.Layout.SimpleExpandableListItem1, values);
 		}
 
-		public override bool OnOptionsItemSelected(IMenuItem item)
+		public override void OnListItemClick(ListView l, View v, int index, long id)
 		{
-			switch (item.ItemId)
-			{
-			case Android.Resource.Id.Home:
-				Finish();
-				return true;
+			// We can display everything in place with fragments.
+			// Have the list highlight this item and show the data.
+			ListView.SetItemChecked(index, true);
 
-			default:
-				return base.OnOptionsItemSelected(item);
-			}
+			var detailsActivity = new Intent (Activity, typeof(PersonDetailsActivity));
+			detailsActivity.PutExtra ("persontype", (int)PersonTypeEnumeration.Senator);
+			detailsActivity.PutExtra ("name", values [index]);
+			StartActivity (detailsActivity);
 		}
 	}
 }

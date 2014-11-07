@@ -1,5 +1,5 @@
 ﻿//
-//  SenatListFragment.cs
+//  SejmListFragment.cs
 //
 //  Author:
 //       Jakub Syty <j.syty@media30.pl>
@@ -32,17 +32,19 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 
-namespace AplikacjaParlament
+using AplikacjaParlamentShared.Models;
+
+namespace AplikacjaParlamentAndroid
 {
-	public class SenatListFragment : ListFragment
+	public class SejmListFragment : ListFragment
 	{
 
-		private String[] values;
+		private string[] values;
 
 		public override void OnCreate (Bundle savedInstanceState)
 		{
 			base.OnCreate (savedInstanceState);
-			values = new[] { "Senator 1", "Senator 2 ", "Senator 3" };
+			values = new[] { "Poseł 1", "Poseł 2 ", "Poseł 3" };
 			this.ListAdapter = new ArrayAdapter<string>(Activity, Android.Resource.Layout.SimpleExpandableListItem1, values);
 		}
 
@@ -53,7 +55,7 @@ namespace AplikacjaParlament
 			ListView.SetItemChecked(index, true);
 
 			var detailsActivity = new Intent (Activity, typeof(PersonDetailsActivity));
-			detailsActivity.PutExtra ("persontype", (int)PersonTypeEnumeration.Senator);
+			detailsActivity.PutExtra ("persontype", (int)PersonTypeEnumeration.Posel);
 			detailsActivity.PutExtra ("name", values [index]);
 			StartActivity (detailsActivity);
 		}

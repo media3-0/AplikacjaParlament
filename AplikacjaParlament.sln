@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AplikacjaParlament", "AplikacjaParlament\AplikacjaParlament.csproj", "{8E404A50-7A2B-4900-9A75-9C7E0ABF0D67}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{83FBBC0F-B541-40F3-BE3B-C8F315E0C4E3}"
 	ProjectSection(SolutionItems) = preProject
 		LICENSE = LICENSE
@@ -10,6 +8,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AplikacjaParlamentShared", "AplikacjaParlamentShared\AplikacjaParlamentShared.shproj", "{8EEDEFC0-ECAB-4138-94B9-E905FD0883AC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AplikacjaParlamentAndroid", "AplikacjaParlamentAndroid\AplikacjaParlamentAndroid.csproj", "{8E404A50-7A2B-4900-9A75-9C7E0ABF0D67}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,7 +25,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = AplikacjaParlament\AplikacjaParlament.csproj
+		StartupItem = AplikacjaParlamentAndroid\AplikacjaParlamentAndroid.csproj
 		Policies = $0
 		$0.DotNetNamingPolicy = $1
 		$1.DirectoryNamespaceAssociation = None

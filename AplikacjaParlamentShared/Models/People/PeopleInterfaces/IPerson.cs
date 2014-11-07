@@ -1,5 +1,5 @@
 ﻿//
-//  MyClass.cs
+//  IPerson.cs
 //
 //  Author:
 //       Jakub Syty <j.syty@media30.pl>
@@ -20,13 +20,16 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
 
-namespace AplikacjaParlamentShared
+namespace AplikacjaParlamentShared.Models
 {
-	public class MyClass
+	public interface IPerson
 	{
-		public MyClass ()
-		{
-		}
+		int Id { get; }
+		string Imie { get; }
+		string Nazwisko { get; }
+		string Email { get; }
+		string StronaInternetowa { get; }
+		string Telefon { get; }
 	}
 }
 

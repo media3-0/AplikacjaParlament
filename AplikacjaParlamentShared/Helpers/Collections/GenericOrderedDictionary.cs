@@ -26,7 +26,7 @@ using System.Collections.Specialized;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AplikacjaParlament.Collections
+namespace AplikacjaParlamentShared.Collections
 {
 
 	public interface IOrderedDictionary<TKey, TValue> : IDictionary<TKey, TValue>, IOrderedDictionary {

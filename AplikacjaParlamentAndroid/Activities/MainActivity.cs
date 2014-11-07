@@ -1,10 +1,10 @@
 ﻿//
-//  PoslowieActivity.cs
+//  MainActivity.cs
 //
 //  Author:
 //       Jakub Syty <j.syty@media30.pl>
 //
-//  Copyright (c) 2014 
+//  Copyright (c) 2014 Fundacja Media 3.0
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -20,43 +20,39 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 using Android.App;
 using Android.Content;
-using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using Android.Support.V4.View;
-using Android.Util;
-using AplikacjaParlament.Collections;
+using Android.OS;
 
-namespace AplikacjaParlament
+using Com.Lilarcor.Cheeseknife;
+
+namespace AplikacjaParlamentAndroid
 {
-	[Activity (Label = "Parlament")]			
-	public class PeopleActivity : BaseActivity
+	[Activity (Label = "Aplikacja Parlament", MainLauncher = true)]
+	public class MainActivity : Activity
 	{
-		private GenericOrderedDictionary<String, Fragment> fragmentsTabs = new GenericOrderedDictionary<String, Fragment> (){
-			{ "Sejm", new SejmListFragment() },
-			{ "Senat", new SenatListFragment() }
-		};
+
+		[InjectView(Resource.Id.myButton)]
+		Button button;
 
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
 
-			SetContentView (Resource.Layout.PoslowieActivityLayout);
+			// Set our view from the "main" layout resource
+			SetContentView (Resource.Layout.Main);
 
-			var tabs = FindViewById<PagerSlidingTabStrip.PagerSlidingTabStrip> (Resource.Id.tabs);
-			var pager = FindViewById<ViewPager> (Resource.Id.pager);
-
-			pager.Adapter = new UniversalFragmentPagerAdapter (FragmentManager, fragmentsTabs);
-			tabs.SetViewPager (pager);
-		}
+			Cheeseknife.Inject (this);
 			
+			button.Click += delegate {
+				StartActivity(typeof(PeopleActivity));
+			};
+		}
 	}
 }
+
 

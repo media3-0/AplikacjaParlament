@@ -6,14 +6,14 @@
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <ProjectGuid>{8E404A50-7A2B-4900-9A75-9C7E0ABF0D67}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>AplikacjaParlament</RootNamespace>
+    <RootNamespace>AplikacjaParlamentAndroid</RootNamespace>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <AndroidResgenClass>Resource</AndroidResgenClass>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidApplication>True</AndroidApplication>
     <AndroidUseLatestPlatformSdk>False</AndroidUseLatestPlatformSdk>
-    <AssemblyName>AplikacjaParlament</AssemblyName>
+    <AssemblyName>AplikacjaParlamentAndroid</AssemblyName>
     <TargetFrameworkVersion>v4.0.3</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
   </PropertyGroup>
@@ -85,8 +85,6 @@
     <Compile Include="Fragments\Poslowie\SejmListFragment.cs" />
     <Compile Include="Fragments\Poslowie\SenatListFragment.cs" />
     <Compile Include="Fragments\Poslowie\PersonDetailsActivity.cs" />
-    <Compile Include="Models\PersonTypeEnumeration.cs" />
-    <Compile Include="Helpers\Collections\GenericOrderedDictionary.cs" />
     <Compile Include="Fragments\UniversalFragmentPagerAdapter.cs" />
     <Compile Include="Activities\PeopleActivity.cs" />
   </ItemGroup>
@@ -103,6 +101,7 @@
     <AndroidResource Include="Resources\layout\PoslowieActivityLayout.axml" />
     <AndroidResource Include="Resources\layout\PersonDetailsLayout.axml" />
   </ItemGroup>
+  <Import Project="..\AplikacjaParlamentShared\AplikacjaParlamentShared.projitems" Label="Shared" Condition="Exists('..\AplikacjaParlamentShared\AplikacjaParlamentShared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
     <XamarinComponentReference Include="cheeseknife">
@@ -126,9 +125,6 @@
     <Folder Include="Activities\" />
     <Folder Include="Fragments\" />
     <Folder Include="Fragments\Poslowie\" />
-    <Folder Include="Models\" />
-    <Folder Include="Helpers\" />
-    <Folder Include="Helpers\Collections\" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>

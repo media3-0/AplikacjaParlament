@@ -32,9 +32,11 @@ using Android.Views;
 using Android.Widget;
 using Android.Support.V4.View;
 using Android.Util;
-using AplikacjaParlament.Collections;
 
-namespace AplikacjaParlament
+using AplikacjaParlamentShared.Collections;
+using AplikacjaParlamentShared.Models;
+
+namespace AplikacjaParlamentAndroid
 {
 	[Activity (Label = "Detale")]			
 	public class PersonDetailsActivity : BaseActivity

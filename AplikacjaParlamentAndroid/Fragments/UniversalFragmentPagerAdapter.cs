@@ -20,10 +20,10 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
 using Android.Support.V4.View;
-using AplikacjaParlament.Collections;
+using AplikacjaParlamentShared.Collections;
 using Android.App;
 
-namespace AplikacjaParlament
+namespace AplikacjaParlamentAndroid
 {
 	public class UniversalFragmentPagerAdapter : Android.Support.V13.App.FragmentPagerAdapter
 	{
