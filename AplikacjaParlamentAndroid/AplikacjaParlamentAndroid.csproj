@@ -82,11 +82,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Activities\MainActivity.cs" />
     <Compile Include="Activities\BaseActivity.cs" />
-    <Compile Include="Fragments\Poslowie\SejmListFragment.cs" />
-    <Compile Include="Fragments\Poslowie\SenatListFragment.cs" />
-    <Compile Include="Fragments\Poslowie\PersonDetailsActivity.cs" />
     <Compile Include="Fragments\UniversalFragmentPagerAdapter.cs" />
     <Compile Include="Activities\PeopleActivity.cs" />
+    <Compile Include="Fragments\People\SejmListFragment.cs" />
+    <Compile Include="Fragments\People\SenatListFragment.cs" />
+    <Compile Include="Fragments\People\ProfileFragment.cs" />
+    <Compile Include="Fragments\BaseFragment.cs" />
+    <Compile Include="Activities\PersonDetailsActivity.cs" />
+    <Compile Include="Fragments\People\PersonVotesFragment.cs" />
+    <Compile Include="Fragments\People\PersonSpeechesFragment.cs" />
+    <Compile Include="Fragments\People\PersonInterpellationsFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -100,6 +105,7 @@
     <AndroidResource Include="Resources\drawable\Icon.png" />
     <AndroidResource Include="Resources\layout\PoslowieActivityLayout.axml" />
     <AndroidResource Include="Resources\layout\PersonDetailsLayout.axml" />
+    <AndroidResource Include="Resources\layout\PersonProfileFragmentLayout.axml" />
   </ItemGroup>
   <Import Project="..\AplikacjaParlamentShared\AplikacjaParlamentShared.projitems" Label="Shared" Condition="Exists('..\AplikacjaParlamentShared\AplikacjaParlamentShared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
@@ -124,7 +130,7 @@
   <ItemGroup>
     <Folder Include="Activities\" />
     <Folder Include="Fragments\" />
-    <Folder Include="Fragments\Poslowie\" />
+    <Folder Include="Fragments\People\" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>

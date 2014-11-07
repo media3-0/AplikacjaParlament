@@ -1,5 +1,5 @@
 ﻿//
-//  BaseActivity.cs
+//  SejmListFragment.cs
 //
 //  Author:
 //       Jakub Syty <j.syty@media30.pl>
@@ -28,38 +28,36 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Util;
 using Android.Views;
 using Android.Widget;
-using Android.Support.V4.App;
 
-using Com.Lilarcor.Cheeseknife;
+using AplikacjaParlamentShared.Models;
 
 namespace AplikacjaParlamentAndroid
 {
-	[Activity (Label = "BaseActivity")]			
-	public class BaseActivity : FragmentActivity
+	public class SejmListFragment : ListFragment
 	{
-		protected override void OnCreate (Bundle bundle)
+
+		private string[] values;
+
+		public override void OnCreate (Bundle savedInstanceState)
 		{
-			base.OnCreate (bundle);
-
-			Cheeseknife.Inject (this);
-
-			ActionBar.SetHomeButtonEnabled(true);
-			ActionBar.SetDisplayHomeAsUpEnabled(true);
+			base.OnCreate (savedInstanceState);
+			values = new[] { "Poseł 1", "Poseł 2 ", "Poseł 3" };
+			this.ListAdapter = new ArrayAdapter<string>(Activity, Android.Resource.Layout.SimpleExpandableListItem1, values);
 		}
 
-		public override bool OnOptionsItemSelected(IMenuItem item)
+		public override void OnListItemClick(ListView l, View v, int index, long id)
 		{
-			switch (item.ItemId)
-			{
-			case Android.Resource.Id.Home:
-				Finish();
-				return true;
+			// We can display everything in place with fragments.
+			// Have the list highlight this item and show the data.
+			ListView.SetItemChecked(index, true);
 
-			default:
-				return base.OnOptionsItemSelected(item);
-			}
+			var detailsActivity = new Intent (Activity, typeof(PersonDetailsActivity));
+			detailsActivity.PutExtra ("persontype", (int)PersonTypeEnumeration.Posel);
+			detailsActivity.PutExtra ("id", index + 1);
+			StartActivity (detailsActivity);
 		}
 	}
 }

@@ -35,6 +35,7 @@ using Android.Util;
 
 using AplikacjaParlamentShared.Collections;
 using AplikacjaParlamentShared.Models;
+using AplikacjaParlamentShared.Repositories;
 
 namespace AplikacjaParlamentAndroid
 {
@@ -44,12 +45,18 @@ namespace AplikacjaParlamentAndroid
 
 		private PersonTypeEnumeration personType;
 
+		private IPerson person;
+
+		public IPerson Person {
+			get {
+				return person;
+			}
+		}
+
 		private GenericOrderedDictionary<String, Fragment> fragmentsTabs = new GenericOrderedDictionary<String, Fragment> (){
-			// ** Fragmenty czysto testowe!!
-			{ "Profil", new SejmListFragment() },
-			{ "Głosowania", new SenatListFragment() },
-			{ "Wystąpienia", new SejmListFragment() }
-			// ** Fragmenty czysto testowe!!
+			{ "Profil", new ProfileFragment() },
+			{ "Głosowania", new PersonVotesFragment() },
+			{ "Wystąpienia", new PersonSpeechesFragment() }
 		};
 
 		protected override void OnCreate (Bundle bundle)
@@ -59,13 +66,17 @@ namespace AplikacjaParlamentAndroid
 			SetContentView (Resource.Layout.PersonDetailsLayout);
 
 			personType = (PersonTypeEnumeration)Intent.GetIntExtra ("persontype", (int)PersonTypeEnumeration.Posel);
-			string name = Intent.GetStringExtra ("name") ?? "data not passed";
+			int id = Intent.GetIntExtra ("id", -1);
 
-			ActionBar.Title = name;
+			// FIXME : zamienic if na Exception dla nieistniejącego id!
+			if (id > -1)
+				person = PeopleRepository.Instance.GetPerson (id);
+
+			ActionBar.Title = id + " " + person.Imie + " " + person.Nazwisko;
 
 			//jeżeli jest posłem do dodaj zakładkę interpelacje
 			if(personType.Equals(PersonTypeEnumeration.Posel))
-				fragmentsTabs.Add ("Interpelacje", new SenatListFragment ());
+				fragmentsTabs.Add ("Interpelacje", new PersonInterpellationsFragment ());
 
 			var tabs = FindViewById<PagerSlidingTabStrip.PagerSlidingTabStrip> (Resource.Id.tabs);
 			var pager = FindViewById<ViewPager> (Resource.Id.pager);

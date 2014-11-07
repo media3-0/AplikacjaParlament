@@ -1,5 +1,5 @@
 ﻿//
-//  IPerson.cs
+//  ISpeechPerson.cs
 //
 //  Author:
 //       Jakub Syty <j.syty@media30.pl>
@@ -23,16 +23,10 @@ using System;
 namespace AplikacjaParlamentShared.Models
 {
 	/**
-	 * Interfejs uniwersalny dla wszystkich osób
+	 * Interfejs dla osób z możliwością wystąpień (przemówień)
 	 */
-	public interface IPerson
+	public interface ISpeechPerson
 	{
-		int Id { get; }
-		string Imie { get; }
-		string Nazwisko { get; }
-		string Email { get; }
-		string StronaInternetowa { get; }
-		string Telefon { get; }
 	}
 }
 

@@ -12,8 +12,15 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\People\PersonTypeEnumeration.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Collections\GenericOrderedDictionary.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\People\PeopleInterfaces\IPerson.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\People\Person.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\People\PeopleInterfaces\IVotingPerson.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\People\PeopleInterfaces\IInterpellationPerson.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\People\PeopleInterfaces\ISpeechPerson.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\People\PeopleInterfaces\IPeopleRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Repositories\PeopleRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Models\People\PeopleInterfaces\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Repositories\" />
   </ItemGroup>
 </Project>

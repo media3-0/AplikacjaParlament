@@ -56,7 +56,7 @@ namespace AplikacjaParlamentAndroid
 
 			var detailsActivity = new Intent (Activity, typeof(PersonDetailsActivity));
 			detailsActivity.PutExtra ("persontype", (int)PersonTypeEnumeration.Senator);
-			detailsActivity.PutExtra ("name", values [index]);
+			detailsActivity.PutExtra ("id", index + 1);
 			StartActivity (detailsActivity);
 		}
 	}

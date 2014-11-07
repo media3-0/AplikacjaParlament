@@ -1,5 +1,5 @@
 ﻿//
-//  IPerson.cs
+//  IInterpellationPerson.cs
 //
 //  Author:
 //       Jakub Syty <j.syty@media30.pl>
@@ -23,16 +23,10 @@ using System;
 namespace AplikacjaParlamentShared.Models
 {
 	/**
-	 * Interfejs uniwersalny dla wszystkich osób
+	 * Interfejs dla osób z możliwością interpelacji
 	 */
-	public interface IPerson
+	public interface IInterpellationPerson
 	{
-		int Id { get; }
-		string Imie { get; }
-		string Nazwisko { get; }
-		string Email { get; }
-		string StronaInternetowa { get; }
-		string Telefon { get; }
 	}
 }
 

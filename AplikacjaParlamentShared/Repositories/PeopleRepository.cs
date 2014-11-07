@@ -1,5 +1,5 @@
 ﻿//
-//  IPerson.cs
+//  PeopleRepository.cs
 //
 //  Author:
 //       Jakub Syty <j.syty@media30.pl>
@@ -20,19 +20,30 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
 
-namespace AplikacjaParlamentShared.Models
+using AplikacjaParlamentShared.Models;
+
+namespace AplikacjaParlamentShared.Repositories
 {
-	/**
-	 * Interfejs uniwersalny dla wszystkich osób
-	 */
-	public interface IPerson
+	public class PeopleRepository : IPeopleRepository
 	{
-		int Id { get; }
-		string Imie { get; }
-		string Nazwisko { get; }
-		string Email { get; }
-		string StronaInternetowa { get; }
-		string Telefon { get; }
+
+		private static PeopleRepository instance;
+
+		public static PeopleRepository Instance {
+			get {
+				return instance ?? (instance = new PeopleRepository());
+			}
+		}
+
+		private PeopleRepository ()
+		{
+		}
+
+		public IPerson GetPerson (int id)
+		{
+			//na chwilę obecną tylko mock data
+			return new Person (id, "Imie ", "Nazwisko", "Email", "Strona internetowa", "48236582");
+		}
 	}
 }
 

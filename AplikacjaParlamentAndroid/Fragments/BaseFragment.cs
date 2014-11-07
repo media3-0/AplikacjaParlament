@@ -1,5 +1,5 @@
 ﻿//
-//  SejmListFragment.cs
+//  BaseFragment.cs
 //
 //  Author:
 //       Jakub Syty <j.syty@media30.pl>
@@ -32,32 +32,15 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 
-using AplikacjaParlamentShared.Models;
+using Com.Lilarcor.Cheeseknife;
 
 namespace AplikacjaParlamentAndroid
 {
-	public class SejmListFragment : ListFragment
+	public class BaseFragment : Fragment
 	{
-
-		private string[] values;
-
-		public override void OnCreate (Bundle savedInstanceState)
-		{
-			base.OnCreate (savedInstanceState);
-			values = new[] { "Poseł 1", "Poseł 2 ", "Poseł 3" };
-			this.ListAdapter = new ArrayAdapter<string>(Activity, Android.Resource.Layout.SimpleExpandableListItem1, values);
-		}
-
-		public override void OnListItemClick(ListView l, View v, int index, long id)
-		{
-			// We can display everything in place with fragments.
-			// Have the list highlight this item and show the data.
-			ListView.SetItemChecked(index, true);
-
-			var detailsActivity = new Intent (Activity, typeof(PersonDetailsActivity));
-			detailsActivity.PutExtra ("persontype", (int)PersonTypeEnumeration.Posel);
-			detailsActivity.PutExtra ("name", values [index]);
-			StartActivity (detailsActivity);
+		public override void OnDestroyView() {
+			base.OnDestroyView();
+			Cheeseknife.Reset(this);
 		}
 	}
 }

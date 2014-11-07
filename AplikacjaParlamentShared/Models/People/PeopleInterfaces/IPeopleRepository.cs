@@ -1,5 +1,5 @@
 ﻿//
-//  IPerson.cs
+//  IPeopleRepository.cs
 //
 //  Author:
 //       Jakub Syty <j.syty@media30.pl>
@@ -23,16 +23,11 @@ using System;
 namespace AplikacjaParlamentShared.Models
 {
 	/**
-	 * Interfejs uniwersalny dla wszystkich osób
+	 * Interfejs dla repozytorium zarządzającym osobami
 	 */
-	public interface IPerson
+	public interface IPeopleRepository
 	{
-		int Id { get; }
-		string Imie { get; }
-		string Nazwisko { get; }
-		string Email { get; }
-		string StronaInternetowa { get; }
-		string Telefon { get; }
+		IPerson GetPerson(int id);
 	}
 }
 

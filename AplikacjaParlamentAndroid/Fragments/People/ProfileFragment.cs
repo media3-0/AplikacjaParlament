@@ -1,5 +1,5 @@
 ﻿//
-//  BaseActivity.cs
+//  ProfileFragment.cs
 //
 //  Author:
 //       Jakub Syty <j.syty@media30.pl>
@@ -28,38 +28,50 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Util;
 using Android.Views;
 using Android.Widget;
-using Android.Support.V4.App;
+
+using AplikacjaParlamentShared.Models;
 
 using Com.Lilarcor.Cheeseknife;
 
 namespace AplikacjaParlamentAndroid
 {
-	[Activity (Label = "BaseActivity")]			
-	public class BaseActivity : FragmentActivity
+	public class ProfileFragment : BaseFragment
 	{
-		protected override void OnCreate (Bundle bundle)
+		[InjectView(Resource.Id.textView1)]
+		private TextView textView;
+
+		private PersonDetailsActivity personDetailsActivity;
+
+		private IPerson person;
+
+		public override void OnCreate (Bundle savedInstanceState)
 		{
-			base.OnCreate (bundle);
+			base.OnCreate (savedInstanceState);
 
-			Cheeseknife.Inject (this);
-
-			ActionBar.SetHomeButtonEnabled(true);
-			ActionBar.SetDisplayHomeAsUpEnabled(true);
+			personDetailsActivity = Activity as PersonDetailsActivity;
+			person = personDetailsActivity.Person;
 		}
 
-		public override bool OnOptionsItemSelected(IMenuItem item)
+		public override View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 		{
-			switch (item.ItemId)
-			{
-			case Android.Resource.Id.Home:
-				Finish();
-				return true;
+			View view = inflater.Inflate (Resource.Layout.PersonProfileFragmentLayout, container, false);
+			Cheeseknife.Inject (this, view);
+			return view;
+		}
 
-			default:
-				return base.OnOptionsItemSelected(item);
-			}
+		public override void OnStart ()
+		{
+			base.OnStart ();
+			//mock
+			StringBuilder sb = new StringBuilder ();
+			sb.Append ("Id: ").Append (person.Id);
+			sb.Append ("\nImię: ").Append (person.Imie);
+			sb.Append ("\nNazwisko: ").Append (person.Nazwisko);
+			textView.Text = sb.ToString ();
+			//mock
 		}
 	}
 }

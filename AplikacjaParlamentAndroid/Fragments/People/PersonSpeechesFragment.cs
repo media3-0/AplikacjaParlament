@@ -1,5 +1,5 @@
 ﻿//
-//  BaseActivity.cs
+//  PersonSpeechesFragment.cs
 //
 //  Author:
 //       Jakub Syty <j.syty@media30.pl>
@@ -28,38 +28,31 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Util;
 using Android.Views;
 using Android.Widget;
-using Android.Support.V4.App;
 
-using Com.Lilarcor.Cheeseknife;
+using AplikacjaParlamentShared.Models;
 
 namespace AplikacjaParlamentAndroid
 {
-	[Activity (Label = "BaseActivity")]			
-	public class BaseActivity : FragmentActivity
+	public class PersonSpeechesFragment : ListFragment
 	{
-		protected override void OnCreate (Bundle bundle)
+		private PersonDetailsActivity personDetailsActivity;
+
+		private IPerson person;
+
+		private string[] values;
+
+		public override void OnCreate (Bundle savedInstanceState)
 		{
-			base.OnCreate (bundle);
+			base.OnCreate (savedInstanceState);
 
-			Cheeseknife.Inject (this);
+			personDetailsActivity = Activity as PersonDetailsActivity;
+			person = personDetailsActivity.Person;
 
-			ActionBar.SetHomeButtonEnabled(true);
-			ActionBar.SetDisplayHomeAsUpEnabled(true);
-		}
-
-		public override bool OnOptionsItemSelected(IMenuItem item)
-		{
-			switch (item.ItemId)
-			{
-			case Android.Resource.Id.Home:
-				Finish();
-				return true;
-
-			default:
-				return base.OnOptionsItemSelected(item);
-			}
+			values = new[] { "Wystąpienie 1", "Wystąpienie 2 ", "Wystąpienie 3" };
+			this.ListAdapter = new ArrayAdapter<string>(Activity, Android.Resource.Layout.SimpleExpandableListItem1, values);
 		}
 	}
 }
