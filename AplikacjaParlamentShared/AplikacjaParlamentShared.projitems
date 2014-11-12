@@ -22,5 +22,6 @@
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Models\People\PeopleInterfaces\" />
     <Folder Include="$(MSBuildThisFileDirectory)Repositories\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Api\" />
   </ItemGroup>
 </Project>

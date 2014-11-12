@@ -39,7 +39,7 @@ namespace AplikacjaParlamentAndroid
 	{
 		private PersonDetailsActivity personDetailsActivity;
 
-		private IPerson person;
+		private IInterpellationPerson person;
 
 		private string[] values;
 
@@ -48,7 +48,8 @@ namespace AplikacjaParlamentAndroid
 			base.OnCreate (savedInstanceState);
 
 			personDetailsActivity = Activity as PersonDetailsActivity;
-			person = personDetailsActivity.Person;
+			if(personDetailsActivity.Person is IInterpellationPerson)
+				person = personDetailsActivity.Person;
 
 			values = new[] { "Interpelacja 1", "Interpelacja 2 ", "Interpelacja 3" };
 			this.ListAdapter = new ArrayAdapter<string>(Activity, Android.Resource.Layout.SimpleExpandableListItem1, values);
