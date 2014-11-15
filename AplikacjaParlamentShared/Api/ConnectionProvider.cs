@@ -1,5 +1,5 @@
 ﻿//
-//  IPerson.cs
+//  ConnectionProvider.cs
 //
 //  Author:
 //       Jakub Syty <j.syty@media30.pl>
@@ -19,17 +19,33 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
+using System.Net.Http;
+using ModernHttpClient;
 
-namespace AplikacjaParlamentShared.Models
+namespace AplikacjaParlamentShared.Api
 {
-	/**
-	 * Interfejs uniwersalny dla wszystkich osób
-	 */
-	public interface IPerson
+	public class ConnectionProvider : IConnectionProvider
 	{
-		int Id { get; }
-		string Imie { get; }
-		string Nazwisko { get; }
+		private static ConnectionProvider instance;
+
+		private HttpClient httpClient;
+
+		public static ConnectionProvider Instance {
+			get {
+				return instance ?? (instance = new ConnectionProvider());
+			}
+		}
+
+		private ConnectionProvider ()
+		{
+			httpClient = new HttpClient (new NativeMessageHandler ());
+			//tutaj można dodać ustawienia HttpClienta uniwersalne dla całej aplikacji (Singleton)
+		}
+
+		public HttpClient GetHttpClient ()
+		{
+			return httpClient;
+		}
 	}
 }
 

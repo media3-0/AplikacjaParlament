@@ -27,7 +27,7 @@ namespace AplikacjaParlamentShared.Models
 	 */
 	public interface IPeopleRepository
 	{
-		IPerson GetPerson(int id);
+		IPosel GetPosel(int id);
 	}
 }
 

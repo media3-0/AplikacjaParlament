@@ -54,7 +54,7 @@ namespace AplikacjaParlamentAndroid
 		}
 
 		private GenericOrderedDictionary<String, Fragment> fragmentsTabs = new GenericOrderedDictionary<String, Fragment> (){
-			{ "Profil", new ProfileFragment() },
+			{ "Profil", new PoselProfileFragment() },
 			{ "Głosowania", new PersonVotesFragment() },
 			{ "Wystąpienia", new PersonSpeechesFragment() }
 		};
@@ -70,7 +70,7 @@ namespace AplikacjaParlamentAndroid
 
 			// FIXME : zamienic if na Exception dla nieistniejącego id!
 			if (id > -1)
-				person = PeopleRepository.Instance.GetPerson (id);
+				person = PeopleRepository.Instance.GetPosel (id);
 
 			ActionBar.Title = id + " " + person.Imie + " " + person.Nazwisko;
 

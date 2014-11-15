@@ -48,8 +48,8 @@ namespace AplikacjaParlamentAndroid
 			base.OnCreate (savedInstanceState);
 
 			personDetailsActivity = Activity as PersonDetailsActivity;
-			if(personDetailsActivity.Person is IInterpellationPerson)
-				person = personDetailsActivity.Person;
+			if (personDetailsActivity.Person is IInterpellationPerson)
+				person = personDetailsActivity.Person as IInterpellationPerson;
 
 			values = new[] { "Interpelacja 1", "Interpelacja 2 ", "Interpelacja 3" };
 			this.ListAdapter = new ArrayAdapter<string>(Activity, Android.Resource.Layout.SimpleExpandableListItem1, values);

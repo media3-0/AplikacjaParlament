@@ -49,7 +49,7 @@ namespace AplikacjaParlamentAndroid
 
 			personDetailsActivity = Activity as PersonDetailsActivity;
 			if(personDetailsActivity.Person is IVotingPerson)
-				person = personDetailsActivity.Person;
+				person = personDetailsActivity.Person as IVotingPerson;
 
 			values = new[] { "Głos 1", "Głos 2 ", "Głos 3" };
 			this.ListAdapter = new ArrayAdapter<string>(Activity, Android.Resource.Layout.SimpleExpandableListItem1, values);

@@ -25,7 +25,7 @@ namespace AplikacjaParlamentShared.Models
 	/**
 	 * Interfejs dla osób z możliwością głosowania
 	 */
-	public interface IVotingPerson
+	public interface IVotingPerson : IPerson
 	{
 	}
 }

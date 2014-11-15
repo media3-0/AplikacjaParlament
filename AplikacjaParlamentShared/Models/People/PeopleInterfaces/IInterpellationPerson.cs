@@ -25,7 +25,7 @@ namespace AplikacjaParlamentShared.Models
 	/**
 	 * Interfejs dla osób z możliwością interpelacji
 	 */
-	public interface IInterpellationPerson
+	public interface IInterpellationPerson : IPerson
 	{
 	}
 }

@@ -50,7 +50,7 @@ namespace AplikacjaParlamentAndroid
 
 			personDetailsActivity = Activity as PersonDetailsActivity;
 			if(personDetailsActivity.Person is ISpeechPerson)
-				person = personDetailsActivity.Person;
+				person = personDetailsActivity.Person as ISpeechPerson;
 
 			values = new[] { "Wystąpienie 1", "Wystąpienie 2 ", "Wystąpienie 3" };
 			this.ListAdapter = new ArrayAdapter<string>(Activity, Android.Resource.Layout.SimpleExpandableListItem1, values);

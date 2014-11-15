@@ -84,12 +84,12 @@
     <Compile Include="Activities\PeopleActivity.cs" />
     <Compile Include="Fragments\People\SejmListFragment.cs" />
     <Compile Include="Fragments\People\SenatListFragment.cs" />
-    <Compile Include="Fragments\People\ProfileFragment.cs" />
     <Compile Include="Fragments\BaseFragment.cs" />
     <Compile Include="Activities\PersonDetailsActivity.cs" />
     <Compile Include="Fragments\People\PersonVotesFragment.cs" />
     <Compile Include="Fragments\People\PersonSpeechesFragment.cs" />
     <Compile Include="Fragments\People\PersonInterpellationsFragment.cs" />
+    <Compile Include="Fragments\People\PoselProfileFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

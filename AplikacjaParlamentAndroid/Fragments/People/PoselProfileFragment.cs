@@ -1,5 +1,5 @@
 ﻿//
-//  ProfileFragment.cs
+//  PoselProfileFragment.cs
 //
 //  Author:
 //       Jakub Syty <j.syty@media30.pl>
@@ -33,26 +33,29 @@ using Android.Views;
 using Android.Widget;
 
 using AplikacjaParlamentShared.Models;
+using AplikacjaParlamentShared.Api;
 
 using Com.Lilarcor.Cheeseknife;
+using System.Net.Http;
 
 namespace AplikacjaParlamentAndroid
 {
-	public class ProfileFragment : BaseFragment
+	public class PoselProfileFragment : BaseFragment
 	{
 		[InjectView(Resource.Id.textView1)]
 		private TextView textView;
 
 		private PersonDetailsActivity personDetailsActivity;
 
-		private IPerson person;
+		private IPosel posel;
 
 		public override void OnCreate (Bundle savedInstanceState)
 		{
 			base.OnCreate (savedInstanceState);
 
 			personDetailsActivity = Activity as PersonDetailsActivity;
-			person = personDetailsActivity.Person;
+			if(personDetailsActivity.Person is IPosel)
+				posel = personDetailsActivity.Person as IPosel;
 		}
 
 		public override View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -66,12 +69,21 @@ namespace AplikacjaParlamentAndroid
 		{
 			base.OnStart ();
 			//mock
-			StringBuilder sb = new StringBuilder ();
-			sb.Append ("Id: ").Append (person.Id);
-			sb.Append ("\nImię: ").Append (person.Imie);
-			sb.Append ("\nNazwisko: ").Append (person.Nazwisko);
-			textView.Text = sb.ToString ();
+			GetPoselData ();
 			//mock
+		}
+
+		private async void GetPoselData(){
+			IJsonObjectRequestHandler<Posel> handler = new JsonObjectRequestHandler<Posel>(ConnectionProvider.Instance);
+			try {
+				Posel p = await handler.GetJsonObjectAsync ("http://api.mojepanstwo.pl/dane/poslowie/69");
+				textView.Text = p.ToString ();
+			} catch (Java.IO.IOException ex){
+				Android.Util.Log.Error("Java.IO.IOException on GetJsonObjectAsync", ex.ToString());
+
+			} catch (Exception ex) {
+				Android.Util.Log.Error("GetJsonObjectAsync", ex.ToString());
+			}
 		}
 	}
 }

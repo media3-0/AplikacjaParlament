@@ -39,10 +39,10 @@ namespace AplikacjaParlamentShared.Repositories
 		{
 		}
 
-		public IPerson GetPerson (int id)
+		public IPosel GetPosel (int id)
 		{
 			//na chwilę obecną tylko mock data
-			return new Person (id, "Imie ", "Nazwisko", "Email", "Strona internetowa", "48236582");
+			return new Posel (id, "Imie ", "Nazwisko", "biuro", 1, "klub", 3, 4, "17 maj", 90.5f);
 		}
 	}
 }

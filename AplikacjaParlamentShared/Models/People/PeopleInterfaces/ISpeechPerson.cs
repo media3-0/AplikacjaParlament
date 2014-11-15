@@ -25,7 +25,7 @@ namespace AplikacjaParlamentShared.Models
 	/**
 	 * Interfejs dla osób z możliwością wystąpień (przemówień)
 	 */
-	public interface ISpeechPerson
+	public interface ISpeechPerson : IPerson
 	{
 	}
 }

@@ -1,5 +1,5 @@
 ﻿//
-//  IPerson.cs
+//  IPosel.cs
 //
 //  Author:
 //       Jakub Syty <j.syty@media30.pl>
@@ -23,13 +23,24 @@ using System;
 namespace AplikacjaParlamentShared.Models
 {
 	/**
-	 * Interfejs uniwersalny dla wszystkich osób
+	 * Interfejs tylko dla posłów
 	 */
-	public interface IPerson
+	public interface IPosel : IPerson
 	{
-		int Id { get; }
-		string Imie { get; }
-		string Nazwisko { get; }
+		// tabela w HTML z danymi biur (telefony  i emaile)
+		string BiuraTabelka { get; }
+		// poslowie.okreg_wyborczy_numer
+		int OkregWyborczyNumer { get; }
+		// sejm_kluby.nazwa
+		string SejmKlubyNazwa {get; }
+		// poslowie.liczba_projektow_uchwal
+		int LiczbaProjektowUchwal { get; }
+		// poslowie.liczba_projektow_ustaw
+		int LiczbaProjektowUstaw { get; }
+		// poslowie.data_urodzenia
+		string DataUrodzenia { get; }
+		// poslowie.frekwencja
+		float Frekwencja { get; }
 	}
 }
 
