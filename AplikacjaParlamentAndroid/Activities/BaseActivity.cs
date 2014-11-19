@@ -61,6 +61,17 @@ namespace AplikacjaParlamentAndroid
 				return base.OnOptionsItemSelected(item);
 			}
 		}
+
+		public void ShowErrorDialog(string message){
+			AlertDialog.Builder alert = new AlertDialog.Builder (this);
+
+			alert.SetTitle ("Błąd:");
+			alert.SetMessage (message);
+			alert.SetPositiveButton ("Ok", (senderAlert, args) => {
+				//
+			} );
+			alert.Show ();
+		}
 	}
 }
 

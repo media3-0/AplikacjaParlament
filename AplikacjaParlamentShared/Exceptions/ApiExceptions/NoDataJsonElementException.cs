@@ -1,5 +1,5 @@
 ﻿//
-//  IPeopleRepository.cs
+//  NoDataJsonElementException.cs
 //
 //  Author:
 //       Jakub Syty <j.syty@media30.pl>
@@ -20,14 +20,21 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
 
-namespace AplikacjaParlamentShared.Models
+namespace AplikacjaParlamentShared.Api
 {
-	/**
-	 * Interfejs dla repozytorium zarządzającym osobami
-	 */
-	public interface IPeopleRepository
+	public class NoDataJsonElementException : Exception
 	{
-		IPosel GetPosel(int id);
+		public NoDataJsonElementException ()
+		{
+		}
+
+		public override string Message
+		{
+			get
+			{
+				return "Brak elementu Data w odpowiedzi Api (najprawdopodobniej brak danych w API)";
+			}
+		}
 	}
 }
 

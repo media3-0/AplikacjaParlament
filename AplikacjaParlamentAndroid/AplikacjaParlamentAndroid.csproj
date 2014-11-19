@@ -103,7 +103,7 @@
     <AndroidResource Include="Resources\drawable\Icon.png" />
     <AndroidResource Include="Resources\layout\PoslowieActivityLayout.axml" />
     <AndroidResource Include="Resources\layout\PersonDetailsLayout.axml" />
-    <AndroidResource Include="Resources\layout\PersonProfileFragmentLayout.axml" />
+    <AndroidResource Include="Resources\layout\PoselProfileFragmentLayout.axml" />
   </ItemGroup>
   <Import Project="..\AplikacjaParlamentShared\AplikacjaParlamentShared.projitems" Label="Shared" Condition="Exists('..\AplikacjaParlamentShared\AplikacjaParlamentShared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />

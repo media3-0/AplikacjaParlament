@@ -21,6 +21,8 @@
 using System;
 
 using AplikacjaParlamentShared.Models;
+using AplikacjaParlamentShared.Api;
+using System.Threading.Tasks;
 
 namespace AplikacjaParlamentShared.Repositories
 {
@@ -39,10 +41,20 @@ namespace AplikacjaParlamentShared.Repositories
 		{
 		}
 
-		public IPosel GetPosel (int id)
+		async public Task<IPosel> GetPosel (int id)
 		{
-			//na chwilę obecną tylko mock data
-			return new Posel (id, "Imie ", "Nazwisko", "biuro", 1, "klub", 3, 4, "17 maj", 90.5f);
+			try {
+				IJsonObjectRequestHandler<Posel> handler = new JsonObjectRequestHandler<Posel> (ConnectionProvider.Instance);
+				Posel p = await handler.GetJsonObjectAsync (String.Concat ("http://api.mojepanstwo.pl/dane/poslowie/", id));
+				return p;
+			} catch (Java.IO.IOException ex){
+				Android.Util.Log.Error("Java.IO.IOException on GetJsonObjectAsync", ex.ToString());
+				throw new ApiRequestException (String.Concat("Problem z połączeniem:\n", ex.Message));
+
+			} catch (Exception ex) {
+				Android.Util.Log.Error("GetJsonObjectAsync", ex.ToString());
+				throw new ApiRequestException (String.Concat("Problem z dostępem do API:\n", ex.Message));
+			}
 		}
 	}
 }

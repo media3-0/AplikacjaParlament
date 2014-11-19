@@ -34,6 +34,7 @@ using Android.Widget;
 
 using AplikacjaParlamentShared.Models;
 using AplikacjaParlamentShared.Api;
+using AplikacjaParlamentShared.Repositories;
 
 using Com.Lilarcor.Cheeseknife;
 using System.Net.Http;
@@ -45,22 +46,31 @@ namespace AplikacjaParlamentAndroid
 		[InjectView(Resource.Id.textView1)]
 		private TextView textView;
 
+		[InjectView(Resource.Id.progressLayout)]
+		private RelativeLayout progressLayout;
+
+		[InjectView(Resource.Id.detailsContent)]
+		private LinearLayout contentLayout;
+
+		[InjectView(Resource.Id.viewSwitcher)]
+		private ViewSwitcher viewSwitcher;
+
 		private PersonDetailsActivity personDetailsActivity;
 
-		private IPosel posel;
+		private IPosel posel = null;
+		private int id;
 
 		public override void OnCreate (Bundle savedInstanceState)
 		{
 			base.OnCreate (savedInstanceState);
 
 			personDetailsActivity = Activity as PersonDetailsActivity;
-			if(personDetailsActivity.Person is IPosel)
-				posel = personDetailsActivity.Person as IPosel;
+			id = personDetailsActivity.PersonId;
 		}
 
 		public override View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 		{
-			View view = inflater.Inflate (Resource.Layout.PersonProfileFragmentLayout, container, false);
+			View view = inflater.Inflate (Resource.Layout.PoselProfileFragmentLayout, container, false);
 			Cheeseknife.Inject (this, view);
 			return view;
 		}
@@ -68,21 +78,24 @@ namespace AplikacjaParlamentAndroid
 		public override void OnStart ()
 		{
 			base.OnStart ();
-			//mock
+			if (viewSwitcher.CurrentView != progressLayout){
+				viewSwitcher.ShowNext(); 
+			}
 			GetPoselData ();
-			//mock
 		}
 
 		private async void GetPoselData(){
-			IJsonObjectRequestHandler<Posel> handler = new JsonObjectRequestHandler<Posel>(ConnectionProvider.Instance);
+			IPeopleRepository repository = PeopleRepository.Instance;
 			try {
-				Posel p = await handler.GetJsonObjectAsync ("http://api.mojepanstwo.pl/dane/poslowie/69");
-				textView.Text = p.ToString ();
-			} catch (Java.IO.IOException ex){
-				Android.Util.Log.Error("Java.IO.IOException on GetJsonObjectAsync", ex.ToString());
+				posel = await repository.GetPosel(id);
+				textView.Text = posel.ToString ();
 
-			} catch (Exception ex) {
-				Android.Util.Log.Error("GetJsonObjectAsync", ex.ToString());
+				if (viewSwitcher.CurrentView != contentLayout){
+					viewSwitcher.ShowPrevious(); 
+				}
+
+			} catch (ApiRequestException ex){
+				personDetailsActivity.ShowErrorDialog (ex.Message);
 			}
 		}
 	}

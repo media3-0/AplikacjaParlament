@@ -45,19 +45,15 @@ namespace AplikacjaParlamentAndroid
 
 		private PersonTypeEnumeration personType;
 
-		private IPerson person;
+		private int personId;
 
-		public IPerson Person {
+		public int PersonId {
 			get {
-				return person;
+				return personId;
 			}
 		}
 
-		private GenericOrderedDictionary<String, Fragment> fragmentsTabs = new GenericOrderedDictionary<String, Fragment> (){
-			{ "Profil", new PoselProfileFragment() },
-			{ "Głosowania", new PersonVotesFragment() },
-			{ "Wystąpienia", new PersonSpeechesFragment() }
-		};
+		private GenericOrderedDictionary<String, Fragment> fragmentsTabs = new GenericOrderedDictionary<String, Fragment> ();
 
 		protected override void OnCreate (Bundle bundle)
 		{
@@ -66,17 +62,29 @@ namespace AplikacjaParlamentAndroid
 			SetContentView (Resource.Layout.PersonDetailsLayout);
 
 			personType = (PersonTypeEnumeration)Intent.GetIntExtra ("persontype", (int)PersonTypeEnumeration.Posel);
-			int id = Intent.GetIntExtra ("id", -1);
+			personId = Intent.GetIntExtra ("id", -1);
+			if (personId == -1)
+				IncorrectId ();
 
-			// FIXME : zamienic if na Exception dla nieistniejącego id!
-			if (id > -1)
-				person = PeopleRepository.Instance.GetPosel (id);
+			// TODO : Id, imię oraz nazwisko należy pobrać przez intent jako że dane będą wczytywane bezpośrednio w fragmentach!
 
-			ActionBar.Title = id + " " + person.Imie + " " + person.Nazwisko;
+			//ActionBar.Title = id + " " + person.Imie + " " + person.Nazwisko;
 
-			//jeżeli jest posłem do dodaj zakładkę interpelacje
-			if(personType.Equals(PersonTypeEnumeration.Posel))
-				fragmentsTabs.Add ("Interpelacje", new PersonInterpellationsFragment ());
+			switch (personType) {
+			case PersonTypeEnumeration.Posel:
+				{
+					fragmentsTabs.Add ("Profil", new PoselProfileFragment ());
+					fragmentsTabs.Add ("Głosowania", new PersonVotesFragment ());
+					fragmentsTabs.Add ("Wystąpienia", new PersonSpeechesFragment ());
+					fragmentsTabs.Add ("Interpelacje", new PersonInterpellationsFragment ());
+					break;
+				}
+			}
+
+			if (fragmentsTabs.Count == 0) {
+				Toast.MakeText (this, "Nieprawidłowy typ osoby", ToastLength.Long);
+				this.Finish ();
+			}
 
 			var tabs = FindViewById<PagerSlidingTabStrip.PagerSlidingTabStrip> (Resource.Id.tabs);
 			var pager = FindViewById<ViewPager> (Resource.Id.pager);
@@ -85,6 +93,11 @@ namespace AplikacjaParlamentAndroid
 
 			pager.Adapter = new UniversalFragmentPagerAdapter (FragmentManager, fragmentsTabs);
 			tabs.SetViewPager (pager);
+		}
+
+		public void IncorrectId(){
+			Toast.MakeText (this, "Nieprawidłowe id", ToastLength.Long);
+			this.Finish ();
 		}
 	}
 }

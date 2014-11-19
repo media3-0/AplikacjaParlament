@@ -42,9 +42,19 @@ namespace AplikacjaParlamentShared.Api
 			response.EnsureSuccessStatusCode();
 
 			string content = await response.Content.ReadAsStringAsync();
-
-			JObject obj = JObject.Parse(content).Value<JObject>("object");
-			JObject data = obj.Value<JObject>("data");
+			JToken obj;
+			bool hasValue = JObject.Parse (content).TryGetValue ("object", out obj);
+			if (!hasValue) //jeżeli nie istnieje element object w odpowiedzi json
+				throw new NoObjectJsonElementException ();
+			if(obj.Type == JTokenType.Boolean) //jeżeli element object z odpowiedzi json ma typ boolean (nie muszę sprawdzać wartości, wystarczy wiedza na temat typu)
+				throw new ObjectJsonBooleanElementException();
+			JObject data;
+			try {
+				data = obj.Value<JObject>("data"); 
+			}catch (System.InvalidOperationException){
+				// Wyjątek InvalidOperationException informuje mnie że element data nie został znaleziony w odpowiedzi json. Oznacza to że żądane dane nie istnieją w API (lub jest ich wewnętrzny błąd)
+				throw new NoDataJsonElementException ();
+			}
 			return data.ToObject<T>();
 		}
 	}

@@ -1,5 +1,5 @@
 ﻿//
-//  PersonVotesFragment.cs
+//  IPeopleRepository.cs
 //
 //  Author:
 //       Jakub Syty <j.syty@media30.pl>
@@ -18,40 +18,18 @@
 //
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Util;
-using Android.Views;
-using Android.Widget;
+using System.Threading.Tasks;
 using AplikacjaParlamentShared.Models;
 
-namespace AplikacjaParlamentAndroid
+namespace AplikacjaParlamentShared.Repositories
 {
-	public class PersonVotesFragment : ListFragment
+	/**
+	 * Interfejs dla repozytorium zarządzającym osobami
+	 */
+	public interface IPeopleRepository
 	{
-		private PersonDetailsActivity personDetailsActivity;
-
-		private IVotingPerson person;
-
-		private string[] values;
-
-		public override void OnCreate (Bundle savedInstanceState)
-		{
-			base.OnCreate (savedInstanceState);
-
-			personDetailsActivity = Activity as PersonDetailsActivity;
-
-			values = new[] { "Głos 1", "Głos 2 ", "Głos 3" };
-			this.ListAdapter = new ArrayAdapter<string>(Activity, Android.Resource.Layout.SimpleExpandableListItem1, values);
-		}
+		Task<IPosel> GetPosel(int id);
 	}
 }
 
