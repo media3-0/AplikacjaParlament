@@ -41,6 +41,8 @@ namespace AplikacjaParlamentShared.Models
 		string DataUrodzenia { get; }
 		// poslowie.frekwencja
 		float Frekwencja { get; }
+		// poslowie.mowca_id (potrzebne do pobrania miniatury)
+		int MowcaId { get; }
 	}
 }
 

@@ -74,13 +74,15 @@
       <HintPath>..\Components\json.net-4.5.11.1\lib\android\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http" />
+    <Reference Include="com.refractored.monodroidtoolkit">
+      <HintPath>..\packages\MonoDroid.Toolkit.1.1.0.0\lib\MonoAndroid10\com.refractored.monodroidtoolkit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Activities\MainActivity.cs" />
     <Compile Include="Activities\BaseActivity.cs" />
-    <Compile Include="Fragments\UniversalFragmentPagerAdapter.cs" />
     <Compile Include="Activities\PeopleActivity.cs" />
     <Compile Include="Fragments\People\SejmListFragment.cs" />
     <Compile Include="Fragments\People\SenatListFragment.cs" />
@@ -90,6 +92,8 @@
     <Compile Include="Fragments\People\PersonSpeechesFragment.cs" />
     <Compile Include="Fragments\People\PersonInterpellationsFragment.cs" />
     <Compile Include="Fragments\People\PoselProfileFragment.cs" />
+    <Compile Include="Adapters\UniversalFragmentPagerAdapter.cs" />
+    <Compile Include="Adapters\People\SejmListAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -104,6 +108,7 @@
     <AndroidResource Include="Resources\layout\PoslowieActivityLayout.axml" />
     <AndroidResource Include="Resources\layout\PersonDetailsLayout.axml" />
     <AndroidResource Include="Resources\layout\PoselProfileFragmentLayout.axml" />
+    <AndroidResource Include="Resources\layout\SejmListElement.axml" />
   </ItemGroup>
   <Import Project="..\AplikacjaParlamentShared\AplikacjaParlamentShared.projitems" Label="Shared" Condition="Exists('..\AplikacjaParlamentShared\AplikacjaParlamentShared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
@@ -129,6 +134,8 @@
     <Folder Include="Activities\" />
     <Folder Include="Fragments\" />
     <Folder Include="Fragments\People\" />
+    <Folder Include="Adapters\" />
+    <Folder Include="Adapters\People\" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>

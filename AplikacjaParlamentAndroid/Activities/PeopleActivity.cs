@@ -33,10 +33,11 @@ using Android.Widget;
 using Android.Support.V4.View;
 using Android.Util;
 using AplikacjaParlamentShared.Collections;
+using AplikacjaParlamentAndroid.Adapters;
 
 namespace AplikacjaParlamentAndroid
 {
-	[Activity (Label = "Parlament")]			
+	[Activity (Label = "Izby")]			
 	public class PeopleActivity : BaseActivity
 	{
 		private GenericOrderedDictionary<String, Fragment> fragmentsTabs = new GenericOrderedDictionary<String, Fragment> (){

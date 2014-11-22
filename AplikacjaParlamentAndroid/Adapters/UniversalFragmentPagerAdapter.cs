@@ -23,7 +23,7 @@ using Android.Support.V4.View;
 using AplikacjaParlamentShared.Collections;
 using Android.App;
 
-namespace AplikacjaParlamentAndroid
+namespace AplikacjaParlamentAndroid.Adapters
 {
 	public class UniversalFragmentPagerAdapter : Android.Support.V13.App.FragmentPagerAdapter
 	{

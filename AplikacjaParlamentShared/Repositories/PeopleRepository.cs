@@ -62,11 +62,14 @@ namespace AplikacjaParlamentShared.Repositories
 		{
 			try {
 				IJsonArrayRequestHandler<Posel> handler = new JsonArrayRequestHandler<Posel> (ConnectionProvider.Instance);
+				// TODO : Dodać wyspecjalizowaną klasę do parsowania requestów
 				string uri = String.Concat(
 					"http://api.mojepanstwo.pl/dane/dataset/poslowie/search.json?",
 					"fields[0]=poslowie.id",
 					"&fields[1]=poslowie.imie_pierwsze",
 					"&fields[2]=poslowie.nazwisko",
+					"&fields[3]=poslowie.mowca_id",
+					"&fields[4]=sejm_kluby.nazwa",
 					"&limit=500",
 					"&order=poslowie.nazwisko asc"
 				);

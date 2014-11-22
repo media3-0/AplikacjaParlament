@@ -36,6 +36,7 @@ using Android.Util;
 using AplikacjaParlamentShared.Collections;
 using AplikacjaParlamentShared.Models;
 using AplikacjaParlamentShared.Repositories;
+using AplikacjaParlamentAndroid.Adapters;
 
 namespace AplikacjaParlamentAndroid
 {
@@ -65,10 +66,9 @@ namespace AplikacjaParlamentAndroid
 			personId = Intent.GetIntExtra ("id", -1);
 			if (personId == -1)
 				IncorrectId ();
+			string name = Intent.GetStringExtra ("name");
 
-			// TODO : Id, imię oraz nazwisko należy pobrać przez intent jako że dane będą wczytywane bezpośrednio w fragmentach!
-
-			//ActionBar.Title = id + " " + person.Imie + " " + person.Nazwisko;
+			ActionBar.Title = String.Concat("Poseł: ", name);
 
 			switch (personType) {
 			case PersonTypeEnumeration.Posel:

@@ -58,21 +58,10 @@ namespace AplikacjaParlamentShared.Models
 		[JsonProperty("poslowie.frekwencja")]
 		private float _frekwencja;
 
-		public Posel () {}
+		[JsonProperty("poslowie.mowca_id")]
+		private int _mowca_id;
 
-		public Posel (int _id, string _imie, string _nazwisko, string _biuraTabelka, int _okregWyborczyNumer, string _sejmKlubyNazwa, int _liczbaProjektowUchwal, int _liczbaProjektowUstaw, string _dataUrodzenia, float _frekwencja)
-		{
-			this._id = _id;
-			this._imie = _imie;
-			this._nazwisko = _nazwisko;
-			this._biuraTabelka = _biuraTabelka;
-			this._okregWyborczyNumer = _okregWyborczyNumer;
-			this._sejmKlubyNazwa = _sejmKlubyNazwa;
-			this._liczbaProjektowUchwal = _liczbaProjektowUchwal;
-			this._liczbaProjektowUstaw = _liczbaProjektowUstaw;
-			this._dataUrodzenia = _dataUrodzenia;
-			this._frekwencja = _frekwencja;
-		}
+		public Posel () {}
 
 		public int Id {
 			get {
@@ -134,10 +123,17 @@ namespace AplikacjaParlamentShared.Models
 			}
 		}
 
+		public int MowcaId {
+			get {
+				return _mowca_id;
+			}
+		}
+
 		public override string ToString ()
 		{
-			return string.Format ("[Posel: _id={0}, _imie={1}, _nazwisko={2}, _biuraTabelka={3}, _okregWyborczyNumer={4}, _sejmKlubyNazwa={5}, _liczbaProjektowUchwal={6}, _liczbaProjektowUstaw={7}, _dataUrodzenia={8}, _frekwencja={9}]", _id, _imie, _nazwisko, _biuraTabelka, _okregWyborczyNumer, _sejmKlubyNazwa, _liczbaProjektowUchwal, _liczbaProjektowUstaw, _dataUrodzenia, _frekwencja);
+			return string.Format ("[Posel: _id={0}, _imie={1}, _nazwisko={2}, _okregWyborczyNumer={3}, _sejmKlubyNazwa={4}, _liczbaProjektowUchwal={5}, _liczbaProjektowUstaw={6}, _dataUrodzenia={7}, _frekwencja={8}, _mowca_id={9}]", _id, _imie, _nazwisko, _okregWyborczyNumer, _sejmKlubyNazwa, _liczbaProjektowUchwal, _liczbaProjektowUstaw, _dataUrodzenia, _frekwencja, _mowca_id);
 		}
+		
 		
 	}
 }

@@ -31,32 +31,34 @@ using Android.Runtime;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using com.refractored.monodroidtoolkit.imageloader;
 
 using AplikacjaParlamentShared.Models;
 using AplikacjaParlamentShared.Repositories;
 using AplikacjaParlamentShared.Api;
+using AplikacjaParlamentAndroid.Adapters;
 
 namespace AplikacjaParlamentAndroid
 {
 	public class SejmListFragment : ListFragment
 	{
 
-		private string[] values;
 		private List<Posel> list;
 		private BaseActivity parentActivity;
+		private ImageLoader imageLoader;
 
 		public override void OnCreate (Bundle savedInstanceState)
 		{
 			base.OnCreate (savedInstanceState);
-			//values = new[] { "Poseł 1", "Poseł 2 ", "Poseł 3" };
-			//this.ListAdapter = new ArrayAdapter<string>(Activity, Android.Resource.Layout.SimpleExpandableListItem1, values);
 			parentActivity = Activity as BaseActivity;
 		}
 
 		public override void OnStart ()
 		{
 			base.OnStart ();
-			if (values == null) {
+			imageLoader = new ImageLoader (parentActivity, 110, 137);
+
+			if (list == null) {
 				this.SetListShown (false);
 				GetPoselList ();
 			}
@@ -68,9 +70,12 @@ namespace AplikacjaParlamentAndroid
 			// Have the list highlight this item and show the data.
 			ListView.SetItemChecked(index, true);
 
+			var posel = list.ElementAt (index);
+
 			var detailsActivity = new Intent (Activity, typeof(PersonDetailsActivity));
 			detailsActivity.PutExtra ("persontype", (int)PersonTypeEnumeration.Posel);
-			detailsActivity.PutExtra ("id", list.ElementAt(index).Id);
+			detailsActivity.PutExtra ("id", posel.Id);
+			detailsActivity.PutExtra ("name", String.Concat(posel.Imie, " ", posel.Nazwisko));
 			StartActivity (detailsActivity);
 		}
 
@@ -78,16 +83,16 @@ namespace AplikacjaParlamentAndroid
 			IPeopleRepository repository = PeopleRepository.Instance;
 			try {
 				list = await repository.GetPoselList();
-				values = new string[list.Count];
-				for (int i = 0; i < list.Count; i++) {
-					IPosel posel = list.ElementAt(i);
-					values[i] = String.Concat(posel.Imie, " ", posel.Nazwisko);
-				}
-
-				this.ListAdapter = new ArrayAdapter<string>(Activity, Android.Resource.Layout.SimpleExpandableListItem1, values);
+				ListAdapter = new ImageLoaderAdapter(parentActivity, imageLoader, list);
 			} catch (ApiRequestException ex){
 				parentActivity.ShowErrorDialog (ex.Message);
 			}
+		}
+
+		public override void OnStop ()
+		{
+			base.OnStop ();
+			imageLoader.ClearCache ();
 		}
 	}
 }
