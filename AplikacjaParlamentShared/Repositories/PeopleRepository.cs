@@ -23,6 +23,7 @@ using System;
 using AplikacjaParlamentShared.Models;
 using AplikacjaParlamentShared.Api;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace AplikacjaParlamentShared.Repositories
 {
@@ -53,6 +54,30 @@ namespace AplikacjaParlamentShared.Repositories
 
 			} catch (Exception ex) {
 				Android.Util.Log.Error("GetJsonObjectAsync", ex.ToString());
+				throw new ApiRequestException (String.Concat("Problem z dostępem do API:\n", ex.Message));
+			}
+		}
+
+		async public Task<List<Posel>> GetPoselList ()
+		{
+			try {
+				IJsonArrayRequestHandler<Posel> handler = new JsonArrayRequestHandler<Posel> (ConnectionProvider.Instance);
+				string uri = String.Concat(
+					"http://api.mojepanstwo.pl/dane/dataset/poslowie/search.json?",
+					"fields[0]=poslowie.id",
+					"&fields[1]=poslowie.imie_pierwsze",
+					"&fields[2]=poslowie.nazwisko",
+					"&limit=500",
+					"&order=poslowie.nazwisko asc"
+				);
+				List<Posel> p = await handler.GetJsonArrayAsync (uri);
+				return p;
+			} catch (Java.IO.IOException ex){
+				Android.Util.Log.Error("Java.IO.IOException on GetJsonArrayAsync", ex.ToString());
+				throw new ApiRequestException (String.Concat("Problem z połączeniem:\n", ex.Message));
+
+			} catch (Exception ex) {
+				Android.Util.Log.Error("GetJsonArrayAsync", ex.ToString());
 				throw new ApiRequestException (String.Concat("Problem z dostępem do API:\n", ex.Message));
 			}
 		}

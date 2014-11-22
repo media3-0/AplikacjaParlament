@@ -23,19 +23,20 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
 
 namespace AplikacjaParlamentShared.Api
 {
-	public class JsonObjectRequestHandler<T> : IJsonObjectRequestHandler<T>
+	public class JsonArrayRequestHandler<T> : IJsonArrayRequestHandler<T>
 	{
 		private IConnectionProvider ConnectionProvider; 
 
-		public JsonObjectRequestHandler (IConnectionProvider connectionProvider)
+		public JsonArrayRequestHandler (IConnectionProvider connectionProvider)
 		{
 			this.ConnectionProvider = connectionProvider;
 		}
 
-		public async Task<T> GetJsonObjectAsync (string uri)
+		public async Task<List<T>> GetJsonArrayAsync (string uri)
 		{
 			var response = await ConnectionProvider.GetHttpClient().GetAsync(uri);
 
@@ -43,12 +44,19 @@ namespace AplikacjaParlamentShared.Api
 
 			string content = await response.Content.ReadAsStringAsync();
 			JToken obj;
-			bool hasValue = JObject.Parse (content).TryGetValue ("object", out obj);
-			if (!hasValue) //jeżeli nie istnieje element object w odpowiedzi json
+			bool hasValue = JObject.Parse (content).TryGetValue ("search", out obj);
+			if (!hasValue) //jeżeli nie istnieje element search w odpowiedzi json
 				throw new NoObjectJsonElementException ();
-			if(obj.Type == JTokenType.Boolean) //jeżeli element object z odpowiedzi json ma typ boolean (nie muszę sprawdzać wartości, wystarczy wiedza na temat typu)
+			if(obj.Type == JTokenType.Boolean) //jeżeli element search z odpowiedzi json ma typ boolean (nie muszę sprawdzać wartości, wystarczy wiedza na temat typu)
 				throw new ObjectJsonBooleanElementException();
-			return DataObjectParser.ParseJObjectToType<T> (obj as JObject);
+
+			JArray dataobjects = (JArray)obj ["dataobjects"];
+
+			List<T> list = new List<T> (dataobjects.Count);
+			foreach (var item in dataobjects) {
+				list.Add(DataObjectParser.ParseJObjectToType<T>(item as JObject));
+			}
+			return list;
 		}
 	}
 }

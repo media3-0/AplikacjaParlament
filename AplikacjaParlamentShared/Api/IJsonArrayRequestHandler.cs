@@ -1,5 +1,5 @@
 ﻿//
-//  IPeopleRepository.cs
+//  IJsonObjectRequestHandler.cs
 //
 //  Author:
 //       Jakub Syty <j.syty@media30.pl>
@@ -20,18 +20,13 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
 using System.Threading.Tasks;
-using AplikacjaParlamentShared.Models;
 using System.Collections.Generic;
 
-namespace AplikacjaParlamentShared.Repositories
+namespace AplikacjaParlamentShared.Api
 {
-	/**
-	 * Interfejs dla repozytorium zarządzającym osobami
-	 */
-	public interface IPeopleRepository
+	public interface IJsonArrayRequestHandler<T>
 	{
-		Task<IPosel> GetPosel(int id);
-		Task<List<Posel>> GetPoselList();
+		Task<List<T>> GetJsonArrayAsync(string uri);
 	}
 }
 

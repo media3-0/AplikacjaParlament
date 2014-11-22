@@ -1,5 +1,5 @@
 ﻿//
-//  IPeopleRepository.cs
+//  DataObjectParser.cs
 //
 //  Author:
 //       Jakub Syty <j.syty@media30.pl>
@@ -19,19 +19,22 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
-using System.Threading.Tasks;
-using AplikacjaParlamentShared.Models;
-using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 
-namespace AplikacjaParlamentShared.Repositories
+namespace AplikacjaParlamentShared.Api
 {
-	/**
-	 * Interfejs dla repozytorium zarządzającym osobami
-	 */
-	public interface IPeopleRepository
+	public class DataObjectParser
 	{
-		Task<IPosel> GetPosel(int id);
-		Task<List<Posel>> GetPoselList();
+		static public T ParseJObjectToType<T>(JObject obj){
+			JObject data;
+			try {
+				data = obj.Value<JObject>("data"); 
+			}catch (System.InvalidOperationException){
+				// Wyjątek InvalidOperationException informuje mnie że element data nie został znaleziony w odpowiedzi json. Oznacza to że żądane dane nie istnieją w API (lub jest ich wewnętrzny błąd)
+				throw new NoDataJsonElementException ();
+			}
+			return data.ToObject<T>();
+		}
 	}
 }
 

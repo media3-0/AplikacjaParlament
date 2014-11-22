@@ -33,6 +33,8 @@ using Android.Views;
 using Android.Widget;
 
 using AplikacjaParlamentShared.Models;
+using AplikacjaParlamentShared.Repositories;
+using AplikacjaParlamentShared.Api;
 
 namespace AplikacjaParlamentAndroid
 {
@@ -40,12 +42,24 @@ namespace AplikacjaParlamentAndroid
 	{
 
 		private string[] values;
+		private List<Posel> list;
+		private BaseActivity parentActivity;
 
 		public override void OnCreate (Bundle savedInstanceState)
 		{
 			base.OnCreate (savedInstanceState);
-			values = new[] { "Poseł 1", "Poseł 2 ", "Poseł 3" };
-			this.ListAdapter = new ArrayAdapter<string>(Activity, Android.Resource.Layout.SimpleExpandableListItem1, values);
+			//values = new[] { "Poseł 1", "Poseł 2 ", "Poseł 3" };
+			//this.ListAdapter = new ArrayAdapter<string>(Activity, Android.Resource.Layout.SimpleExpandableListItem1, values);
+			parentActivity = Activity as BaseActivity;
+		}
+
+		public override void OnStart ()
+		{
+			base.OnStart ();
+			if (values == null) {
+				this.SetListShown (false);
+				GetPoselList ();
+			}
 		}
 
 		public override void OnListItemClick(ListView l, View v, int index, long id)
@@ -56,8 +70,24 @@ namespace AplikacjaParlamentAndroid
 
 			var detailsActivity = new Intent (Activity, typeof(PersonDetailsActivity));
 			detailsActivity.PutExtra ("persontype", (int)PersonTypeEnumeration.Posel);
-			detailsActivity.PutExtra ("id", index + 1);
+			detailsActivity.PutExtra ("id", list.ElementAt(index).Id);
 			StartActivity (detailsActivity);
+		}
+
+		private async void GetPoselList(){
+			IPeopleRepository repository = PeopleRepository.Instance;
+			try {
+				list = await repository.GetPoselList();
+				values = new string[list.Count];
+				for (int i = 0; i < list.Count; i++) {
+					IPosel posel = list.ElementAt(i);
+					values[i] = String.Concat(posel.Imie, " ", posel.Nazwisko);
+				}
+
+				this.ListAdapter = new ArrayAdapter<string>(Activity, Android.Resource.Layout.SimpleExpandableListItem1, values);
+			} catch (ApiRequestException ex){
+				parentActivity.ShowErrorDialog (ex.Message);
+			}
 		}
 	}
 }
