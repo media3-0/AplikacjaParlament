@@ -77,6 +77,9 @@
     <Reference Include="com.refractored.monodroidtoolkit">
       <HintPath>..\packages\MonoDroid.Toolkit.1.1.0.0\lib\MonoAndroid10\com.refractored.monodroidtoolkit.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.Insights">
+      <HintPath>..\packages\Xamarin.Insights.1.7.3.98\lib\MonoAndroid10\Xamarin.Insights.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resources\Resource.designer.cs" />
@@ -94,6 +97,7 @@
     <Compile Include="Fragments\People\PoselProfileFragment.cs" />
     <Compile Include="Adapters\UniversalFragmentPagerAdapter.cs" />
     <Compile Include="Adapters\People\SejmListAdapter.cs" />
+    <Compile Include="MyApplication.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

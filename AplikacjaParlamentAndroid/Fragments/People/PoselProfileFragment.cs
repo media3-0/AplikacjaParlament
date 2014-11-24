@@ -84,7 +84,8 @@ namespace AplikacjaParlamentAndroid
 			GetPoselData ();
 		}
 
-		private async void GetPoselData(){
+		private async void GetPoselData()
+		{
 			IPeopleRepository repository = PeopleRepository.Instance;
 			try {
 				posel = await repository.GetPosel(id);
