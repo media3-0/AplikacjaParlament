@@ -30,6 +30,9 @@ namespace AplikacjaParlamentShared.Repositories
 	public class PeopleRepository : IPeopleRepository
 	{
 
+		public const string API_BASE_URI = "http://api.mojepanstwo.pl/dane/";
+		public const string API_DATASET_URI = "dataset/";
+
 		private static PeopleRepository instance;
 
 		public static PeopleRepository Instance {
@@ -46,7 +49,7 @@ namespace AplikacjaParlamentShared.Repositories
 		{
 			try {
 				IJsonObjectRequestHandler<Posel> handler = new JsonObjectRequestHandler<Posel> (ConnectionProvider.Instance);
-				Posel p = await handler.GetJsonObjectAsync (String.Concat ("http://api.mojepanstwo.pl/dane/poslowie/", id));
+				Posel p = await handler.GetJsonObjectAsync (String.Concat (API_BASE_URI, "poslowie/", id));
 				return p;
 			} catch (Java.IO.IOException ex){
 				Android.Util.Log.Error("Java.IO.IOException on GetJsonObjectAsync", ex.ToString());
@@ -64,7 +67,9 @@ namespace AplikacjaParlamentShared.Repositories
 				IJsonArrayRequestHandler<Posel> handler = new JsonArrayRequestHandler<Posel> (ConnectionProvider.Instance);
 				// TODO : Dodać wyspecjalizowaną klasę do parsowania requestów
 				string uri = String.Concat(
-					"http://api.mojepanstwo.pl/dane/dataset/poslowie/search.json?",
+					API_BASE_URI,
+					API_DATASET_URI,
+					"poslowie/search.json?",
 					"fields[0]=poslowie.id",
 					"&fields[1]=poslowie.imie_pierwsze",
 					"&fields[2]=poslowie.nazwisko",
