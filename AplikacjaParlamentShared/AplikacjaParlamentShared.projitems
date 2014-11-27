@@ -30,6 +30,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Api\JsonArrayRequestHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\IJsonArrayRequestHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\DataObjectParser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\RequestParamsHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Models\People\PeopleInterfaces\" />

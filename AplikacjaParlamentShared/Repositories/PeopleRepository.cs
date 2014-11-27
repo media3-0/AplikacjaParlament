@@ -65,21 +65,19 @@ namespace AplikacjaParlamentShared.Repositories
 		{
 			try {
 				IJsonArrayRequestHandler<Posel> handler = new JsonArrayRequestHandler<Posel> (ConnectionProvider.Instance);
-				// TODO : Dodać wyspecjalizowaną klasę do parsowania requestów
-				string uri = String.Concat(
-					API_BASE_URI,
-					API_DATASET_URI,
-					"poslowie/search.json?",
-					"fields[0]=poslowie.id",
-					"&fields[1]=poslowie.imie_pierwsze",
-					"&fields[2]=poslowie.nazwisko",
-					"&fields[3]=poslowie.mowca_id",
-					"&fields[4]=sejm_kluby.nazwa",
-					"&limit=500",
-					"&order=poslowie.nazwisko asc"
-				);
-				List<Posel> p = await handler.GetJsonArrayAsync (uri);
+
+				var request = new RequestParamsHandler (String.Concat (API_BASE_URI, API_DATASET_URI, "poslowie/search.json"));
+				request.AddField ("poslowie.id");
+				request.AddField ("poslowie.imie_pierwsze");
+				request.AddField ("poslowie.nazwisko");
+				request.AddField ("poslowie.mowca_id");
+				request.AddField ("sejm_kluby.nazwa");
+				request.Limit = 500;
+				request.SetOrder ("poslowie.nazwisko asc");
+
+				List<Posel> p = await handler.GetJsonArrayAsync (request.GetRequest ());
 				return p;
+
 			} catch (Java.IO.IOException ex){
 				Android.Util.Log.Error("Java.IO.IOException on GetJsonArrayAsync", ex.ToString());
 				throw new ApiRequestException (String.Concat("Problem z połączeniem:\n", ex.Message));
