@@ -54,10 +54,10 @@ namespace AplikacjaParlamentAndroid
 			// Have the list highlight this item and show the data.
 			ListView.SetItemChecked(index, true);
 
-			var detailsActivity = new Intent (Activity, typeof(PersonDetailsActivity));
-			detailsActivity.PutExtra ("persontype", (int)PersonTypeEnumeration.Senator);
-			detailsActivity.PutExtra ("id", index + 1);
-			StartActivity (detailsActivity);
+//			var detailsActivity = new Intent (Activity, typeof(PersonDetailsActivity));
+//			detailsActivity.PutExtra ("persontype", (int)PersonTypeEnumeration.Senator);
+//			detailsActivity.PutExtra ("id", index + 1);
+//			StartActivity (detailsActivity);
 		}
 	}
 }

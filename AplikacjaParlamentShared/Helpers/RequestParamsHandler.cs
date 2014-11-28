@@ -34,7 +34,7 @@ namespace AplikacjaParlamentShared.Api
 		{
 			requestString = new StringBuilder ();
 			requestString.Append (uri);
-			Limit = 100;
+			Limit = 0;
 		}
 
 		public void AddField(string field)
@@ -64,10 +64,12 @@ namespace AplikacjaParlamentShared.Api
 
 		public string GetRequest ()
 		{
-			requestString.Append (Delimiter ()).Append ("limit=").Append (Limit);
+			StringBuilder finalRequest = new StringBuilder (requestString.ToString ());
+			if(Limit > 0)
+				finalRequest.Append (Delimiter ()).Append ("limit=").Append (Limit);
 			if(order != null)
-				requestString.Append (Delimiter ()).Append ("order=").Append (order);
-			return requestString.ToString ();
+				finalRequest.Append (Delimiter ()).Append ("order=").Append (order);
+			return finalRequest.ToString ();
 		}
 	}
 }

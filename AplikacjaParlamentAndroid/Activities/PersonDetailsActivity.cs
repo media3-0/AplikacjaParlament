@@ -46,12 +46,9 @@ namespace AplikacjaParlamentAndroid
 
 		private PersonTypeEnumeration personType;
 
-		private int personId;
-
 		public int PersonId {
-			get {
-				return personId;
-			}
+			get;
+			set;
 		}
 
 		private GenericOrderedDictionary<String, Fragment> fragmentsTabs = new GenericOrderedDictionary<String, Fragment> ();
@@ -63,8 +60,8 @@ namespace AplikacjaParlamentAndroid
 			SetContentView (Resource.Layout.PersonDetailsLayout);
 
 			personType = (PersonTypeEnumeration)Intent.GetIntExtra ("persontype", (int)PersonTypeEnumeration.Posel);
-			personId = Intent.GetIntExtra ("id", -1);
-			if (personId == -1)
+			PersonId = Intent.GetIntExtra ("id", -1);
+			if (PersonId == -1)
 				IncorrectId ();
 			string name = Intent.GetStringExtra ("name");
 

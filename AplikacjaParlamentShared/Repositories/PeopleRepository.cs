@@ -31,7 +31,7 @@ namespace AplikacjaParlamentShared.Repositories
 	{
 
 		public const string API_BASE_URI = "http://api.mojepanstwo.pl/dane/";
-		public const string API_DATASET_URI = "dataset/";
+		public const string API_DATASET_URI = API_BASE_URI + "dataset/";
 
 		private static PeopleRepository instance;
 
@@ -49,7 +49,21 @@ namespace AplikacjaParlamentShared.Repositories
 		{
 			try {
 				IJsonObjectRequestHandler<Posel> handler = new JsonObjectRequestHandler<Posel> (ConnectionProvider.Instance);
-				Posel p = await handler.GetJsonObjectAsync (String.Concat (API_BASE_URI, "poslowie/", id));
+
+				var request = new RequestParamsHandler (String.Concat (API_BASE_URI, "poslowie/", id));
+				request.AddField ("poslowie.id");
+				request.AddField ("poslowie.imie_pierwsze");
+				request.AddField ("poslowie.nazwisko");
+				request.AddField ("poslowie.biuro_html");
+				request.AddField ("poslowie.okreg_wyborczy_numer");
+				request.AddField ("sejm_kluby.nazwa");
+				request.AddField ("poslowie.liczba_projektow_uchwal");
+				request.AddField ("poslowie.liczba_projektow_ustaw");
+				request.AddField ("poslowie.data_urodzenia");
+				request.AddField ("poslowie.frekwencja");
+				request.AddField ("poslowie.mowca_id");
+
+				Posel p = await handler.GetJsonObjectAsync (request.GetRequest ());
 				return p;
 			} catch (Java.IO.IOException ex){
 				Android.Util.Log.Error("Java.IO.IOException on GetJsonObjectAsync", ex.ToString());
@@ -66,13 +80,13 @@ namespace AplikacjaParlamentShared.Repositories
 			try {
 				IJsonArrayRequestHandler<Posel> handler = new JsonArrayRequestHandler<Posel> (ConnectionProvider.Instance);
 
-				var request = new RequestParamsHandler (String.Concat (API_BASE_URI, API_DATASET_URI, "poslowie/search.json"));
+				var request = new RequestParamsHandler (String.Concat (API_DATASET_URI, "poslowie/search.json"));
 				request.AddField ("poslowie.id");
 				request.AddField ("poslowie.imie_pierwsze");
 				request.AddField ("poslowie.nazwisko");
 				request.AddField ("poslowie.mowca_id");
 				request.AddField ("sejm_kluby.nazwa");
-				request.Limit = 500;
+				request.Limit = 1000;
 				request.SetOrder ("poslowie.nazwisko asc");
 
 				List<Posel> p = await handler.GetJsonArrayAsync (request.GetRequest ());
