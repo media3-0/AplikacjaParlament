@@ -84,7 +84,7 @@ namespace AplikacjaParlamentAndroid
 			IPeopleRepository repository = PeopleRepository.Instance;
 			try {
 				list = await repository.GetPoselList();
-				ListAdapter = new ImageLoaderAdapter(parentActivity, imageLoader, list);
+				ListAdapter = new SejmListAdapter(parentActivity, imageLoader, list);
 			} catch (ApiRequestException ex){
 				parentActivity.ShowErrorDialog (ex.Message);
 			}

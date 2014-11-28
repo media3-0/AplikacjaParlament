@@ -44,6 +44,13 @@ namespace AplikacjaParlamentShared.Api
 				.Append (field);
 		}
 
+		public void AddCondition(string field, string value)
+		{
+			requestString.Append (Delimiter ())
+				.Append ("conditions[").Append (field)
+				.Append ("]=").Append (value);
+		}
+
 		public void SetOrder(string order)
 		{
 			this.order = order;

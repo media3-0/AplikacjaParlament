@@ -1,5 +1,5 @@
 ﻿//
-//  ISpeechPerson.cs
+//  Speech.cs
 //
 //  Author:
 //       Jakub Syty <j.syty@media30.pl>
@@ -19,16 +19,28 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
-using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace AplikacjaParlamentShared.Models
 {
-	/**
-	 * Interfejs dla osób z możliwością wystąpień (przemówień)
-	 */
-	public interface ISpeechPerson : IPerson
+	public class Speech : ISpeech
 	{
-		List<ISpeech> GetSpeeches ();
+		public Speech ()
+		{
+			//Data = "2011-11-08"; // FIXME : Mock data
+		}
+
+		[JsonProperty("sejm_wystapienia.id")]
+		public int Id { get; set; }
+
+		[JsonProperty("sejm_debaty.tytul")]
+		public string Tytul { get; set; }
+
+		[JsonProperty("sejm_wystapienia.data")]
+		public string Data { get; set; }
+
+		[JsonProperty("sejm_wystapienia.skrot")]
+		public string Skrot { get; set; }
 	}
 }
 

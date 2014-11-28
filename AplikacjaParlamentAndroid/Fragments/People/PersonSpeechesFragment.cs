@@ -33,6 +33,9 @@ using Android.Views;
 using Android.Widget;
 
 using AplikacjaParlamentShared.Models;
+using AplikacjaParlamentShared.Repositories;
+using AplikacjaParlamentShared.Api;
+using AplikacjaParlamentAndroid.Adapters;
 
 namespace AplikacjaParlamentAndroid
 {
@@ -40,9 +43,9 @@ namespace AplikacjaParlamentAndroid
 	{
 		private PersonDetailsActivity personDetailsActivity;
 
-		private ISpeechPerson person;
+		//private ISpeechPerson person;
 
-		private string[] values;
+		private List<Speech> list;
 
 		public override void OnCreate (Bundle savedInstanceState)
 		{
@@ -50,8 +53,38 @@ namespace AplikacjaParlamentAndroid
 
 			personDetailsActivity = Activity as PersonDetailsActivity;
 
-			values = new[] { "Wystąpienie 1", "Wystąpienie 2 ", "Wystąpienie 3" };
-			this.ListAdapter = new ArrayAdapter<string>(Activity, Android.Resource.Layout.SimpleExpandableListItem1, values);
+		}
+
+		public override void OnStart ()
+		{
+			base.OnStart ();
+
+			if (list == null) {
+				this.SetListShown (false);
+				GetSpeechesList ();
+			}
+		}
+
+		async private void GetSpeechesList()
+		{
+			IPeopleRepository repository = PeopleRepository.Instance;
+			try {
+				list = await repository.GetPoselSpeeches (personDetailsActivity.PersonId);
+				ListAdapter = new SpeechListAdapter(personDetailsActivity, list);
+			} catch (ApiRequestException ex){
+				personDetailsActivity.ShowErrorDialog (ex.Message);
+			}
+		}
+
+		public override void OnListItemClick(ListView l, View v, int index, long id)
+		{
+			// We can display everything in place with fragments.
+			// Have the list highlight this item and show the data.
+			ListView.SetItemChecked(index, true);
+
+			var speech = list.ElementAt (index);
+			Toast.MakeText (personDetailsActivity, String.Concat ("Id: ", speech.Id), ToastLength.Long);
+
 		}
 	}
 }

@@ -44,7 +44,10 @@ namespace AplikacjaParlamentAndroid
 	public class PersonDetailsActivity : BaseActivity
 	{
 
-		private PersonTypeEnumeration personType;
+		public PersonTypeEnumeration PersonType {
+			get;
+			set;
+		}
 
 		public int PersonId {
 			get;
@@ -59,7 +62,7 @@ namespace AplikacjaParlamentAndroid
 
 			SetContentView (Resource.Layout.PersonDetailsLayout);
 
-			personType = (PersonTypeEnumeration)Intent.GetIntExtra ("persontype", (int)PersonTypeEnumeration.Posel);
+			PersonType = (PersonTypeEnumeration)Intent.GetIntExtra ("persontype", (int)PersonTypeEnumeration.Posel);
 			PersonId = Intent.GetIntExtra ("id", -1);
 			if (PersonId == -1)
 				IncorrectId ();
@@ -67,7 +70,7 @@ namespace AplikacjaParlamentAndroid
 
 			ActionBar.Title = String.Concat("Poseł: ", name);
 
-			switch (personType) {
+			switch (PersonType) {
 			case PersonTypeEnumeration.Posel:
 				{
 					fragmentsTabs.Add ("Profil", new PoselProfileFragment ());

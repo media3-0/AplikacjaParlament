@@ -98,6 +98,7 @@
     <Compile Include="Adapters\UniversalFragmentPagerAdapter.cs" />
     <Compile Include="Adapters\People\SejmListAdapter.cs" />
     <Compile Include="MyApplication.cs" />
+    <Compile Include="Adapters\People\SpeechListAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -113,6 +114,7 @@
     <AndroidResource Include="Resources\layout\PersonDetailsLayout.axml" />
     <AndroidResource Include="Resources\layout\PoselProfileFragmentLayout.axml" />
     <AndroidResource Include="Resources\layout\SejmListElement.axml" />
+    <AndroidResource Include="Resources\layout\SpeechListElement.axml" />
   </ItemGroup>
   <Import Project="..\AplikacjaParlamentShared\AplikacjaParlamentShared.projitems" Label="Shared" Condition="Exists('..\AplikacjaParlamentShared\AplikacjaParlamentShared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />

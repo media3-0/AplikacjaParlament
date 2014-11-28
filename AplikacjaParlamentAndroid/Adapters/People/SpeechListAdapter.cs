@@ -29,29 +29,25 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using com.refractored.monodroidtoolkit.imageloader;
 using AplikacjaParlamentShared.Models;
 
 namespace AplikacjaParlamentAndroid.Adapters
 {
-
-	public class SejmListAdapter : BaseAdapter<Posel>
+	public class SpeechListAdapter : BaseAdapter<Speech>
 	{
 
 		private class Wrapper : Java.Lang.Object
 		{
-			public TextView ImieNazwisko { get; set; }
-			public TextView Partia { get; set; }
-			public ImageView Miniature { get; set; }
+			public TextView tvData { get; set; }
+			public TextView tvTytul { get; set; }
+			public TextView tvSkrot { get; set; }
 		}
 
 		private Activity context;
-		private ImageLoader imageLoader;
-		private List<Posel> list; 
+		private List<Speech> list; 
 
-		public SejmListAdapter(Activity context, ImageLoader imageLoader, List<Posel> list)
+		public SpeechListAdapter(Activity context, List<Speech> list)
 		{
-			this.imageLoader = imageLoader;
 			this.context = context;
 			this.list = list;
 		}
@@ -62,11 +58,11 @@ namespace AplikacjaParlamentAndroid.Adapters
 			var view = convertView;
 			if (convertView == null)
 			{
-				view = context.LayoutInflater.Inflate(Resource.Layout.SejmListElement, null);
+				view = context.LayoutInflater.Inflate(Resource.Layout.SpeechListElement, null);
 				wrapper = new Wrapper();
-				wrapper.ImieNazwisko = view.FindViewById<TextView>(Resource.Id.imieNazwisko);
-				wrapper.Partia = view.FindViewById<TextView>(Resource.Id.partia);
-				wrapper.Miniature = view.FindViewById<ImageView> (Resource.Id.miniature);
+				wrapper.tvData = view.FindViewById<TextView>(Resource.Id.tvData);
+				wrapper.tvTytul = view.FindViewById<TextView>(Resource.Id.tvTytul);
+				wrapper.tvSkrot = view.FindViewById<TextView> (Resource.Id.tvSkrot);
 				view.Tag = wrapper;
 			}
 			else
@@ -74,15 +70,15 @@ namespace AplikacjaParlamentAndroid.Adapters
 				wrapper = convertView.Tag as Wrapper;
 			}
 
-			var posel = list[position];
-			wrapper.ImieNazwisko.Text = String.Concat(posel.Imie, " ", posel.Nazwisko);
-			wrapper.Partia.Text = posel.SejmKlubyNazwa;
-			imageLoader.DisplayImage(String.Concat("http://resources.sejmometr.pl/mowcy/a/0/", posel.MowcaId, ".jpg"), wrapper.Miniature, -1);
+			var speech = list[position];
+			wrapper.tvData.Text = speech.Data;
+			wrapper.tvTytul.Text = speech.Tytul;
+			wrapper.tvSkrot.Text = speech.Skrot;
 
 			return view;
 		}
 
-		public override Posel this[int position]
+		public override Speech this[int position]
 		{
 			get { return list[position]; }
 		}

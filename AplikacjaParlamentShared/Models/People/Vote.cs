@@ -1,5 +1,5 @@
 ﻿//
-//  ISpeechPerson.cs
+//  Vote.cs
 //
 //  Author:
 //       Jakub Syty <j.syty@media30.pl>
@@ -19,16 +19,29 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
-using System.Collections.Generic;
 
 namespace AplikacjaParlamentShared.Models
 {
-	/**
-	 * Interfejs dla osób z możliwością wystąpień (przemówień)
-	 */
-	public interface ISpeechPerson : IPerson
+	public class Vote : IVote
 	{
-		List<ISpeech> GetSpeeches ();
+		public Vote ()
+		{
+		}
+			
+		public int Id {
+			get;
+			set;
+		}
+
+		public string Tytul {
+			get;
+			set;
+		}
+
+		public string Data {
+			get;
+			set;
+		}
 	}
 }
 
