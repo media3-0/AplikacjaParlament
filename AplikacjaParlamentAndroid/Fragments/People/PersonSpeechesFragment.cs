@@ -67,6 +67,8 @@ namespace AplikacjaParlamentAndroid
 
 		async private void GetSpeechesList()
 		{
+
+			// TODO : Pobieranie odpowiednich przemów z uwzględnieniem id odpowiedniej osoby!!
 			IPeopleRepository repository = PeopleRepository.Instance;
 			try {
 				list = await repository.GetPoselSpeeches (personDetailsActivity.PersonId);
@@ -83,7 +85,7 @@ namespace AplikacjaParlamentAndroid
 			ListView.SetItemChecked(index, true);
 
 			var speech = list.ElementAt (index);
-			Toast.MakeText (personDetailsActivity, String.Concat ("Id: ", speech.Id), ToastLength.Long);
+			Toast.MakeText (personDetailsActivity, String.Concat ("Id: ", speech.Id), ToastLength.Long).Show ();
 
 		}
 	}

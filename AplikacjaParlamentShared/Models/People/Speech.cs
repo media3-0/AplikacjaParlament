@@ -27,7 +27,6 @@ namespace AplikacjaParlamentShared.Models
 	{
 		public Speech ()
 		{
-			//Data = "2011-11-08"; // FIXME : Mock data
 		}
 
 		[JsonProperty("sejm_wystapienia.id")]
