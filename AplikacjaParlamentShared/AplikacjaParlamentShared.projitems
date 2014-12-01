@@ -35,6 +35,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\People\Vote.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\People\PeopleInterfaces\ISpeech.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\People\Speech.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\People\Interpellation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\People\PeopleInterfaces\IInterpellation.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Models\People\PeopleInterfaces\" />

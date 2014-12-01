@@ -1,5 +1,5 @@
 ﻿//
-//  IPeopleRepository.cs
+//  IInterpellation.cs
 //
 //  Author:
 //       Jakub Syty <j.syty@media30.pl>
@@ -19,21 +19,15 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
-using System.Threading.Tasks;
-using AplikacjaParlamentShared.Models;
-using System.Collections.Generic;
 
-namespace AplikacjaParlamentShared.Repositories
+namespace AplikacjaParlamentShared.Models
 {
-	/**
-	 * Interfejs dla repozytorium zarządzającym osobami
-	 */
-	public interface IPeopleRepository
+	public interface IInterpellation
 	{
-		Task<IPosel> GetPosel(int id);
-		Task<List<Posel>> GetPoselList();
-		Task<List<Speech>> GetPoselSpeeches(int id);
-		Task<List<Interpellation>> GetPoselInterpellations (int id);
+		int Id { get; set; }
+		string TytulSkrocony { get; set; }
+		string DataWplywu { get; set; }
+		string Adresat { get; set; }
 	}
 }
 

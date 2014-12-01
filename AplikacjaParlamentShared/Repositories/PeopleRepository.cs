@@ -108,7 +108,7 @@ namespace AplikacjaParlamentShared.Repositories
 				IJsonArrayRequestHandler<Speech> handler = new JsonArrayRequestHandler<Speech> (ConnectionProvider.Instance);
 
 				var request = new RequestParamsHandler (String.Concat (API_DATASET_URI, "sejm_wystapienia/search.json"));
-				request.AddCondition ("ludzie.id", id.ToString ());
+				request.AddCondition ("ludzie.posel_id", id.ToString ());
 //				request.AddField ("sejm_wystapienia.id");
 //				request.AddField ("sejm_debaty.tytul");
 //				request.AddField ("sejm_wystapienia.data");
@@ -117,6 +117,33 @@ namespace AplikacjaParlamentShared.Repositories
 				request.SetOrder ("sejm_wystapienia.data asc");
 
 				List<Speech> p = await handler.GetJsonArrayAsync (request.GetRequest ());
+				return p;
+
+			} catch (Java.IO.IOException ex){
+				Android.Util.Log.Error("Java.IO.IOException on GetJsonArrayAsync", ex.ToString());
+				throw new ApiRequestException (String.Concat("Problem z połączeniem:\n", ex.Message));
+
+			} catch (Exception ex) {
+				Android.Util.Log.Error("GetJsonArrayAsync", ex.ToString());
+				throw new ApiRequestException (String.Concat("Problem z dostępem do API:\n", ex.Message));
+			}
+		}
+
+		async public Task<List<Interpellation>> GetPoselInterpellations (int id)
+		{
+			try {
+				IJsonArrayRequestHandler<Interpellation> handler = new JsonArrayRequestHandler<Interpellation> (ConnectionProvider.Instance);
+
+				var request = new RequestParamsHandler (String.Concat (API_DATASET_URI, "sejm_interpelacje/search.json"));
+				request.AddCondition ("sejm_interpelacje.mowca_id", id.ToString ());
+				//				request.AddField ("sejm_wystapienia.id");
+				//				request.AddField ("sejm_debaty.tytul");
+				//				request.AddField ("sejm_wystapienia.data");
+				//				request.AddField ("sejm_wystapienia.skrot");
+				request.Limit = 1000;
+				request.SetOrder ("sejm_interpelacje.data_wplywu desc");
+
+				List<Interpellation> p = await handler.GetJsonArrayAsync (request.GetRequest ());
 				return p;
 
 			} catch (Java.IO.IOException ex){

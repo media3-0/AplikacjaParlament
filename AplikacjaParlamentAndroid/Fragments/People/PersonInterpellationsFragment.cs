@@ -32,6 +32,9 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 using AplikacjaParlamentShared.Models;
+using AplikacjaParlamentShared.Repositories;
+using AplikacjaParlamentShared.Api;
+using AplikacjaParlamentAndroid.Adapters;
 
 namespace AplikacjaParlamentAndroid
 {
@@ -39,18 +42,47 @@ namespace AplikacjaParlamentAndroid
 	{
 		private PersonDetailsActivity personDetailsActivity;
 
-		private IInterpellationPerson person;
-
-		private string[] values;
+		private List<Interpellation> list;
 
 		public override void OnCreate (Bundle savedInstanceState)
 		{
 			base.OnCreate (savedInstanceState);
 
 			personDetailsActivity = Activity as PersonDetailsActivity;
+		}
 
-			values = new[] { "Interpelacja 1", "Interpelacja 2 ", "Interpelacja 3" };
-			this.ListAdapter = new ArrayAdapter<string>(Activity, Android.Resource.Layout.SimpleExpandableListItem1, values);
+		public override void OnStart ()
+		{
+			base.OnStart ();
+
+			if (list == null) {
+				this.SetListShown (false);
+				GetInterpellationsList ();
+			}
+		}
+
+		async private void GetInterpellationsList()
+		{
+
+			// TODO : Pobieranie odpowiednich przemów z uwzględnieniem id odpowiedniej osoby!!
+			IPeopleRepository repository = PeopleRepository.Instance;
+			try {
+				list = await repository.GetPoselInterpellations (personDetailsActivity.PersonId);
+				ListAdapter = new InterpellationsListAdapter(personDetailsActivity, list);
+			} catch (ApiRequestException ex){
+				personDetailsActivity.ShowErrorDialog (ex.Message);
+			}
+		}
+
+		public override void OnListItemClick(ListView l, View v, int index, long id)
+		{
+			// We can display everything in place with fragments.
+			// Have the list highlight this item and show the data.
+			ListView.SetItemChecked(index, true);
+
+			var interpellation = list.ElementAt (index);
+			Toast.MakeText (personDetailsActivity, String.Concat ("Id: ", interpellation.Id), ToastLength.Long).Show ();
+
 		}
 	}
 }
