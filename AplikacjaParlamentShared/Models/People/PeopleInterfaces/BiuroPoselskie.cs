@@ -1,5 +1,5 @@
 ﻿//
-//  IPosel.cs
+//  BiuroPoselskie.cs
 //
 //  Author:
 //       Jakub Syty <j.syty@media30.pl>
@@ -19,25 +19,30 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
-using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace AplikacjaParlamentShared.Models
 {
-	/**
-	 * Interfejs tylko dla posłów
-	 */
-	public interface IPosel : IPerson
+	public class BiuroPoselskie
 	{
-		int OkregWyborczyNumer { get; set; }
-		string SejmKlubyNazwa {get; set; }
-		int LiczbaProjektowUchwal { get; set; }
-		int LiczbaProjektowUstaw { get; set; }
-		string DataUrodzenia { get; set; }
-		float Frekwencja { get; set; }
-		int MowcaId { get; set; }
-		string Zawod { get; set; }
+		public BiuroPoselskie ()
+		{
+		}
 
-		List<BiuroPoselskie> Biura { get; set; }
+		[JsonProperty("id")]
+		public int Id { get; set; }
+
+		[JsonProperty("adres")]
+		public string Adres { get; set; }
+
+		[JsonProperty("telefon")]
+		public string Telefon { get; set; }
+
+		[JsonProperty("email")]
+		public string Email { get; set; }
+
+		[JsonProperty("podstawowe")]
+		public string Podstawowe { get; set; }
 	}
 }
 

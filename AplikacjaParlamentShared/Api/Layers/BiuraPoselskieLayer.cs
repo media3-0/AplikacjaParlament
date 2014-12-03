@@ -1,5 +1,5 @@
 ﻿//
-//  IPosel.cs
+//  BiuraPoselskieLayer.cs
 //
 //  Author:
 //       Jakub Syty <j.syty@media30.pl>
@@ -19,25 +19,24 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
+using Newtonsoft.Json.Linq;
+using AplikacjaParlamentShared.Models;
 using System.Collections.Generic;
 
-namespace AplikacjaParlamentShared.Models
+namespace AplikacjaParlamentShared.Api
 {
-	/**
-	 * Interfejs tylko dla posłów
-	 */
-	public interface IPosel : IPerson
+	public class BiuraPoselskieLayer : Layer
 	{
-		int OkregWyborczyNumer { get; set; }
-		string SejmKlubyNazwa {get; set; }
-		int LiczbaProjektowUchwal { get; set; }
-		int LiczbaProjektowUstaw { get; set; }
-		string DataUrodzenia { get; set; }
-		float Frekwencja { get; set; }
-		int MowcaId { get; set; }
-		string Zawod { get; set; }
+		public BiuraPoselskieLayer (string name) : base(name)
+		{
+		}
 
-		List<BiuroPoselskie> Biura { get; set; }
+		public override void ParseJObject (Object obj)
+		{
+			IPosel posel = obj as IPosel;
+			List<BiuroPoselskie> biura = DataObjectParser.ParseJArrayToList<BiuroPoselskie> (this.JsonObject as JArray);
+			posel.Biura.AddRange (biura);
+		}
 	}
 }
 

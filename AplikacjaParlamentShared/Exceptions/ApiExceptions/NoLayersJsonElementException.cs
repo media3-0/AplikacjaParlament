@@ -1,5 +1,5 @@
 ﻿//
-//  IPosel.cs
+//  NoObjectJsonElementException.cs
 //
 //  Author:
 //       Jakub Syty <j.syty@media30.pl>
@@ -19,25 +19,22 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
-using System.Collections.Generic;
 
-namespace AplikacjaParlamentShared.Models
+namespace AplikacjaParlamentShared.Api
 {
-	/**
-	 * Interfejs tylko dla posłów
-	 */
-	public interface IPosel : IPerson
+	public class NoLayersJsonElementException : Exception
 	{
-		int OkregWyborczyNumer { get; set; }
-		string SejmKlubyNazwa {get; set; }
-		int LiczbaProjektowUchwal { get; set; }
-		int LiczbaProjektowUstaw { get; set; }
-		string DataUrodzenia { get; set; }
-		float Frekwencja { get; set; }
-		int MowcaId { get; set; }
-		string Zawod { get; set; }
+		public NoLayersJsonElementException ()
+		{
+		}
 
-		List<BiuroPoselskie> Biura { get; set; }
+		public override string Message
+		{
+			get
+			{
+				return "Brak elementu Layers w odpowiedzi Api";
+			}
+		}
 	}
 }
 

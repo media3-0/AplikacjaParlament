@@ -36,9 +36,9 @@ namespace AplikacjaParlamentShared.Api
 			this.ConnectionProvider = connectionProvider;
 		}
 
-		public async Task<List<T>> GetJsonArrayAsync (string uri)
+		public async Task<List<T>> GetJsonArrayAsync (RequestParamsHandler request)
 		{
-			var response = await ConnectionProvider.GetHttpClient().GetAsync(uri);
+			var response = await ConnectionProvider.GetHttpClient().GetAsync(request.GetRequest ());
 
 			response.EnsureSuccessStatusCode();
 

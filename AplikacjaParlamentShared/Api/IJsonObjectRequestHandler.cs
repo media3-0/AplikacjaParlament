@@ -25,7 +25,7 @@ namespace AplikacjaParlamentShared.Api
 {
 	public interface IJsonObjectRequestHandler<T>
 	{
-		Task<T> GetJsonObjectAsync(string uri);
+		Task<T> GetJsonObjectAsync(RequestParamsHandler request);
 	}
 }
 

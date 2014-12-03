@@ -20,6 +20,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
 using System.Text;
+using System.Collections.Generic;
 
 namespace AplikacjaParlamentShared.Api
 {
@@ -29,9 +30,11 @@ namespace AplikacjaParlamentShared.Api
 		private StringBuilder requestString;
 		private bool firstParam = true;
 		private string order = null;
+		public List<ILayer> Layers;
 
 		public RequestParamsHandler (string uri)
 		{
+			Layers = new List<ILayer> ();
 			requestString = new StringBuilder ();
 			requestString.Append (uri);
 			Limit = 0;
@@ -72,12 +75,30 @@ namespace AplikacjaParlamentShared.Api
 		public string GetRequest ()
 		{
 			StringBuilder finalRequest = new StringBuilder (requestString.ToString ());
+			if (Layers.Count > 0) 
+			{
+				StringBuilder layersString = new StringBuilder ();
+				layersString.Append (Delimiter ()).Append ("layers=");
+				bool first = true;
+				foreach (ILayer layer in Layers) {
+					if (!first) {
+						layersString.Append (",");
+						first = false;
+					}
+					layersString.Append (layer.Label);
+				}
+				finalRequest.Append (layersString.ToString ());
+			}
+
 			if(Limit > 0)
 				finalRequest.Append (Delimiter ()).Append ("limit=").Append (Limit);
+
 			if(order != null)
 				finalRequest.Append (Delimiter ()).Append ("order=").Append (order);
+
 			return finalRequest.ToString ();
 		}
+			
 	}
 }
 

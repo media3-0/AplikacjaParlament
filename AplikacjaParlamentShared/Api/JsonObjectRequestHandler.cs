@@ -35,9 +35,9 @@ namespace AplikacjaParlamentShared.Api
 			this.ConnectionProvider = connectionProvider;
 		}
 
-		public async Task<T> GetJsonObjectAsync (string uri)
+		public async Task<T> GetJsonObjectAsync (RequestParamsHandler request)
 		{
-			var response = await ConnectionProvider.GetHttpClient().GetAsync(uri);
+			var response = await ConnectionProvider.GetHttpClient().GetAsync(request.GetRequest ());
 
 			response.EnsureSuccessStatusCode();
 
@@ -48,7 +48,18 @@ namespace AplikacjaParlamentShared.Api
 				throw new NoObjectJsonElementException ();
 			if(obj.Type == JTokenType.Boolean) //jeżeli element object z odpowiedzi json ma typ boolean (nie muszę sprawdzać wartości, wystarczy wiedza na temat typu)
 				throw new ObjectJsonBooleanElementException();
-			return DataObjectParser.ParseJObjectToType<T> (obj as JObject);
+
+			T finalObject = DataObjectParser.ParseJObjectToType<T> (obj as JObject);
+
+			if (request.Layers.Count > 0) {
+				//dodatkowe warstwy
+				foreach (ILayer layer in request.Layers) {
+					layer.AssignContent (obj);
+					layer.ParseJObject (finalObject as Object);
+				}
+			}
+
+			return finalObject;
 		}
 	}
 }

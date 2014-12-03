@@ -20,12 +20,14 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
 using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
 
 namespace AplikacjaParlamentShared.Api
 {
 	public class DataObjectParser
 	{
-		static public T ParseJObjectToType<T>(JObject obj){
+		static public T ParseJObjectToType<T>(JObject obj)
+		{
 			JObject data;
 			try {
 				data = obj.Value<JObject>("data"); 
@@ -34,6 +36,20 @@ namespace AplikacjaParlamentShared.Api
 				throw new NoDataJsonElementException ();
 			}
 			return data.ToObject<T>();
+		}
+
+		static public List<T> ParseJArrayToList<T>(JArray array)
+		{
+			List<T> list = new List<T> (array.Count);
+			try {
+				foreach(JObject obj in array)
+				{
+					list.Add (obj.ToObject<T>());
+				}
+			}catch (System.InvalidOperationException){
+				throw new NoDataJsonElementException ();
+			}
+			return list;
 		}
 	}
 }

@@ -21,13 +21,16 @@
 using System;
 using System.Text;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace AplikacjaParlamentShared.Models
 {
 	public class Posel : IPerson, IPosel
 	{
 
-		public Posel () {}
+		public Posel () {
+			Biura = new List<BiuroPoselskie>();
+		}
 
 		[JsonProperty("poslowie.id")]
 		public int Id { get; set; }
@@ -61,10 +64,13 @@ namespace AplikacjaParlamentShared.Models
 
 		[JsonProperty("poslowie.zawod")]
 		public string Zawod { get; set; }
+
+		public List<BiuroPoselskie> Biura { get; set; }
 		
 		public override string ToString ()
 		{
-			return string.Format ("[Posel: Id={0}, Imie={1}, Nazwisko={2}, OkregWyborczyNumer={3}, SejmKlubyNazwa={4}, LiczbaProjektowUchwal={5}, LiczbaProjektowUstaw={6}, DataUrodzenia={7}, Frekwencja={8}, MowcaId={9}, Zawod={10}]", Id, Imie, Nazwisko, OkregWyborczyNumer, SejmKlubyNazwa, LiczbaProjektowUchwal, LiczbaProjektowUstaw, DataUrodzenia, Frekwencja, MowcaId, Zawod);
+			return string.Format ("[Posel: Id={0}, Imie={1}, Nazwisko={2}, OkregWyborczyNumer={3}, SejmKlubyNazwa={4}, LiczbaProjektowUchwal={5}, LiczbaProjektowUstaw={6}, DataUrodzenia={7}, Frekwencja={8}, MowcaId={9}, Zawod={10}, Biura={11}]", 
+				Id, Imie, Nazwisko, OkregWyborczyNumer, SejmKlubyNazwa, LiczbaProjektowUchwal, LiczbaProjektowUstaw, DataUrodzenia, Frekwencja, MowcaId, Zawod, Biura.Count);
 		}
 		
 

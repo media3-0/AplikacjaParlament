@@ -63,7 +63,9 @@ namespace AplikacjaParlamentShared.Repositories
 				request.AddField ("poslowie.frekwencja");
 				request.AddField ("poslowie.mowca_id");
 
-				Posel p = await handler.GetJsonObjectAsync (request.GetRequest ());
+				request.Layers.Add (new BiuraPoselskieLayer("biura"));
+
+				Posel p = await handler.GetJsonObjectAsync (request);
 				return p;
 			} catch (Java.IO.IOException ex){
 				Android.Util.Log.Error("Java.IO.IOException on GetJsonObjectAsync", ex.ToString());
@@ -89,7 +91,7 @@ namespace AplikacjaParlamentShared.Repositories
 				request.Limit = 1000;
 				request.SetOrder ("poslowie.nazwisko asc");
 
-				List<Posel> p = await handler.GetJsonArrayAsync (request.GetRequest ());
+				List<Posel> p = await handler.GetJsonArrayAsync (request);
 				return p;
 
 			} catch (Java.IO.IOException ex){
@@ -116,7 +118,7 @@ namespace AplikacjaParlamentShared.Repositories
 				request.Limit = 1000;
 				request.SetOrder ("sejm_wystapienia.data asc");
 
-				List<Speech> p = await handler.GetJsonArrayAsync (request.GetRequest ());
+				List<Speech> p = await handler.GetJsonArrayAsync (request);
 				return p;
 
 			} catch (Java.IO.IOException ex){
@@ -143,7 +145,7 @@ namespace AplikacjaParlamentShared.Repositories
 				request.Limit = 1000;
 				request.SetOrder ("sejm_interpelacje.data_wplywu desc");
 
-				List<Interpellation> p = await handler.GetJsonArrayAsync (request.GetRequest ());
+				List<Interpellation> p = await handler.GetJsonArrayAsync (request);
 				return p;
 
 			} catch (Java.IO.IOException ex){
