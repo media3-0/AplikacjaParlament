@@ -27,22 +27,14 @@ namespace AplikacjaParlamentShared.Models
 	 */
 	public interface IPosel : IPerson
 	{
-		// tabela w HTML z danymi biur (telefony  i emaile)
-		string BiuraTabelka { get; }
-		// poslowie.okreg_wyborczy_numer
-		int OkregWyborczyNumer { get; }
-		// sejm_kluby.nazwa
-		string SejmKlubyNazwa {get; }
-		// poslowie.liczba_projektow_uchwal
-		int LiczbaProjektowUchwal { get; }
-		// poslowie.liczba_projektow_ustaw
-		int LiczbaProjektowUstaw { get; }
-		// poslowie.data_urodzenia
-		string DataUrodzenia { get; }
-		// poslowie.frekwencja
-		float Frekwencja { get; }
-		// poslowie.mowca_id (potrzebne do pobrania miniatury)
-		int MowcaId { get; }
+		int OkregWyborczyNumer { get; set; }
+		string SejmKlubyNazwa {get; set; }
+		int LiczbaProjektowUchwal { get; set; }
+		int LiczbaProjektowUstaw { get; set; }
+		string DataUrodzenia { get; set; }
+		float Frekwencja { get; set; }
+		int MowcaId { get; set; }
+		string Zawod { get; set; }
 	}
 }
 

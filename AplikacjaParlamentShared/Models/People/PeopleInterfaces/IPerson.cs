@@ -27,9 +27,9 @@ namespace AplikacjaParlamentShared.Models
 	 */
 	public interface IPerson
 	{
-		int Id { get; }
-		string Imie { get; }
-		string Nazwisko { get; }
+		int Id { get; set; }
+		string Imie { get; set; }
+		string Nazwisko { get; set; }
 	}
 }
 
