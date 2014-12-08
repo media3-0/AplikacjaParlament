@@ -28,6 +28,7 @@ namespace AplikacjaParlamentShared.Models
 		string Tytul { get; set; }
 		string Data { get; set; }
 		string Skrot { get; set; }
+		string Tresc { get; set; }
 	}
 }
 

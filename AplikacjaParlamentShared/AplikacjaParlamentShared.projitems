@@ -42,6 +42,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Exceptions\ApiExceptions\NoLayersJsonElementException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Layers\BiuraPoselskieLayer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\People\PeopleInterfaces\BiuroPoselskie.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\Layers\TrescWystapieniaLayer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Models\People\PeopleInterfaces\" />

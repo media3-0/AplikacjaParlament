@@ -54,6 +54,8 @@ namespace AplikacjaParlamentAndroid
 			set;
 		}
 
+		public string PersonName { get; set; }
+
 		private GenericOrderedDictionary<String, Fragment> fragmentsTabs = new GenericOrderedDictionary<String, Fragment> ();
 
 		protected override void OnCreate (Bundle bundle)
@@ -66,9 +68,9 @@ namespace AplikacjaParlamentAndroid
 			PersonId = Intent.GetIntExtra ("id", -1);
 			if (PersonId == -1)
 				IncorrectId ();
-			string name = Intent.GetStringExtra ("name");
+			PersonName = Intent.GetStringExtra ("name");
 
-			ActionBar.Title = String.Concat("Poseł: ", name);
+			ActionBar.Title = String.Concat("Poseł: ", PersonName);
 
 			switch (PersonType) {
 			case PersonTypeEnumeration.Posel:

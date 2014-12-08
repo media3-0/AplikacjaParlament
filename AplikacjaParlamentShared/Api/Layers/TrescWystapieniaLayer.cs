@@ -1,5 +1,5 @@
 ﻿//
-//  Speech.cs
+//  TrescWystapieniaLayer.cs
 //
 //  Author:
 //       Jakub Syty <j.syty@media30.pl>
@@ -19,30 +19,22 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
-using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using AplikacjaParlamentShared.Models;
 
-namespace AplikacjaParlamentShared.Models
+namespace AplikacjaParlamentShared.Api
 {
-	public class Speech : ISpeech
+	public class TrescWystapieniaLayer : Layer 
 	{
-		public Speech ()
+		public TrescWystapieniaLayer (string name) : base(name)
 		{
 		}
 
-		[JsonProperty("sejm_wystapienia.id")]
-		public int Id { get; set; }
-
-		[JsonProperty("sejm_debaty.tytul")]
-		public string Tytul { get; set; }
-
-		[JsonProperty("sejm_wystapienia.data")]
-		public string Data { get; set; }
-
-		[JsonProperty("sejm_wystapienia.skrot")]
-		public string Skrot { get; set; }
-
-		//pobierane poprzez warstwę
-		public string Tresc { get; set; }
+		public override void ParseJObject (Object obj)
+		{
+			ISpeech wystapienie = obj as ISpeech;
+			wystapienie.Tresc = (JsonObject as JValue).Value as string;
+		}
 	}
 }
 

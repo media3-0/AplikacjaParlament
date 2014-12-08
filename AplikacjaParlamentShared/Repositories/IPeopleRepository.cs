@@ -31,6 +31,8 @@ namespace AplikacjaParlamentShared.Repositories
 	public interface IPeopleRepository
 	{
 		Task<IPosel> GetPosel(int id);
+		Task<ISpeech> GetPoselSpeech(int id);
+
 		Task<List<Posel>> GetPoselList();
 		Task<List<Speech>> GetPoselSpeeches(int id);
 		Task<List<Interpellation>> GetPoselInterpellations (int id);
