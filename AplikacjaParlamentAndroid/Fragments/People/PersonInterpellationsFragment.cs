@@ -38,7 +38,7 @@ using AplikacjaParlamentAndroid.Adapters;
 
 namespace AplikacjaParlamentAndroid
 {
-	public class PersonInterpellationsFragment : ListFragment
+	public class PersonInterpellationsFragment : BaseListFragment
 	{
 		private PersonDetailsActivity personDetailsActivity;
 
@@ -56,22 +56,30 @@ namespace AplikacjaParlamentAndroid
 			base.OnStart ();
 
 			if (list == null) {
-				this.SetListShown (false);
+				this.loading ();
 				GetInterpellationsList ();
 			}
 		}
 
 		async private void GetInterpellationsList()
 		{
-
-			// TODO : Pobieranie odpowiednich przemów z uwzględnieniem id odpowiedniej osoby!!
 			IPeopleRepository repository = PeopleRepository.Instance;
 			try {
-				list = await repository.GetPoselInterpellations (personDetailsActivity.PersonId);
+
+				switch (personDetailsActivity.PersonType) {
+				case PersonTypeEnumeration.Posel:
+					{
+						list = await repository.GetPoselInterpellations (personDetailsActivity.PersonId);
+						break;
+					}
+				}
+
 				ListAdapter = new InterpellationsListAdapter(personDetailsActivity, list);
+				this.loading (true);
 			} catch (ApiRequestException ex){
 				personDetailsActivity.ShowErrorDialog (ex.Message);
 			}
+
 		}
 
 		public override void OnListItemClick(ListView l, View v, int index, long id)

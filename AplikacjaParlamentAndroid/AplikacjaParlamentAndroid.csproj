@@ -103,6 +103,7 @@
     <Compile Include="Activities\SimpleContainerActivity.cs" />
     <Compile Include="Fragments\People\PoselSpeechFragment.cs" />
     <Compile Include="Fragments\People\InterpellationFragment.cs" />
+    <Compile Include="Fragments\BaseListFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

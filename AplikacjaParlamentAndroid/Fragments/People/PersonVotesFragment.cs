@@ -35,11 +35,11 @@ using AplikacjaParlamentShared.Models;
 
 namespace AplikacjaParlamentAndroid
 {
-	public class PersonVotesFragment : ListFragment
+	public class PersonVotesFragment : BaseListFragment
 	{
-		private PersonDetailsActivity personDetailsActivity;
+		//private PersonDetailsActivity personDetailsActivity;
 
-		private IVotingPerson person;
+		//private IVotingPerson person;
 
 		private string[] values;
 
@@ -47,7 +47,7 @@ namespace AplikacjaParlamentAndroid
 		{
 			base.OnCreate (savedInstanceState);
 
-			personDetailsActivity = Activity as PersonDetailsActivity;
+			//personDetailsActivity = Activity as PersonDetailsActivity;
 
 			values = new[] { "Głos 1", "Głos 2 ", "Głos 3" };
 			this.ListAdapter = new ArrayAdapter<string>(Activity, Android.Resource.Layout.SimpleExpandableListItem1, values);

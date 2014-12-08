@@ -1,5 +1,5 @@
 ﻿//
-//  SenatListFragment.cs
+//  BaseListFragment.cs
 //
 //  Author:
 //       Jakub Syty <j.syty@media30.pl>
@@ -32,32 +32,48 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 
-using AplikacjaParlamentShared.Models;
-
 namespace AplikacjaParlamentAndroid
 {
-	public class SenatListFragment : BaseListFragment
+	public class BaseListFragment : ListFragment
 	{
 
-		private String[] values;
+		private TextView emptyView;
 
 		public override void OnCreate (Bundle savedInstanceState)
 		{
 			base.OnCreate (savedInstanceState);
-			values = new[] { "Senator 1", "Senator 2 ", "Senator 3" };
-			this.ListAdapter = new ArrayAdapter<string>(Activity, Android.Resource.Layout.SimpleExpandableListItem1, values);
+
+			// Create your fragment here
 		}
 
-		public override void OnListItemClick(ListView l, View v, int index, long id)
+		public override View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 		{
-			// We can display everything in place with fragments.
-			// Have the list highlight this item and show the data.
-			ListView.SetItemChecked(index, true);
+			View view = base.OnCreateView (inflater, container, savedInstanceState);
+			LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams (ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.WrapContent);
+			emptyView = new TextView (Activity) {
+				LayoutParameters = layoutParams,
+				Gravity = GravityFlags.CenterHorizontal,
+				Text = "Pusta lista!",
+				TextSize = 20.0f
+			};
+			emptyView.SetPadding (0, 200, 0, 0);
 
-//			var detailsActivity = new Intent (Activity, typeof(PersonDetailsActivity));
-//			detailsActivity.PutExtra ("persontype", (int)PersonTypeEnumeration.Senator);
-//			detailsActivity.PutExtra ("id", index + 1);
-//			StartActivity (detailsActivity);
+			FrameLayout frame = view as FrameLayout;
+			frame.AddView (emptyView, 0);
+			ListView list = view.FindViewById<ListView> (Android.Resource.Id.List);
+			list.EmptyView = emptyView;
+			return view;
+		}
+
+		public void loading(bool done = false)
+		{
+			if (!done) {
+				this.SetListShown (false);
+				emptyView.Visibility = ViewStates.Gone;
+			} else {
+				if(this.ListAdapter.IsEmpty)
+					emptyView.Visibility = ViewStates.Visible;
+			}
 		}
 	}
 }

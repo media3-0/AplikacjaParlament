@@ -39,7 +39,7 @@ using AplikacjaParlamentAndroid.Adapters;
 
 namespace AplikacjaParlamentAndroid
 {
-	public class PersonSpeechesFragment : ListFragment
+	public class PersonSpeechesFragment : BaseListFragment
 	{
 		private PersonDetailsActivity personDetailsActivity;
 
@@ -60,7 +60,7 @@ namespace AplikacjaParlamentAndroid
 			base.OnStart ();
 
 			if (list == null) {
-				this.SetListShown (false);
+				this.loading ();
 				GetSpeechesList ();
 			}
 		}
@@ -71,8 +71,16 @@ namespace AplikacjaParlamentAndroid
 			// TODO : Pobieranie odpowiednich przemów z uwzględnieniem id odpowiedniej osoby!!
 			IPeopleRepository repository = PeopleRepository.Instance;
 			try {
-				list = await repository.GetPoselSpeeches (personDetailsActivity.PersonId);
+				switch (personDetailsActivity.PersonType) {
+				case PersonTypeEnumeration.Posel:
+					{
+						list = await repository.GetPoselSpeeches (personDetailsActivity.PersonId);
+						break;
+					}
+				}
+
 				ListAdapter = new SpeechListAdapter(personDetailsActivity, list);
+				this.loading (true);
 			} catch (ApiRequestException ex){
 				personDetailsActivity.ShowErrorDialog (ex.Message);
 			}

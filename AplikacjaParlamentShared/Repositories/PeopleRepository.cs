@@ -111,10 +111,10 @@ namespace AplikacjaParlamentShared.Repositories
 
 				var request = new RequestParamsHandler (String.Concat (API_DATASET_URI, "sejm_wystapienia/search.json"));
 				request.AddCondition ("ludzie.posel_id", id.ToString ());
-//				request.AddField ("sejm_wystapienia.id");
-//				request.AddField ("sejm_debaty.tytul");
-//				request.AddField ("sejm_wystapienia.data");
-//				request.AddField ("sejm_wystapienia.skrot");
+				request.AddField ("sejm_wystapienia.id");
+				request.AddField ("sejm_debaty.tytul");
+				request.AddField ("sejm_wystapienia.data");
+				request.AddField ("sejm_wystapienia.skrot");
 				request.Limit = 1000;
 				request.SetOrder ("sejm_wystapienia.data asc");
 
@@ -138,10 +138,10 @@ namespace AplikacjaParlamentShared.Repositories
 
 				var request = new RequestParamsHandler (String.Concat (API_DATASET_URI, "sejm_interpelacje/search.json"));
 				request.AddCondition ("sejm_interpelacje.mowca_id", id.ToString ());
-				//				request.AddField ("sejm_wystapienia.id");
-				//				request.AddField ("sejm_debaty.tytul");
-				//				request.AddField ("sejm_wystapienia.data");
-				//				request.AddField ("sejm_wystapienia.skrot");
+				request.AddField ("sejm_wystapienia.id");
+				request.AddField ("sejm_debaty.tytul");
+				request.AddField ("sejm_wystapienia.data");
+				request.AddField ("sejm_wystapienia.skrot");
 				request.Limit = 1000;
 				request.SetOrder ("sejm_interpelacje.data_wplywu desc");
 

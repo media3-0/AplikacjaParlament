@@ -55,10 +55,9 @@ namespace AplikacjaParlamentAndroid
 			}
 
 			FragmentTransaction ft = FragmentManager.BeginTransaction ();
-			BaseFragment fragmentToView;
+			BaseFragment fragmentToView = null;
 
 			switch (type) {
-
 			case VIEW_POSEL_SPEECH:
 				{
 					fragmentToView = new PoselSpeechFragment ();
@@ -71,8 +70,8 @@ namespace AplikacjaParlamentAndroid
 					break;
 				}
 			}
-
-			ft.Add (Resource.Id.FragmentContainer, fragmentToView);
+			if(fragmentToView != null)
+				ft.Add (Resource.Id.FragmentContainer, fragmentToView);
 			ft.Commit ();
 		}
 	}

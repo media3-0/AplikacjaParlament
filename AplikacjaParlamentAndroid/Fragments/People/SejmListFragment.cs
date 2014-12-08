@@ -40,7 +40,7 @@ using AplikacjaParlamentAndroid.Adapters;
 
 namespace AplikacjaParlamentAndroid
 {
-	public class SejmListFragment : ListFragment
+	public class SejmListFragment : BaseListFragment
 	{
 
 		private List<Posel> list;
@@ -59,7 +59,7 @@ namespace AplikacjaParlamentAndroid
 			imageLoader = new ImageLoader (parentActivity, 110, 137);
 
 			if (list == null) {
-				this.SetListShown (false);
+				this.loading ();
 				GetPoselList ();
 			}
 		}
@@ -85,6 +85,7 @@ namespace AplikacjaParlamentAndroid
 			try {
 				list = await repository.GetPoselList();
 				ListAdapter = new SejmListAdapter(parentActivity, imageLoader, list);
+				this.loading (true);
 			} catch (ApiRequestException ex){
 				parentActivity.ShowErrorDialog (ex.Message);
 			}
