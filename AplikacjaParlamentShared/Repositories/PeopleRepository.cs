@@ -182,6 +182,31 @@ namespace AplikacjaParlamentShared.Repositories
 				throw new ApiRequestException (String.Concat("Problem z dostępem do API:\n", ex.Message));
 			}
 		}
+
+		async public Task<IInterpellation> GetPoselInterpellation(int id)
+		{
+			try {
+				IJsonObjectRequestHandler<Interpellation> handler = new JsonObjectRequestHandler<Interpellation> (ConnectionProvider.Instance);
+
+				var request = new RequestParamsHandler (String.Concat (API_BASE_URI, "sejm_interpelacje/", id));
+				request.AddField ("sejm_wystapienia.id");
+				request.AddField ("sejm_debaty.tytul");
+				request.AddField ("sejm_wystapienia.data");
+				request.AddField ("sejm_wystapienia.skrot");
+
+				request.Layers.Add (new InterpelacjaLayer("dane"));
+
+				Interpellation p = await handler.GetJsonObjectAsync (request);
+				return p;
+			} catch (Java.IO.IOException ex){
+				Android.Util.Log.Error("Java.IO.IOException on GetJsonObjectAsync", ex.ToString());
+				throw new ApiRequestException (String.Concat("Problem z połączeniem:\n", ex.Message));
+
+			} catch (Exception ex) {
+				Android.Util.Log.Error("GetJsonObjectAsync", ex.ToString());
+				throw new ApiRequestException (String.Concat("Problem z dostępem do API:\n", ex.Message));
+			}
+		}
 	}
 }
 

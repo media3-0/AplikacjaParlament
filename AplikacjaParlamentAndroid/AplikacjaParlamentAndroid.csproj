@@ -102,6 +102,7 @@
     <Compile Include="Adapters\People\InterpellationsListAdapter.cs" />
     <Compile Include="Activities\SimpleContainerActivity.cs" />
     <Compile Include="Fragments\People\PoselSpeechFragment.cs" />
+    <Compile Include="Fragments\People\InterpellationFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -121,6 +122,7 @@
     <AndroidResource Include="Resources\layout\InterpellationListElement.axml" />
     <AndroidResource Include="Resources\layout\SimpleActivityLayout.axml" />
     <AndroidResource Include="Resources\layout\PoselSpeechFragmentLayout.axml" />
+    <AndroidResource Include="Resources\layout\InterpellationFragmentLayout.axml" />
   </ItemGroup>
   <Import Project="..\AplikacjaParlamentShared\AplikacjaParlamentShared.projitems" Label="Shared" Condition="Exists('..\AplikacjaParlamentShared\AplikacjaParlamentShared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />

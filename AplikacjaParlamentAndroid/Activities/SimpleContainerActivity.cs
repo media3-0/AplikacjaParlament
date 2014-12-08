@@ -30,7 +30,6 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using Com.Lilarcor.Cheeseknife;
 
 namespace AplikacjaParlamentAndroid
 {
@@ -39,9 +38,7 @@ namespace AplikacjaParlamentAndroid
 	{
 
 		public const int VIEW_POSEL_SPEECH = 1;
-
-		[InjectView(Resource.Id.FragmentContainer)]
-		FrameLayout FragmentContainer;
+		public const int VIEW_INTERPELLATION = 2;
 
 		protected override void OnCreate (Bundle bundle)
 		{
@@ -49,25 +46,34 @@ namespace AplikacjaParlamentAndroid
 
 			SetContentView (Resource.Layout.SimpleActivityLayout);
 
-			Cheeseknife.Inject (this);
-
 			int type = Intent.GetIntExtra ("type", 0);
+
+			if (type == 0) {
+				Toast.MakeText (this, "Nieprawidłowy typ fragmentu", ToastLength.Long);
+				this.Finish ();
+				return;
+			}
+
+			FragmentTransaction ft = FragmentManager.BeginTransaction ();
+			BaseFragment fragmentToView;
+
 			switch (type) {
-			case 0:
-				{
-					Toast.MakeText (this, "Nieprawidłowy typ fragmentu", ToastLength.Long);
-					this.Finish ();
-					break;
-				}
 
 			case VIEW_POSEL_SPEECH:
 				{
-					FragmentTransaction ft = FragmentManager.BeginTransaction ();
-					ft.Add (Resource.Id.FragmentContainer, new PoselSpeechFragment ());
-					ft.Commit ();
+					fragmentToView = new PoselSpeechFragment ();
+					break;
+				}
+
+			case VIEW_INTERPELLATION:
+				{
+					fragmentToView = new InterpellationFragment ();
 					break;
 				}
 			}
+
+			ft.Add (Resource.Id.FragmentContainer, fragmentToView);
+			ft.Commit ();
 		}
 	}
 }

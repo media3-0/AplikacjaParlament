@@ -20,6 +20,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace AplikacjaParlamentShared.Models
 {
@@ -27,6 +28,7 @@ namespace AplikacjaParlamentShared.Models
 	{
 		public Interpellation ()
 		{
+			Teksty = new List<string> ();
 		}
 
 		[JsonProperty("sejm_interpelacje.id")]
@@ -40,6 +42,12 @@ namespace AplikacjaParlamentShared.Models
 
 		[JsonProperty("sejm_interpelacje.adresaci_str")]
 		public string Adresat { get; set; }
+
+
+		//warstwy
+		public int DokumentId { get; set; }
+
+		public List<string> Teksty { get; set; }
 	}
 }
 

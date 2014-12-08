@@ -1,5 +1,5 @@
 ﻿//
-//  IInterpellation.cs
+//  InterpelacjaLayer.cs
 //
 //  Author:
 //       Jakub Syty <j.syty@media30.pl>
@@ -19,20 +19,30 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
-using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
+using AplikacjaParlamentShared.Models;
 
-namespace AplikacjaParlamentShared.Models
+namespace AplikacjaParlamentShared.Api
 {
-	public interface IInterpellation
+	public class InterpelacjaLayer : Layer
 	{
-		int Id { get; set; }
-		string TytulSkrocony { get; set; }
-		string DataWplywu { get; set; }
-		string Adresat { get; set; }
+		public InterpelacjaLayer (string name) : base(name)
+		{
+		}
 
-		//warstwa
-		int DokumentId { get; set; }
-		List<string> Teksty { get; set; }
+		public override void ParseJObject (Object obj)
+		{
+			JObject wydarzenie = JsonObject.Value<JObject> ("wydarzenie");
+			IInterpellation interpellation = obj as IInterpellation;
+			interpellation.DokumentId = int.Parse(wydarzenie.Value<JValue> ("dokument_id").Value as string);
+			JArray teksty = JsonObject.Value<JArray> ("teksty");
+			interpellation.Teksty.Clear ();
+
+			foreach (var item in teksty) {
+				string tekst = (item as JObject).Value<string> ("html");
+				interpellation.Teksty.Add (tekst);
+			}
+		}
 	}
 }
 

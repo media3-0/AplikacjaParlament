@@ -81,8 +81,12 @@ namespace AplikacjaParlamentAndroid
 			ListView.SetItemChecked(index, true);
 
 			var interpellation = list.ElementAt (index);
-			Toast.MakeText (personDetailsActivity, String.Concat ("Id: ", interpellation.Id), ToastLength.Long).Show ();
 
+			var interpellationActivity = new Intent (Activity, typeof(SimpleContainerActivity));
+			interpellationActivity.PutExtra ("type", SimpleContainerActivity.VIEW_INTERPELLATION);
+			interpellationActivity.PutExtra ("id", interpellation.Id);
+			interpellationActivity.PutExtra ("name", personDetailsActivity.PersonName);
+			StartActivity (interpellationActivity);
 		}
 	}
 }
