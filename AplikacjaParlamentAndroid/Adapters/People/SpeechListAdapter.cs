@@ -1,5 +1,5 @@
 ﻿//
-//  SejmListAdapter.cs
+//  SpeechListAdapter.cs
 //
 //  Author:
 //       Jakub Syty <j.syty@media30.pl>

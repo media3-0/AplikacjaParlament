@@ -19,6 +19,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
+using Newtonsoft.Json;
 
 namespace AplikacjaParlamentShared.Models
 {
@@ -27,21 +28,24 @@ namespace AplikacjaParlamentShared.Models
 		public Vote ()
 		{
 		}
-			
-		public int Id {
-			get;
-			set;
-		}
 
-		public string Tytul {
-			get;
-			set;
-		}
+		[JsonProperty("poslowie_glosy.glosowanie_id")]
+		public int GlosowanieId { get; set; }
 
-		public string Data {
-			get;
-			set;
-		}
+		[JsonProperty("sejm_glosowania.posiedzenie_id")]
+		public int PosiedzenieId { get; set; }
+
+		[JsonProperty("sejm_glosowania.tytul")]
+		public string Tytul { get; set; }
+
+		[JsonProperty("sejm_glosowania.czas")]
+		public string Data { get; set; }
+
+		[JsonProperty("poslowie_glosy.glos_id")]
+		public int GlosId { get; set; }
+
+		[JsonProperty("sejm_glosowania.typ_id")]
+		public int Type { get; set; }
 	}
 }
 

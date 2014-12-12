@@ -71,14 +71,14 @@
     <Reference Include="Cheeseknife">
       <HintPath>..\Components\cheeseknife-1.0\lib\android\Cheeseknife.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\Components\json.net-4.5.11.1\lib\android\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="ModernHttpClient">
       <HintPath>..\Components\modernhttpclient-2.1.2\lib\android\ModernHttpClient.dll</HintPath>
     </Reference>
     <Reference Include="OkHttp">
       <HintPath>..\Components\modernhttpclient-2.1.2\lib\android\OkHttp.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\Components\json.net-4.5.11.1\lib\android\Newtonsoft.Json.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -104,6 +104,7 @@
     <Compile Include="Fragments\People\PoselSpeechFragment.cs" />
     <Compile Include="Fragments\People\InterpellationFragment.cs" />
     <Compile Include="Fragments\BaseListFragment.cs" />
+    <Compile Include="Adapters\People\VoteListAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -124,16 +125,17 @@
     <AndroidResource Include="Resources\layout\SimpleActivityLayout.axml" />
     <AndroidResource Include="Resources\layout\PoselSpeechFragmentLayout.axml" />
     <AndroidResource Include="Resources\layout\InterpellationFragmentLayout.axml" />
+    <AndroidResource Include="Resources\layout\VoteListElement.axml" />
   </ItemGroup>
   <Import Project="..\AplikacjaParlamentShared\AplikacjaParlamentShared.projitems" Label="Shared" Condition="Exists('..\AplikacjaParlamentShared\AplikacjaParlamentShared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
-    <XamarinComponentReference Include="cheeseknife">
-      <Version>1.0</Version>
-      <Visible>False</Visible>
-    </XamarinComponentReference>
     <XamarinComponentReference Include="googleplayservices">
       <Version>19.0.0.2</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="cheeseknife">
+      <Version>1.0</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
     <XamarinComponentReference Include="modernhttpclient">

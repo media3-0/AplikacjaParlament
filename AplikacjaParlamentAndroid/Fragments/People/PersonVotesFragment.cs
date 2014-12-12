@@ -32,25 +32,72 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 using AplikacjaParlamentShared.Models;
+using AplikacjaParlamentShared.Repositories;
+using AplikacjaParlamentShared.Api;
+using AplikacjaParlamentAndroid.Adapters;
 
 namespace AplikacjaParlamentAndroid
 {
 	public class PersonVotesFragment : BaseListFragment
 	{
-		//private PersonDetailsActivity personDetailsActivity;
+		private PersonDetailsActivity personDetailsActivity;
 
 		//private IVotingPerson person;
 
-		private string[] values;
+		private List<Vote> list;
 
 		public override void OnCreate (Bundle savedInstanceState)
 		{
 			base.OnCreate (savedInstanceState);
 
-			//personDetailsActivity = Activity as PersonDetailsActivity;
+			personDetailsActivity = Activity as PersonDetailsActivity;
+		}
 
-			values = new[] { "Głos 1", "Głos 2 ", "Głos 3" };
-			this.ListAdapter = new ArrayAdapter<string>(Activity, Android.Resource.Layout.SimpleExpandableListItem1, values);
+		public override void OnStart ()
+		{
+			base.OnStart ();
+
+			if (list == null) {
+				this.loading ();
+				GetData ();
+			}
+		}
+
+		async private void GetData()
+		{
+
+			IPeopleRepository repository = PeopleRepository.Instance;
+			try {
+				switch (personDetailsActivity.PersonType) {
+				case PersonTypeEnumeration.Posel:
+					{
+						list = await repository.GetPoselVotes (personDetailsActivity.PersonId);
+						break;
+					}
+				}
+
+				ListAdapter = new VoteListAdapter(personDetailsActivity, list);
+				this.loading (true);
+			} catch (ApiRequestException ex){
+				personDetailsActivity.ShowErrorDialog (ex.Message);
+			}
+		}
+
+		public override void OnListItemClick(ListView l, View v, int index, long id)
+		{
+			// We can display everything in place with fragments.
+			// Have the list highlight this item and show the data.
+			ListView.SetItemChecked(index, true);
+
+			var vote = list.ElementAt (index);
+
+			Toast.MakeText (Activity, "Id głosowania: " + vote.GlosowanieId, ToastLength.Long).Show ();
+
+//			var speechActivity = new Intent (Activity, typeof(SimpleContainerActivity));
+//			speechActivity.PutExtra ("type", SimpleContainerActivity.VIEW_POSEL_SPEECH);
+//			speechActivity.PutExtra ("id", speech.Id);
+//			speechActivity.PutExtra ("name", personDetailsActivity.PersonName);
+//			StartActivity (speechActivity);
 		}
 	}
 }

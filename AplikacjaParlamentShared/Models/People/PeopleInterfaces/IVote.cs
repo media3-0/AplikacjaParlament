@@ -24,9 +24,12 @@ namespace AplikacjaParlamentShared.Models
 {
 	public interface IVote
 	{
-		int Id { get; set; }
+		int GlosowanieId { get; set; }
+		int PosiedzenieId { get; set; }
 		string Tytul { get; set; }
 		string Data { get; set; }
+		int GlosId { get; set; }
+		int Type { get; set; }
 	}
 }
 

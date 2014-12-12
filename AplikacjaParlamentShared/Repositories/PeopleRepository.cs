@@ -131,6 +131,40 @@ namespace AplikacjaParlamentShared.Repositories
 			}
 		}
 
+		async public Task<List<Vote>> GetPoselVotes (int id)
+		{
+			try {
+				IJsonArrayRequestHandler<Vote> handler = new JsonArrayRequestHandler<Vote> (ConnectionProvider.Instance);
+
+				var request = new RequestParamsHandler (String.Concat (API_DATASET_URI, "poslowie_glosy/search.json"));
+				request.AddCondition ("posel_id", id.ToString ());
+				// Na chwilę obecną pobieramy tylko głosowania dotyczące tylko przyjęć całych projektów ustaw (pomijamy poprawki itd)
+				request.AddCondition ("sejm_glosowania.typ_id", 26.ToString ());
+
+				request.AddField ("poslowie_glosy.glosowanie_id");
+				request.AddField ("sejm_glosowania.posiedzenie_id");
+				request.AddField ("sejm_glosowania.tytul");
+				request.AddField ("poslowie_glosy.glos_id");
+				request.AddField ("sejm_glosowania.typ_id");
+				request.AddField ("sejm_glosowania.czas");
+
+				request.Limit = 1000;
+
+				request.SetOrder ("sejm_glosowania.czas desc");
+
+				List<Vote> p = await handler.GetJsonArrayAsync (request);
+				return p;
+
+			} catch (Java.IO.IOException ex){
+				Android.Util.Log.Error("Java.IO.IOException on GetJsonArrayAsync", ex.ToString());
+				throw new ApiRequestException (String.Concat("Problem z połączeniem:\n", ex.Message));
+
+			} catch (Exception ex) {
+				Android.Util.Log.Error("GetJsonArrayAsync", ex.ToString());
+				throw new ApiRequestException (String.Concat("Problem z dostępem do API:\n", ex.Message));
+			}
+		}
+
 		async public Task<List<Interpellation>> GetPoselInterpellations (int id)
 		{
 			try {

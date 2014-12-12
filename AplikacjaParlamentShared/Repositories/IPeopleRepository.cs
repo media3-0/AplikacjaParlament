@@ -37,6 +37,7 @@ namespace AplikacjaParlamentShared.Repositories
 		Task<List<Posel>> GetPoselList();
 		Task<List<Speech>> GetPoselSpeeches(int id);
 		Task<List<Interpellation>> GetPoselInterpellations (int id);
+		Task<List<Vote>> GetPoselVotes (int id);
 	}
 }
 

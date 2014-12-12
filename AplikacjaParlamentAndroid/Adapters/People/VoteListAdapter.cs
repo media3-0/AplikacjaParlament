@@ -1,5 +1,5 @@
 ﻿//
-//  InterpellationsListAdapter.cs
+//  VoteListAdapter.cs
 //
 //  Author:
 //       Jakub Syty <j.syty@media30.pl>
@@ -33,20 +33,20 @@ using AplikacjaParlamentShared.Models;
 
 namespace AplikacjaParlamentAndroid.Adapters
 {
-	public class InterpellationsListAdapter : BaseAdapter<Interpellation>
+	public class VoteListAdapter : BaseAdapter<Vote>
 	{
 
 		private class Wrapper : Java.Lang.Object
 		{
 			public TextView tvData { get; set; }
 			public TextView tvTytul { get; set; }
-			public TextView tvAdresat { get; set; }
+			public TextView tvGlosId { get; set; }
 		}
 
 		private Activity context;
-		private List<Interpellation> list; 
+		private List<Vote> list; 
 
-		public InterpellationsListAdapter(Activity context, List<Interpellation> list)
+		public VoteListAdapter(Activity context, List<Vote> list)
 		{
 			this.context = context;
 			this.list = list;
@@ -58,11 +58,11 @@ namespace AplikacjaParlamentAndroid.Adapters
 			var view = convertView;
 			if (convertView == null)
 			{
-				view = context.LayoutInflater.Inflate(Resource.Layout.InterpellationListElement, null);
+				view = context.LayoutInflater.Inflate(Resource.Layout.VoteListElement, null);
 				wrapper = new Wrapper();
 				wrapper.tvData = view.FindViewById<TextView>(Resource.Id.tvData);
 				wrapper.tvTytul = view.FindViewById<TextView>(Resource.Id.tvTytul);
-				wrapper.tvAdresat = view.FindViewById<TextView> (Resource.Id.tvAdresat);
+				wrapper.tvGlosId = view.FindViewById<TextView> (Resource.Id.tvGlosId);
 				view.Tag = wrapper;
 			}
 			else
@@ -70,15 +70,32 @@ namespace AplikacjaParlamentAndroid.Adapters
 				wrapper = convertView.Tag as Wrapper;
 			}
 
-			var interpellation = list[position];
-			wrapper.tvData.Text = interpellation.DataWplywu;
-			wrapper.tvTytul.Text = interpellation.TytulSkrocony;
-			wrapper.tvAdresat.Text = interpellation.Adresat;
+			var vote = list[position];
+			wrapper.tvData.Text = vote.Data.Split (' ')[0].ToString ();
+			wrapper.tvTytul.Text = vote.Tytul;
+
+			string glos = "";
+
+			switch (vote.GlosId) {
+			case 1:
+				glos = "Za";
+				break;
+			case 2: 
+				glos = "Przeciw";
+				break;
+			case 3: 
+				glos = "Wstrzymał się";
+				break;
+			case 4: 
+				glos = "Nieobecny";
+				break;
+			}
+			wrapper.tvGlosId.Text = glos;
 
 			return view;
 		}
 
-		public override Interpellation this[int position]
+		public override Vote this[int position]
 		{
 			get { return list[position]; }
 		}

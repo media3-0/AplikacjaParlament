@@ -68,7 +68,6 @@ namespace AplikacjaParlamentAndroid
 		async private void GetSpeechesList()
 		{
 
-			// TODO : Pobieranie odpowiednich przemów z uwzględnieniem id odpowiedniej osoby!!
 			IPeopleRepository repository = PeopleRepository.Instance;
 			try {
 				switch (personDetailsActivity.PersonType) {
