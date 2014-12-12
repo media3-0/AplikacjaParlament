@@ -29,11 +29,13 @@ using Android.Widget;
 using Android.OS;
 
 using Com.Lilarcor.Cheeseknife;
+using Android.Net;
+using Android.Support.V4.App;
 
 namespace AplikacjaParlamentAndroid
 {
 	[Activity (Label = "Aplikacja Parlament", MainLauncher = true)]
-	public class MainActivity : Activity
+	public class MainActivity : FragmentActivity
 	{
 
 		[InjectView(Resource.Id.myButton)]
@@ -43,7 +45,6 @@ namespace AplikacjaParlamentAndroid
 		{
 			base.OnCreate (bundle);
 
-			// Set our view from the "main" layout resource
 			SetContentView (Resource.Layout.Main);
 
 			Cheeseknife.Inject (this);
@@ -51,6 +52,25 @@ namespace AplikacjaParlamentAndroid
 			button.Click += delegate {
 				StartActivity(typeof(PeopleActivity));
 			};
+		}
+
+		protected override void OnStart ()
+		{
+			base.OnStart ();
+			var connectivityManager = (ConnectivityManager)GetSystemService(ConnectivityService);
+			var activeConnection = connectivityManager.ActiveNetworkInfo;
+			if ((activeConnection == null)  || !activeConnection.IsConnected)
+			{
+				// brak połączenia z siecią
+				AlertDialog.Builder alert = new AlertDialog.Builder (this);
+
+				alert.SetTitle ("Błąd:");
+				alert.SetMessage ("Brak połączenia z internetem!");
+				alert.SetPositiveButton ("Ok", (senderAlert, args) => {
+					//
+				} );
+				alert.Show ();
+			}
 		}
 	}
 }
