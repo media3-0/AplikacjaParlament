@@ -31,6 +31,8 @@ using Android.OS;
 using Com.Lilarcor.Cheeseknife;
 using Android.Net;
 using Android.Support.V4.App;
+using AplikacjaParlamentShared.Repositories;
+using AplikacjaParlamentShared.Models;
 
 namespace AplikacjaParlamentAndroid
 {
@@ -71,6 +73,7 @@ namespace AplikacjaParlamentAndroid
 				} );
 				alert.Show ();
 			}
+
 		}
 	}
 }

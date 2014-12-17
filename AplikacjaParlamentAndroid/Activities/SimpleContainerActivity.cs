@@ -39,6 +39,7 @@ namespace AplikacjaParlamentAndroid
 
 		public const int VIEW_POSEL_SPEECH = 1;
 		public const int VIEW_INTERPELLATION = 2;
+		public const int VIEW_SEJM_VOTING = 3;
 
 		protected override void OnCreate (Bundle bundle)
 		{
@@ -69,7 +70,14 @@ namespace AplikacjaParlamentAndroid
 					fragmentToView = new InterpellationFragment ();
 					break;
 				}
-			}
+
+			case VIEW_SEJM_VOTING:
+				{
+					fragmentToView = new SejmVotingFragment ();
+					break;
+				}
+		}
+
 			if(fragmentToView != null)
 				ft.Add (Resource.Id.FragmentContainer, fragmentToView);
 			ft.Commit ();

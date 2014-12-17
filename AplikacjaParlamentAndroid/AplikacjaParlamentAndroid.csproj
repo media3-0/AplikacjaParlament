@@ -27,15 +27,16 @@
     <WarningLevel>4</WarningLevel>
     <AndroidLinkMode>None</AndroidLinkMode>
     <ConsolePause>false</ConsolePause>
+    <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <Optimize>true</Optimize>
     <OutputPath>bin\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     <ConsolePause>false</ConsolePause>
     <AssemblyOriginatorKeyFile>..\..\..\AndroidStudioProjects\klucz.jks</AssemblyOriginatorKeyFile>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -105,6 +106,7 @@
     <Compile Include="Fragments\People\InterpellationFragment.cs" />
     <Compile Include="Fragments\BaseListFragment.cs" />
     <Compile Include="Adapters\People\VoteListAdapter.cs" />
+    <Compile Include="Fragments\People\SejmVotingFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -126,6 +128,7 @@
     <AndroidResource Include="Resources\layout\PoselSpeechFragmentLayout.axml" />
     <AndroidResource Include="Resources\layout\InterpellationFragmentLayout.axml" />
     <AndroidResource Include="Resources\layout\VoteListElement.axml" />
+    <AndroidResource Include="Resources\layout\SejmVotingFragmentLayout.axml" />
   </ItemGroup>
   <Import Project="..\AplikacjaParlamentShared\AplikacjaParlamentShared.projitems" Label="Shared" Condition="Exists('..\AplikacjaParlamentShared\AplikacjaParlamentShared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />

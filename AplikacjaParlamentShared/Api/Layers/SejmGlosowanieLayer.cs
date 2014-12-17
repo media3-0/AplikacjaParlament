@@ -1,5 +1,5 @@
 ﻿//
-//  IPeopleRepository.cs
+//  SejmGlosowanieLayer.cs
 //
 //  Author:
 //       Jakub Syty <j.syty@media30.pl>
@@ -19,26 +19,32 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
-using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
 using AplikacjaParlamentShared.Models;
 using System.Collections.Generic;
 
-namespace AplikacjaParlamentShared.Repositories
+namespace AplikacjaParlamentShared.Api
 {
-	/**
-	 * Interfejs dla repozytorium zarządzającym osobami
-	 */
-	public interface IPeopleRepository
+	public class SejmGlosowanieLayer : Layer
 	{
-		Task<IPosel> GetPosel(int id);
-		Task<ISpeech> GetPoselSpeech(int id);
-		Task<IInterpellation> GetPoselInterpellation(int id);
-		Task<IVoting> GetSejmVoting(int id);
+		public SejmGlosowanieLayer (string name) : base(name)
+		{
+		}
 
-		Task<List<Posel>> GetPoselList();
-		Task<List<Speech>> GetPoselSpeeches(int id);
-		Task<List<Interpellation>> GetPoselInterpellations (int id);
-		Task<List<Vote>> GetPoselVotes (int id);
+		public override void ParseJObject (Object obj)
+		{
+			Voting voting = (obj as Voting);
+			JArray arr = (this.JsonObject as JArray);
+			voting.Glosy.Clear ();
+
+			foreach (JObject item in arr) {
+				IVotingEntry votingEntry = new VotingEntry ();
+				votingEntry.Glos = item.Value<JObject> ("glosy").Value<int> ("glos_id");
+				votingEntry.Glosujacy = item.Value<JObject> ("poslowie").Value<int> ("id");
+				votingEntry.GlosujacyImieNazwisko = item.Value<JObject> ("poslowie").Value<string> ("nazwa");
+				voting.Glosy.Add (votingEntry);
+			}
+		}
 	}
 }
 

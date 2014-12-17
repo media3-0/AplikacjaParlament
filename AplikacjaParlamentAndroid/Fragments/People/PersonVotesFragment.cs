@@ -91,13 +91,10 @@ namespace AplikacjaParlamentAndroid
 
 			var vote = list.ElementAt (index);
 
-			Toast.MakeText (Activity, "Id głosowania: " + vote.GlosowanieId, ToastLength.Long).Show ();
-
-//			var speechActivity = new Intent (Activity, typeof(SimpleContainerActivity));
-//			speechActivity.PutExtra ("type", SimpleContainerActivity.VIEW_POSEL_SPEECH);
-//			speechActivity.PutExtra ("id", speech.Id);
-//			speechActivity.PutExtra ("name", personDetailsActivity.PersonName);
-//			StartActivity (speechActivity);
+			var votingActivity = new Intent (Activity, typeof(SimpleContainerActivity));
+			votingActivity.PutExtra ("type", SimpleContainerActivity.VIEW_SEJM_VOTING);
+			votingActivity.PutExtra ("id", vote.GlosowanieId);
+			StartActivity (votingActivity);
 		}
 	}
 }
