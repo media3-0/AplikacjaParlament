@@ -36,8 +36,8 @@ using Com.Lilarcor.Cheeseknife;
 
 namespace AplikacjaParlamentAndroid
 {
-	[Activity (Label = "BaseActivity")]			
-	public class BaseActivity : FragmentActivity
+	[Activity (Label = "BaseActivity")]
+    public class BaseActivity : Android.Support.V7.App.ActionBarActivity
 	{
 		protected override void OnCreate (Bundle bundle)
 		{
@@ -45,8 +45,12 @@ namespace AplikacjaParlamentAndroid
 
 			Cheeseknife.Inject (this);
 
-			ActionBar.SetHomeButtonEnabled(true);
-			ActionBar.SetDisplayHomeAsUpEnabled(true);
+            var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
+
+            SetSupportActionBar(toolbar);
+
+            SupportActionBar.SetHomeButtonEnabled(true);
+            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
 		}
 
 		public override bool OnOptionsItemSelected(IMenuItem item)

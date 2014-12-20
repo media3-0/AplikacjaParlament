@@ -172,10 +172,10 @@ namespace AplikacjaParlamentShared.Repositories
 
 				var request = new RequestParamsHandler (String.Concat (API_DATASET_URI, "sejm_interpelacje/search.json"));
 				request.AddCondition ("sejm_interpelacje.mowca_id", id.ToString ());
-				request.AddField ("sejm_wystapienia.id");
-				request.AddField ("sejm_debaty.tytul");
-				request.AddField ("sejm_wystapienia.data");
-				request.AddField ("sejm_wystapienia.skrot");
+                request.AddField ("sejm_interpelacje.id");
+                request.AddField ("sejm_interpelacje.tytul_skrocony");
+                request.AddField ("sejm_interpelacje.data_wplywu");
+                request.AddField ("sejm_interpelacje.adresaci_str");
 				request.Limit = 1000;
 				request.SetOrder ("sejm_interpelacje.data_wplywu desc");
 

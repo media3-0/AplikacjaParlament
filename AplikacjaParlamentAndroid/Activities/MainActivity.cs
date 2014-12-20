@@ -37,7 +37,7 @@ using AplikacjaParlamentShared.Models;
 namespace AplikacjaParlamentAndroid
 {
 	[Activity (Label = "Aplikacja Parlament", MainLauncher = true)]
-	public class MainActivity : FragmentActivity
+	public class MainActivity : Android.Support.V7.App.ActionBarActivity
 	{
 
 		[InjectView(Resource.Id.myButton)]
@@ -53,6 +53,10 @@ namespace AplikacjaParlamentAndroid
 			SetContentView (Resource.Layout.Main);
 
 			Cheeseknife.Inject (this);
+
+            var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
+
+            SetSupportActionBar(toolbar);
 			
 			button.Click += delegate {
 				StartActivity(typeof(PeopleActivity));

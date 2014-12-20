@@ -3,11 +3,13 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
+    <include
+        layout="@layout/toolbar" />
     <Button
         android:id="@+id/myButton"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/poslowie"
+        android:text="Izby"
         android:layout_margin="10dp" />
     <Button
         android:id="@+id/voteButton"

@@ -47,9 +47,9 @@ namespace AplikacjaParlamentAndroid
 
 		protected override void OnCreate (Bundle bundle)
 		{
-			base.OnCreate (bundle);
+            SetContentView(Resource.Layout.PoslowieActivityLayout);
 
-			SetContentView (Resource.Layout.PoslowieActivityLayout);
+			base.OnCreate (bundle);
 
 			var tabs = FindViewById<PagerSlidingTabStrip.PagerSlidingTabStrip> (Resource.Id.tabs);
 			var pager = FindViewById<ViewPager> (Resource.Id.pager);

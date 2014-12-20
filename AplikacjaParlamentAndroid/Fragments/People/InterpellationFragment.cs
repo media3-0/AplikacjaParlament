@@ -79,7 +79,7 @@ namespace AplikacjaParlamentAndroid
 			View view = inflater.Inflate (Resource.Layout.InterpellationFragmentLayout, container, false);
 			Cheeseknife.Inject (this, view);
 
-			Activity.ActionBar.Title = String.Concat (poselName, " - interpelacja");
+            (Activity as BaseActivity).SupportActionBar.Title = String.Concat(poselName, " - interpelacja");
 
 			return view;
 		}

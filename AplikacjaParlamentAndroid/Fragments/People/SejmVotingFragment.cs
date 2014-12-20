@@ -86,7 +86,7 @@ namespace AplikacjaParlamentAndroid
 			View view = inflater.Inflate (Resource.Layout.SejmVotingFragmentLayout, container, false);
 			Cheeseknife.Inject (this, view);
 
-			Activity.ActionBar.Title = String.Concat ("Głosowanie");
+            (Activity as BaseActivity).SupportActionBar.Title = String.Concat("Głosowanie");
 
 			return view;
 		}

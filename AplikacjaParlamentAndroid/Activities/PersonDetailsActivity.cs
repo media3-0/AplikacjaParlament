@@ -60,9 +60,10 @@ namespace AplikacjaParlamentAndroid
 
 		protected override void OnCreate (Bundle bundle)
 		{
-			base.OnCreate (bundle);
-
-			SetContentView (Resource.Layout.PersonDetailsLayout);
+            SetContentView(Resource.Layout.PersonDetailsLayout);
+            base.OnCreate(bundle);	
+            
+					
 
 			PersonType = (PersonTypeEnumeration)Intent.GetIntExtra ("persontype", (int)PersonTypeEnumeration.Posel);
 			PersonId = Intent.GetIntExtra ("id", -1);
@@ -70,7 +71,7 @@ namespace AplikacjaParlamentAndroid
 				IncorrectId ();
 			PersonName = Intent.GetStringExtra ("name");
 
-			ActionBar.Title = String.Concat("Poseł: ", PersonName);
+			SupportActionBar.Title = String.Concat("Poseł: ", PersonName);
 
 			switch (PersonType) {
 			case PersonTypeEnumeration.Posel:

@@ -43,9 +43,8 @@ namespace AplikacjaParlamentAndroid
 
 		protected override void OnCreate (Bundle bundle)
 		{
+            SetContentView(Resource.Layout.SimpleActivityLayout);
 			base.OnCreate (bundle);
-
-			SetContentView (Resource.Layout.SimpleActivityLayout);
 
 			int type = Intent.GetIntExtra ("type", 0);
 
