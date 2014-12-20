@@ -9,4 +9,10 @@
         android:layout_height="wrap_content"
         android:text="@string/poslowie"
         android:layout_margin="10dp" />
+    <Button
+        android:id="@+id/voteButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Głosowania"
+        android:layout_margin="10dp" />
 </LinearLayout>

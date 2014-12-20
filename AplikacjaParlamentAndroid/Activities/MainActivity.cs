@@ -43,6 +43,9 @@ namespace AplikacjaParlamentAndroid
 		[InjectView(Resource.Id.myButton)]
 		Button button;
 
+		[InjectView(Resource.Id.voteButton)]
+		Button voteButton;
+
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
@@ -53,6 +56,14 @@ namespace AplikacjaParlamentAndroid
 			
 			button.Click += delegate {
 				StartActivity(typeof(PeopleActivity));
+			};
+
+			voteButton.Click += delegate {
+				//dla testów, wyświetla głosowanie o id 1
+				var votingActivity = new Intent (this, typeof(SimpleContainerActivity));
+				votingActivity.PutExtra ("type", SimpleContainerActivity.VIEW_SEJM_VOTING);
+				votingActivity.PutExtra ("id", 1);
+				StartActivity (votingActivity);
 			};
 		}
 
