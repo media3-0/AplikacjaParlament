@@ -38,7 +38,7 @@ namespace AplikacjaParlamentAndroid.Adapters
 			get { return fragmentsTabs.Count; }
 		}
 
-		private GenericOrderedDictionary<String, Fragment> fragmentsTabs;
+		protected GenericOrderedDictionary<String, Fragment> fragmentsTabs;
 
 		public override Java.Lang.ICharSequence GetPageTitleFormatted(int position)
 		{

@@ -156,6 +156,7 @@
     <Folder Include="Fragments\People\" />
     <Folder Include="Adapters\" />
     <Folder Include="Adapters\People\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>

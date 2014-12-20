@@ -37,6 +37,9 @@ using AplikacjaParlamentShared.Api;
 using AplikacjaParlamentShared.Repositories;
 
 using Com.Lilarcor.Cheeseknife;
+using AplikacjaParlamentShared.Collections;
+using Android.Support.V4.View;
+using AplikacjaParlamentAndroid.Adapters;
 
 namespace AplikacjaParlamentAndroid
 {
@@ -62,6 +65,8 @@ namespace AplikacjaParlamentAndroid
 		private LinearLayout contentLayout;
 
 		private int id;
+
+		private GenericOrderedDictionary<String, Fragment> fragmentsTabs = new GenericOrderedDictionary<String, Fragment> ();
 
 		public override void OnCreate (Bundle savedInstanceState)
 		{
@@ -116,7 +121,18 @@ namespace AplikacjaParlamentAndroid
 
 				tvWynik.Text = wynik;
 
-				//TODO : głosowania (zakładki + list fragment (chyba)
+				fragmentsTabs.Add ("Za", new SenatListFragment ());
+				fragmentsTabs.Add ("Przeciw", new SenatListFragment ());
+				fragmentsTabs.Add ("Wstrzymał się", new SenatListFragment ());
+				fragmentsTabs.Add ("Nieobecny", new SenatListFragment ());
+
+				var tabs = Activity.FindViewById<PagerSlidingTabStrip.PagerSlidingTabStrip> (Resource.Id.tabs);
+				var pager = Activity.FindViewById<ViewPager> (Resource.Id.pager);
+
+				tabs.ShouldExpand = false;
+
+				pager.Adapter = new UniversalFragmentPagerAdapter (FragmentManager, fragmentsTabs);
+				tabs.SetViewPager (pager);
 
 				if (viewSwitcher.CurrentView != contentLayout){
 					viewSwitcher.ShowPrevious(); 

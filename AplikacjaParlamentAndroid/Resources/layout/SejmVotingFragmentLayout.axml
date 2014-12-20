@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ViewSwitcher xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/viewSwitcher"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:layout_alignParentLeft="true"
     android:layout_alignParentTop="true"
     android:inAnimation="@android:anim/slide_in_left">
@@ -11,60 +12,65 @@
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:id="@+id/detailsContent">
-        <ScrollView
+        <LinearLayout
+            android:orientation="vertical"
             android:minWidth="25px"
             android:minHeight="25px"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/scrollView1"
-            android:scrollbars="vertical">
+            android:id="@+id/linearLayout1">
+            <TextView
+                android:text="Text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tytulGlosowania"
+                android:gravity="center_horizontal"
+                android:padding="5dp"
+                android:textStyle="bold" />
+            <TextView
+                android:text="Small Text"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/czasGlosowania"
+                android:gravity="center_horizontal" />
             <LinearLayout
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:minWidth="25px"
                 android:minHeight="25px"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/linearLayout1">
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout2"
+                android:gravity="center_horizontal">
+                <TextView
+                    android:text="Wynik:"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/textView1"
+                    android:textStyle="bold"
+                    android:layout_marginRight="5dp" />
                 <TextView
                     android:text="Text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/tytulGlosowania"
-                    android:gravity="center_horizontal"
-                    android:padding="5dp"
-                    android:textStyle="bold" />
-                <TextView
-                    android:text="Small Text"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/czasGlosowania"
-                    android:gravity="center_horizontal" />
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:minWidth="25px"
-                    android:minHeight="25px"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/linearLayout2"
-                    android:gravity="center_horizontal">
-                    <TextView
-                        android:text="Wynik:"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:id="@+id/textView1"
-                        android:textStyle="bold"
-                        android:layout_marginRight="5dp" />
-                    <TextView
-                        android:text="Text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:id="@+id/wynikGlosowania" />
-                </LinearLayout>
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/wynikGlosowania" />
             </LinearLayout>
-        </ScrollView>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <pagerslidingtabstrip.PagerSlidingTabStrip
+                    android:id="@+id/tabs"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dip" />
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/pager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tabs" />
+            </RelativeLayout>
+        </LinearLayout>
     </LinearLayout>
     <RelativeLayout
         android:minWidth="25px"

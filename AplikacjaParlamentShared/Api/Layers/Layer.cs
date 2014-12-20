@@ -44,7 +44,7 @@ namespace AplikacjaParlamentShared.Api
 			hasValue = (obj as JObject).TryGetValue (name, out lay);
 			if (!hasValue) 
 				throw new NoLayersJsonElementException ();
-			if(lay.GetType() == typeof(JValue) && (lay as JValue).Value == null ) // FIXME : Test na obecność null
+			if(lay.GetType() == typeof(JValue) && (lay as JValue).Value == null )
 				throw new NoLayersJsonElementException ();
 			return lay;
 		}
