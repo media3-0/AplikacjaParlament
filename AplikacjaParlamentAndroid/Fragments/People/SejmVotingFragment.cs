@@ -94,6 +94,8 @@ namespace AplikacjaParlamentAndroid
 		public override void OnStart ()
 		{
 			base.OnStart ();
+			if (fragmentsTabs.Count > 0)
+				return;
 			if (viewSwitcher.CurrentView != progressLayout){
 				viewSwitcher.ShowNext(); 
 			}
@@ -121,10 +123,17 @@ namespace AplikacjaParlamentAndroid
 
 				tvWynik.Text = wynik;
 
-				fragmentsTabs.Add ("Za", new SenatListFragment ());
-				fragmentsTabs.Add ("Przeciw", new SenatListFragment ());
-				fragmentsTabs.Add ("Wstrzymał się", new SenatListFragment ());
-				fragmentsTabs.Add ("Nieobecny", new SenatListFragment ());
+				var glosy = glosowanie.Glosy;
+				var glosyZa = glosy.Where(item => item.Glos == 1).ToList();
+				var glosyPrzeciw = glosy.Where(item => item.Glos == 2).ToList();
+				var glosyWstrzymalSie = glosy.Where(item => item.Glos == 3).ToList();
+				var glosyNieobecny = glosy.Where(item => item.Glos == 4).ToList();
+
+
+				fragmentsTabs.Add ("Za", new VotingPeopleListFragment (glosyZa));
+				fragmentsTabs.Add ("Przeciw", new VotingPeopleListFragment (glosyPrzeciw));
+				fragmentsTabs.Add ("Wstrzymał się", new VotingPeopleListFragment (glosyWstrzymalSie));
+				fragmentsTabs.Add ("Nieobecny", new VotingPeopleListFragment (glosyNieobecny));
 
 				var tabs = Activity.FindViewById<PagerSlidingTabStrip.PagerSlidingTabStrip> (Resource.Id.tabs);
 				var pager = Activity.FindViewById<ViewPager> (Resource.Id.pager);

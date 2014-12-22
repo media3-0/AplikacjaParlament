@@ -104,6 +104,8 @@
     <Compile Include="Fragments\BaseListFragment.cs" />
     <Compile Include="Adapters\People\VoteListAdapter.cs" />
     <Compile Include="Fragments\People\SejmVotingFragment.cs" />
+    <Compile Include="Fragments\People\VotingPeopleListFragment.cs" />
+    <Compile Include="Adapters\People\VotingPeopleListAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
