@@ -2,4 +2,6 @@
 <resources>
 	<string name="poslowie">Izby</string>
 	<string name="app_name">Aplikacja Parlament</string>
+	<string name="opened">Otwarte</string>
+	<string name="closed">Zamknięte</string>
 </resources>

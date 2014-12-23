@@ -5,16 +5,36 @@
     android:layout_height="fill_parent">
     <include
         layout="@layout/toolbar" />
-    <Button
-        android:id="@+id/myButton"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Izby"
-        android:layout_margin="10dp" />
-    <Button
-        android:id="@+id/voteButton"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Głosowania"
-        android:layout_margin="10dp" />
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/content_frame"
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+            <Button
+                android:id="@+id/myButton"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Izby"
+                android:layout_margin="10dp" />
+            <Button
+                android:id="@+id/voteButton"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Głosowania"
+                android:layout_margin="10dp" />
+        </LinearLayout>
+        <ListView
+            android:id="@+id/left_drawer"
+            android:layout_width="240dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:choiceMode="singleChoice"
+            android:divider="#B2B2B2"
+            android:dividerHeight="1dp"
+            android:background="#FFFFFF" />
+    </android.support.v4.widget.DrawerLayout>
 </LinearLayout>

@@ -33,6 +33,7 @@ using Android.Net;
 using Android.Support.V4.App;
 using AplikacjaParlamentShared.Repositories;
 using AplikacjaParlamentShared.Models;
+using Android.Support.V4.Widget;
 
 namespace AplikacjaParlamentAndroid
 {
@@ -46,6 +47,9 @@ namespace AplikacjaParlamentAndroid
 		[InjectView(Resource.Id.voteButton)]
 		Button voteButton;
 
+		Android.Support.V7.App.ActionBarDrawerToggle mDrawerToggle;
+		DrawerLayout mDrawerLayout;
+
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
@@ -57,6 +61,20 @@ namespace AplikacjaParlamentAndroid
             var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
 
             SetSupportActionBar(toolbar);
+
+
+			mDrawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
+			ListView mDrawerList = FindViewById<ListView>(Resource.Id.left_drawer);
+
+			//Set the adapter for the list view
+			mDrawerList.Adapter = new LeftDrawerAdapter (this);
+
+			mDrawerToggle = new Android.Support.V7.App.ActionBarDrawerToggle (this, mDrawerLayout, toolbar, Resource.String.opened, Resource.String.closed);
+
+			mDrawerLayout.SetDrawerListener (mDrawerToggle);
+
+			SupportActionBar.SetDisplayHomeAsUpEnabled (true);
+			SupportActionBar.SetHomeButtonEnabled(true);
 			
 			button.Click += delegate {
 				StartActivity(typeof(PeopleActivity));
@@ -88,7 +106,18 @@ namespace AplikacjaParlamentAndroid
 				} );
 				alert.Show ();
 			}
+		}
 
+		public override void OnConfigurationChanged (Android.Content.Res.Configuration newConfig)
+		{
+			base.OnConfigurationChanged (newConfig);
+			mDrawerToggle.OnConfigurationChanged (newConfig);
+		}
+
+		protected override void OnPostCreate (Bundle savedInstanceState)
+		{
+			base.OnPostCreate (savedInstanceState);
+			mDrawerToggle.SyncState ();
 		}
 	}
 }
