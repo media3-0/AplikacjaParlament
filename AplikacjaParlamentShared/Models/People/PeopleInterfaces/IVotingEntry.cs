@@ -26,6 +26,7 @@ namespace AplikacjaParlamentShared.Models
 	{
 		int Glos { set; get; }
 		int Glosujacy { set; get; }
+		int MowcaId { set; get; }
 		string GlosujacyImieNazwisko { set; get; }
 	}
 }

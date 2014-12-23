@@ -78,7 +78,7 @@ namespace AplikacjaParlamentAndroid.Adapters
 			var posel = list[position];
 			wrapper.ImieNazwisko.Text = String.Concat(posel.GlosujacyImieNazwisko);
 			wrapper.Partia.Text = "";
-			imageLoader.DisplayImage(String.Concat("http://resources.sejmometr.pl/mowcy/a/0/", posel.Glosujacy, ".jpg"), wrapper.Miniature, -1);
+			imageLoader.DisplayImage(String.Concat("http://resources.sejmometr.pl/mowcy/a/1/", posel.MowcaId, ".jpg"), wrapper.Miniature, -1);
 
 			return view;
 		}

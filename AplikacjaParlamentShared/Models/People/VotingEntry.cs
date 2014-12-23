@@ -30,6 +30,7 @@ namespace AplikacjaParlamentShared.Models
 
 		public int Glos { set; get; }
 		public int Glosujacy { set; get; }
+		public int MowcaId { set; get; }
 		public string GlosujacyImieNazwisko { set; get; }
 	}
 }

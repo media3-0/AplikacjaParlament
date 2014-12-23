@@ -42,6 +42,7 @@ namespace AplikacjaParlamentShared.Api
 				votingEntry.Glos = item.Value<JObject> ("glosy").Value<int> ("glos_id");
 				votingEntry.Glosujacy = item.Value<JObject> ("poslowie").Value<int> ("id");
 				votingEntry.GlosujacyImieNazwisko = item.Value<JObject> ("poslowie").Value<string> ("nazwa");
+				votingEntry.MowcaId = item.Value<JObject> ("mowcy").Value<int> ("mowca_id");
 				voting.Glosy.Add (votingEntry);
 			}
 		}
