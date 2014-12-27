@@ -6,6 +6,7 @@
 
   <item name="colorPrimary">#D9320F</item>
   <item name="colorPrimaryDark">#D9320F</item>
+  <item name="navigationBarColor">#D9320F</item>
 
 </style>
 </resources>
