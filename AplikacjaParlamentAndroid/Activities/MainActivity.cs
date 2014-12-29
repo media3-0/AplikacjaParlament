@@ -43,8 +43,14 @@ namespace AplikacjaParlamentAndroid
 	public class MainActivity : Android.Support.V7.App.ActionBarActivity
 	{
 
-		[InjectView(Resource.Id.content_frame)]
+		[InjectView(Resource.Id.list)]
 		private ListView newestList;
+
+		[InjectView(Resource.Id.content_frame)]
+		private ViewSwitcher viewSwitcher;
+
+		[InjectView(Resource.Id.progressLayout)]
+		private RelativeLayout progressLayout;
 
 		Android.Support.V7.App.ActionBarDrawerToggle mDrawerToggle;
 		DrawerLayout mDrawerLayout;
@@ -91,6 +97,9 @@ namespace AplikacjaParlamentAndroid
 				});
 				alert.Show ();
 			} else {
+				if (viewSwitcher.CurrentView != progressLayout){
+					viewSwitcher.ShowNext(); 
+				}
 				GetData ();
 			}
 		}
@@ -112,6 +121,10 @@ namespace AplikacjaParlamentAndroid
 			try {
 				var list = await repository.GetProjektyAktowPrawnychList();
 				newestList.Adapter = new ProjektyAktowPrawnychAdapter(this, list);
+
+				if (viewSwitcher.CurrentView != newestList){
+					viewSwitcher.ShowPrevious(); 
+				}
 			} catch (ApiRequestException ex){
 				this.ShowErrorDialog (ex.Message);
 			}

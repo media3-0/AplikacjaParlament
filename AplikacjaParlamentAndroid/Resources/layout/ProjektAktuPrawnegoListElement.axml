@@ -42,7 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             <aplikacjaparlamentandroid.DuruSansTextView
-                android:id="@+id/tvAutorzy"
+                android:id="@+id/tvStatus"
                 android:text="Small Text"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#ffffff"
@@ -73,7 +73,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
                 <aplikacjaparlamentandroid.DuruSansTextView
-                    android:text="Status projektu:"
+                    android:text="Autorzy:"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textSize="8dp"
                     android:textStyle="bold"
@@ -81,7 +81,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
                 <aplikacjaparlamentandroid.DuruSansTextView
-                    android:id="@+id/tvStatus"
+                    android:id="@+id/tvAutorzy"
                     android:text=""
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="#ffffff"
