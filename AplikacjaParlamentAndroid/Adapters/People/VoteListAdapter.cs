@@ -40,7 +40,7 @@ namespace AplikacjaParlamentAndroid.Adapters
 		{
 			public TextView tvData { get; set; }
 			public TextView tvTytul { get; set; }
-			public TextView tvGlosId { get; set; }
+			public ImageView ivVote { get; set; }
 		}
 
 		private Activity context;
@@ -62,7 +62,7 @@ namespace AplikacjaParlamentAndroid.Adapters
 				wrapper = new Wrapper();
 				wrapper.tvData = view.FindViewById<TextView>(Resource.Id.tvData);
 				wrapper.tvTytul = view.FindViewById<TextView>(Resource.Id.tvTytul);
-				wrapper.tvGlosId = view.FindViewById<TextView> (Resource.Id.tvGlosId);
+				wrapper.ivVote = view.FindViewById<ImageView> (Resource.Id.ivVote);
 				view.Tag = wrapper;
 			}
 			else
@@ -74,23 +74,8 @@ namespace AplikacjaParlamentAndroid.Adapters
 			wrapper.tvData.Text = vote.Data.Split (' ')[0].ToString ();
 			wrapper.tvTytul.Text = vote.Tytul;
 
-			string glos = "";
-
-			switch (vote.GlosId) {
-			case 1:
-				glos = "Za";
-				break;
-			case 2: 
-				glos = "Przeciw";
-				break;
-			case 3: 
-				glos = "Wstrzymał się";
-				break;
-			case 4: 
-				glos = "Nieobecny";
-				break;
-			}
-			wrapper.tvGlosId.Text = glos;
+			if (vote.GlosId == 1)
+				wrapper.ivVote.SetImageResource (Resource.Drawable.g_tak);
 
 			return view;
 		}

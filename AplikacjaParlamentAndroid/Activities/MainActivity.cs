@@ -37,7 +37,7 @@ using Android.Support.V4.Widget;
 
 namespace AplikacjaParlamentAndroid
 {
-	[Activity (Label = "Aplikacja Parlament", MainLauncher = true)]
+	[Activity (Label = "Parlament", MainLauncher = true)]
 	public class MainActivity : Android.Support.V7.App.ActionBarActivity
 	{
 
@@ -64,9 +64,8 @@ namespace AplikacjaParlamentAndroid
 
 
 			mDrawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
-			ListView mDrawerList = FindViewById<ListView>(Resource.Id.left_drawer);
 
-			//Set the adapter for the list view
+			ListView mDrawerList = FindViewById<ListView>(Resource.Id.left_drawer);
 			mDrawerList.Adapter = new LeftDrawerAdapter (this);
 
 			mDrawerToggle = new Android.Support.V7.App.ActionBarDrawerToggle (this, mDrawerLayout, toolbar, Resource.String.opened, Resource.String.closed);

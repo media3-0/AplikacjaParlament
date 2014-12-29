@@ -51,6 +51,9 @@ namespace AplikacjaParlamentAndroid
 
 			base.OnCreate (bundle);
 
+			ListView mDrawerList = FindViewById<ListView>(Resource.Id.left_drawer);
+			mDrawerList.Adapter = new LeftDrawerAdapter (this);
+
 			var tabs = FindViewById<PagerSlidingTabStrip.PagerSlidingTabStrip> (Resource.Id.tabs);
 			var pager = FindViewById<ViewPager> (Resource.Id.pager);
 

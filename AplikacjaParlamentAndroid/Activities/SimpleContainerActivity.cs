@@ -46,6 +46,9 @@ namespace AplikacjaParlamentAndroid
             SetContentView(Resource.Layout.SimpleActivityLayout);
 			base.OnCreate (bundle);
 
+			ListView mDrawerList = FindViewById<ListView>(Resource.Id.left_drawer);
+			mDrawerList.Adapter = new LeftDrawerAdapter (this);
+
 			int type = Intent.GetIntExtra ("type", 0);
 
 			if (type == 0) {

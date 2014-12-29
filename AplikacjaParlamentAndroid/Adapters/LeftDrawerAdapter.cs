@@ -57,27 +57,29 @@ namespace AplikacjaParlamentAndroid
 		{
 			View view = convertView; // re-use an existing view, if one is available
 			if (view == null) // otherwise create a new one
-				view = context.LayoutInflater.Inflate(Android.Resource.Layout.SimpleListItem1, null);
-			view.FindViewById<TextView>(Android.Resource.Id.Text1).Text = items[position];
+				view = context.LayoutInflater.Inflate(Resource.Layout.DrawerListItem, null);
+			view.FindViewById<TextView>(Resource.Id.title).Text = items[position];
 
-			view.Click += delegate {
-				System.Type classType = null;
+			System.Type classType = null;
 
-				switch(position){
-				case 0:
-					classType = typeof(MainActivity);
-					break;
-				case 1:
-					classType = typeof(PeopleActivity);
-					break;
-				};
-
-				if(!classType.Equals(context.GetType())){
-					var activity = new Intent (context, classType);
-					context.StartActivity (activity);
-				}
+			switch(position){
+			case 0:
+				classType = typeof(MainActivity);
+				break;
+			case 1:
+				classType = typeof(PeopleActivity);
+				break;
 			};
 
+			if (classType.Equals (context.GetType ())) {
+				view.Enabled = false;
+				view.SetBackgroundColor(Android.Graphics.Color.ParseColor("#9E0E12"));
+			} else {
+				view.Click += delegate {
+					var activity = new Intent (context, classType);
+					context.StartActivity (activity);
+				};
+			}
 			return view;
 		}
 	}

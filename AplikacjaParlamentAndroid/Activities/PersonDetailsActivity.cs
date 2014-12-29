@@ -62,8 +62,9 @@ namespace AplikacjaParlamentAndroid
 		{
             SetContentView(Resource.Layout.PersonDetailsLayout);
             base.OnCreate(bundle);	
-            
-					
+             
+			ListView mDrawerList = FindViewById<ListView>(Resource.Id.left_drawer);
+			mDrawerList.Adapter = new LeftDrawerAdapter (this);		
 
 			PersonType = (PersonTypeEnumeration)Intent.GetIntExtra ("persontype", (int)PersonTypeEnumeration.Posel);
 			PersonId = Intent.GetIntExtra ("id", -1);

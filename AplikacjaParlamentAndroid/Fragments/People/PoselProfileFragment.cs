@@ -38,13 +38,44 @@ using AplikacjaParlamentShared.Repositories;
 
 using Com.Lilarcor.Cheeseknife;
 using System.Net.Http;
+using com.refractored.monodroidtoolkit.imageloader;
 
 namespace AplikacjaParlamentAndroid
 {
 	public class PoselProfileFragment : BaseFragment
 	{
-		[InjectView(Resource.Id.textView1)]
-		private TextView textView;
+		[InjectView(Resource.Id.tvImie)]
+		private TextView tvImie;
+
+		[InjectView(Resource.Id.tvNazwisko)]
+		private TextView tvNazwisko;
+
+		[InjectView(Resource.Id.tvDataZawod)]
+		private TextView tvDataZawod;
+
+		[InjectView(Resource.Id.tvPartiaOkreg)]
+		private TextView tvPartiaOkreg;
+
+		[InjectView(Resource.Id.tvTelefon)]
+		private TextView tvTelefon;
+
+		[InjectView(Resource.Id.tvEmail)]
+		private TextView tvEmail;
+
+		[InjectView(Resource.Id.tvUstawy)]
+		private TextView tvUstawy;
+
+		[InjectView(Resource.Id.tvUchwaly)]
+		private TextView tvUchwaly;
+
+		[InjectView(Resource.Id.tvFrekwencja)]
+		private TextView tvFrekwencja;
+
+		[InjectView(Resource.Id.tvZamieszkanie)]
+		private TextView tvZamieszkanie;
+
+		[InjectView(Resource.Id.miniature)]
+		private ImageView ivMiniature;
 
 		[InjectView(Resource.Id.progressLayout)]
 		private RelativeLayout progressLayout;
@@ -59,6 +90,7 @@ namespace AplikacjaParlamentAndroid
 
 		private IPosel posel = null;
 		private int id;
+		private ImageLoader imageLoader;
 
 		public override void OnCreate (Bundle savedInstanceState)
 		{
@@ -66,6 +98,7 @@ namespace AplikacjaParlamentAndroid
 
 			personDetailsActivity = Activity as PersonDetailsActivity;
 			id = personDetailsActivity.PersonId;
+
 		}
 
 		public override View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -78,6 +111,8 @@ namespace AplikacjaParlamentAndroid
 		public override void OnStart ()
 		{
 			base.OnStart ();
+			imageLoader = new ImageLoader (Activity, 300, 300);
+
 			if (viewSwitcher.CurrentView != progressLayout){
 				viewSwitcher.ShowNext(); 
 			}
@@ -89,7 +124,27 @@ namespace AplikacjaParlamentAndroid
 			IPeopleRepository repository = PeopleRepository.Instance;
 			try {
 				posel = await repository.GetPosel(id);
-				textView.Text = posel.ToString ();
+
+				tvImie.Text = posel.Imie;
+				tvNazwisko.Text = posel.Nazwisko;
+				tvDataZawod.Text = String.Concat(posel.DataUrodzenia, ". ", posel.Zawod);
+				tvPartiaOkreg.Text = String.Concat(posel.SejmKlubyNazwa, ". Okręg nr: ", posel.OkregWyborczyNumer);
+				tvUstawy.Text = posel.LiczbaProjektowUstaw.ToString();
+				tvUchwaly.Text = posel.LiczbaProjektowUchwal.ToString();
+				tvFrekwencja.Text = String.Concat(posel.Frekwencja.ToString(), "%");
+				tvZamieszkanie.Text = posel.MiejsceZamieszkania;
+				imageLoader.DisplayImage(String.Concat("http://resources.sejmometr.pl/mowcy/a/0/", posel.MowcaId, ".jpg"), ivMiniature, -1);
+
+				BiuroPoselskie biuroGlowne = posel.Biura.Where(item => item.Podstawowe.Equals("1")).FirstOrDefault();
+
+				if(biuroGlowne != null){
+					String[] phones = biuroGlowne.Telefon.Split('f');
+					String[] phone1 = phones[0].Split(' ');
+					String phone = String.Concat(phone1[1], " ", phone1[2]);
+
+					tvTelefon.Text = phone;
+					tvEmail.Text = biuroGlowne.Email;
+				}
 
 				if (viewSwitcher.CurrentView != contentLayout){
 					viewSwitcher.ShowPrevious(); 
@@ -98,6 +153,12 @@ namespace AplikacjaParlamentAndroid
 			} catch (ApiRequestException ex){
 				personDetailsActivity.ShowErrorDialog (ex.Message);
 			}
+		}
+
+		public override void OnStop ()
+		{
+			base.OnStop ();
+			imageLoader.ClearCache ();
 		}
 	}
 }

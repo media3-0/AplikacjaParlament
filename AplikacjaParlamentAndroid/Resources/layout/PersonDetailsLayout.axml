@@ -1,22 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:orientation="vertical"
+    android:background="@drawable/bg"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
     <include
         layout="@layout/toolbar" />
-    <pagerslidingtabstrip.PagerSlidingTabStrip
-        android:id="@+id/tabs"
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
-        android:layout_height="48dip"
-        android:layout_below="@+id/toolbar"
-        app:shouldExpand="true" />
-    <android.support.v4.view.ViewPager
-        android:id="@+id/pager"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/colors"
-        android:layout_below="@+id/tabs"
-        tools:context=".PersonDetailsActivity" />
-</RelativeLayout>
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <pagerslidingtabstrip.PagerSlidingTabStrip
+                android:id="@+id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="38dip"
+                android:textColor="#FFFFFF"
+                app:shouldExpand="true"
+                app:indicatorColor="#FFFFFF"
+                app:indicatorHeight="1dp" />
+            <android.support.v4.view.ViewPager
+                android:id="@+id/pager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/colors"
+                android:layout_below="@+id/tabs" />
+        </RelativeLayout>
+        <ListView
+            android:id="@+id/left_drawer"
+            android:layout_width="240dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:choiceMode="singleChoice"
+            android:divider="#B2B2B2"
+            android:dividerHeight="1dp"
+            android:background="#790205" />
+    </android.support.v4.widget.DrawerLayout>
+</LinearLayout>

@@ -65,6 +65,9 @@ namespace AplikacjaParlamentShared.Models
 		[JsonProperty("poslowie.zawod")]
 		public string Zawod { get; set; }
 
+		[JsonProperty("poslowie.miejsce_zamieszkania")]
+		public string MiejsceZamieszkania { get; set; }
+
 		public List<BiuroPoselskie> Biura { get; set; }
 		
 		public override string ToString ()

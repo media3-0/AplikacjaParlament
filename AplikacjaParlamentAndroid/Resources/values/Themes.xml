@@ -1,12 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <resources>
-<style name="Theme.MyTheme" parent="Theme.AppCompat.Light.NoActionBar">
-  <item name="android:windowNoTitle">true</item>
-  <item name="android:windowActionBar">false</item>
+	<style name="Theme.MyTheme" parent="Theme.AppCompat.NoActionBar">
+	  <item name="android:windowNoTitle">true</item>
+	  <item name="android:windowActionBar">false</item>
 
-  <item name="colorPrimary">#D9320F</item>
-  <item name="colorPrimaryDark">#D9320F</item>
-  <item name="navigationBarColor">#D9320F</item>
-
-</style>
+	  <item name="colorPrimary">#790205</item>
+	  <item name="colorPrimaryDark">#790205</item>
+	  <item name="android:textColorPrimary">#FFFFFF</item>
+	</style>
 </resources>
