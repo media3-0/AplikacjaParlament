@@ -1,10 +1,10 @@
 ﻿//
-//  IPeopleRepository.cs
+//  IContext.cs
 //
 //  Author:
 //       Jakub Syty <j.syty@media30.pl>
 //
-//  Copyright (c) 2014 
+//  Copyright (c) 2014 Fundacja Media 3.0
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -19,27 +19,14 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
-using System.Threading.Tasks;
-using AplikacjaParlamentShared.Models;
-using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 
-namespace AplikacjaParlamentShared.Repositories
+namespace AplikacjaParlamentShared.Api
 {
-	/**
-	 * Interfejs dla repozytorium zarządzającym osobami
-	 */
-	public interface IPeopleRepository
+	public interface IContext
 	{
-		Task<IPosel> GetPosel(int id);
-		Task<ISpeech> GetPoselSpeech(int id);
-		Task<IInterpellation> GetPoselInterpellation(int id);
-		Task<IVoting> GetSejmVoting(int id);
-
-		Task<List<Posel>> GetPoselList();
-		Task<List<Speech>> GetPoselSpeeches(int id);
-		Task<List<Interpellation>> GetPoselInterpellations (int id);
-		Task<List<Vote>> GetPoselVotes (int id);
-		Task<List<PoselNewest>> GetPoselNewest (int id);
+		Object ParseJObject();
+		void AssignContent(JObject data);
 	}
 }
 

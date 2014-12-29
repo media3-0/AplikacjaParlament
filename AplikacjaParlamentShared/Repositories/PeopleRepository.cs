@@ -265,6 +265,28 @@ namespace AplikacjaParlamentShared.Repositories
 				throw new ApiRequestException (String.Concat("Problem z dostępem do API:\n", ex.Message));
 			}
 		}
+
+		async public Task<List<PoselNewest>> GetPoselNewest (int id)
+		{
+			try {
+				IJsonArrayRequestHandler<PoselNewest> handler = new JsonArrayRequestHandler<PoselNewest> (ConnectionProvider.Instance);
+
+				var request = new RequestParamsHandler (String.Concat ("http://mojepanstwo.pl:4444/dane/poslowie/" + id + "/feed.json"));
+				request.Limit = 40;
+				request.Contexts.Add(new PoslowieNowosciContext());
+
+				List<PoselNewest> p = await handler.GetJsonArrayAsync (request);
+				return p;
+
+			} catch (Java.IO.IOException ex){
+				Android.Util.Log.Error("Java.IO.IOException on GetJsonArrayAsync", ex.ToString());
+				throw new ApiRequestException (String.Concat("Problem z połączeniem:\n", ex.Message));
+
+			} catch (Exception ex) {
+				Android.Util.Log.Error("GetJsonArrayAsync", ex.ToString());
+				throw new ApiRequestException (String.Concat("Problem z dostępem do API:\n", ex.Message));
+			}
+		}
 	}
 }
 

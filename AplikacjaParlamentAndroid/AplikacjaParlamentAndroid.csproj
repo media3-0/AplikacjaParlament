@@ -113,6 +113,8 @@
     <Compile Include="Fragments\AboutFragment.cs" />
     <Compile Include="Helpers\FileCache.cs" />
     <Compile Include="Helpers\ImagesHelper.cs" />
+    <Compile Include="Fragments\People\PersonNewestFragment.cs" />
+    <Compile Include="Adapters\People\PoselNewestAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -153,6 +155,7 @@
     <AndroidResource Include="Resources\drawable\logo_sunlight.png" />
     <AndroidResource Include="Resources\drawable\logo_xamarin.png" />
     <AndroidResource Include="Resources\drawable\logo_ministerstwo.png" />
+    <AndroidResource Include="Resources\layout\PoselNewestListElement.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml" />

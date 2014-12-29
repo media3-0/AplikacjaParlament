@@ -27,7 +27,7 @@ using System.Collections.Generic;
 
 namespace AplikacjaParlamentShared.Api
 {
-	public class JsonArrayRequestHandler<T> : IJsonArrayRequestHandler<T>
+	public class JsonArrayRequestHandler<T> : IJsonArrayRequestHandler<T> where T : class
 	{
 		private IConnectionProvider ConnectionProvider; 
 
@@ -36,7 +36,7 @@ namespace AplikacjaParlamentShared.Api
 			this.ConnectionProvider = connectionProvider;
 		}
 
-		public async Task<List<T>> GetJsonArrayAsync (RequestParamsHandler request)
+		public async Task<List<T>> GetJsonArrayAsync (RequestParamsHandler request) 
 		{
 			var response = await ConnectionProvider.GetHttpClient().GetAsync(request.GetRequest ());
 
@@ -54,7 +54,17 @@ namespace AplikacjaParlamentShared.Api
 
 			List<T> list = new List<T> (dataobjects.Count);
 			foreach (var item in dataobjects) {
-				list.Add(DataObjectParser.ParseJObjectToType<T>(item as JObject));
+				T temp = default(T);
+
+				if (request.Contexts.Count > 0) {
+					foreach (IContext context in request.Contexts) {
+						context.AssignContent (item as JObject);
+						temp = (context.ParseJObject () as T);
+					}
+				} else {
+					temp = DataObjectParser.ParseJObjectToType<T> (item as JObject);
+				}
+				list.Add(temp);
 			}
 			return list;
 		}

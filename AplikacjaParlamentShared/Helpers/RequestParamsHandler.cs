@@ -31,10 +31,12 @@ namespace AplikacjaParlamentShared.Api
 		private bool firstParam = true;
 		private string order = null;
 		public List<ILayer> Layers;
+		public List<IContext> Contexts;
 
 		public RequestParamsHandler (string uri)
 		{
 			Layers = new List<ILayer> ();
+			Contexts = new List<IContext> ();
 			requestString = new StringBuilder ();
 			requestString.Append (uri);
 			Limit = 0;

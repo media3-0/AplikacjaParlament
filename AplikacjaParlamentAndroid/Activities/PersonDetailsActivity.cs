@@ -78,6 +78,7 @@ namespace AplikacjaParlamentAndroid
 			case PersonTypeEnumeration.Posel:
 				{
 					fragmentsTabs.Add ("Profil", new PoselProfileFragment ());
+					fragmentsTabs.Add ("Aktywność", new PersonNewestFragment ());
 					fragmentsTabs.Add ("Głosowania", new PersonVotesFragment ());
 					fragmentsTabs.Add ("Wystąpienia", new PersonSpeechesFragment ());
 					fragmentsTabs.Add ("Interpelacje", new PersonInterpellationsFragment ());
