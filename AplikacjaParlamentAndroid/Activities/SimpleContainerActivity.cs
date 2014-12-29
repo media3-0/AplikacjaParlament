@@ -41,6 +41,8 @@ namespace AplikacjaParlamentAndroid
 		public const int VIEW_INTERPELLATION = 2;
 		public const int VIEW_SEJM_VOTING = 3;
 
+		public const int VIEW_ABOUT = 1000;
+
 		protected override void OnCreate (Bundle bundle)
 		{
             SetContentView(Resource.Layout.SimpleActivityLayout);
@@ -76,6 +78,12 @@ namespace AplikacjaParlamentAndroid
 			case VIEW_SEJM_VOTING:
 				{
 					fragmentToView = new SejmVotingFragment ();
+					break;
+				}
+
+			case VIEW_ABOUT:
+				{
+					fragmentToView = new AboutFragment ();
 					break;
 				}
 		}

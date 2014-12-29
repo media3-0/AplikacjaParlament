@@ -4,4 +4,21 @@
 	<string name="app_name">Aplikacja Parlament</string>
 	<string name="opened">Otwarte</string>
 	<string name="closed">Zamknięte</string>
+	<string name="about">Parlament to bezpłatna aplikacja pozwalająca na szybkie zdobycie informacji z Sejmu i Senatu, dzięki czemu możemy być na bieżąco ze wszystkim co się dzieje na ul. Wiejskiej. Narzędzie jest obecnie w wersji BETA, a w najbliższym czasie dodawane będą kolejne dane i funkcje.
+Obecnie w aplikacji można znaleźć:\n
+- Profil posła (m.in. dane o frekwencji, możliwość bezpośredniego kontaktu z biurem poselskim)\n
+- Sprawdzić najnowsze projekty aktów prawnych\n
+- Głosowania nad aktami prawnymi\n
+- Wystąpienia i interpelacje posłów\n
+- Ostatnią aktywność posła\n\n
+
+Aktualnie pracujemy nad:\n
+- Powiadomienia na słowa kluczowe w procesie legislacyjnym\n
+- Dane z Senatu\n\n
+
+Aplikacja tworzona jest jako projekt open source: https://github.com/media3-0/
+Fundacja Media 3.0\n\n
+
+Partnerzy:
+	</string>
 </resources>

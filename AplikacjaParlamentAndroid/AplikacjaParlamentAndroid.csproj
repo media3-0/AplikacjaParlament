@@ -110,6 +110,7 @@
     <Compile Include="Helpers\DuruSansTextView.cs" />
     <Compile Include="Helpers\RoboSansTextView.cs" />
     <Compile Include="Adapters\Bills\ProjektyAktowPrawnychAdapter.cs" />
+    <Compile Include="Fragments\AboutFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -145,6 +146,11 @@
     <AndroidResource Include="Resources\drawable\r_sms.png" />
     <AndroidResource Include="Resources\drawable\sms.png" />
     <AndroidResource Include="Resources\layout\ProjektAktuPrawnegoListElement.axml" />
+    <AndroidResource Include="Resources\layout\AboutApplicationFragmentLayout.axml" />
+    <AndroidResource Include="Resources\drawable\logo_epanstwo.png" />
+    <AndroidResource Include="Resources\drawable\logo_sunlight.png" />
+    <AndroidResource Include="Resources\drawable\logo_xamarin.png" />
+    <AndroidResource Include="Resources\drawable\logo_ministerstwo.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml" />

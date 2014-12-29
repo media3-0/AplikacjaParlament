@@ -32,7 +32,8 @@ namespace AplikacjaParlamentAndroid
 		private Activity context;
 		private String[] items = new String[]{
 			"Ekran główny",
-			"Izby"
+			"Izby",
+			"O aplikacji"
 		};
 
 		public LeftDrawerAdapter (Activity context) : base()
@@ -69,6 +70,9 @@ namespace AplikacjaParlamentAndroid
 			case 1:
 				classType = typeof(PeopleActivity);
 				break;
+			case 2:
+				classType = typeof(SimpleContainerActivity);
+				break;
 			};
 
 			if (classType.Equals (context.GetType ())) {
@@ -77,6 +81,9 @@ namespace AplikacjaParlamentAndroid
 			} else {
 				view.Click += delegate {
 					var activity = new Intent (context, classType);
+					if(position == 2){
+						activity.PutExtra ("type", SimpleContainerActivity.VIEW_ABOUT);
+					}
 					context.StartActivity (activity);
 				};
 			}
