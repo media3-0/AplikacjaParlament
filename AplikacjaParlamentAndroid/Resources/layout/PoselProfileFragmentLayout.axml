@@ -29,7 +29,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="26dp"
                     android:src="@android:drawable/ic_menu_gallery" />
-                <aplikacjaparlamentandroid.DuruSansaplikacjaparlamentandroid.DuruSansTextView
+                <aplikacjaparlamentandroid.DuruSansTextView
                     android:id="@+id/tvPartiaOkreg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -52,7 +52,7 @@
                         android:layout_height="wrap_content"
                         android:scaleType="fitCenter"
                         android:src="@drawable/mobile" />
-                    <aplikacjaparlamentandroid.DuruSansaplikacjaparlamentandroid.DuruSansTextView
+                    <aplikacjaparlamentandroid.DuruSansTextView
                         android:id="@+id/tvTelefon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:textColor="#E68284"
                         android:textSize="14dp" />
-                    <aplikacjaparlamentandroid.DuruSansaplikacjaparlamentandroid.DuruSansTextView
+                    <aplikacjaparlamentandroid.DuruSansTextView
                         android:id="@+id/textView5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -81,7 +81,7 @@
                         android:layout_marginLeft="3dp"
                         android:scaleType="fitCenter"
                         android:src="@drawable/sms" />
-                    <aplikacjaparlamentandroid.DuruSansaplikacjaparlamentandroid.DuruSansTextView
+                    <aplikacjaparlamentandroid.DuruSansTextView
                         android:id="@+id/tvEmail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -111,7 +111,7 @@
                             android:layout_centerHorizontal="true"
                             android:layout_centerVertical="true"
                             android:src="@drawable/p_white_circle" />
-                        <aplikacjaparlamentandroid.DuruSansaplikacjaparlamentandroid.DuruSansTextView
+                        <aplikacjaparlamentandroid.DuruSansTextView
                             android:id="@+id/tvUstawy"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"

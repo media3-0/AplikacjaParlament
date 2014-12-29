@@ -109,6 +109,7 @@
     <Compile Include="Adapters\LeftDrawerAdapter.cs" />
     <Compile Include="Helpers\DuruSansTextView.cs" />
     <Compile Include="Helpers\RoboSansTextView.cs" />
+    <Compile Include="Adapters\Bills\ProjektyAktowPrawnychAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -143,6 +144,7 @@
     <AndroidResource Include="Resources\drawable\r_mobile.png" />
     <AndroidResource Include="Resources\drawable\r_sms.png" />
     <AndroidResource Include="Resources\drawable\sms.png" />
+    <AndroidResource Include="Resources\layout\ProjektAktuPrawnegoListElement.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml" />
@@ -183,6 +185,7 @@
     <Folder Include="Resources\drawable-mdpi\" />
     <Folder Include="Resources\drawable-xhdpi\" />
     <Folder Include="Resources\drawable-xxhdpi\" />
+    <Folder Include="Adapters\Bills\" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>

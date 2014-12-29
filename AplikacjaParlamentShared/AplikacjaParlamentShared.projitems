@@ -49,6 +49,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\People\VotingEntry.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\People\Voting.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\People\BiuroPoselskie.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Bills\BillsInterfaces\IProjektAktuPrawnego.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Bills\ProjektAktuPrawnego.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Repositories\IBillsRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Repositories\BillsRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Repositories\RepositoriesContants.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Models\People\PeopleInterfaces\" />
@@ -57,5 +62,7 @@
     <Folder Include="$(MSBuildThisFileDirectory)Exceptions\" />
     <Folder Include="$(MSBuildThisFileDirectory)Exceptions\ApiExceptions\" />
     <Folder Include="$(MSBuildThisFileDirectory)Api\Layers\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Models\Bills\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Models\Bills\BillsInterfaces\" />
   </ItemGroup>
 </Project>

@@ -34,6 +34,8 @@ using Android.Support.V4.App;
 using AplikacjaParlamentShared.Repositories;
 using AplikacjaParlamentShared.Models;
 using Android.Support.V4.Widget;
+using AplikacjaParlamentShared.Api;
+using AplikacjaParlamentAndroid.Adapters;
 
 namespace AplikacjaParlamentAndroid
 {
@@ -41,11 +43,8 @@ namespace AplikacjaParlamentAndroid
 	public class MainActivity : Android.Support.V7.App.ActionBarActivity
 	{
 
-		[InjectView(Resource.Id.myButton)]
-		Button button;
-
-		[InjectView(Resource.Id.voteButton)]
-		Button voteButton;
+		[InjectView(Resource.Id.content_frame)]
+		private ListView newestList;
 
 		Android.Support.V7.App.ActionBarDrawerToggle mDrawerToggle;
 		DrawerLayout mDrawerLayout;
@@ -74,18 +73,6 @@ namespace AplikacjaParlamentAndroid
 
 			SupportActionBar.SetDisplayHomeAsUpEnabled (true);
 			SupportActionBar.SetHomeButtonEnabled(true);
-			
-			button.Click += delegate {
-				StartActivity(typeof(PeopleActivity));
-			};
-
-			voteButton.Click += delegate {
-				//dla testów, wyświetla głosowanie o id 1
-				var votingActivity = new Intent (this, typeof(SimpleContainerActivity));
-				votingActivity.PutExtra ("type", SimpleContainerActivity.VIEW_SEJM_VOTING);
-				votingActivity.PutExtra ("id", 1);
-				StartActivity (votingActivity);
-			};
 		}
 
 		protected override void OnStart ()
@@ -93,8 +80,7 @@ namespace AplikacjaParlamentAndroid
 			base.OnStart ();
 			var connectivityManager = (ConnectivityManager)GetSystemService(ConnectivityService);
 			var activeConnection = connectivityManager.ActiveNetworkInfo;
-			if ((activeConnection == null)  || !activeConnection.IsConnected)
-			{
+			if ((activeConnection == null) || !activeConnection.IsConnected) {
 				// brak połączenia z siecią
 				AlertDialog.Builder alert = new AlertDialog.Builder (this);
 
@@ -102,8 +88,10 @@ namespace AplikacjaParlamentAndroid
 				alert.SetMessage ("Brak połączenia z internetem!");
 				alert.SetPositiveButton ("Ok", (senderAlert, args) => {
 					//
-				} );
+				});
 				alert.Show ();
+			} else {
+				GetData ();
 			}
 		}
 
@@ -117,6 +105,27 @@ namespace AplikacjaParlamentAndroid
 		{
 			base.OnPostCreate (savedInstanceState);
 			mDrawerToggle.SyncState ();
+		}
+
+		private async void GetData(){
+			IBillsRepository repository = BillsRepository.Instance;
+			try {
+				var list = await repository.GetProjektyAktowPrawnychList();
+				newestList.Adapter = new ProjektyAktowPrawnychAdapter(this, list);
+			} catch (ApiRequestException ex){
+				this.ShowErrorDialog (ex.Message);
+			}
+		}
+
+		public void ShowErrorDialog(string message){
+			AlertDialog.Builder alert = new AlertDialog.Builder (this);
+
+			alert.SetTitle ("Błąd:");
+			alert.SetMessage (message);
+			alert.SetPositiveButton ("Ok", (senderAlert, args) => {
+				//
+			} );
+			alert.Show ();
 		}
 	}
 }

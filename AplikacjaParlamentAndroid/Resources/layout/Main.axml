@@ -10,24 +10,10 @@
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <LinearLayout
+        <ListView
             android:id="@+id/content_frame"
-            android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
-            <Button
-                android:id="@+id/myButton"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Izby"
-                android:layout_margin="10dp" />
-            <Button
-                android:id="@+id/voteButton"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Głosowania"
-                android:layout_margin="10dp" />
-        </LinearLayout>
+            android:layout_height="fill_parent" />
         <ListView
             android:id="@+id/left_drawer"
             android:layout_width="240dp"
