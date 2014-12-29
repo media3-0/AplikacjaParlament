@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="60dp"
+    android:layout_height="80dp"
     android:orientation="horizontal"
-    android:gravity="center|left">
+    android:gravity="center|left"
+    android:minHeight="60dp">
     <ImageView
         android:id="@+id/miniature"
-        android:layout_margin="2dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@android:drawable/ic_menu_gallery" />
+        android:src="@android:drawable/ic_menu_gallery"
+        android:padding="3dp"
+        android:layout_margin="3dp" />
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"

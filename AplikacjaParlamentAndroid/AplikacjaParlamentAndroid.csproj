@@ -111,6 +111,8 @@
     <Compile Include="Helpers\RoboSansTextView.cs" />
     <Compile Include="Adapters\Bills\ProjektyAktowPrawnychAdapter.cs" />
     <Compile Include="Fragments\AboutFragment.cs" />
+    <Compile Include="Helpers\FileCache.cs" />
+    <Compile Include="Helpers\ImagesHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

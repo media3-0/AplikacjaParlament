@@ -45,7 +45,6 @@ namespace AplikacjaParlamentAndroid
 
 		private List<Posel> list;
 		private BaseActivity parentActivity;
-		private ImageLoader imageLoader;
 
 		public override void OnCreate (Bundle savedInstanceState)
 		{
@@ -56,7 +55,6 @@ namespace AplikacjaParlamentAndroid
 		public override void OnStart ()
 		{
 			base.OnStart ();
-			imageLoader = new ImageLoader (parentActivity, 110, 137);
 
 			if (list == null) {
 				this.loading ();
@@ -84,17 +82,11 @@ namespace AplikacjaParlamentAndroid
 			IPeopleRepository repository = PeopleRepository.Instance;
 			try {
 				list = await repository.GetPoselList();
-				ListAdapter = new SejmListAdapter(parentActivity, imageLoader, list);
+				ListAdapter = new SejmListAdapter(parentActivity, list);
 				this.loading (true);
 			} catch (ApiRequestException ex){
 				parentActivity.ShowErrorDialog (ex.Message);
 			}
-		}
-
-		public override void OnStop ()
-		{
-			base.OnStop ();
-			imageLoader.ClearCache ();
 		}
 	}
 }

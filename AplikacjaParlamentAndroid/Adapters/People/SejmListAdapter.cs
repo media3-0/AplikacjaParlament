@@ -47,12 +47,10 @@ namespace AplikacjaParlamentAndroid.Adapters
 		}
 
 		private Activity context;
-		private ImageLoader imageLoader;
 		private List<Posel> list; 
 
-		public SejmListAdapter(Activity context, ImageLoader imageLoader, List<Posel> list)
+		public SejmListAdapter(Activity context, List<Posel> list)
 		{
-			this.imageLoader = imageLoader;
 			this.context = context;
 			this.list = list;
 		}
@@ -80,9 +78,13 @@ namespace AplikacjaParlamentAndroid.Adapters
 			wrapper.ImieNazwisko.Text = String.Concat(posel.Imie, " ", posel.Nazwisko);
 			wrapper.Partia.Text = posel.SejmKlubyNazwa;
 			wrapper.Okreg.Text = posel.OkregWyborczyNumer.ToString();
-			imageLoader.DisplayImage(String.Concat("http://resources.sejmometr.pl/mowcy/a/0/", posel.MowcaId, ".jpg"), wrapper.Miniature, -1);
+			loadImage (wrapper, String.Concat ("http://resources.sejmometr.pl/mowcy/a/0/", posel.MowcaId, ".jpg"));
 
 			return view;
+		}
+
+		async private void loadImage(Wrapper wrapper, string url){
+			await ImagesHelper.SetImageFromUrlAsync(wrapper.Miniature,url, context);
 		}
 
 		public override Posel this[int position]

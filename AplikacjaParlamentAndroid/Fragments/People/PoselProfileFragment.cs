@@ -90,7 +90,6 @@ namespace AplikacjaParlamentAndroid
 
 		private IPosel posel = null;
 		private int id;
-		private ImageLoader imageLoader;
 
 		public override void OnCreate (Bundle savedInstanceState)
 		{
@@ -111,7 +110,6 @@ namespace AplikacjaParlamentAndroid
 		public override void OnStart ()
 		{
 			base.OnStart ();
-			imageLoader = new ImageLoader (Activity, 300, 300);
 
 			if (viewSwitcher.CurrentView != progressLayout){
 				viewSwitcher.ShowNext(); 
@@ -133,7 +131,7 @@ namespace AplikacjaParlamentAndroid
 				tvUchwaly.Text = posel.LiczbaProjektowUchwal.ToString();
 				tvFrekwencja.Text = String.Concat(posel.Frekwencja.ToString(), "%");
 				tvZamieszkanie.Text = posel.MiejsceZamieszkania;
-				imageLoader.DisplayImage(String.Concat("http://resources.sejmometr.pl/mowcy/a/0/", posel.MowcaId, ".jpg"), ivMiniature, -1);
+				loadImage (ivMiniature, String.Concat ("http://resources.sejmometr.pl/mowcy/a/0/", posel.MowcaId, ".jpg"));
 
 				BiuroPoselskie biuroGlowne = posel.Biura.Where(item => item.Podstawowe.Equals("1")).FirstOrDefault();
 
@@ -155,10 +153,8 @@ namespace AplikacjaParlamentAndroid
 			}
 		}
 
-		public override void OnStop ()
-		{
-			base.OnStop ();
-			imageLoader.ClearCache ();
+		async private void loadImage(ImageView imageView, string url){
+			await ImagesHelper.SetImageFromUrlAsync(imageView,url, Activity);
 		}
 	}
 }

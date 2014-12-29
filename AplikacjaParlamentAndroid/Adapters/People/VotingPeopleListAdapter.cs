@@ -46,12 +46,10 @@ namespace AplikacjaParlamentAndroid.Adapters
 		}
 
 		private Activity context;
-		private ImageLoader imageLoader;
 		private List<IVotingEntry> list; 
 
-		public VotingPeopleListAdapter(Activity context, ImageLoader imageLoader, List<IVotingEntry> list)
+		public VotingPeopleListAdapter(Activity context, List<IVotingEntry> list)
 		{
-			this.imageLoader = imageLoader;
 			this.context = context;
 			this.list = list;
 		}
@@ -78,9 +76,13 @@ namespace AplikacjaParlamentAndroid.Adapters
 			var posel = list[position];
 			wrapper.ImieNazwisko.Text = String.Concat(posel.GlosujacyImieNazwisko);
 			wrapper.Partia.Text = "";
-			imageLoader.DisplayImage(String.Concat("http://resources.sejmometr.pl/mowcy/a/1/", posel.MowcaId, ".jpg"), wrapper.Miniature, -1);
+			loadImage (wrapper, String.Concat ("http://resources.sejmometr.pl/mowcy/a/0/", posel.MowcaId, ".jpg"));
 
 			return view;
+		}
+
+		async private void loadImage(Wrapper wrapper, string url){
+			await ImagesHelper.SetImageFromUrlAsync(wrapper.Miniature,url, context);
 		}
 
 		public override IVotingEntry this[int position]

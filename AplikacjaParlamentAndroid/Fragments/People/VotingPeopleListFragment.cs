@@ -49,7 +49,6 @@ namespace AplikacjaParlamentAndroid
 
 		private List<IVotingEntry> listaGlosow;
 		private BaseActivity parentActivity;
-		private ImageLoader imageLoader;
 
 		public override void OnCreate (Bundle savedInstanceState)
 		{
@@ -60,9 +59,8 @@ namespace AplikacjaParlamentAndroid
 		public override void OnStart ()
 		{
 			base.OnStart ();
-			imageLoader = new ImageLoader (parentActivity, 110, 137);
 
-			this.ListAdapter = new VotingPeopleListAdapter (Activity, imageLoader, listaGlosow);
+			this.ListAdapter = new VotingPeopleListAdapter (Activity, listaGlosow);
 		}
 
 		public override void OnListItemClick(ListView l, View v, int index, long id)
@@ -78,12 +76,6 @@ namespace AplikacjaParlamentAndroid
 			detailsActivity.PutExtra ("id", posel.Glosujacy);
 			detailsActivity.PutExtra ("name", String.Concat(posel.GlosujacyImieNazwisko));
 			StartActivity (detailsActivity);
-		}
-
-		public override void OnStop ()
-		{
-			base.OnStop ();
-			imageLoader.ClearCache ();
 		}
 	}
 }
