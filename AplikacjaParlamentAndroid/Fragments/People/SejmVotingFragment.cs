@@ -52,13 +52,13 @@ namespace AplikacjaParlamentAndroid
 		[InjectView(Resource.Id.progressLayout)]
 		private RelativeLayout progressLayout;
 
-		[InjectView(Resource.Id.tytulGlosowania)]
+		[InjectView(Resource.Id.tvTytul)]
 		private TextView tvTytul;
 
-		[InjectView(Resource.Id.czasGlosowania)]
+		[InjectView(Resource.Id.tvData)]
 		private TextView tvCzas;
 
-		[InjectView(Resource.Id.wynikGlosowania)]
+		[InjectView(Resource.Id.tvWynik)]
 		private TextView tvWynik;
 
 		[InjectView(Resource.Id.detailsContent)]
@@ -110,18 +110,10 @@ namespace AplikacjaParlamentAndroid
 				tvTytul.Text = glosowanie.Tytul;
 				tvCzas.Text = glosowanie.Czas;
 
-				string wynik = "";
-				switch(glosowanie.Wynik){
-				case 1:
-					wynik = "za";
-					break;
-
-				case 2:
-					wynik = "przeciw";
-					break;
+				if(glosowanie.Wynik == 2){
+					tvWynik.Text = "Ustawa Odrzucona";
+					tvWynik.SetTextColor(Android.Graphics.Color.ParseColor("#E00909"));
 				}
-
-				tvWynik.Text = wynik;
 
 				var glosy = glosowanie.Glosy;
 				var glosyZa = glosy.Where(item => item.Glos == 1).ToList();
@@ -130,10 +122,10 @@ namespace AplikacjaParlamentAndroid
 				var glosyNieobecny = glosy.Where(item => item.Glos == 4).ToList();
 
 
-				fragmentsTabs.Add ("Za", new VotingPeopleListFragment (glosyZa));
-				fragmentsTabs.Add ("Przeciw", new VotingPeopleListFragment (glosyPrzeciw));
-				fragmentsTabs.Add ("Wstrzymał się", new VotingPeopleListFragment (glosyWstrzymalSie));
-				fragmentsTabs.Add ("Nieobecny", new VotingPeopleListFragment (glosyNieobecny));
+				fragmentsTabs.Add ("Za (" + glosyZa.Count +")", new VotingPeopleListFragment (glosyZa));
+				fragmentsTabs.Add ("Przeciw (" + glosyPrzeciw.Count +")", new VotingPeopleListFragment (glosyPrzeciw));
+				fragmentsTabs.Add ("Wstrzymał się (" + glosyWstrzymalSie.Count +")", new VotingPeopleListFragment (glosyWstrzymalSie));
+				fragmentsTabs.Add ("Nieobecny (" + glosyNieobecny.Count +")", new VotingPeopleListFragment (glosyNieobecny));
 
 				var tabs = Activity.FindViewById<PagerSlidingTabStrip.PagerSlidingTabStrip> (Resource.Id.tabs);
 				var pager = Activity.FindViewById<ViewPager> (Resource.Id.pager);

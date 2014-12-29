@@ -51,18 +51,6 @@
     <Reference Include="com.refractored.monodroidtoolkit">
       <HintPath>..\packages\MonoDroid.Toolkit.1.1.0.0\lib\MonoAndroid10\com.refractored.monodroidtoolkit.dll</HintPath>
     </Reference>
-    <Reference Include="Cheeseknife">
-      <HintPath>..\Components\cheeseknife-1.0\lib\android\Cheeseknife.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\Components\json.net-4.5.11.1\lib\android\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="ModernHttpClient">
-      <HintPath>..\Components\modernhttpclient-2.1.2\lib\android\ModernHttpClient.dll</HintPath>
-    </Reference>
-    <Reference Include="OkHttp">
-      <HintPath>..\Components\modernhttpclient-2.1.2\lib\android\OkHttp.dll</HintPath>
-    </Reference>
     <Reference Include="Xamarin.Insights">
       <HintPath>..\packages\Xamarin.Insights.1.8.2.105\lib\MonoAndroid10\Xamarin.Insights.dll</HintPath>
     </Reference>
@@ -77,6 +65,18 @@
     </Reference>
     <Reference Include="Xamarin.Android.Support.v13">
       <HintPath>..\packages\Xamarin.Android.Support.v13.21.0.3.0\lib\MonoAndroid32\Xamarin.Android.Support.v13.dll</HintPath>
+    </Reference>
+    <Reference Include="ModernHttpClient">
+      <HintPath>..\Components\modernhttpclient-2.1.2\lib\android\ModernHttpClient.dll</HintPath>
+    </Reference>
+    <Reference Include="OkHttp">
+      <HintPath>..\Components\modernhttpclient-2.1.2\lib\android\OkHttp.dll</HintPath>
+    </Reference>
+    <Reference Include="Cheeseknife">
+      <HintPath>..\Components\cheeseknife-1.0\lib\android\Cheeseknife.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\Components\json.net-4.5.11.1\lib\android\Newtonsoft.Json.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -107,6 +107,8 @@
     <Compile Include="Fragments\People\VotingPeopleListFragment.cs" />
     <Compile Include="Adapters\People\VotingPeopleListAdapter.cs" />
     <Compile Include="Adapters\LeftDrawerAdapter.cs" />
+    <Compile Include="Helpers\DuruSansTextView.cs" />
+    <Compile Include="Helpers\RoboSansTextView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -120,6 +122,27 @@
     <AndroidResource Include="Resources\drawable-mdpi\ic_drawer.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\ic_drawer.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_drawer.png" />
+    <AndroidResource Include="Resources\drawable\bg.png" />
+    <AndroidResource Include="Resources\drawable\img_circle.png" />
+    <AndroidResource Include="Resources\drawable\cell_separator.png" />
+    <AndroidResource Include="Resources\layout\DrawerListItem.axml" />
+    <AndroidResource Include="Resources\drawable\arrow.png" />
+    <AndroidResource Include="Resources\drawable\timer.png" />
+    <AndroidResource Include="Resources\drawable\g_nie.png" />
+    <AndroidResource Include="Resources\drawable\g_tak.png" />
+    <AndroidResource Include="Resources\drawable\arrow_left.png" />
+    <AndroidResource Include="Resources\drawable\arrow_right.png" />
+    <AndroidResource Include="Resources\drawable\arrow_upar.png" />
+    <AndroidResource Include="Resources\drawable\mobile.png" />
+    <AndroidResource Include="Resources\drawable\naksa.png" />
+    <AndroidResource Include="Resources\drawable\p_circle.png" />
+    <AndroidResource Include="Resources\drawable\p_white_circle.png" />
+    <AndroidResource Include="Resources\drawable\r_arrow_left.png" />
+    <AndroidResource Include="Resources\drawable\r_arrow_right.png" />
+    <AndroidResource Include="Resources\drawable\r_dircation.png" />
+    <AndroidResource Include="Resources\drawable\r_mobile.png" />
+    <AndroidResource Include="Resources\drawable\r_sms.png" />
+    <AndroidResource Include="Resources\drawable\sms.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml" />
@@ -170,4 +193,8 @@
       </Properties>
     </MonoDevelop>
   </ProjectExtensions>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\fonts\DuruSans-Regular.ttf" />
+    <AndroidAsset Include="Assets\fonts\Roboto-Light.ttf" />
+  </ItemGroup>
 </Project>

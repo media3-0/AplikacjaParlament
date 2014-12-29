@@ -43,6 +43,7 @@ namespace AplikacjaParlamentAndroid.Adapters
 			public TextView ImieNazwisko { get; set; }
 			public TextView Partia { get; set; }
 			public ImageView Miniature { get; set; }
+			public TextView Okreg { get; set; }
 		}
 
 		private Activity context;
@@ -67,6 +68,7 @@ namespace AplikacjaParlamentAndroid.Adapters
 				wrapper.ImieNazwisko = view.FindViewById<TextView>(Resource.Id.imieNazwisko);
 				wrapper.Partia = view.FindViewById<TextView>(Resource.Id.partia);
 				wrapper.Miniature = view.FindViewById<ImageView> (Resource.Id.miniature);
+				wrapper.Okreg = view.FindViewById<TextView> (Resource.Id.okreg);
 				view.Tag = wrapper;
 			}
 			else
@@ -77,6 +79,7 @@ namespace AplikacjaParlamentAndroid.Adapters
 			var posel = list[position];
 			wrapper.ImieNazwisko.Text = String.Concat(posel.Imie, " ", posel.Nazwisko);
 			wrapper.Partia.Text = posel.SejmKlubyNazwa;
+			wrapper.Okreg.Text = posel.OkregWyborczyNumer.ToString();
 			imageLoader.DisplayImage(String.Concat("http://resources.sejmometr.pl/mowcy/a/0/", posel.MowcaId, ".jpg"), wrapper.Miniature, -1);
 
 			return view;

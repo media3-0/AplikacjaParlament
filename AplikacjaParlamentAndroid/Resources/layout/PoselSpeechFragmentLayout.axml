@@ -8,30 +8,24 @@
     android:inAnimation="@android:anim/slide_in_left">
     <LinearLayout
         android:orientation="vertical"
-        android:minWidth="25px"
-        android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/detailsContent">
         <ScrollView
-            android:minWidth="25px"
-            android:minHeight="25px"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/scrollView1"
             android:scrollbars="vertical">
-            <TextView
+            <aplikacjaparlamentandroid.DuruSansTextView
                 android:text="Text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/textView1"
                 android:gravity="center_horizontal"
-                android:padding="5dp" />
+                android:padding="8dp" />
         </ScrollView>
     </LinearLayout>
     <RelativeLayout
-        android:minWidth="25px"
-        android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/progressLayout"

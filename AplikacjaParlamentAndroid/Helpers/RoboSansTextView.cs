@@ -1,8 +1,8 @@
 ﻿//
-//  SenatListFragment.cs
+//  RoboSansTextView.cs
 //
 //  Author:
-//       Jakub Syty <j.syty@media30.pl>
+//       Jakub <j.syty@media30.pl>
 //
 //  Copyright (c) 2014 
 //
@@ -31,33 +31,35 @@ using Android.Runtime;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
-
-using AplikacjaParlamentShared.Models;
+using Android.Graphics;
 
 namespace AplikacjaParlamentAndroid
 {
-	public class SenatListFragment : BaseListFragment
+	public class RoboSansTextView : TextView
 	{
-
-		private String[] values;
-
-		public override void OnCreate (Bundle savedInstanceState)
+		public RoboSansTextView (Context context) :
+			base (context)
 		{
-			base.OnCreate (savedInstanceState);
-			values = new[] { "Pracujemy nad dostarczeniem Ci tych danych" };
-			this.ListAdapter = new ArrayAdapter<string>(Activity, Android.Resource.Layout.SimpleExpandableListItem1, values);
+			Initialize ();
 		}
 
-		public override void OnListItemClick(ListView l, View v, int index, long id)
+		public RoboSansTextView (Context context, IAttributeSet attrs) :
+			base (context, attrs)
 		{
-			// We can display everything in place with fragments.
-			// Have the list highlight this item and show the data.
-			ListView.SetItemChecked(index, true);
+			Initialize ();
+		}
 
-//			var detailsActivity = new Intent (Activity, typeof(PersonDetailsActivity));
-//			detailsActivity.PutExtra ("persontype", (int)PersonTypeEnumeration.Senator);
-//			detailsActivity.PutExtra ("id", index + 1);
-//			StartActivity (detailsActivity);
+		public RoboSansTextView (Context context, IAttributeSet attrs, int defStyle) :
+			base (context, attrs, defStyle)
+		{
+			Initialize ();
+		}
+
+		void Initialize ()
+		{
+			Typeface font = Typeface.CreateFromAsset(Context.Assets,
+				"fonts/Roboto-light.ttf");
+			SetTypeface(font, TypefaceStyle.Normal);
 		}
 	}
 }

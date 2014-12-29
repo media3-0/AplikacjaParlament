@@ -14,17 +14,256 @@
         android:layout_height="wrap_content"
         android:id="@+id/detailsContent">
         <ScrollView
-            android:minWidth="25px"
-            android:minHeight="25px"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/scrollView1"
-            android:scrollbars="vertical">
-            <TextView
-                android:text="Text"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@drawable/bg">
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/textView1" />
+                android:layout_height="500dp">
+                <ImageView
+                    android:id="@+id/miniature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="26dp"
+                    android:src="@android:drawable/ic_menu_gallery" />
+                <TextView
+                    android:id="@+id/tvPartiaOkreg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvDataZawod"
+                    android:layout_centerHorizontal="true"
+                    android:text="Polskie Stronnictwo Ludoew . Okreg 27"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12dp" />
+                <LinearLayout
+                    android:id="@+id/l_data"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvPartiaOkreg"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center">
+                    <ImageView
+                        android:id="@+id/img_home"
+                        android:layout_width="12dp"
+                        android:layout_height="wrap_content"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/mobile" />
+                    <TextView
+                        android:id="@+id/tvTelefon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_text3"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="3dp"
+                        android:text="775 464 566"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="#E68284"
+                        android:textSize="14dp" />
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_text3"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="3dp"
+                        android:text=" . "
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="#FFFFFF"
+                        android:textSize="12dp" />
+                    <ImageView
+                        android:id="@+id/imageView2"
+                        android:layout_width="14dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/sms" />
+                    <TextView
+                        android:id="@+id/tvEmail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_text3"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="3dp"
+                        android:text="januszpiecho@gov.pl"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="#E68284"
+                        android:textSize="12dp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/l_data2"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/l_data"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center">
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:id="@+id/imageView3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/p_white_circle" />
+                        <TextView
+                            android:id="@+id/tvUstawy"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:text="46"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="#860005" />
+                    </RelativeLayout>
+                    <TextView
+                        android:id="@+id/tv_text7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:text="Ustawy"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="#FFFFFF"
+                        android:textSize="12dp" />
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="3dp">
+                        <ImageView
+                            android:id="@+id/imageView4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/p_white_circle" />
+                        <TextView
+                            android:id="@+id/tvUchwaly"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:text="24"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="#860005" />
+                    </RelativeLayout>
+                    <TextView
+                        android:id="@+id/tv_text8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:text="Uchwaly"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="#FFFFFF"
+                        android:textSize="12dp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/l_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/miniature"
+                    android:layout_centerHorizontal="true">
+                    <TextView
+                        android:id="@+id/tvImie"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Janusz"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="#FFFFFF" />
+                    <TextView
+                        android:id="@+id/tvNazwisko"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="3dp"
+                        android:text="Piechocinski"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="#FFFFFF" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/l_data3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="3dp"
+                    android:layout_below="@+id/l_data2"
+                    android:gravity="center">
+                    <TextView
+                        android:id="@+id/tvFrekwencja"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:text="60%"
+                        android:textColor="#FFFFFF"
+                        android:textSize="17dp" />
+                    <TextView
+                        android:id="@+id/tv_text10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="3dp"
+                        android:text="Frekwencja"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="#FFFFFF"
+                        android:textSize="12dp" />
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/tvDataZawod"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/l_title"
+                    android:layout_centerHorizontal="true"
+                    android:text="25.13.1955. Polityk"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="#E68284"
+                    android:textSize="12dp" />
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/l_data3"
+                    android:src="@drawable/cell_separator" />
+                <LinearLayout
+                    android:id="@+id/btn_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/imageView5"
+                    android:gravity="center">
+                    <ImageView
+                        android:id="@+id/imageView6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/naksa" />
+                    <TextView
+                        android:id="@+id/tvZamieszkanie"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="3dp"
+                        android:text=""
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="#FFFFFF" />
+                    <TextView
+                        android:id="@+id/text_13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:text=", Polska"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="#FFFFFF" />
+                </LinearLayout>
+            </RelativeLayout>
         </ScrollView>
     </LinearLayout>
     <RelativeLayout

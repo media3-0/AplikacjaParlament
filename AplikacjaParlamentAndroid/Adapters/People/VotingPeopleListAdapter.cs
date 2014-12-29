@@ -67,7 +67,7 @@ namespace AplikacjaParlamentAndroid.Adapters
 				wrapper.ImieNazwisko = view.FindViewById<TextView>(Resource.Id.imieNazwisko);
 				wrapper.Partia = view.FindViewById<TextView>(Resource.Id.partia);
 				wrapper.Miniature = view.FindViewById<ImageView> (Resource.Id.miniature);
-				wrapper.Partia.Visibility = ViewStates.Gone;
+				view.FindViewById<LinearLayout> (Resource.Id.dodatkowe).Visibility = ViewStates.Gone;
 				view.Tag = wrapper;
 			}
 			else

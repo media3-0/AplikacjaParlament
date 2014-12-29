@@ -62,6 +62,7 @@ namespace AplikacjaParlamentShared.Repositories
 				request.AddField ("poslowie.data_urodzenia");
 				request.AddField ("poslowie.frekwencja");
 				request.AddField ("poslowie.mowca_id");
+				request.AddField ("poslowie.miejsce_zamieszkania");
 
 				request.Layers.Add (new BiuraPoselskieLayer("biura"));
 
@@ -88,6 +89,7 @@ namespace AplikacjaParlamentShared.Repositories
 				request.AddField ("poslowie.nazwisko");
 				request.AddField ("poslowie.mowca_id");
 				request.AddField ("sejm_kluby.nazwa");
+				request.AddField ("poslowie.okreg_wyborczy_numer");
 				request.Limit = 1000;
 				request.SetOrder ("poslowie.nazwisko asc");
 
