@@ -39,7 +39,7 @@
                 android:text="TextViewasdfasdf awubef sadyfbaweofuybasdofybaweofuy basdf awdfysa fo awyef asoduyaw uefb sadfw"
                 android:textColor="#FB565B"
                 android:textSize="13dp"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <aplikacjaparlamentandroid.DuruSansTextView
                 android:id="@+id/tvStatus"
@@ -47,7 +47,7 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#ffffff"
                 android:textSize="10dp"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <LinearLayout
                 android:orientation="vertical"
@@ -62,7 +62,7 @@
                     android:textSize="8dp"
                     android:textStyle="bold"
                     android:textColor="#ffffff"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <aplikacjaparlamentandroid.DuruSansTextView
                     android:id="@+id/tvSkrot"
@@ -70,7 +70,7 @@
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textSize="11dp"
                     android:textColor="#ffffff"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <aplikacjaparlamentandroid.DuruSansTextView
                     android:text="Autorzy:"
@@ -78,7 +78,7 @@
                     android:textSize="8dp"
                     android:textStyle="bold"
                     android:textColor="#ffffff"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <aplikacjaparlamentandroid.DuruSansTextView
                     android:id="@+id/tvAutorzy"
@@ -86,7 +86,7 @@
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="#ffffff"
                     android:textSize="10dp"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
         </LinearLayout>

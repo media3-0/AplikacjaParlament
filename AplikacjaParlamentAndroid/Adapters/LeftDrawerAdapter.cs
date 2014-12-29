@@ -59,7 +59,8 @@ namespace AplikacjaParlamentAndroid
 			View view = convertView; // re-use an existing view, if one is available
 			if (view == null) // otherwise create a new one
 				view = context.LayoutInflater.Inflate(Resource.Layout.DrawerListItem, null);
-			view.FindViewById<TextView>(Resource.Id.title).Text = items[position];
+			TextView tvTitle = view.FindViewById<TextView> (Resource.Id.title);
+			tvTitle.Text = items[position];
 
 			System.Type classType = null;
 
@@ -77,8 +78,22 @@ namespace AplikacjaParlamentAndroid
 
 			if (classType.Equals (context.GetType ())) {
 				view.Enabled = false;
-				view.SetBackgroundColor(Android.Graphics.Color.ParseColor("#9E0E12"));
+				view.SetBackgroundColor(Android.Graphics.Color.ParseColor ("#9E0E12"));
 			} else {
+				view.Touch += delegate(object sender, View.TouchEventArgs e) {
+					if(e.Event.Action == MotionEventActions.Down){
+						tvTitle.SetTextColor(context.Resources.GetColor(Android.Resource.Color.Black));
+						view.SetBackgroundColor(Android.Graphics.Color.ParseColor ("#9E0E12"));
+					}
+
+					if(e.Event.Action == MotionEventActions.Up){
+						tvTitle.SetTextColor(context.Resources.GetColor(Android.Resource.Color.White));
+						view.SetBackgroundColor(Android.Graphics.Color.ParseColor ("#790205"));
+					}
+
+					e.Handled = false;
+				};
+
 				view.Click += delegate {
 					var activity = new Intent (context, classType);
 					if(position == 2){

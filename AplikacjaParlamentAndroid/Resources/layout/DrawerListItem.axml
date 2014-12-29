@@ -15,12 +15,12 @@
         android:text="test"
         android:textStyle="bold" />
     <ImageView
-        android:id="@+id/img_circle"
+        android:id="@+id/arrow"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_marginRight="5dp"
-        android:src="@drawable/arrow"
+        android:src="@drawable/arrow_right"
         android:scaleType="fitXY" />
 </RelativeLayout>
