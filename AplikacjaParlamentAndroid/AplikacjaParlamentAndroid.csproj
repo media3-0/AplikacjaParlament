@@ -37,6 +37,7 @@
     <ConsolePause>false</ConsolePause>
     <AssemblyOriginatorKeyFile>..\..\..\AndroidStudioProjects\klucz.jks</AssemblyOriginatorKeyFile>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
