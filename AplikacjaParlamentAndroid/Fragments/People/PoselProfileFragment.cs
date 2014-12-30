@@ -136,11 +136,15 @@ namespace AplikacjaParlamentAndroid
 				BiuroPoselskie biuroGlowne = posel.Biura.Where(item => item.Podstawowe.Equals("1")).FirstOrDefault();
 
 				if(biuroGlowne != null){
-					String[] phones = biuroGlowne.Telefon.Split('f');
-					String[] phone1 = phones[0].Split(' ');
-					String firstpart = phones[1].Split('(')[1].Split(')')[0];
-					String phone = String.Concat(firstpart, " ", phone1[2].Replace('-',' '));
-
+					String phone = "";
+					try {
+						String[] phones = biuroGlowne.Telefon.Split('f');
+						String[] phone1 = phones[0].Split(' ');
+						String firstpart = phones[1].Split('(')[1].Split(')')[0];
+						phone = String.Concat(firstpart, " ", phone1[2].Replace('-',' '));
+					}catch(Exception e){
+						phone = biuroGlowne.Telefon;
+					}
 					tvTelefon.Text = phone;
 
 					tvTelefon.Click += delegate {
