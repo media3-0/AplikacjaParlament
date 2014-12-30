@@ -1,5 +1,5 @@
 ﻿//
-//  SimpleContainerActivity.cs
+//  AboutActivity.cs
 //
 //  Author:
 //       Jakub Syty <j.syty@media30.pl>
@@ -34,13 +34,8 @@ using Android.Widget;
 namespace AplikacjaParlamentAndroid
 {
 	[Activity (Label = "")]			
-	public class SimpleContainerActivity : BaseActivity
+	public class AboutActivity : BaseActivity
 	{
-
-		public const int VIEW_POSEL_SPEECH = 1;
-		public const int VIEW_INTERPELLATION = 2;
-		public const int VIEW_SEJM_VOTING = 3;
-		public const int VIEW_ALL_VOTES = 4;
 
 		protected override void OnCreate (Bundle bundle)
 		{
@@ -50,42 +45,8 @@ namespace AplikacjaParlamentAndroid
 			ListView mDrawerList = FindViewById<ListView>(Resource.Id.left_drawer);
 			mDrawerList.Adapter = new LeftDrawerAdapter (this);
 
-			int type = Intent.GetIntExtra ("type", 0);
-
-			if (type == 0) {
-				Toast.MakeText (this, "Nieprawidłowy typ fragmentu", ToastLength.Long);
-				this.Finish ();
-				return;
-			}
-
 			FragmentTransaction ft = FragmentManager.BeginTransaction ();
-			Fragment fragmentToView = null;
-
-			switch (type) {
-			case VIEW_POSEL_SPEECH:
-				{
-					fragmentToView = new PoselSpeechFragment ();
-					break;
-				}
-
-			case VIEW_INTERPELLATION:
-				{
-					fragmentToView = new InterpellationFragment ();
-					break;
-				}
-
-			case VIEW_SEJM_VOTING:
-				{
-					fragmentToView = new SejmVotingFragment ();
-					break;
-				}
-
-			case VIEW_ALL_VOTES:
-				{
-					fragmentToView = new VotesFragment ();
-					break;
-				}
-		}
+			Fragment fragmentToView = new AboutFragment();
 
 			if(fragmentToView != null)
 				ft.Add (Resource.Id.FragmentContainer, fragmentToView);

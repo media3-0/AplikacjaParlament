@@ -76,15 +76,15 @@ namespace AplikacjaParlamentAndroid
 		public static Bitmap GetRoundedShape(Bitmap scaleBitmapImage, Context context) {
 			if(scaleBitmapImage == null) 
 				return BitmapFactory.DecodeResource(context.Resources, Android.Resource.Drawable.IcMenuGallery);
-			int targetWidth = 120;
-			int targetHeight = 120;
+			int targetWidth = 220;
+			int targetHeight = 284;
 			Bitmap targetBitmap = Bitmap.CreateBitmap(targetWidth, 
 				targetHeight,Bitmap.Config.Argb8888);
 
 			Canvas canvas = new Canvas(targetBitmap);
 			Android.Graphics.Path path = new Android.Graphics.Path();
 			path.AddCircle(((float) targetWidth - 1) / 2,
-				((float) targetHeight - 1) / 2,
+				((float) targetHeight - 1) / 2 - 20,
 				(Math.Min(((float) targetWidth), 
 					((float) targetHeight)) / 2),
 				Android.Graphics.Path.Direction.Ccw);

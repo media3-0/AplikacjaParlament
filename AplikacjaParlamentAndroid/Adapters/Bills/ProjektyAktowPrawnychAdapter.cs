@@ -39,6 +39,7 @@ namespace AplikacjaParlamentAndroid.Adapters
 			public LinearLayout llDodatkowe { get; set; }
 			public TextView tvSkrot { get; set; }
 			public TextView tvStatus { get; set; }
+			public TextView tvNavigation { get; set; }
 		}
 
 		private Activity context;
@@ -64,6 +65,7 @@ namespace AplikacjaParlamentAndroid.Adapters
 				wrapper.llDodatkowe = view.FindViewById<LinearLayout> (Resource.Id.dodatkowe);
 				wrapper.tvSkrot = view.FindViewById<TextView> (Resource.Id.tvSkrot);
 				wrapper.tvStatus = view.FindViewById<TextView> (Resource.Id.tvStatus);
+				wrapper.tvNavigation = view.FindViewById<TextView> (Resource.Id.tvNavigate);
 				view.Tag = wrapper;
 			}
 			else
@@ -84,8 +86,10 @@ namespace AplikacjaParlamentAndroid.Adapters
 			view.Click += delegate {
 				if(wrapper.llDodatkowe.Visibility == ViewStates.Gone){
 					wrapper.llDodatkowe.Visibility = ViewStates.Visible;
+					wrapper.tvNavigation.Text = "Zwiń";
 				}else{
 					wrapper.llDodatkowe.Visibility = ViewStates.Gone;
+					wrapper.tvNavigation.Text = "Rozwiń";
 				}
 			};
 

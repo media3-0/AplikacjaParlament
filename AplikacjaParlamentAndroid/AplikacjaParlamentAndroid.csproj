@@ -115,6 +115,9 @@
     <Compile Include="Helpers\ImagesHelper.cs" />
     <Compile Include="Fragments\People\PersonNewestFragment.cs" />
     <Compile Include="Adapters\People\PoselNewestAdapter.cs" />
+    <Compile Include="Fragments\People\VotesFragment.cs" />
+    <Compile Include="Adapters\People\AllVotesAdapter.cs" />
+    <Compile Include="Activities\AboutActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -156,6 +159,9 @@
     <AndroidResource Include="Resources\drawable\logo_xamarin.png" />
     <AndroidResource Include="Resources\drawable\logo_ministerstwo.png" />
     <AndroidResource Include="Resources\layout\PoselNewestListElement.axml" />
+    <AndroidResource Include="Resources\drawable\side.png" />
+    <AndroidResource Include="Resources\drawable\logo_media.png" />
+    <AndroidResource Include="Resources\drawable\logo_app.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml" />

@@ -7,11 +7,13 @@
     android:minHeight="60dp">
     <ImageView
         android:id="@+id/miniature"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="55dp"
+        android:layout_height="68dp"
         android:src="@android:drawable/ic_menu_gallery"
         android:padding="3dp"
-        android:layout_margin="3dp" />
+        android:layout_margin="3dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter" />
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"

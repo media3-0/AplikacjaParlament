@@ -47,7 +47,7 @@ namespace AplikacjaParlamentAndroid
 		{
 			View view = inflater.Inflate (Resource.Layout.AboutApplicationFragmentLayout, container, false);
 
-			(Activity as SimpleContainerActivity).SupportActionBar.Title = "O aplikacji";
+			(Activity as AboutActivity).SupportActionBar.Title = "O aplikacji";
 
 			return view;
 		}

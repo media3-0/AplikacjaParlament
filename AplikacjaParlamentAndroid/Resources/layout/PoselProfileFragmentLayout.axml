@@ -23,11 +23,13 @@
                 android:layout_height="500dp">
                 <ImageView
                     android:id="@+id/miniature"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="220dp"
+                    android:layout_height="274dp"
+                    android:scaleType="fitCenter"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="26dp"
+                    android:adjustViewBounds="true"
+                    android:layout_marginTop="15dp"
                     android:src="@android:drawable/ic_menu_gallery" />
                 <aplikacjaparlamentandroid.DuruSansTextView
                     android:id="@+id/tvPartiaOkreg"
@@ -51,6 +53,7 @@
                         android:layout_width="12dp"
                         android:layout_height="wrap_content"
                         android:scaleType="fitCenter"
+                        android:adjustViewBounds="true"
                         android:src="@drawable/mobile" />
                     <aplikacjaparlamentandroid.DuruSansTextView
                         android:id="@+id/tvTelefon"
@@ -63,22 +66,20 @@
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:textColor="#E68284"
                         android:textSize="14dp" />
-                    <aplikacjaparlamentandroid.DuruSansTextView
-                        android:id="@+id/textView5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/tv_text3"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginLeft="3dp"
-                        android:text=" . "
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:textColor="#FFFFFF"
-                        android:textSize="12dp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/l_data5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/l_data"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center">
                     <ImageView
                         android:id="@+id/imageView2"
                         android:layout_width="14dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="3dp"
+                        android:adjustViewBounds="true"
                         android:scaleType="fitCenter"
                         android:src="@drawable/sms" />
                     <aplikacjaparlamentandroid.DuruSansTextView
@@ -88,6 +89,7 @@
                         android:layout_below="@+id/tv_text3"
                         android:layout_centerHorizontal="true"
                         android:layout_marginLeft="3dp"
+                        android:autoLink="email"
                         android:text="januszpiecho@gov.pl"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:textColor="#E68284"
@@ -97,7 +99,7 @@
                     android:id="@+id/l_data2"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_below="@+id/l_data"
+                    android:layout_below="@+id/l_data5"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="5dp"
                     android:gravity="center">

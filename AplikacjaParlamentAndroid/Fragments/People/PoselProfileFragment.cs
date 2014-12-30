@@ -138,9 +138,17 @@ namespace AplikacjaParlamentAndroid
 				if(biuroGlowne != null){
 					String[] phones = biuroGlowne.Telefon.Split('f');
 					String[] phone1 = phones[0].Split(' ');
-					String phone = String.Concat(phone1[1], " ", phone1[2]);
+					String firstpart = phones[1].Split('(')[1].Split(')')[0];
+					String phone = String.Concat(firstpart, " ", phone1[2].Replace('-',' '));
 
 					tvTelefon.Text = phone;
+
+					tvTelefon.Click += delegate {
+						var uri = Android.Net.Uri.Parse ("tel:" + phone.Replace(" ", string.Empty));
+						var intent = new Intent (Intent.ActionView, uri); 
+						StartActivity (intent);    
+					};
+
 					tvEmail.Text = biuroGlowne.Email;
 				}
 
