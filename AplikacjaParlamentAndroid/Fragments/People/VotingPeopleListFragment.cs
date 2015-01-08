@@ -48,12 +48,10 @@ namespace AplikacjaParlamentAndroid
 		}
 
 		private List<IVotingEntry> listaGlosow;
-		private BaseActivity parentActivity;
 
 		public override void OnCreate (Bundle savedInstanceState)
 		{
 			base.OnCreate (savedInstanceState);
-			parentActivity = Activity as BaseActivity;
 		}
 
 		public override void OnStart ()

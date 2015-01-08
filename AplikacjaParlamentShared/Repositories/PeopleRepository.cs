@@ -88,7 +88,7 @@ namespace AplikacjaParlamentShared.Repositories
 				request.AddField ("sejm_kluby.nazwa");
 				request.AddField ("poslowie.okreg_wyborczy_numer");
 				request.Limit = 1000;
-				request.SetOrder ("poslowie.nazwisko asc");
+				request.SetOrder ("_title asc");
 
 				List<Posel> p = await handler.GetJsonArrayAsync (request);
 				return p;
