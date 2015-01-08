@@ -49,7 +49,7 @@ namespace AplikacjaParlamentAndroid
 				return path;
 			}
 			catch(Exception ex) {
-				//Console.WriteLine (ex);
+				Android.Util.Log.Error ("CacheFileError", ex.Message);
 				return "";
 			}
 		}

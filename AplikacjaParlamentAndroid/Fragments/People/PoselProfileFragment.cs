@@ -143,6 +143,7 @@ namespace AplikacjaParlamentAndroid
 						String firstpart = phones[1].Split('(')[1].Split(')')[0];
 						phone = String.Concat(firstpart, " ", phone1[2].Replace('-',' '));
 					}catch(Exception e){
+						Log.Error("PhoneParse", e.Message);
 						phone = biuroGlowne.Telefon;
 					}
 					tvTelefon.Text = phone;
