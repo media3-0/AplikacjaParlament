@@ -55,6 +55,8 @@ namespace AplikacjaParlamentAndroid
 		Android.Support.V7.App.ActionBarDrawerToggle mDrawerToggle;
 		DrawerLayout mDrawerLayout;
 
+		static Boolean active = false;
+
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
@@ -84,6 +86,7 @@ namespace AplikacjaParlamentAndroid
 		protected override void OnStart ()
 		{
 			base.OnStart ();
+			active = true;
 			var connectivityManager = (ConnectivityManager)GetSystemService(ConnectivityService);
 			var activeConnection = connectivityManager.ActiveNetworkInfo;
 			if ((activeConnection == null) || !activeConnection.IsConnected) {
@@ -130,7 +133,14 @@ namespace AplikacjaParlamentAndroid
 			}
 		}
 
+		protected override void OnStop ()
+		{
+			base.OnStop ();
+			active = false;
+		}
+
 		public void ShowErrorDialog(string message){
+			if(!active) return;
 			AlertDialog.Builder alert = new AlertDialog.Builder (this);
 
 			alert.SetTitle ("Błąd:");

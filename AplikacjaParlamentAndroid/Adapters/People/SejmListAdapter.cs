@@ -78,7 +78,7 @@ namespace AplikacjaParlamentAndroid.Adapters
 			wrapper.ImieNazwisko.Text = String.Concat(posel.Imie, " ", posel.Nazwisko);
 			wrapper.Partia.Text = posel.SejmKlubyNazwa;
 			wrapper.Okreg.Text = posel.OkregWyborczyNumer.ToString();
-			loadImage (wrapper, String.Concat ("http://resources.sejmometr.pl/mowcy/a/0/", posel.MowcaId, ".jpg"));
+			loadImage (wrapper, String.Concat ("http://images.weserv.nl/?w=100&h=100&t=square&trim=255&circle&a=t&url=", System.Net.WebUtility.UrlEncode("resources.sejmometr.pl/mowcy/a/0/" + posel.MowcaId + ".jpg")));
 
 			return view;
 		}

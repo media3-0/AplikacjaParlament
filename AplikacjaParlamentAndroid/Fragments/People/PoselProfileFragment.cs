@@ -131,7 +131,7 @@ namespace AplikacjaParlamentAndroid
 				tvUchwaly.Text = posel.LiczbaProjektowUchwal.ToString();
 				tvFrekwencja.Text = String.Concat(posel.Frekwencja.ToString(), "%");
 				tvZamieszkanie.Text = posel.MiejsceZamieszkania;
-				loadImage (ivMiniature, String.Concat ("http://resources.sejmometr.pl/mowcy/a/0/", posel.MowcaId, ".jpg"));
+				loadImage (ivMiniature, String.Concat ("http://images.weserv.nl/?w=220&h=220&t=square&trim=255&circle&a=t&url=", System.Net.WebUtility.UrlEncode("resources.sejmometr.pl/mowcy/a/0/" + posel.MowcaId + ".jpg")));
 
 				BiuroPoselskie biuroGlowne = posel.Biura.Where(item => item.Podstawowe.Equals("1")).FirstOrDefault();
 

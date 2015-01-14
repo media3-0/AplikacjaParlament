@@ -48,9 +48,11 @@ namespace AplikacjaParlamentAndroid
 			if (bmp == null)
 				return;
 			if (bmp.IsCompleted)
-				imageView.SetImageBitmap (GetRoundedShape(bmp.Result, context));
+				//imageView.SetImageBitmap (GetRoundedShape(bmp.Result, context));
+				imageView.SetImageBitmap (bmp.Result);
 			else
-				imageView.SetImageBitmap (GetRoundedShape(await bmp, context));
+				imageView.SetImageBitmap (await bmp);
+				//imageView.SetImageBitmap (GetRoundedShape(await bmp, context));
 		}
 		public static async Task SetImageFromUrlAsync (IBitmapHolder imageView, string url)
 		{
