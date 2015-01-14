@@ -39,6 +39,9 @@ namespace AplikacjaParlamentAndroid
 	[Activity (Label = "BaseActivity")]
     public class BaseActivity : Android.Support.V7.App.ActionBarActivity
 	{
+
+		static Boolean active = false;
+
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
@@ -51,6 +54,18 @@ namespace AplikacjaParlamentAndroid
 
             SupportActionBar.SetHomeButtonEnabled(true);
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+		}
+
+		protected override void OnStart ()
+		{
+			base.OnStart ();
+			active = true;
+		}
+
+		protected override void OnStop ()
+		{
+			base.OnStop ();
+			active = false;
 		}
 
 		public override bool OnOptionsItemSelected(IMenuItem item)
@@ -67,6 +82,7 @@ namespace AplikacjaParlamentAndroid
 		}
 
 		public void ShowErrorDialog(string message){
+			if(!active) return;
 			AlertDialog.Builder alert = new AlertDialog.Builder (this);
 
 			alert.SetTitle ("Błąd:");

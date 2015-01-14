@@ -45,12 +45,13 @@ namespace AplikacjaParlamentAndroid
 		public override void OnCreate (Bundle savedInstanceState)
 		{
 			base.OnCreate (savedInstanceState);
-			(Activity as SimpleContainerActivity).SupportActionBar.Title = "Głosowania";
 		}
 
 		public override void OnStart ()
 		{
 			base.OnStart ();
+
+			(Activity as SimpleContainerActivity).SupportActionBar.Title = "Głosowania";
 
 			if (list == null) {
 				this.loading ();
