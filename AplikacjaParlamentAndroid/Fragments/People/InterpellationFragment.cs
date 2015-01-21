@@ -98,7 +98,11 @@ namespace AplikacjaParlamentAndroid
 			IPeopleRepository repository = PeopleRepository.Instance;
 			try {
 				interpellation = await repository.GetPoselInterpellation (id);
-				textView.TextFormatted = Html.FromHtml(interpellation.Teksty.First());
+				string text = interpellation.Teksty.First();
+				if(text != null)
+					text = "Brak tekstu interpelacji";
+				textView.TextFormatted = Html.FromHtml(text);
+				
 
 				if (viewSwitcher.CurrentView != contentLayout){
 					viewSwitcher.ShowPrevious(); 

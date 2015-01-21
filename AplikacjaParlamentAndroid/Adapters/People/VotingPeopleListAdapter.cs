@@ -29,7 +29,6 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using com.refractored.monodroidtoolkit.imageloader;
 using AplikacjaParlamentShared.Models;
 
 namespace AplikacjaParlamentAndroid.Adapters
