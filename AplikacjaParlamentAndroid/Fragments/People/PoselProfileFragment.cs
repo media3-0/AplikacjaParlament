@@ -38,7 +38,8 @@ using AplikacjaParlamentShared.Repositories;
 
 using Com.Lilarcor.Cheeseknife;
 using System.Net.Http;
-using com.refractored.monodroidtoolkit.imageloader;
+using Com.Androidquery;
+using Android.Graphics;
 
 namespace AplikacjaParlamentAndroid
 {
@@ -131,7 +132,16 @@ namespace AplikacjaParlamentAndroid
 				tvUchwaly.Text = posel.LiczbaProjektowUchwal.ToString();
 				tvFrekwencja.Text = String.Concat(posel.Frekwencja.ToString(), "%");
 				tvZamieszkanie.Text = posel.MiejsceZamieszkania;
-				loadImage (ivMiniature, String.Concat ("http://images.weserv.nl/?w=220&h=220&t=square&trim=255&circle&a=t&url=", System.Net.WebUtility.UrlEncode("resources.sejmometr.pl/mowcy/a/0/" + posel.MowcaId + ".jpg")));
+
+				string imgUrl = String.Concat ("http://images.weserv.nl/?w=220&h=220&t=square&trim=255&circle&a=t&url=", System.Net.WebUtility.UrlEncode("resources.sejmometr.pl/mowcy/a/0/" + posel.MowcaId + ".jpg"));
+
+				AQuery aq = new AQuery(Activity);
+
+				Bitmap imgLoading = aq.GetCachedImage(Android.Resource.Drawable.IcMenuGallery);
+
+				((AQuery)aq.Id(Resource.Id.miniature)).Image(imgUrl, true, true, 0, 0, imgLoading, 0, 1f);
+
+				//loadImage (ivMiniature, );
 
 				BiuroPoselskie biuroGlowne = posel.Biura.Where(item => item.Podstawowe.Equals("1")).FirstOrDefault();
 
@@ -163,6 +173,9 @@ namespace AplikacjaParlamentAndroid
 
 			} catch (ApiRequestException ex){
 				personDetailsActivity.ShowErrorDialog (ex.Message);
+			} catch (Exception exc){
+				//raportowanie błędów przy ładowaniu danych
+				Xamarin.Insights.Report (exc); 
 			}
 		}
 

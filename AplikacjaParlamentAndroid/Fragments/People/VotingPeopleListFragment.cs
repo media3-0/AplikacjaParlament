@@ -31,7 +31,6 @@ using Android.Runtime;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
-using com.refractored.monodroidtoolkit.imageloader;
 
 using AplikacjaParlamentShared.Models;
 using AplikacjaParlamentShared.Repositories;
@@ -42,6 +41,10 @@ namespace AplikacjaParlamentAndroid
 {
 	public class VotingPeopleListFragment : BaseListFragment
 	{
+
+		public VotingPeopleListFragment(){
+			listaGlosow = new List<IVotingEntry>();
+		}
 
 		public VotingPeopleListFragment(List<IVotingEntry> lista){
 			listaGlosow = lista;

@@ -31,7 +31,6 @@ using Android.Runtime;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
-using com.refractored.monodroidtoolkit.imageloader;
 
 using AplikacjaParlamentShared.Models;
 using AplikacjaParlamentShared.Repositories;

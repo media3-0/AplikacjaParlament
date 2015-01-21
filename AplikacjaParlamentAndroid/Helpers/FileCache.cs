@@ -25,15 +25,15 @@ using System.Text;
 using System.IO;
 using System.Net;
 using System.Collections.Generic;
+using Android.Support.V4.Content;
 
 namespace AplikacjaParlamentAndroid
 {
 	public class FileCache
 	{
-		public static string SaveLocation = Android.OS.Environment.ExternalStorageDirectory.AbsolutePath;
 		public static async Task<string> Download(string url)
 		{
-			if (string.IsNullOrEmpty (SaveLocation))
+			if (string.IsNullOrEmpty (ImagesHelper.CACHE_PATH))
 				throw new Exception ("Save location is required");
 			var fileName = md5 (url);
 			return await Download (url, fileName);
@@ -42,7 +42,7 @@ namespace AplikacjaParlamentAndroid
 		public static async Task<string> Download(string url, string fileName)
 		{
 			try{
-				var path = Path.Combine (SaveLocation, fileName);
+				var path = Path.Combine (ImagesHelper.CACHE_PATH, fileName);
 				if (File.Exists (path))
 					return path;
 				await GetDownload(url,path);

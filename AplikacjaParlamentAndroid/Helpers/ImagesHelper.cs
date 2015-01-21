@@ -29,6 +29,7 @@ using Android.Graphics.Drawables;
 using Android.Content.Res;
 using Android.Widget;
 using Android.Content;
+using Android.Support.V4.Content;
 
 namespace AplikacjaParlamentAndroid
 {
@@ -40,10 +41,16 @@ namespace AplikacjaParlamentAndroid
 
 	static public class ImagesHelper
 	{
+
+		public static string CACHE_PATH = null;
+
 		//public static float ScreenWidth = 320;
 		static Dictionary<string, Bitmap> bmpCache = new Dictionary<string, Bitmap> ();
 		public static async Task SetImageFromUrlAsync (this ImageView imageView, string url, Context context)
 		{
+			if (ImagesHelper.CACHE_PATH == null)
+				ImagesHelper.CACHE_PATH = ContextCompat.GetExternalCacheDirs (context).First ().AbsolutePath;
+			Android.Util.Log.Debug ("sciezka", ImagesHelper.CACHE_PATH);
 			var bmp = FromUrl(url);
 			if (bmp == null)
 				return;

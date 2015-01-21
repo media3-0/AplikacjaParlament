@@ -70,6 +70,9 @@ namespace AplikacjaParlamentAndroid
 				this.loading (true);
 			} catch (ApiRequestException ex){
 				(Activity as SimpleContainerActivity).ShowErrorDialog (ex.Message);
+			} catch (Exception exc){
+				//raportowanie błędów przy ładowaniu danych
+				Xamarin.Insights.Report (exc); 
 			}
 		}
 
