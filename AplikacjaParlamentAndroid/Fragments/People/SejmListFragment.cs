@@ -95,7 +95,7 @@ namespace AplikacjaParlamentAndroid
 			// Have the list highlight this item and show the data.
 			ListView.SetItemChecked(index, true);
 
-			var posel = list.ElementAt (index);
+            Posel posel = (l.Adapter as SejmListAdapter)[index];
 
 			var detailsActivity = new Intent (Activity, typeof(PersonDetailsActivity));
 			detailsActivity.PutExtra ("persontype", (int)PersonTypeEnumeration.Posel);

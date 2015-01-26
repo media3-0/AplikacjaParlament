@@ -126,17 +126,23 @@ namespace AplikacjaParlamentAndroid.Adapters
 			//wrapper.Miniature.SetImageResource (Android.Resource.Drawable.IcMenuGallery);
 			//loadImage (wrapper, );
 
-			AQuery aq = new AQuery(view);
+            try {
 
-			Bitmap imgLoading = aq.GetCachedImage(Android.Resource.Drawable.IcMenuGallery);
+			    AQuery aq = new AQuery(view);
 
-			if (aq.ShouldDelay(position, convertView, parent, imgUrl))
-			{
-				((AQuery)aq.Id(Resource.Id.miniature)).Image(imgLoading, 1f);
-			}
-			else
-			{
-				((AQuery)aq.Id(Resource.Id.miniature)).Image(imgUrl, true, true, 0, 0, imgLoading, 0, 1f);
+			    Bitmap imgLoading = aq.GetCachedImage(Android.Resource.Drawable.IcMenuGallery);
+
+			    if (aq.ShouldDelay(position, convertView, parent, imgUrl))
+			    {
+				    ((AQuery)aq.Id(Resource.Id.miniature)).Image(imgLoading, 1f);
+			    }
+			    else
+			    {
+				    ((AQuery)aq.Id(Resource.Id.miniature)).Image(imgUrl, true, true, 0, 0, imgLoading, 0, 1f);
+			    }
+            } catch (Exception exc){
+				//raportowanie błędów przy używaniu AQuery
+				Xamarin.Insights.Report (exc); 
 			}
 
 			return view;

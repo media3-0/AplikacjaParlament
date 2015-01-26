@@ -81,6 +81,7 @@ namespace AplikacjaParlamentShared.Repositories
 				IJsonArrayRequestHandler<Posel> handler = new JsonArrayRequestHandler<Posel> (ConnectionProvider.Instance);
 
 				var request = new RequestParamsHandler (String.Concat (RepositoriesContants.API_DATASET_URI, "poslowie/search.json"));
+                request.AddCondition("mandat_wygasl", "0");
 				request.AddField ("poslowie.id");
 				request.AddField ("poslowie.imie_pierwsze");
 				request.AddField ("poslowie.nazwisko");
