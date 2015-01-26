@@ -18,7 +18,6 @@
 //
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,10 +33,15 @@ using Com.Androidquery;
 using Com.Androidquery.Callback;
 using Android.Graphics;
 
+using AplikacjaParlamentAndroid.Helpers;
+
+using Java.Lang;
+using Object = Java.Lang.Object;
+
 namespace AplikacjaParlamentAndroid.Adapters
 {
 
-	public class SejmListAdapter : BaseAdapter<Posel>
+	public class SejmListAdapter : BaseAdapter<Posel>, IFilterable, ISectionIndexer
 	{
 
 		private class Wrapper : Java.Lang.Object
@@ -49,12 +53,49 @@ namespace AplikacjaParlamentAndroid.Adapters
 		}
 
 		private Activity context;
-		private List<Posel> list; 
+		private List<Posel> list;
+        private List<Posel> originalData;
+
+        private Dictionary<string, int> alphaIndexer;
+        private string[] sections;
+        private Object[] sectionsObjects;
+
+        public Filter Filter { get; private set; }
 
 		public SejmListAdapter(Activity context, List<Posel> list)
 		{
 			this.context = context;
 			this.list = list;
+
+            this.list.Sort(delegate(Posel p1, Posel p2) {
+                if (p1.Nazwisko == null && p2.Nazwisko == null) return 0;
+                else if (p1.Nazwisko == null) return -1;
+                else if (p2.Nazwisko == null) return 1;
+                else return p1.Nazwisko.CompareTo(p2.Nazwisko);
+            });
+
+            Filter = new SejmListFilter(this);
+
+            alphaIndexer = new Dictionary<string, int>();
+
+            int size = list.Count;
+
+            for (int x = 0; x < size; x++) {
+                var posel = list[x];
+                string ch = posel.Nazwisko.Substring(0, 1);
+                ch = ch.ToUpper();
+                if(!alphaIndexer.ContainsKey(ch))
+                    alphaIndexer.Add(ch, x);
+            }
+
+            sections = new string[alphaIndexer.Keys.Count];
+
+            alphaIndexer.Keys.CopyTo(sections, 0);
+
+            sectionsObjects = new Object[sections.Length];
+            for (int i = 0; i < sections.Length; i++) {
+                sectionsObjects[i] = new String(sections[i]);
+            }
 		}
 
 		public override View GetView(int position, View convertView, ViewGroup parent)
@@ -77,11 +118,11 @@ namespace AplikacjaParlamentAndroid.Adapters
 			}
 
 			var posel = list[position];
-			wrapper.ImieNazwisko.Text = String.Concat(posel.Imie, " ", posel.Nazwisko);
+			wrapper.ImieNazwisko.Text = System.String.Concat(posel.Imie, " ", posel.Nazwisko);
 			wrapper.Partia.Text = posel.SejmKlubyNazwa;
 			wrapper.Okreg.Text = posel.OkregWyborczyNumer.ToString();
 
-			string imgUrl = String.Concat ("http://images.weserv.nl/?w=100&h=100&t=square&trim=255&circle&a=t&url=", System.Net.WebUtility.UrlEncode ("resources.sejmometr.pl/mowcy/a/0/" + posel.MowcaId + ".jpg"));
+            string imgUrl = System.String.Concat("http://images.weserv.nl/?w=100&h=100&t=square&trim=255&circle&a=t&url=", System.Net.WebUtility.UrlEncode("resources.sejmometr.pl/mowcy/a/0/" + posel.MowcaId + ".jpg"));
 			//wrapper.Miniature.SetImageResource (Android.Resource.Drawable.IcMenuGallery);
 			//loadImage (wrapper, );
 
@@ -119,5 +160,64 @@ namespace AplikacjaParlamentAndroid.Adapters
 		{
 			return position;
 		}
+
+        public int GetPositionForSection(int section) {
+            return alphaIndexer[sections[section]];
+        }
+
+        public Object[] GetSections()
+        {
+            return sectionsObjects;
+        }
+
+        public int GetSectionForPosition(int position) {
+            return 1;
+        }
+
+        private class SejmListFilter : Filter
+        {
+            private readonly SejmListAdapter adapter;
+
+            public SejmListFilter(SejmListAdapter sejmListAdapter) {
+                adapter = sejmListAdapter;
+            }
+
+            protected override Filter.FilterResults PerformFiltering(Java.Lang.ICharSequence constraint) {
+                var returnObj = new FilterResults();
+                var results = new List<Posel>();
+                if (adapter.originalData == null)
+                    adapter.originalData = adapter.list;
+
+                if (constraint == null) return returnObj;
+
+                if (adapter.originalData != null && adapter.originalData.Any()) {
+                    // Compare constraint to all names lowercased. 
+                    // It they are contained they are added to results.
+                    results.AddRange(
+                        adapter.originalData.Where(
+                            posel => System.String.Concat(posel.Imie.ToLower(), " ", posel.Nazwisko.ToLower()).Contains(constraint.ToString())));
+                }
+
+                // Nasty piece of .NET to Java wrapping, be careful with this!
+                returnObj.Values = FromArray(results.Select(r => r.ToJavaObject()).ToArray());
+                returnObj.Count = results.Count;
+
+                constraint.Dispose();
+
+                return returnObj;
+            }
+
+            protected override void PublishResults(ICharSequence constraint, FilterResults results) {
+                using (var values = results.Values)
+                    adapter.list = values.ToArray<Object>()
+                        .Select(r => r.ToNetObject<Posel>()).ToList();
+
+                adapter.NotifyDataSetChanged();
+
+                // Don't do this and see GREF counts rising
+                constraint.Dispose();
+                results.Dispose();
+            }
+        }
 	}
 }
