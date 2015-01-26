@@ -24,6 +24,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using Android.Support.V4.View;
+
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -44,10 +46,13 @@ namespace AplikacjaParlamentAndroid
 
 		private List<Posel> list;
 		private BaseActivity parentActivity;
+        private SearchView _searchView;
+        private IMenuItem searchViewMenuItem;
 
 		public override void OnCreate (Bundle savedInstanceState)
 		{
 			base.OnCreate (savedInstanceState);
+            SetHasOptionsMenu(true);
 			parentActivity = Activity as BaseActivity;
 		}
 
@@ -61,13 +66,36 @@ namespace AplikacjaParlamentAndroid
 			}
 		}
 
+        public override void OnCreateOptionsMenu(IMenu menu, MenuInflater inflater) {
+            
+            inflater.Inflate(Resource.Menu.search, menu);
+
+            searchViewMenuItem = menu.FindItem(Resource.Id.action_search);
+
+            var searchView = searchViewMenuItem.ActionView;
+            _searchView = searchView.JavaCast<SearchView>();
+
+            searchViewMenuItem.SetEnabled(false);
+
+            _searchView.QueryTextChange += (s, e) => (ListAdapter as IFilterable).Filter.InvokeFilter(e.NewText);
+
+            _searchView.QueryTextSubmit += (s, e) => {
+                e.Handled = true;
+            };
+
+            MenuItemCompat.SetOnActionExpandListener(searchViewMenuItem, new SearchViewExpandListener(ListAdapter as IFilterable));
+            //item.SetOnActionExpandListener(new SearchViewExpandListener(ListAdapter as IFilterable));
+
+            base.OnCreateOptionsMenu(menu, inflater);
+        }
+
 		public override void OnListItemClick(ListView l, View v, int index, long id)
 		{
 			// We can display everything in place with fragments.
 			// Have the list highlight this item and show the data.
 			ListView.SetItemChecked(index, true);
 
-			var posel = list.ElementAt (index);
+            Posel posel = (l.Adapter as SejmListAdapter)[index];
 
 			var detailsActivity = new Intent (Activity, typeof(PersonDetailsActivity));
 			detailsActivity.PutExtra ("persontype", (int)PersonTypeEnumeration.Posel);
@@ -83,10 +111,33 @@ namespace AplikacjaParlamentAndroid
 				list = await repository.GetPoselList();
 				ListAdapter = new SejmListAdapter(parentActivity, list);
 				this.loading (true);
+                this.ListView.FastScrollEnabled = true;
+
+                searchViewMenuItem.SetEnabled(true);
 			} catch (ApiRequestException ex){
 				parentActivity.ShowErrorDialog (ex.Message);
 			}
 		}
+
+        private class SearchViewExpandListener
+            : Java.Lang.Object, MenuItemCompat.IOnActionExpandListener
+        {
+            private readonly IFilterable _adapter;
+
+            public SearchViewExpandListener(IFilterable adapter) {
+                _adapter = adapter;
+            }
+
+            public bool OnMenuItemActionCollapse(IMenuItem item) {
+                if(_adapter != null)
+                    _adapter.Filter.InvokeFilter("");
+                return true;
+            }
+
+            public bool OnMenuItemActionExpand(IMenuItem item) {
+                return true;
+            }
+        }
 	}
 }
 

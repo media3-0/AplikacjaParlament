@@ -31,6 +31,10 @@ using Android.Views;
 using Android.Widget;
 using AplikacjaParlamentShared.Models;
 
+using Com.Androidquery;
+using Com.Androidquery.Callback;
+using Android.Graphics;
+
 namespace AplikacjaParlamentAndroid.Adapters
 {
 
@@ -75,7 +79,26 @@ namespace AplikacjaParlamentAndroid.Adapters
 			var posel = list[position];
 			wrapper.ImieNazwisko.Text = String.Concat(posel.GlosujacyImieNazwisko);
 			wrapper.Partia.Text = "";
-			loadImage (wrapper, String.Concat ("http://resources.sejmometr.pl/mowcy/a/0/", posel.MowcaId, ".jpg"));
+			//loadImage (wrapper, String.Concat ("http://resources.sejmometr.pl/mowcy/a/0/", posel.MowcaId, ".jpg"));
+            string imgUrl = System.String.Concat("http://images.weserv.nl/?w=100&h=100&t=square&trim=255&circle&a=t&url=", System.Net.WebUtility.UrlEncode("resources.sejmometr.pl/mowcy/a/0/" + posel.MowcaId + ".jpg"));
+            //wrapper.Miniature.SetImageResource (Android.Resource.Drawable.IcMenuGallery);
+            //loadImage (wrapper, );
+
+            try{
+
+                AQuery aq = new AQuery(view);
+
+                Bitmap imgLoading = aq.GetCachedImage(Android.Resource.Drawable.IcMenuGallery);
+
+                if (aq.ShouldDelay(position, convertView, parent, imgUrl)) {
+                    ((AQuery)aq.Id(Resource.Id.miniature)).Image(imgLoading, 1f);
+                } else {
+                    ((AQuery)aq.Id(Resource.Id.miniature)).Image(imgUrl, true, true, 0, 0, imgLoading, 0, 1f);
+                }
+            } catch (Exception exc){
+				//raportowanie błędów przy używaniu AQuery
+				Xamarin.Insights.Report (exc); 
+			}
 
 			return view;
 		}
