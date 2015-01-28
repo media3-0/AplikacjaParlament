@@ -63,10 +63,10 @@
       <HintPath>..\packages\Xamarin.Android.Support.v13.21.0.3.0\lib\MonoAndroid32\Xamarin.Android.Support.v13.dll</HintPath>
     </Reference>
     <Reference Include="ModernHttpClient">
-      <HintPath>..\Components\modernhttpclient-2.1.2\lib\android\ModernHttpClient.dll</HintPath>
+      <HintPath>..\Components\modernhttpclient-2.1.5\lib\android\ModernHttpClient.dll</HintPath>
     </Reference>
     <Reference Include="OkHttp">
-      <HintPath>..\Components\modernhttpclient-2.1.2\lib\android\OkHttp.dll</HintPath>
+      <HintPath>..\Components\modernhttpclient-2.1.5\lib\android\OkHttp.dll</HintPath>
     </Reference>
     <Reference Include="Cheeseknife">
       <HintPath>..\Components\cheeseknife-1.0\lib\android\Cheeseknife.dll</HintPath>
