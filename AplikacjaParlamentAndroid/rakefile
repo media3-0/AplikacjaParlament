@@ -1,0 +1,35 @@
+require 'albacore'      
+require 'fileutils'
+
+@android_home = "/Users/mac/Library/Developer/Xamarin/android-sdk-macosx"
+@android      = @android_home + "/tools/android"
+
+# Variables for signing the APK
+@keystore     = "../../../klucz.jks"
+@alias_name   = "media30releasekey"
+@input_apk    = "bin/Release/pl.media30.android.parlament.apk"
+@signed_apk   = "bin/Release/pl.media30.android.parlament-Signed.apk"
+@final_apk    = "pl.media30.android.parlament.apk"
+
+@jdk16path 	  = "/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/bin/"
+
+task :default => [:clean, :build, :sign]
+
+desc "Remove the bin and obj directories."
+task :clean do
+    rm_rf "bin"
+    rm_rf "obj"
+end
+
+desc "Compiles the project"
+build :build do |msb|
+    msb.file = "AplikacjaParlamentAndroid.csproj"
+    msb.target = ['Clean', 'Build', :SignAndroidPackage]
+    msb.prop 'Configuration', 'Release'
+end
+
+desc "Signs and zip aligns the APK."
+task :sign do 
+    sh @jdk16path + "jarsigner",  "-verbose", "-sigalg", "MD5withRSA", "-digestalg", "SHA1", "-keystore",  @keystore, "-signedjar", @signed_apk, @input_apk, @alias_name
+    sh @android_home + "/build-tools/21.*/zipalign", "-f", "-v", "4", @signed_apk, @final_apk
+end
