@@ -317,6 +317,32 @@ namespace AplikacjaParlamentShared.Repositories
 				throw new ApiRequestException (String.Concat("Problem z dostępem do API:\n", ex.Message));
 			}
 		}
+
+        async public Task<List<PoselWspolpracownik>> GetPoselWspolpracownicy(int id) 
+        {
+            try {
+                IJsonArrayRequestHandler<PoselWspolpracownik> handler = new JsonArrayRequestHandler<PoselWspolpracownik>(ConnectionProvider.Instance);
+
+                var request = new RequestParamsHandler(String.Concat(RepositoriesContants.API_DATASET_URI, "poslowie_wspolpracownicy/search.json"));
+                request.AddCondition("poslowie.id", id.ToString());
+                request.AddField("poslowie_wspolpracownicy.data");
+                request.AddField("poslowie_wspolpracownicy.nazwa");
+                request.AddField("poslowie_wspolpracownicy.funkcja");
+                request.AddField("poslowie_wspolpracownicy.dokument_id");
+                request.Limit = 50;
+
+                List<PoselWspolpracownik> p = await handler.GetJsonArrayAsync(request);
+                return p;
+
+            } catch (Java.IO.IOException ex) {
+                Android.Util.Log.Error("Java.IO.IOException on GetJsonArrayAsync", ex.ToString());
+                throw new ApiRequestException(String.Concat("Problem z połączeniem:\n", ex.Message));
+
+            } catch (Exception ex) {
+                Android.Util.Log.Error("GetJsonArrayAsync", ex.ToString());
+                throw new ApiRequestException(String.Concat("Problem z dostępem do API:\n", ex.Message));
+            }
+        }
 	}
 }
 

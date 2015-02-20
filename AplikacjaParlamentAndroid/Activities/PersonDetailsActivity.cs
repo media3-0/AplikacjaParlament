@@ -81,7 +81,9 @@ namespace AplikacjaParlamentAndroid
 					fragmentsTabs.Add ("Głosowania", new PersonVotesFragment ());
 					fragmentsTabs.Add ("Wystąpienia", new PersonSpeechesFragment ());
 					fragmentsTabs.Add ("Interpelacje", new PersonInterpellationsFragment ());
+                    fragmentsTabs.Add("Współpracownicy", new PoselWspolpracownicyFragment());
 					fragmentsTabs.Add ("Aktywność", new PersonNewestFragment ());
+                    
 					break;
 				}
 			}

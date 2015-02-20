@@ -76,11 +76,15 @@
     <Reference Include="OkHttp">
       <HintPath>..\Components\modernhttpclient-2.1.5\lib\android\OkHttp.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Insights">
-      <HintPath>..\packages\Xamarin.Insights.1.9.0.106\lib\MonoAndroid10\Xamarin.Insights.dll</HintPath>
+    <Reference Include="Xamarin.Insights, Version=1.9.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Xamarin.Insights.1.9.1.107\lib\MonoAndroid10\Xamarin.Insights.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adapters\People\PoselWspolpracownicyListAdapter.cs" />
+    <Compile Include="Fragments\People\PoselWspolpracownicyFragment.cs" />
+    <Compile Include="Helpers\FileDownloader.cs" />
     <Compile Include="Helpers\ObjectExtensions.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -164,6 +168,7 @@
     <AndroidResource Include="Resources\drawable\side.png" />
     <AndroidResource Include="Resources\drawable\logo_media.png" />
     <AndroidResource Include="Resources\drawable\logo_app.png" />
+    <AndroidResource Include="Resources\layout\PoselWspolpracownikListElement.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml" />
@@ -194,8 +199,8 @@
       <Visible>False</Visible>
     </XamarinComponentReference>
     <XamarinComponentReference Include="modernhttpclient">
-      <Version>2.1.5</Version>
       <Visible>False</Visible>
+      <Version>2.2.0</Version>
     </XamarinComponentReference>
   </ItemGroup>
   <ItemGroup>

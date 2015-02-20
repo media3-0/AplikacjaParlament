@@ -1,5 +1,5 @@
 ﻿//
-//  IPeopleRepository.cs
+//  IPoselWspolpracownik.cs
 //
 //  Author:
 //       Jakub Syty <j.syty@media30.pl>
@@ -19,29 +19,16 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
-using System.Threading.Tasks;
-using AplikacjaParlamentShared.Models;
 using System.Collections.Generic;
+using System.Text;
 
-namespace AplikacjaParlamentShared.Repositories
+namespace AplikacjaParlamentShared.Models
 {
-	/**
-	 * Interfejs dla repozytorium zarządzającym osobami
-	 */
-	public interface IPeopleRepository
-	{
-		Task<IPosel> GetPosel(int id);
-		Task<ISpeech> GetPoselSpeech(int id);
-		Task<IInterpellation> GetPoselInterpellation(int id);
-		Task<IVoting> GetSejmVoting(int id);
-
-		Task<List<Posel>> GetPoselList();
-		Task<List<Speech>> GetPoselSpeeches(int id);
-		Task<List<Interpellation>> GetPoselInterpellations (int id);
-		Task<List<Vote>> GetPoselVotes (int id);
-		Task<List<Voting>> GetAllVotes ();
-		Task<List<PoselNewest>> GetPoselNewest (int id);
-        Task<List<PoselWspolpracownik>> GetPoselWspolpracownicy(int id);
-	}
+    public class IPoselWspolpracownik
+    {
+        string Data { get; set; }
+        string Nazwa { get; set; }
+        string Funkcja { get; set; }
+        int DokumentID { get; set; }
+    }
 }
-
