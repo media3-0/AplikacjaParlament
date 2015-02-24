@@ -23,12 +23,14 @@ using Android.Widget;
 using Android.App;
 using Android.Views;
 using Android.Content;
+using Android.Support.V4.Widget;
 
 namespace AplikacjaParlamentAndroid
 {
 	public class LeftDrawerAdapter : BaseAdapter<String>
 	{
 
+		private DrawerLayout mDrawerLayout;
 		private Activity context;
 		private String[] items = new String[]{
 			"Najnowsze",
@@ -41,6 +43,7 @@ namespace AplikacjaParlamentAndroid
 		public LeftDrawerAdapter (Activity context) : base()
 		{
 			this.context = context;
+			mDrawerLayout = context.FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
 		}
 
 		public override long GetItemId(int position)
@@ -108,6 +111,8 @@ namespace AplikacjaParlamentAndroid
 					if(position == 2){
 						activity.PutExtra ("type", SimpleContainerActivity.VIEW_ALL_VOTES);
 					}
+
+					mDrawerLayout.CloseDrawers ();
 					context.StartActivity (activity);
 				};
 			}
