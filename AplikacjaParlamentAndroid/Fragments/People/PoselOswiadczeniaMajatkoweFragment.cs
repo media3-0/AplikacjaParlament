@@ -1,5 +1,5 @@
 ﻿//
-//  PoselWspolpracownicyFragment.cs
+//  PoselOswiadczeniaMajatkoweFragment.cs
 //
 //  Author:
 //       Jakub Syty <j.syty@media30.pl>
@@ -41,11 +41,11 @@ using Android.Database;
 
 namespace AplikacjaParlamentAndroid
 {
-    public class PoselWspolpracownicyFragment : BaseListFragment
+	public class PoselOswiadczeniaMajatkoweFragment : BaseListFragment
 	{
 		private PersonDetailsActivity personDetailsActivity;
 
-		private List<PoselWspolpracownik> list;
+		private List<PoselOswiadczeniaMajatkowe> list;
 
 		private DocumentDownloadHelper DownloadHelper;
 
@@ -75,12 +75,12 @@ namespace AplikacjaParlamentAndroid
 				switch (personDetailsActivity.PersonType) {
 				case PersonTypeEnumeration.Posel:
 					{
-						list = await repository.GetPoselWspolpracownicy (personDetailsActivity.PersonId);
+						list = await repository.GetPoselOswiadczeniaMajatkowe (personDetailsActivity.PersonId);
 						break;
 					}
 				}
 
-                ListAdapter = new PoselWspolpracownicyListAdapter(personDetailsActivity, list);
+				ListAdapter = new PoselOswiadczeniaMajatkoweListAdapter(personDetailsActivity, list);
 				this.loading (true);
 			} catch (ApiRequestException ex){
 				personDetailsActivity.ShowErrorDialog (ex.Message);
@@ -105,14 +105,12 @@ namespace AplikacjaParlamentAndroid
 			// Have the list highlight this item and show the data.
 			ListView.SetItemChecked(index, true);
 
-			var wspolpracownik = list.ElementAt (index);
-			DownloadHelper = new DocumentDownloadHelper (wspolpracownik.DokumentID, this.Activity);
+			var oswiadczenie = list.ElementAt (index);
+			DownloadHelper = new DocumentDownloadHelper (oswiadczenie.DokumentID, this.Activity);
 			DownloadHelper.DownloadedEvent += () => Toast.MakeText(Activity, "Pobieranie zakończone pomyślnie. Kliknij na dokument jeszcze raz aby go otworzyć.", ToastLength.Long).Show();
 			DownloadHelper.StartDownloading ();
-            
 		}
-
-        
+			
 	}
 }
 

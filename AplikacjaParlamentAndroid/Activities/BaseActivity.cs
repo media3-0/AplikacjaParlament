@@ -42,15 +42,17 @@ namespace AplikacjaParlamentAndroid
 
 		static Boolean active = false;
 
+		protected Android.Support.V7.Widget.Toolbar Toolbar;
+
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
 
 			Cheeseknife.Inject (this);
 
-            var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
+			Toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
 
-            SetSupportActionBar(toolbar);
+			SetSupportActionBar(Toolbar);
 
             SupportActionBar.SetHomeButtonEnabled(true);
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);

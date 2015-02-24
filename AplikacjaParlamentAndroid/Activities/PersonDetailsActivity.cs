@@ -56,6 +56,9 @@ namespace AplikacjaParlamentAndroid
 
 		public string PersonName { get; set; }
 
+		private PagerSlidingTabStrip.PagerSlidingTabStrip tabs;
+		private ViewPager pager;
+
 		private GenericOrderedDictionary<String, Fragment> fragmentsTabs = new GenericOrderedDictionary<String, Fragment> ();
 
 		protected override void OnCreate (Bundle bundle)
@@ -81,7 +84,8 @@ namespace AplikacjaParlamentAndroid
 					fragmentsTabs.Add ("Głosowania", new PersonVotesFragment ());
 					fragmentsTabs.Add ("Wystąpienia", new PersonSpeechesFragment ());
 					fragmentsTabs.Add ("Interpelacje", new PersonInterpellationsFragment ());
-                    fragmentsTabs.Add("Współpracownicy", new PoselWspolpracownicyFragment());
+                    fragmentsTabs.Add ("Współpracownicy", new PoselWspolpracownicyFragment());
+					fragmentsTabs.Add ("Oświadczenia majątkowe", new PoselOswiadczeniaMajatkoweFragment ());
 					fragmentsTabs.Add ("Aktywność", new PersonNewestFragment ());
                     
 					break;
@@ -93,8 +97,8 @@ namespace AplikacjaParlamentAndroid
 				this.Finish ();
 			}
 
-			var tabs = FindViewById<PagerSlidingTabStrip.PagerSlidingTabStrip> (Resource.Id.tabs);
-			var pager = FindViewById<ViewPager> (Resource.Id.pager);
+			tabs = FindViewById<PagerSlidingTabStrip.PagerSlidingTabStrip> (Resource.Id.tabs);
+			pager = FindViewById<ViewPager> (Resource.Id.pager);
 
 			tabs.ShouldExpand = false;
 
@@ -105,6 +109,24 @@ namespace AplikacjaParlamentAndroid
 		public void IncorrectId(){
 			Toast.MakeText (this, "Nieprawidłowe id", ToastLength.Long);
 			this.Finish ();
+		}
+
+		public override bool OnCreateOptionsMenu (IMenu menu)
+		{
+			base.OnCreateOptionsMenu (menu);
+			for (int i = 0; i < fragmentsTabs.Count; i++) {
+				menu.Add(0,100 + i,i,new Java.Lang.String(fragmentsTabs.GetItem(i).Key));
+			}
+			return true;
+		}
+
+		public override bool OnOptionsItemSelected (IMenuItem item)
+		{
+			if (item.ItemId >= 100 && item.ItemId <= (100 + fragmentsTabs.Count)) {
+				pager.SetCurrentItem (item.ItemId - 100, true);
+				return true;
+			}
+			return base.OnOptionsItemSelected (item);
 		}
 	}
 }

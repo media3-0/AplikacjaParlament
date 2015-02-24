@@ -76,8 +76,7 @@
     <Reference Include="OkHttp">
       <HintPath>..\Components\modernhttpclient-2.1.5\lib\android\OkHttp.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Insights, Version=1.9.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Xamarin.Insights">
       <HintPath>..\packages\Xamarin.Insights.1.9.1.107\lib\MonoAndroid10\Xamarin.Insights.dll</HintPath>
     </Reference>
   </ItemGroup>
@@ -124,6 +123,9 @@
     <Compile Include="Fragments\People\VotesFragment.cs" />
     <Compile Include="Adapters\People\AllVotesAdapter.cs" />
     <Compile Include="Activities\AboutActivity.cs" />
+    <Compile Include="Adapters\People\PoselOswiadczeniaMajatkoweListAdapter.cs" />
+    <Compile Include="Fragments\People\PoselOswiadczeniaMajatkoweFragment.cs" />
+    <Compile Include="Helpers\DocumentDownloadHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -199,8 +201,8 @@
       <Visible>False</Visible>
     </XamarinComponentReference>
     <XamarinComponentReference Include="modernhttpclient">
-      <Visible>False</Visible>
       <Version>2.2.0</Version>
+      <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>
   <ItemGroup>
