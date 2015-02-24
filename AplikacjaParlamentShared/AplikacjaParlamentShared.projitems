@@ -63,6 +63,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\People\PoselNewest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\People\PeopleInterfaces\IPoselOswiadczeniaMajatkowe.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\People\PoselOswiadczeniaMajatkowe.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\People\PoselRejestrKorzysci.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Repositories\" />

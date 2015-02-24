@@ -70,6 +70,8 @@ namespace AplikacjaParlamentAndroid
 		}
 
 		private void DoneDownloading(){
+			downloadId = 0;
+			context.UnregisterReceiver (broadcastReceiver);
 			DownloadedEvent();
 		}
 

@@ -126,6 +126,8 @@
     <Compile Include="Adapters\People\PoselOswiadczeniaMajatkoweListAdapter.cs" />
     <Compile Include="Fragments\People\PoselOswiadczeniaMajatkoweFragment.cs" />
     <Compile Include="Helpers\DocumentDownloadHelper.cs" />
+    <Compile Include="Adapters\People\PoselRejestrKorzysciListAdapter.cs" />
+    <Compile Include="Fragments\People\PoselRejestrKorzysciFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
