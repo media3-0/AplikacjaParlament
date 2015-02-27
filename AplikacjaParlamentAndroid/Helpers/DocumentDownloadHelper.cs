@@ -76,7 +76,8 @@ namespace AplikacjaParlamentAndroid
 		}
 
 		public void Pause(){
-			context.UnregisterReceiver(broadcastReceiver);
+			if(downloadId > 0)
+				context.UnregisterReceiver(broadcastReceiver);
 		}
 
 		public void Resume(){
