@@ -49,18 +49,6 @@
     </Reference>
     <Reference Include="Mono.Android.Export" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="Xamarin.Android.Support.v4">
-      <HintPath>..\packages\Xamarin.Android.Support.v4.21.0.3.0\lib\MonoAndroid10\Xamarin.Android.Support.v4.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.v7.AppCompat">
-      <HintPath>..\packages\Xamarin.Android.Support.v7.AppCompat.21.0.3.0\lib\MonoAndroid403\Xamarin.Android.Support.v7.AppCompat.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.v7.MediaRouter">
-      <HintPath>..\packages\Xamarin.Android.Support.v7.MediaRouter.21.0.3.0\lib\MonoAndroid403\Xamarin.Android.Support.v7.MediaRouter.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.v13">
-      <HintPath>..\packages\Xamarin.Android.Support.v13.21.0.3.0\lib\MonoAndroid32\Xamarin.Android.Support.v13.dll</HintPath>
-    </Reference>
     <Reference Include="Cheeseknife">
       <HintPath>..\Components\cheeseknife-1.0\lib\android\Cheeseknife.dll</HintPath>
     </Reference>
@@ -71,13 +59,25 @@
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="ModernHttpClient">
-      <HintPath>..\Components\modernhttpclient-2.1.5\lib\android\ModernHttpClient.dll</HintPath>
+      <HintPath>..\Components\modernhttpclient-2.2.0\lib\android\ModernHttpClient.dll</HintPath>
     </Reference>
     <Reference Include="OkHttp">
-      <HintPath>..\Components\modernhttpclient-2.1.5\lib\android\OkHttp.dll</HintPath>
+      <HintPath>..\Components\modernhttpclient-2.2.0\lib\android\OkHttp.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Insights">
       <HintPath>..\packages\Xamarin.Insights.1.9.1.107\lib\MonoAndroid10\Xamarin.Insights.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.v4">
+      <HintPath>..\packages\Xamarin.Android.Support.v4.22.0.0.0\lib\MonoAndroid10\Xamarin.Android.Support.v4.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.v7.AppCompat">
+      <HintPath>..\packages\Xamarin.Android.Support.v7.AppCompat.22.0.0.0\lib\MonoAndroid403\Xamarin.Android.Support.v7.AppCompat.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.v7.MediaRouter">
+      <HintPath>..\packages\Xamarin.Android.Support.v7.MediaRouter.22.0.0.0\lib\MonoAndroid403\Xamarin.Android.Support.v7.MediaRouter.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.v13">
+      <HintPath>..\packages\Xamarin.Android.Support.v13.22.0.0.0\lib\MonoAndroid32\Xamarin.Android.Support.v13.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
