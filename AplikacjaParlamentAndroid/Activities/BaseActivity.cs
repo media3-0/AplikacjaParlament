@@ -37,7 +37,7 @@ using Com.Lilarcor.Cheeseknife;
 namespace AplikacjaParlamentAndroid
 {
 	[Activity (Label = "BaseActivity")]
-    public class BaseActivity : Android.Support.V7.App.ActionBarActivity
+	public class BaseActivity : Android.Support.V7.App.AppCompatActivity
 	{
 
 		static Boolean active = false;

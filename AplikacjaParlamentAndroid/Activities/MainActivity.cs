@@ -40,7 +40,7 @@ using AplikacjaParlamentAndroid.Adapters;
 namespace AplikacjaParlamentAndroid
 {
 	[Activity (Label = "Parlament", MainLauncher = true)]
-	public class MainActivity : Android.Support.V7.App.ActionBarActivity
+	public class MainActivity : Android.Support.V7.App.AppCompatActivity
 	{
 
 		[InjectView(Resource.Id.list)]
