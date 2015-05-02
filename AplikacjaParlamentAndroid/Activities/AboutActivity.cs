@@ -39,8 +39,9 @@ namespace AplikacjaParlamentAndroid
 
 		protected override void OnCreate (Bundle bundle)
 		{
-            SetContentView(Resource.Layout.SimpleActivityLayout);
 			base.OnCreate (bundle);
+            SetContentView(Resource.Layout.SimpleActivityLayout);
+			this.PrepareViews ();
 
 			ListView mDrawerList = FindViewById<ListView>(Resource.Id.left_drawer);
 			mDrawerList.Adapter = new LeftDrawerAdapter (this);

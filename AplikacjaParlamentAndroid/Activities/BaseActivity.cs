@@ -47,15 +47,18 @@ namespace AplikacjaParlamentAndroid
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
+		}
 
+		protected void PrepareViews ()
+		{
 			Cheeseknife.Inject (this);
 
 			Toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
 
 			SetSupportActionBar(Toolbar);
 
-            SupportActionBar.SetHomeButtonEnabled(true);
-            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+			SupportActionBar.SetHomeButtonEnabled(true);
+			SupportActionBar.SetDisplayHomeAsUpEnabled(true);
 		}
 
 		protected override void OnStart ()

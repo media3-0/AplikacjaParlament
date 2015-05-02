@@ -97,15 +97,15 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-                <pagerslidingtabstrip.PagerSlidingTabStrip
+                <com.refractored.PagerSlidingTabStrip
                     android:id="@+id/tabs"
                     android:layout_width="match_parent"
                     android:layout_height="38dip"
                     android:textColor="#FFFFFF"
-                    app:shouldExpand="true"
-                    app:indicatorColor="#FFFFFF"
-                    app:tabPaddingLeftRight="10dp"
-                    app:indicatorHeight="1dp" />
+                    app:pstsShouldExpand="true"
+                    app:pstsIndicatorColor="#FFFFFF"
+                    app:pstsTabPaddingLeftRight="10dp"
+                    app:pstsIndicatorHeight="1dp" />
                 <android.support.v4.view.ViewPager
                     android:id="@+id/pager"
                     android:layout_width="match_parent"

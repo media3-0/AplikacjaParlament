@@ -56,15 +56,16 @@ namespace AplikacjaParlamentAndroid
 
 		public string PersonName { get; set; }
 
-		private PagerSlidingTabStrip.PagerSlidingTabStrip tabs;
+		private com.refractored.PagerSlidingTabStrip tabs;
 		private ViewPager pager;
 
 		private GenericOrderedDictionary<String, Fragment> fragmentsTabs = new GenericOrderedDictionary<String, Fragment> ();
 
 		protected override void OnCreate (Bundle bundle)
 		{
+			base.OnCreate(bundle);	
             SetContentView(Resource.Layout.PersonDetailsLayout);
-            base.OnCreate(bundle);	
+			this.PrepareViews ();
              
 			ListView mDrawerList = FindViewById<ListView>(Resource.Id.left_drawer);
 			mDrawerList.Adapter = new LeftDrawerAdapter (this);		
@@ -98,7 +99,7 @@ namespace AplikacjaParlamentAndroid
 				this.Finish ();
 			}
 
-			tabs = FindViewById<PagerSlidingTabStrip.PagerSlidingTabStrip> (Resource.Id.tabs);
+			tabs = FindViewById<com.refractored.PagerSlidingTabStrip> (Resource.Id.tabs);
 			pager = FindViewById<ViewPager> (Resource.Id.pager);
 
 			tabs.ShouldExpand = false;
