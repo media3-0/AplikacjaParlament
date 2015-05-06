@@ -35,9 +35,6 @@ namespace AplikacjaParlamentAndroid.Helpers
     class FileDownloader
     {
         public static long DownloadFile(string from, string to, DownloadManager dm) {
-            var dir = new Java.IO.File(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath + "/Parlament/");
-            if (!dir.Exists())
-                dir.Mkdirs();
             //var uri = Android.Net.Uri.FromFile(new Java.IO.File(dir.AbsolutePath + to));
             var request = new DownloadManager.Request(Android.Net.Uri.Parse(from));
             request.SetDestinationInExternalPublicDir("Parlament/", to);
