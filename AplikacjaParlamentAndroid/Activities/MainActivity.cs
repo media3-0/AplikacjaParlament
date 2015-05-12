@@ -37,6 +37,8 @@ using Android.Support.V4.Widget;
 using AplikacjaParlamentShared.Api;
 using AplikacjaParlamentAndroid.Adapters;
 
+using AlertDialog = Android.Support.V7.App.AlertDialog;
+
 namespace AplikacjaParlamentAndroid
 {
 	[Activity (Label = "Parlament", MainLauncher = true)]
@@ -98,7 +100,7 @@ namespace AplikacjaParlamentAndroid
 				alert.SetPositiveButton ("Ok", (senderAlert, args) => {
 					//
 				});
-				alert.Show ();
+				alert.Create().Show();
 			} else {
 				if (viewSwitcher.CurrentView != progressLayout){
 					viewSwitcher.ShowNext(); 
@@ -148,7 +150,7 @@ namespace AplikacjaParlamentAndroid
 			alert.SetPositiveButton ("Ok", (senderAlert, args) => {
 				//
 			} );
-			alert.Show ();
+			alert.Create().Show ();
 		}
 	}
 }

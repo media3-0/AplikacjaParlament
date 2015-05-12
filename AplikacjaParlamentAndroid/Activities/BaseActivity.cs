@@ -32,6 +32,8 @@ using Android.Views;
 using Android.Widget;
 using Android.Support.V4.App;
 
+using AlertDialog = Android.Support.V7.App.AlertDialog;
+
 using Com.Lilarcor.Cheeseknife;
 
 namespace AplikacjaParlamentAndroid
@@ -95,7 +97,7 @@ namespace AplikacjaParlamentAndroid
 			alert.SetPositiveButton ("Ok", (senderAlert, args) => {
 				//
 			} );
-			alert.Show ();
+			alert.Create().Show ();
 		}
 	}
 }

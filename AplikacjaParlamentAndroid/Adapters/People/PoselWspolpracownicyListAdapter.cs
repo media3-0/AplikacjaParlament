@@ -58,7 +58,7 @@ namespace AplikacjaParlamentAndroid.Adapters
 			var view = convertView;
 			if (convertView == null)
 			{
-				view = context.LayoutInflater.Inflate(Resource.Layout.PoselWspolpracownikListElement, null);
+				view = context.LayoutInflater.Inflate(Resource.Layout.PoselPdfDownloadElement, null);
 				wrapper = new Wrapper();
 				wrapper.tvData = view.FindViewById<TextView>(Resource.Id.tvData);
                 wrapper.tvNazwa = view.FindViewById<TextView>(Resource.Id.tvNazwa);
