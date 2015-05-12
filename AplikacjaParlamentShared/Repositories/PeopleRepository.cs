@@ -301,7 +301,7 @@ namespace AplikacjaParlamentShared.Repositories
 			try {
 				IJsonArrayRequestHandler<PoselNewest> handler = new JsonArrayRequestHandler<PoselNewest> (ConnectionProvider.Instance);
 
-				var request = new RequestParamsHandler (String.Concat ("http://mojepanstwo.pl:4444/dane/poslowie/" + id + "/feed.json"));
+				var request = new RequestParamsHandler (String.Concat (RepositoriesContants.API_BASE_URI, "poslowie/" + id + "/feed.json"));
 				request.Limit = 40;
 				request.Contexts.Add(new PoslowieNowosciContext());
 
