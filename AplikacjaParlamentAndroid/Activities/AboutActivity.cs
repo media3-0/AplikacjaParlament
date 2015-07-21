@@ -49,8 +49,7 @@ namespace AplikacjaParlamentAndroid
 			FragmentTransaction ft = FragmentManager.BeginTransaction ();
 			Fragment fragmentToView = new AboutFragment();
 
-			if(fragmentToView != null)
-				ft.Add (Resource.Id.FragmentContainer, fragmentToView);
+			ft.Add (Resource.Id.FragmentContainer, fragmentToView);
 			ft.Commit ();
 		}
 	}
