@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="0.1.6" package="pl.media30.android.parlament" android:versionCode="7">
-	<uses-sdk android:minSdkVersion="15" android:targetSdkVersion="21" />
+	<uses-sdk android:minSdkVersion="15" android:targetSdkVersion="22" />
 	<application android:label="Parlament" android:icon="@drawable/icon" android:theme="@style/MyTheme"></application>
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
