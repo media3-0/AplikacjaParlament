@@ -41,6 +41,7 @@ namespace AplikacjaParlamentAndroid.Adapters
 			public TextView tvData { get; set; }
 			public TextView tvNazwa { get; set; }
 			public TextView tvFunkcja { get; set; }
+			public ImageView ivDownloadStatus { get; set; }
 		}
 
 		private Activity context;
@@ -63,6 +64,7 @@ namespace AplikacjaParlamentAndroid.Adapters
 				wrapper.tvData = view.FindViewById<TextView>(Resource.Id.tvData);
                 wrapper.tvNazwa = view.FindViewById<TextView>(Resource.Id.tvNazwa);
 				wrapper.tvFunkcja = view.FindViewById<TextView> (Resource.Id.tvFunkcja);
+				wrapper.ivDownloadStatus = view.FindViewById<ImageView> (Resource.Id.ivDownloadStatus);
 				view.Tag = wrapper;
 			}
 			else
@@ -74,6 +76,10 @@ namespace AplikacjaParlamentAndroid.Adapters
 			wrapper.tvData.Text = rejestr.Data;
 			wrapper.tvNazwa.Text = rejestr.Label;
 			wrapper.tvFunkcja.Visibility = ViewStates.Invisible;
+			var file = new Java.IO.File(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath + "/Parlament/" + rejestr.DokumentID.ToString() + ".pdf");
+			if (file.Exists ()) {
+				wrapper.ivDownloadStatus.SetImageResource (Resource.Drawable.check);
+			}
 
 			return view;
 		}

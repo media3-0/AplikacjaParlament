@@ -107,7 +107,12 @@ namespace AplikacjaParlamentAndroid
 
 			var oswiadczenie = list.ElementAt (index);
 			DownloadHelper = new DocumentDownloadHelper (oswiadczenie.DokumentID, this.Activity);
-			DownloadHelper.DownloadedEvent += () => Toast.MakeText(Activity, "Pobieranie zakończone pomyślnie. Kliknij na dokument jeszcze raz aby go otworzyć.", ToastLength.Long).Show();
+			DownloadHelper.DownloadedEvent += delegate() {
+				Toast.MakeText (Activity, "Pobieranie zakończone pomyślnie. Kliknij na dokument jeszcze raz aby go otworzyć.", ToastLength.Long).Show ();
+				if(ListAdapter != null){
+					(ListAdapter as PoselOswiadczeniaMajatkoweListAdapter).NotifyDataSetChanged();
+				}
+			};
 			DownloadHelper.StartDownloading ();
 		}
 			
