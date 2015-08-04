@@ -1,10 +1,10 @@
-﻿//
-//  AboutActivity.cs
+//
+//  FileDownloader.cs
 //
 //  Author:
 //       Jakub Syty <j.syty@media30.pl>
 //
-//  Copyright (c) 2014 
+//  Copyright (c) 2014 Fundacja Media 3.0
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -18,7 +18,6 @@
 //
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,27 +30,15 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
-namespace AplikacjaParlamentAndroid
+namespace AplikacjaParlamentAndroid.Helpers
 {
-	[Activity (Label = "")]			
-	public class AboutActivity : BaseActivity
-	{
-
-		protected override void OnCreate (Bundle bundle)
-		{
-			base.OnCreate (bundle);
-            SetContentView(Resource.Layout.SimpleActivityLayout);
-			this.PrepareViews ();
-
-			ListView mDrawerList = FindViewById<ListView>(Resource.Id.left_drawer);
-			mDrawerList.Adapter = new LeftDrawerAdapter (this);
-
-			FragmentTransaction ft = FragmentManager.BeginTransaction ();
-			Fragment fragmentToView = new AboutFragment();
-
-			ft.Add (Resource.Id.FragmentContainer, fragmentToView);
-			ft.Commit ();
-		}
-	}
+    class FileDownloader
+    {
+        public static long DownloadFile(string from, string to, DownloadManager dm) {
+            //var uri = Android.Net.Uri.FromFile(new Java.IO.File(dir.AbsolutePath + to));
+            var request = new DownloadManager.Request(Android.Net.Uri.Parse(from));
+            request.SetDestinationInExternalPublicDir("Parlament/", to);
+            return dm.Enqueue(request);
+        }
+    }
 }
-

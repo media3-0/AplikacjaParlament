@@ -127,7 +127,7 @@ namespace AplikacjaParlamentAndroid
 				fragmentsTabs.Add ("Wstrzymał się (" + glosyWstrzymalSie.Count +")", new VotingPeopleListFragment (glosyWstrzymalSie));
 				fragmentsTabs.Add ("Nieobecny (" + glosyNieobecny.Count +")", new VotingPeopleListFragment (glosyNieobecny));
 
-				var tabs = Activity.FindViewById<PagerSlidingTabStrip.PagerSlidingTabStrip> (Resource.Id.tabs);
+				var tabs = Activity.FindViewById<com.refractored.PagerSlidingTabStrip> (Resource.Id.tabs);
 				var pager = Activity.FindViewById<ViewPager> (Resource.Id.pager);
 
 				tabs.ShouldExpand = false;

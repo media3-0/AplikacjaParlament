@@ -1,5 +1,5 @@
 ﻿//
-//  AboutActivity.cs
+//  IPoselWspolpracownik.cs
 //
 //  Author:
 //       Jakub Syty <j.syty@media30.pl>
@@ -18,40 +18,17 @@
 //
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-
-namespace AplikacjaParlamentAndroid
+namespace AplikacjaParlamentShared.Models
 {
-	[Activity (Label = "")]			
-	public class AboutActivity : BaseActivity
-	{
-
-		protected override void OnCreate (Bundle bundle)
-		{
-			base.OnCreate (bundle);
-            SetContentView(Resource.Layout.SimpleActivityLayout);
-			this.PrepareViews ();
-
-			ListView mDrawerList = FindViewById<ListView>(Resource.Id.left_drawer);
-			mDrawerList.Adapter = new LeftDrawerAdapter (this);
-
-			FragmentTransaction ft = FragmentManager.BeginTransaction ();
-			Fragment fragmentToView = new AboutFragment();
-
-			ft.Add (Resource.Id.FragmentContainer, fragmentToView);
-			ft.Commit ();
-		}
-	}
+    public class IPoselWspolpracownik
+    {
+        string Data { get; set; }
+        string Nazwa { get; set; }
+        string Funkcja { get; set; }
+        int DokumentID { get; set; }
+    }
 }
-

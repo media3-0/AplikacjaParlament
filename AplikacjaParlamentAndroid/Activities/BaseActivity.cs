@@ -32,28 +32,35 @@ using Android.Views;
 using Android.Widget;
 using Android.Support.V4.App;
 
+using AlertDialog = Android.Support.V7.App.AlertDialog;
+
 using Com.Lilarcor.Cheeseknife;
 
 namespace AplikacjaParlamentAndroid
 {
 	[Activity (Label = "BaseActivity")]
-    public class BaseActivity : Android.Support.V7.App.ActionBarActivity
+	public class BaseActivity : Android.Support.V7.App.AppCompatActivity
 	{
 
 		static Boolean active = false;
 
+		protected Android.Support.V7.Widget.Toolbar Toolbar;
+
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
+		}
 
+		protected void PrepareViews ()
+		{
 			Cheeseknife.Inject (this);
 
-            var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
+			Toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
 
-            SetSupportActionBar(toolbar);
+			SetSupportActionBar(Toolbar);
 
-            SupportActionBar.SetHomeButtonEnabled(true);
-            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+			SupportActionBar.SetHomeButtonEnabled(true);
+			SupportActionBar.SetDisplayHomeAsUpEnabled(true);
 		}
 
 		protected override void OnStart ()
@@ -90,7 +97,7 @@ namespace AplikacjaParlamentAndroid
 			alert.SetPositiveButton ("Ok", (senderAlert, args) => {
 				//
 			} );
-			alert.Show ();
+			alert.Create().Show ();
 		}
 	}
 }
