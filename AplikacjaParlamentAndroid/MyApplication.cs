@@ -28,6 +28,9 @@ namespace AplikacjaParlamentAndroid
 	[Application]
 	public class MyApplication : Application
 	{
+
+		public static string PARLAMENT_EXTERNAL_DIR = Android.OS.Environment.ExternalStorageDirectory.AbsolutePath + "/Parlament/";
+
 		public MyApplication(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
 		{
 		}
@@ -40,6 +43,10 @@ namespace AplikacjaParlamentAndroid
 			#if ! DEBUG
 			Insights.Initialize("9ab53be97f0603a11a92aba3d1532fb00259140c", Context);
 			#endif
+
+			var dir = new Java.IO.File(MyApplication.PARLAMENT_EXTERNAL_DIR);
+			if (!dir.Exists())
+				dir.Mkdirs();
 		}
 	}
 }

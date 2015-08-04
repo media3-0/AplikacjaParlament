@@ -47,14 +47,14 @@ namespace AplikacjaParlamentAndroid
 
 		protected override void OnCreate (Bundle bundle)
 		{
-            SetContentView(Resource.Layout.PoslowieActivityLayout);
-
 			base.OnCreate (bundle);
+            SetContentView(Resource.Layout.PoslowieActivityLayout);
+			this.PrepareViews ();
 
 			ListView mDrawerList = FindViewById<ListView>(Resource.Id.left_drawer);
 			mDrawerList.Adapter = new LeftDrawerAdapter (this);
 
-			var tabs = FindViewById<PagerSlidingTabStrip.PagerSlidingTabStrip> (Resource.Id.tabs);
+			var tabs = FindViewById<com.refractored.PagerSlidingTabStrip> (Resource.Id.tabs);
 			var pager = FindViewById<ViewPager> (Resource.Id.pager);
 
 			pager.Adapter = new UniversalFragmentPagerAdapter (FragmentManager, fragmentsTabs);

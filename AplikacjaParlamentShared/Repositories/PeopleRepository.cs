@@ -301,11 +301,87 @@ namespace AplikacjaParlamentShared.Repositories
 			try {
 				IJsonArrayRequestHandler<PoselNewest> handler = new JsonArrayRequestHandler<PoselNewest> (ConnectionProvider.Instance);
 
-				var request = new RequestParamsHandler (String.Concat ("http://mojepanstwo.pl:4444/dane/poslowie/" + id + "/feed.json"));
+				var request = new RequestParamsHandler (String.Concat (RepositoriesContants.API_BASE_URI, "poslowie/" + id + "/feed.json"));
 				request.Limit = 40;
 				request.Contexts.Add(new PoslowieNowosciContext());
 
 				List<PoselNewest> p = await handler.GetJsonArrayAsync (request);
+				return p;
+
+			} catch (Java.IO.IOException ex){
+				Android.Util.Log.Error("Java.IO.IOException on GetJsonArrayAsync", ex.ToString());
+				throw new ApiRequestException (String.Concat("Problem z połączeniem:\n", ex.Message));
+
+			} catch (Exception ex) {
+				Android.Util.Log.Error("GetJsonArrayAsync", ex.ToString());
+				throw new ApiRequestException (String.Concat("Problem z dostępem do API:\n", ex.Message));
+			}
+		}
+
+        async public Task<List<PoselWspolpracownik>> GetPoselWspolpracownicy(int id) 
+        {
+            try {
+                IJsonArrayRequestHandler<PoselWspolpracownik> handler = new JsonArrayRequestHandler<PoselWspolpracownik>(ConnectionProvider.Instance);
+
+                var request = new RequestParamsHandler(String.Concat(RepositoriesContants.API_DATASET_URI, "poslowie_wspolpracownicy/search.json"));
+                request.AddCondition("poslowie.id", id.ToString());
+                request.AddField("poslowie_wspolpracownicy.data");
+                request.AddField("poslowie_wspolpracownicy.nazwa");
+                request.AddField("poslowie_wspolpracownicy.funkcja");
+                request.AddField("poslowie_wspolpracownicy.dokument_id");
+                request.Limit = 50;
+
+                List<PoselWspolpracownik> p = await handler.GetJsonArrayAsync(request);
+                return p;
+
+            } catch (Java.IO.IOException ex) {
+                Android.Util.Log.Error("Java.IO.IOException on GetJsonArrayAsync", ex.ToString());
+                throw new ApiRequestException(String.Concat("Problem z połączeniem:\n", ex.Message));
+
+            } catch (Exception ex) {
+                Android.Util.Log.Error("GetJsonArrayAsync", ex.ToString());
+                throw new ApiRequestException(String.Concat("Problem z dostępem do API:\n", ex.Message));
+            }
+        }
+
+		async public Task<List<PoselOswiadczeniaMajatkowe>> GetPoselOswiadczeniaMajatkowe (int id)
+		{
+			try {
+				IJsonArrayRequestHandler<PoselOswiadczeniaMajatkowe> handler = new JsonArrayRequestHandler<PoselOswiadczeniaMajatkowe> (ConnectionProvider.Instance);
+
+				var request = new RequestParamsHandler (String.Concat (RepositoriesContants.API_DATASET_URI, "poslowie_oswiadczenia_majatkowe/search.json"));
+				request.AddCondition("poslowie.id", id.ToString());
+				request.AddField("poslowie_oswiadczenia_majatkowe.data");
+				request.AddField("poslowie_oswiadczenia_majatkowe.label");
+				request.AddField("poslowie_oswiadczenia_majatkowe.dokument_id");
+				request.Limit = 50;
+
+				List<PoselOswiadczeniaMajatkowe> p = await handler.GetJsonArrayAsync (request);
+				return p;
+
+			} catch (Java.IO.IOException ex){
+				Android.Util.Log.Error("Java.IO.IOException on GetJsonArrayAsync", ex.ToString());
+				throw new ApiRequestException (String.Concat("Problem z połączeniem:\n", ex.Message));
+
+			} catch (Exception ex) {
+				Android.Util.Log.Error("GetJsonArrayAsync", ex.ToString());
+				throw new ApiRequestException (String.Concat("Problem z dostępem do API:\n", ex.Message));
+			}
+		}
+
+		async public Task<List<PoselRejestrKorzysci>> GetPoselRejestrKorzysci (int id)
+		{
+			try {
+				IJsonArrayRequestHandler<PoselRejestrKorzysci> handler = new JsonArrayRequestHandler<PoselRejestrKorzysci> (ConnectionProvider.Instance);
+
+				var request = new RequestParamsHandler (String.Concat (RepositoriesContants.API_DATASET_URI, "poslowie_rejestr_korzysci/search.json"));
+				request.AddCondition("poslowie.id", id.ToString());
+				request.AddField("poslowie_rejestr_korzysci.data");
+				request.AddField("poslowie_rejestr_korzysci.label");
+				request.AddField("poslowie_rejestr_korzysci.dokument_id");
+				request.Limit = 50;
+
+				List<PoselRejestrKorzysci> p = await handler.GetJsonArrayAsync (request);
 				return p;
 
 			} catch (Java.IO.IOException ex){

@@ -75,8 +75,6 @@ namespace AplikacjaParlamentAndroid
 		[InjectView(Resource.Id.tvZamieszkanie)]
 		private TextView tvZamieszkanie;
 
-		[InjectView(Resource.Id.miniature)]
-		private ImageView ivMiniature;
 
 		[InjectView(Resource.Id.progressLayout)]
 		private RelativeLayout progressLayout;
