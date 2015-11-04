@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{0751E6A1-832B-4D08-9004-76BE3F3B1BF7}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>AplikacjaParlamentIOS</RootNamespace>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <AssemblyName>AplikacjaParlamentIOS</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <MtouchArch>i386</MtouchArch>
+    <MtouchLink>None</MtouchLink>
+    <MtouchDebug>true</MtouchDebug>
+    <MtouchProfiling>true</MtouchProfiling>
+    <CodesignProvision>428fdb34-6649-4229-83b1-eba712d77b87</CodesignProvision>
+    <CodesignKey>iPhone Developer: jakub.nekro@gmail.com (FKDZB75QYJ)</CodesignKey>
+    <MtouchUseRefCounting>true</MtouchUseRefCounting>
+    <MtouchI18n>
+    </MtouchI18n>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <ConsolePause>false</ConsolePause>
+    <CodesignKey>iPhone Developer</CodesignKey>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>i386</MtouchArch>
+    <ConsolePause>false</ConsolePause>
+    <MtouchLink>None</MtouchLink>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\Debug</OutputPath>
+    <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchProfiling>true</MtouchProfiling>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchDebug>true</MtouchDebug>
+    <MtouchUseRefCounting>true</MtouchUseRefCounting>
+    <IpaPackageName>
+    </IpaPackageName>
+    <MtouchI18n>
+    </MtouchI18n>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.iOS" />
+    <Reference Include="Calabash">
+      <HintPath>..\packages\Xamarin.TestCloud.Agent.0.16.2\lib\Xamarin.iOS10\Calabash.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="ModernHttpClient">
+      <HintPath>..\Components\modernhttpclient-2.4.2\lib\ios-unified\ModernHttpClient.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
+    <InterfaceDefinition Include="Main.storyboard" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Info.plist" />
+    <None Include="Entitlements.plist" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Main.cs" />
+    <Compile Include="AppDelegate.cs" />
+    <Compile Include="TableSources\PoslowieTableSource.cs" />
+    <Compile Include="ListaPoslowController.cs" />
+    <Compile Include="ListaPoslowController.designer.cs">
+      <DependentUpon>ListaPoslowController.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <Import Project="..\AplikacjaParlamentShared\AplikacjaParlamentShared.projitems" Label="Shared" Condition="Exists('..\AplikacjaParlamentShared\AplikacjaParlamentShared.projitems')" />
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="TableSources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <XamarinComponentReference Include="json.net">
+      <Version>7.0.1</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="modernhttpclient">
+      <Version>2.4.2</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+  </ItemGroup>
+</Project>

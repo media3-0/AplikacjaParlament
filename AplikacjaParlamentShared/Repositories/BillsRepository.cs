@@ -21,6 +21,7 @@
 using System;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.IO;
 using AplikacjaParlamentShared.Models;
 using AplikacjaParlamentShared.Api;
 
@@ -58,12 +59,12 @@ namespace AplikacjaParlamentShared.Repositories
 				List<ProjektAktuPrawnego> p = await handler.GetJsonArrayAsync (request);
 				return p;
 
-			} catch (Java.IO.IOException ex){
-				Android.Util.Log.Error("Java.IO.IOException on GetJsonArrayAsync", ex.ToString());
+			} catch (IOException ex){
+				System.Diagnostics.Debug.WriteLine("Java.IO.IOException on GetJsonArrayAsync", ex.ToString());
 				throw new ApiRequestException (String.Concat("Problem z połączeniem:\n", ex.Message));
 
 			} catch (Exception ex) {
-				Android.Util.Log.Error("GetJsonArrayAsync", ex.ToString());
+				System.Diagnostics.Debug.WriteLine("GetJsonArrayAsync", ex.ToString());
 				throw new ApiRequestException (String.Concat("Problem z dostępem do API:\n", ex.Message));
 			}
 		}

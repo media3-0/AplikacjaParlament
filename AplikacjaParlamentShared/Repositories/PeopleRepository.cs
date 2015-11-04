@@ -24,6 +24,7 @@ using AplikacjaParlamentShared.Models;
 using AplikacjaParlamentShared.Api;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.IO;
 
 namespace AplikacjaParlamentShared.Repositories
 {
@@ -65,12 +66,12 @@ namespace AplikacjaParlamentShared.Repositories
 
 				Posel p = await handler.GetJsonObjectAsync (request);
 				return p;
-			} catch (Java.IO.IOException ex){
-				Android.Util.Log.Error("Java.IO.IOException on GetJsonObjectAsync", ex.ToString());
+			} catch (IOException ex){
+				System.Diagnostics.Debug.WriteLine("IOException on GetJsonObjectAsync", ex.ToString());
 				throw new ApiRequestException (String.Concat("Problem z połączeniem:\n", ex.Message));
 
 			} catch (Exception ex) {
-				Android.Util.Log.Error("GetJsonObjectAsync", ex.ToString());
+				System.Diagnostics.Debug.WriteLine("GetJsonObjectAsync", ex.ToString());
 				throw new ApiRequestException (String.Concat("Problem z dostępem do API:\n", ex.Message));
 			}
 		}
@@ -94,12 +95,12 @@ namespace AplikacjaParlamentShared.Repositories
 				List<Posel> p = await handler.GetJsonArrayAsync (request);
 				return p;
 
-			} catch (Java.IO.IOException ex){
-				Android.Util.Log.Error("Java.IO.IOException on GetJsonArrayAsync", ex.ToString());
+			} catch (IOException ex){
+				System.Diagnostics.Debug.WriteLine("IOException on GetJsonArrayAsync", ex.ToString());
 				throw new ApiRequestException (String.Concat("Problem z połączeniem:\n", ex.Message));
 
 			} catch (Exception ex) {
-				Android.Util.Log.Error("GetJsonArrayAsync", ex.ToString());
+				System.Diagnostics.Debug.WriteLine("GetJsonArrayAsync", ex.ToString());
 				throw new ApiRequestException (String.Concat("Problem z dostępem do API:\n", ex.Message));
 			}
 		}
@@ -121,12 +122,12 @@ namespace AplikacjaParlamentShared.Repositories
 				List<Speech> p = await handler.GetJsonArrayAsync (request);
 				return p;
 
-			} catch (Java.IO.IOException ex){
-				Android.Util.Log.Error("Java.IO.IOException on GetJsonArrayAsync", ex.ToString());
+			} catch (IOException ex){
+				System.Diagnostics.Debug.WriteLine("IOException on GetJsonArrayAsync", ex.ToString());
 				throw new ApiRequestException (String.Concat("Problem z połączeniem:\n", ex.Message));
 
 			} catch (Exception ex) {
-				Android.Util.Log.Error("GetJsonArrayAsync", ex.ToString());
+				System.Diagnostics.Debug.WriteLine("GetJsonArrayAsync", ex.ToString());
 				throw new ApiRequestException (String.Concat("Problem z dostępem do API:\n", ex.Message));
 			}
 		}
@@ -155,12 +156,12 @@ namespace AplikacjaParlamentShared.Repositories
 				List<Vote> p = await handler.GetJsonArrayAsync (request);
 				return p;
 
-			} catch (Java.IO.IOException ex){
-				Android.Util.Log.Error("Java.IO.IOException on GetJsonArrayAsync", ex.ToString());
+			} catch (IOException ex){
+				System.Diagnostics.Debug.WriteLine("IOException on GetJsonArrayAsync", ex.ToString());
 				throw new ApiRequestException (String.Concat("Problem z połączeniem:\n", ex.Message));
 
 			} catch (Exception ex) {
-				Android.Util.Log.Error("GetJsonArrayAsync", ex.ToString());
+				System.Diagnostics.Debug.WriteLine("GetJsonArrayAsync", ex.ToString());
 				throw new ApiRequestException (String.Concat("Problem z dostępem do API:\n", ex.Message));
 			}
 		}
@@ -184,12 +185,12 @@ namespace AplikacjaParlamentShared.Repositories
 				List<Voting> p = await handler.GetJsonArrayAsync (request);
 				return p;
 
-			} catch (Java.IO.IOException ex){
-				Android.Util.Log.Error("Java.IO.IOException on GetJsonArrayAsync", ex.ToString());
+			} catch (IOException ex){
+				System.Diagnostics.Debug.WriteLine("IOException on GetJsonArrayAsync", ex.ToString());
 				throw new ApiRequestException (String.Concat("Problem z połączeniem:\n", ex.Message));
 
 			} catch (Exception ex) {
-				Android.Util.Log.Error("GetJsonArrayAsync", ex.ToString());
+				System.Diagnostics.Debug.WriteLine("GetJsonArrayAsync", ex.ToString());
 				throw new ApiRequestException (String.Concat("Problem z dostępem do API:\n", ex.Message));
 			}
 		}
@@ -211,12 +212,12 @@ namespace AplikacjaParlamentShared.Repositories
 				List<Interpellation> p = await handler.GetJsonArrayAsync (request);
 				return p;
 
-			} catch (Java.IO.IOException ex){
-				Android.Util.Log.Error("Java.IO.IOException on GetJsonArrayAsync", ex.ToString());
+			} catch (IOException ex){
+				System.Diagnostics.Debug.WriteLine("IOException on GetJsonArrayAsync", ex.ToString());
 				throw new ApiRequestException (String.Concat("Problem z połączeniem:\n", ex.Message));
 
 			} catch (Exception ex) {
-				Android.Util.Log.Error("GetJsonArrayAsync", ex.ToString());
+				System.Diagnostics.Debug.WriteLine("GetJsonArrayAsync", ex.ToString());
 				throw new ApiRequestException (String.Concat("Problem z dostępem do API:\n", ex.Message));
 			}
 		}
@@ -236,12 +237,12 @@ namespace AplikacjaParlamentShared.Repositories
 
 				Speech p = await handler.GetJsonObjectAsync (request);
 				return p;
-			} catch (Java.IO.IOException ex){
-				Android.Util.Log.Error("Java.IO.IOException on GetJsonObjectAsync", ex.ToString());
+			} catch (IOException ex){
+				System.Diagnostics.Debug.WriteLine("IOException on GetJsonObjectAsync", ex.ToString());
 				throw new ApiRequestException (String.Concat("Problem z połączeniem:\n", ex.Message));
 
 			} catch (Exception ex) {
-				Android.Util.Log.Error("GetJsonObjectAsync", ex.ToString());
+				System.Diagnostics.Debug.WriteLine("GetJsonObjectAsync", ex.ToString());
 				throw new ApiRequestException (String.Concat("Problem z dostępem do API:\n", ex.Message));
 			}
 		}
@@ -261,12 +262,12 @@ namespace AplikacjaParlamentShared.Repositories
 
 				Interpellation p = await handler.GetJsonObjectAsync (request);
 				return p;
-			} catch (Java.IO.IOException ex){
-				Android.Util.Log.Error("Java.IO.IOException on GetJsonObjectAsync", ex.ToString());
+			} catch (IOException ex){
+				System.Diagnostics.Debug.WriteLine("IOException on GetJsonObjectAsync", ex.ToString());
 				throw new ApiRequestException (String.Concat("Problem z połączeniem:\n", ex.Message));
 
 			} catch (Exception ex) {
-				Android.Util.Log.Error("GetJsonObjectAsync", ex.ToString());
+				System.Diagnostics.Debug.WriteLine("GetJsonObjectAsync", ex.ToString());
 				throw new ApiRequestException (String.Concat("Problem z dostępem do API:\n", ex.Message));
 			}
 		}
@@ -286,12 +287,12 @@ namespace AplikacjaParlamentShared.Repositories
 
 				IVoting p = await handler.GetJsonObjectAsync (request);
 				return p;
-			} catch (Java.IO.IOException ex){
-				Android.Util.Log.Error("Java.IO.IOException on GetJsonObjectAsync", ex.ToString());
+			} catch (IOException ex){
+				System.Diagnostics.Debug.WriteLine("IOException on GetJsonObjectAsync", ex.ToString());
 				throw new ApiRequestException (String.Concat("Problem z połączeniem:\n", ex.Message));
 
 			} catch (Exception ex) {
-				Android.Util.Log.Error("GetJsonObjectAsync", ex.ToString());
+				System.Diagnostics.Debug.WriteLine("GetJsonObjectAsync", ex.ToString());
 				throw new ApiRequestException (String.Concat("Problem z dostępem do API:\n", ex.Message));
 			}
 		}
@@ -308,12 +309,12 @@ namespace AplikacjaParlamentShared.Repositories
 				List<PoselNewest> p = await handler.GetJsonArrayAsync (request);
 				return p;
 
-			} catch (Java.IO.IOException ex){
-				Android.Util.Log.Error("Java.IO.IOException on GetJsonArrayAsync", ex.ToString());
+			} catch (IOException ex){
+				System.Diagnostics.Debug.WriteLine("IOException on GetJsonArrayAsync", ex.ToString());
 				throw new ApiRequestException (String.Concat("Problem z połączeniem:\n", ex.Message));
 
 			} catch (Exception ex) {
-				Android.Util.Log.Error("GetJsonArrayAsync", ex.ToString());
+				System.Diagnostics.Debug.WriteLine("GetJsonArrayAsync", ex.ToString());
 				throw new ApiRequestException (String.Concat("Problem z dostępem do API:\n", ex.Message));
 			}
 		}
@@ -334,12 +335,12 @@ namespace AplikacjaParlamentShared.Repositories
                 List<PoselWspolpracownik> p = await handler.GetJsonArrayAsync(request);
                 return p;
 
-            } catch (Java.IO.IOException ex) {
-                Android.Util.Log.Error("Java.IO.IOException on GetJsonArrayAsync", ex.ToString());
+            } catch (IOException ex) {
+                System.Diagnostics.Debug.WriteLine("IOException on GetJsonArrayAsync", ex.ToString());
                 throw new ApiRequestException(String.Concat("Problem z połączeniem:\n", ex.Message));
 
             } catch (Exception ex) {
-                Android.Util.Log.Error("GetJsonArrayAsync", ex.ToString());
+                System.Diagnostics.Debug.WriteLine("GetJsonArrayAsync", ex.ToString());
                 throw new ApiRequestException(String.Concat("Problem z dostępem do API:\n", ex.Message));
             }
         }
@@ -359,12 +360,12 @@ namespace AplikacjaParlamentShared.Repositories
 				List<PoselOswiadczeniaMajatkowe> p = await handler.GetJsonArrayAsync (request);
 				return p;
 
-			} catch (Java.IO.IOException ex){
-				Android.Util.Log.Error("Java.IO.IOException on GetJsonArrayAsync", ex.ToString());
+			} catch (IOException ex){
+				System.Diagnostics.Debug.WriteLine("IOException on GetJsonArrayAsync", ex.ToString());
 				throw new ApiRequestException (String.Concat("Problem z połączeniem:\n", ex.Message));
 
 			} catch (Exception ex) {
-				Android.Util.Log.Error("GetJsonArrayAsync", ex.ToString());
+				System.Diagnostics.Debug.WriteLine("GetJsonArrayAsync", ex.ToString());
 				throw new ApiRequestException (String.Concat("Problem z dostępem do API:\n", ex.Message));
 			}
 		}
@@ -384,12 +385,12 @@ namespace AplikacjaParlamentShared.Repositories
 				List<PoselRejestrKorzysci> p = await handler.GetJsonArrayAsync (request);
 				return p;
 
-			} catch (Java.IO.IOException ex){
-				Android.Util.Log.Error("Java.IO.IOException on GetJsonArrayAsync", ex.ToString());
+			} catch (IOException ex){
+				System.Diagnostics.Debug.WriteLine("IOException on GetJsonArrayAsync", ex.ToString());
 				throw new ApiRequestException (String.Concat("Problem z połączeniem:\n", ex.Message));
 
 			} catch (Exception ex) {
-				Android.Util.Log.Error("GetJsonArrayAsync", ex.ToString());
+				System.Diagnostics.Debug.WriteLine("GetJsonArrayAsync", ex.ToString());
 				throw new ApiRequestException (String.Concat("Problem z dostępem do API:\n", ex.Message));
 			}
 		}
