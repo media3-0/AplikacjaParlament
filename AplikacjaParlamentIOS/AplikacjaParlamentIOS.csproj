@@ -23,7 +23,7 @@
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
     <MtouchProfiling>true</MtouchProfiling>
-    <CodesignProvision>428fdb34-6649-4229-83b1-eba712d77b87</CodesignProvision>
+    <CodesignProvision>4beecde9-ecff-4a3a-8658-8735c274584e</CodesignProvision>
     <CodesignKey>iPhone Developer: jakub.nekro@gmail.com (FKDZB75QYJ)</CodesignKey>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
     <MtouchI18n>

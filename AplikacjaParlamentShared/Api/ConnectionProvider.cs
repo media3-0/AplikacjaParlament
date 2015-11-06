@@ -38,7 +38,8 @@ namespace AplikacjaParlamentShared.Api
 
 		private ConnectionProvider ()
 		{
-			httpClient = new HttpClient (new NativeMessageHandler ());
+			//httpClient = new HttpClient (new NativeMessageHandler ());
+			httpClient = new HttpClient (); // FIXME : na tym działa SSL
 			//tutaj można dodać ustawienia HttpClienta uniwersalne dla całej aplikacji (Singleton)
 		}
 

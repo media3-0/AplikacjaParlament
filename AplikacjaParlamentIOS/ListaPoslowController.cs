@@ -43,6 +43,7 @@ namespace AplikacjaParlamentIOS
 			try {
 				list = await repository.GetPoselList();
 				TableView.Source = new PoslowieTableSource(list);
+				TableView.ReloadData();
 				this.NavigationItem.LeftBarButtonItem = null;
 			} catch (ApiRequestException ex){
 				System.Diagnostics.Debug.WriteLine (ex.Message);
