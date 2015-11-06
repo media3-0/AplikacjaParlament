@@ -14,16 +14,8 @@ namespace AplikacjaParlamentIOS
 	[Register ("ListaPoslowController")]
 	partial class ListaPoslowController
 	{
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UISearchBar SearchBar { get; set; }
-
 		void ReleaseDesignerOutlets ()
 		{
-			if (SearchBar != null) {
-				SearchBar.Dispose ();
-				SearchBar = null;
-			}
 		}
 	}
 }
