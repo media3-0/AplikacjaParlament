@@ -14,7 +14,8 @@ namespace AplikacjaParlamentIOS
 	{
 
 		UIBarButtonItem loadingBtn;
-		private List<Posel> list;
+		List<Posel> list;
+		UITableView TableView;
 
 		public ListaPoslowController (IntPtr handle) : base (handle)
 		{
@@ -28,6 +29,10 @@ namespace AplikacjaParlamentIOS
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
+			TableView = new UITableView () {
+				Frame = new CoreGraphics.CGRect (0, 44, View.Bounds.Width, View.Bounds.Height - 108)
+			};
+			View.AddSubview (TableView);
 			EdgesForExtendedLayout = UIRectEdge.None;
 			UIActivityIndicatorView spinner = new UIActivityIndicatorView (new RectangleF (0, 0, 22, 22));
 			spinner.StartAnimating ();

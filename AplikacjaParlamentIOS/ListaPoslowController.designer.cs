@@ -18,19 +18,11 @@ namespace AplikacjaParlamentIOS
 		[GeneratedCode ("iOS Designer", "1.0")]
 		UISearchBar SearchBar { get; set; }
 
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UITableView TableView { get; set; }
-
 		void ReleaseDesignerOutlets ()
 		{
 			if (SearchBar != null) {
 				SearchBar.Dispose ();
 				SearchBar = null;
-			}
-			if (TableView != null) {
-				TableView.Dispose ();
-				TableView = null;
 			}
 		}
 	}

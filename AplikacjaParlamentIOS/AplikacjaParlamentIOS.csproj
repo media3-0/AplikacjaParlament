@@ -69,6 +69,7 @@
     </IpaPackageName>
     <MtouchI18n>
     </MtouchI18n>
+    <CodesignProvision>e8052500-5eb0-4451-a10b-9e0a0df3e32a</CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

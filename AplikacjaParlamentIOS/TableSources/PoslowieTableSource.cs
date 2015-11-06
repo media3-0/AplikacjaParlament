@@ -28,31 +28,80 @@ namespace AplikacjaParlamentIOS
 {
 	public class PoslowieTableSource : UITableViewSource {
 
-		List<Posel> poslowie;
 		string CellIdentifier = "TableCell";
+
+
+		private Dictionary<string, List<Posel>> indexedTableItems;
+		private string[] sections;
+
 
 		public PoslowieTableSource (List<Posel> items)
 		{
-			poslowie = items;
-		}
+			var poslowie = items;
 
-		public override nint RowsInSection (UITableView tableview, nint section)
-		{
-			return poslowie.Count;
+			poslowie.Sort(delegate(Posel p1, Posel p2) {
+				if (p1.Nazwisko == null && p2.Nazwisko == null) return 0;
+				else if (p1.Nazwisko == null) return -1;
+				else if (p2.Nazwisko == null) return 1;
+				else return p1.Nazwisko.CompareTo(p2.Nazwisko);
+			});
+
+
+
+			indexedTableItems = new Dictionary<string, List<Posel>>();
+			foreach (var t in items) {
+				if (indexedTableItems.ContainsKey (t.Nazwisko[0].ToString ())) {
+					indexedTableItems[t.Nazwisko[0].ToString ()].Add(t);
+				} else {
+					indexedTableItems.Add (t.Nazwisko[0].ToString (), new List<Posel>() {t});
+				}
+			}
+
+			sections = new string[indexedTableItems.Keys.Count];
+			indexedTableItems.Keys.CopyTo(sections, 0);
 		}
 
 		public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
 		{
 			UITableViewCell cell = tableView.DequeueReusableCell (CellIdentifier);
-			string item = poslowie[indexPath.Row].Imie + ' ' + poslowie[indexPath.Row].Nazwisko;
+			//string item = poslowie[indexPath.Row].Imie + ' ' + poslowie[indexPath.Row].Nazwisko;
+			var section = sections[indexPath.Section];
+			var posel = indexedTableItems [section] [indexPath.Row];
+			var item = posel.Imie + " " + posel.Nazwisko;
 
-			//---- if there are no cells to reuse, create a new one
 			if (cell == null)
 			{ cell = new UITableViewCell (UITableViewCellStyle.Default, CellIdentifier); }
 
 			cell.TextLabel.Text = item;
 
 			return cell;
+		}
+
+
+
+		public override string[] SectionIndexTitles (UITableView tableView)
+		{
+			return sections;
+		}
+
+		public override nint NumberOfSections (UITableView tableView)
+		{
+			return sections.Length;
+		}
+
+		public override nint SectionFor (UIKit.UITableView tableView, string title, nint atIndex)
+		{
+			return Array.IndexOf(sections, title);
+		}
+
+		public override nint RowsInSection (UITableView tableview, nint section)
+		{
+			return indexedTableItems[sections[section]].Count;
+		}
+
+		public override string TitleForHeader (UITableView tableView, nint section)
+		{
+			return sections [section];
 		}
 	}
 }
