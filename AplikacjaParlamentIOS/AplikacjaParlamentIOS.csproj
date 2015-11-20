@@ -76,9 +76,6 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
-    <Reference Include="Calabash">
-      <HintPath>..\packages\Xamarin.TestCloud.Agent.0.16.2\lib\Xamarin.iOS10\Calabash.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -86,9 +83,24 @@
       <HintPath>..\Components\modernhttpclient-2.4.2\lib\ios-unified\ModernHttpClient.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http" />
+    <Reference Include="Calabash">
+      <HintPath>..\packages\Xamarin.TestCloud.Agent.0.16.4\lib\Xamarin.iOS10\Calabash.dll</HintPath>
+    </Reference>
+    <Reference Include="SDWebImage">
+      <HintPath>..\Components\sdwebimage-3.7.3.1\lib\ios-unified\SDWebImage.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\ImageLoad.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\ImageLoad.imageset\load.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon_120x120.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon_180x180.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon_29x29.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon_58x58.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon_87x87.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon_80x80.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon_120x120_spot.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
@@ -112,6 +124,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <Folder Include="TableSources\" />
+    <Folder Include="Resources\Images.xcassets\ImageLoad.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="json.net">
@@ -120,6 +133,10 @@
     </XamarinComponentReference>
     <XamarinComponentReference Include="modernhttpclient">
       <Version>2.4.2</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="sdwebimage">
+      <Version>3.7.3.1</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>

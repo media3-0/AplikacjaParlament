@@ -122,7 +122,7 @@ namespace AplikacjaParlamentAndroid.Adapters
 			wrapper.Partia.Text = posel.SejmKlubyNazwa;
 			wrapper.Okreg.Text = posel.OkregWyborczyNumer.ToString();
 
-            string imgUrl = System.String.Concat("http://images.weserv.nl/?w=100&h=100&t=square&trim=255&circle&a=t&url=", System.Net.WebUtility.UrlEncode("resources.sejmometr.pl/mowcy/a/0/" + posel.MowcaId + ".jpg"));
+			string imgUrl = posel.GetWebURL ();
 			//wrapper.Miniature.SetImageResource (Android.Resource.Drawable.IcMenuGallery);
 			//loadImage (wrapper, );
 

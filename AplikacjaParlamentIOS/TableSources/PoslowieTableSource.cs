@@ -23,6 +23,7 @@ using UIKit;
 using Foundation;
 using System.Collections.Generic;
 using AplikacjaParlamentShared.Models;
+using SDWebImage;
 
 namespace AplikacjaParlamentIOS
 {
@@ -70,9 +71,18 @@ namespace AplikacjaParlamentIOS
 			var item = posel.Imie + " " + posel.Nazwisko;
 
 			if (cell == null)
-			{ cell = new UITableViewCell (UITableViewCellStyle.Default, CellIdentifier); }
+			{ cell = new UITableViewCell (UITableViewCellStyle.Subtitle, CellIdentifier); }
 
+			cell.DetailTextLabel.Text = posel.SejmKlubyNazwa + " Okręg nr: " + posel.OkregWyborczyNumer.ToString ();
 			cell.TextLabel.Text = item;
+
+			string imgUrl = posel.GetWebURL ();
+
+			cell.ImageView.SetImage (
+				url: new NSUrl (imgUrl), 
+				placeholder: UIImage.FromBundle ("ImageLoad")
+			);
+			// TODO : <div>Icon made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
 
 			return cell;
 		}

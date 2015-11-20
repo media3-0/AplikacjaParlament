@@ -76,7 +76,9 @@ namespace AplikacjaParlamentShared.Models
 				Id, Imie, Nazwisko, OkregWyborczyNumer, SejmKlubyNazwa, LiczbaProjektowUchwal, LiczbaProjektowUstaw, DataUrodzenia, Frekwencja, MowcaId, Zawod, Biura.Count);
 		}
 		
-
+		public string GetWebURL(){
+			return System.String.Concat("https://images.weserv.nl/?w=100&h=100&t=square&trim=255&circle&a=t&url=", System.Net.WebUtility.UrlEncode("resources.sejmometr.pl/mowcy/a/0/" + this.MowcaId + ".jpg"));
+		}
 	}
 }
 
