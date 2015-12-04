@@ -34,10 +34,12 @@ namespace AplikacjaParlamentIOS
 
 		private Dictionary<string, List<Posel>> indexedTableItems;
 		private string[] sections;
+		private ListaPoslowController owner;
 
 
-		public PoslowieTableSource (List<Posel> items)
+		public PoslowieTableSource (List<Posel> items, ListaPoslowController owner)
 		{
+			this.owner = owner;
 			var poslowie = items;
 
 			poslowie.Sort(delegate(Posel p1, Posel p2) {
@@ -70,8 +72,10 @@ namespace AplikacjaParlamentIOS
 			var posel = indexedTableItems [section] [indexPath.Row];
 			var item = posel.Imie + " " + posel.Nazwisko;
 
-			if (cell == null)
-			{ cell = new UITableViewCell (UITableViewCellStyle.Subtitle, CellIdentifier); }
+			if (cell == null) 
+			{ 
+				cell = new UITableViewCell (UITableViewCellStyle.Subtitle, CellIdentifier); 
+			}
 
 			cell.DetailTextLabel.Text = posel.SejmKlubyNazwa + " Okręg nr: " + posel.OkregWyborczyNumer.ToString ();
 			cell.TextLabel.Text = item;
@@ -83,7 +87,6 @@ namespace AplikacjaParlamentIOS
 				placeholder: UIImage.FromBundle ("ImageLoad")
 			);
 			// TODO : <div>Icon made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
-
 			return cell;
 		}
 
@@ -112,6 +115,20 @@ namespace AplikacjaParlamentIOS
 		public override string TitleForHeader (UITableView tableView, nint section)
 		{
 			return sections [section];
+		}
+
+		public override void RowSelected (UITableView tableView, NSIndexPath indexPath)
+		{
+			Console.WriteLine ("test");
+			PoselController poselController = owner.Storyboard.InstantiateViewController("PoselController") as PoselController;
+			if (poselController != null)
+			{
+				var section = sections[indexPath.Section];
+				var posel = indexedTableItems [section] [indexPath.Row];
+				poselController.PoselID = posel.Id;
+				owner.NavigationController.PushViewController(poselController, true);
+			}  
+			tableView.DeselectRow (indexPath, true);
 		}
 	}
 }

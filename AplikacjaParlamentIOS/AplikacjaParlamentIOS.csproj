@@ -119,6 +119,18 @@
     <Compile Include="ListaPoslowController.designer.cs">
       <DependentUpon>ListaPoslowController.cs</DependentUpon>
     </Compile>
+    <Compile Include="PoselController.cs" />
+    <Compile Include="PoselController.designer.cs">
+      <DependentUpon>PoselController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PoselDetailsController.cs" />
+    <Compile Include="PoselDetailsController.designer.cs">
+      <DependentUpon>PoselDetailsController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PoselVotesController.cs" />
+    <Compile Include="PoselVotesController.designer.cs">
+      <DependentUpon>PoselVotesController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="..\AplikacjaParlamentShared\AplikacjaParlamentShared.projitems" Label="Shared" Condition="Exists('..\AplikacjaParlamentShared\AplikacjaParlamentShared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

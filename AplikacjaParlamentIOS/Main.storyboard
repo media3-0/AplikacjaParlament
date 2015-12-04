@@ -10,6 +10,7 @@
                 <navigationController definesPresentationContext="YES" id="51" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="54">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                     </navigationBar>
                     <connections>
                         <segue destination="53" kind="relationship" relationship="rootViewController" id="52"/>
@@ -41,8 +42,177 @@
             </objects>
             <point key="canvasLocation" x="507" y="127"/>
         </scene>
+        <scene sceneID="68">
+            <objects>
+                <tabBarController definesPresentationContext="YES" id="69" sceneMemberID="viewController" customClass="PoselController" storyboardIdentifier="PoselController" useStoryboardIdentifierAsRestorationIdentifier="YES" title="Poseł">
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="74">
+                        <rect key="frame" x="0.0" y="519" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="71" kind="relationship" relationship="viewControllers" id="70"/>
+                        <segue destination="73" kind="relationship" relationship="viewControllers" id="72"/>
+                        <segue id="256" destination="206" kind="relationship" relationship="viewControllers"/>
+                        <segue id="314" destination="261" kind="relationship" relationship="viewControllers"/>
+                        <segue id="364" destination="268" kind="relationship" relationship="viewControllers"/>
+                        <segue id="436" destination="369" kind="relationship" relationship="viewControllers"/>
+                        <segue id="494" destination="376" kind="relationship" relationship="viewControllers"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="75" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="933" y="130"/>
+        </scene>
+        <scene sceneID="76">
+            <objects>
+                <viewController id="71" sceneMemberID="viewController" customClass="PoselDetailsController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="64"/>
+                        <viewControllerLayoutGuide type="bottom" id="65"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="77">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="87" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                <rect key="frame" x="45" y="112" width="229" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Profil" id="78"/>
+                    <connections>
+                        <outlet property="NameLabel" destination="87" id="name-outlet-87"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="79" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1520" y="-147"/>
+        </scene>
+        <scene sceneID="80">
+            <objects>
+                <viewController id="73" sceneMemberID="viewController" customClass="PoselVotesController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="66"/>
+                        <viewControllerLayoutGuide type="bottom" id="67"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="81">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Głosowania" id="82"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="83" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1520" y="479"/>
+        </scene>
+        <scene sceneID="205">
+            <objects>
+                <viewController id="206" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="203"/>
+                        <viewControllerLayoutGuide type="bottom" id="204"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="207">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Wystąpienia" id="255"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="208" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1520" y="1097"/>
+        </scene>
+        <scene sceneID="260">
+            <objects>
+                <viewController id="261" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="258"/>
+                        <viewControllerLayoutGuide type="bottom" id="259"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="262">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Interpelacje" id="313"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="263" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1034" y="836"/>
+        </scene>
+        <scene sceneID="267">
+            <objects>
+                <viewController id="268" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="265"/>
+                        <viewControllerLayoutGuide type="bottom" id="266"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="269">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Współpracownicy" id="363"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="270" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="682" y="947"/>
+        </scene>
+        <scene sceneID="368">
+            <objects>
+                <viewController id="369" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="366"/>
+                        <viewControllerLayoutGuide type="bottom" id="367"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="370">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Oświadczenia majątkowe" id="435"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="371" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1099" y="1519"/>
+        </scene>
+        <scene sceneID="375">
+            <objects>
+                <viewController id="376" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="373"/>
+                        <viewControllerLayoutGuide type="bottom" id="374"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="377">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Rejestr Korzyści" id="493"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="378" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="690" y="1587"/>
+        </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <resources>
+        <image name="ImageLoad" width="64" height="64"/>
+    </resources>
 </document>

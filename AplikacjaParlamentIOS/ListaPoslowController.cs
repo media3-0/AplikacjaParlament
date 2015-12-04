@@ -10,7 +10,7 @@ using AplikacjaParlamentShared.Api;
 
 namespace AplikacjaParlamentIOS
 {
-	partial class ListaPoslowController : UIViewController
+	public partial class ListaPoslowController : UIViewController
 	{
 
 		UIBarButtonItem loadingBtn;
@@ -51,8 +51,9 @@ namespace AplikacjaParlamentIOS
 			IPeopleRepository repository = PeopleRepository.Instance;
 			try {
 				list = await repository.GetPoselList();
-				TableView.Source = new PoslowieTableSource(list);
+				TableView.Source = new PoslowieTableSource(list, this);
 				TableView.ReloadData();
+				TableView.AllowsSelection = true;
 				this.NavigationItem.LeftBarButtonItem = null;
 			} catch (ApiRequestException ex){
 				System.Diagnostics.Debug.WriteLine (ex.Message);
