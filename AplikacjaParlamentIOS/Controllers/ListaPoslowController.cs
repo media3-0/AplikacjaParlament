@@ -13,7 +13,7 @@ namespace AplikacjaParlamentIOS
 	public partial class ListaPoslowController : UIViewController
 	{
 
-		UIBarButtonItem loadingBtn;
+		LoadingOverlay loadingOverlay;
 		List<Posel> list;
 		UITableView TableView;
 		UISearchBar SearchBar;
@@ -38,10 +38,9 @@ namespace AplikacjaParlamentIOS
 			};
 			View.AddSubviews (new UIView[] { SearchBar, TableView });
 			EdgesForExtendedLayout = UIRectEdge.None;
-			UIActivityIndicatorView spinner = new UIActivityIndicatorView (new RectangleF (0, 0, 22, 22));
-			spinner.StartAnimating ();
-			loadingBtn = new UIBarButtonItem (spinner);
-			this.NavigationItem.LeftBarButtonItem = loadingBtn;
+			var bounds = UIScreen.MainScreen.Bounds;
+			loadingOverlay = new LoadingOverlay (bounds);
+			View.Add (loadingOverlay);
 			GetPoselList ();
 
 		}
@@ -54,7 +53,7 @@ namespace AplikacjaParlamentIOS
 				TableView.Source = new PoslowieTableSource(list, this);
 				TableView.ReloadData();
 				TableView.AllowsSelection = true;
-				this.NavigationItem.LeftBarButtonItem = null;
+				this.loadingOverlay.Hide();
 			} catch (ApiRequestException ex){
 				System.Diagnostics.Debug.WriteLine (ex.Message);
 			}

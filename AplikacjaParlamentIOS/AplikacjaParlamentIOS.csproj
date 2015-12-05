@@ -115,28 +115,31 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="TableSources\PoslowieTableSource.cs" />
-    <Compile Include="ListaPoslowController.cs" />
-    <Compile Include="ListaPoslowController.designer.cs">
+    <Compile Include="Controllers\ListaPoslowController.cs" />
+    <Compile Include="Controllers\ListaPoslowController.designer.cs">
       <DependentUpon>ListaPoslowController.cs</DependentUpon>
     </Compile>
-    <Compile Include="PoselController.cs" />
-    <Compile Include="PoselController.designer.cs">
+    <Compile Include="Controllers\PoselController.cs" />
+    <Compile Include="Controllers\PoselController.designer.cs">
       <DependentUpon>PoselController.cs</DependentUpon>
     </Compile>
-    <Compile Include="PoselDetailsController.cs" />
-    <Compile Include="PoselDetailsController.designer.cs">
+    <Compile Include="Controllers\PoselDetailsController.cs" />
+    <Compile Include="Controllers\PoselDetailsController.designer.cs">
       <DependentUpon>PoselDetailsController.cs</DependentUpon>
     </Compile>
-    <Compile Include="PoselVotesController.cs" />
-    <Compile Include="PoselVotesController.designer.cs">
+    <Compile Include="Controllers\PoselVotesController.cs" />
+    <Compile Include="Controllers\PoselVotesController.designer.cs">
       <DependentUpon>PoselVotesController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\LoadingOverlay.cs" />
   </ItemGroup>
   <Import Project="..\AplikacjaParlamentShared\AplikacjaParlamentShared.projitems" Label="Shared" Condition="Exists('..\AplikacjaParlamentShared\AplikacjaParlamentShared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <Folder Include="TableSources\" />
     <Folder Include="Resources\Images.xcassets\ImageLoad.imageset\" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="json.net">
