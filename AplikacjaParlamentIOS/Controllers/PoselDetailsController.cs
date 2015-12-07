@@ -7,6 +7,8 @@ using AplikacjaParlamentShared.Models;
 using AplikacjaParlamentShared.Api;
 using System.Drawing;
 using CoreGraphics;
+using SDWebImage;
+using System.Linq;
 
 namespace AplikacjaParlamentIOS
 {
@@ -38,28 +40,9 @@ namespace AplikacjaParlamentIOS
 		{
 			IPeopleRepository repository = PeopleRepository.Instance;
 			try {
-				NSThread.SleepFor(2);
 				posel = await repository.GetPosel((ParentViewController as PoselController).PoselID);
 
-				/*
-				tvImie.Text = posel.Imie;
-				tvNazwisko.Text = posel.Nazwisko;
-				tvDataZawod.Text = String.Concat(posel.DataUrodzenia, ". ", posel.Zawod);
-				tvPartiaOkreg.Text = String.Concat(posel.SejmKlubyNazwa, ". Okręg nr: ", posel.OkregWyborczyNumer);
-				tvUstawy.Text = posel.LiczbaProjektowUstaw.ToString();
-				tvUchwaly.Text = posel.LiczbaProjektowUchwal.ToString();
-				tvFrekwencja.Text = String.Concat(posel.Frekwencja.ToString(), "%");
-				tvZamieszkanie.Text = posel.MiejsceZamieszkania;
 
-				string imgUrl = String.Concat ("http://images.weserv.nl/?w=220&h=220&t=square&trim=255&circle&a=t&url=", System.Net.WebUtility.UrlEncode("resources.sejmometr.pl/mowcy/a/0/" + posel.MowcaId + ".jpg"));
-
-				AQuery aq = new AQuery(Activity);
-
-				Bitmap imgLoading = aq.GetCachedImage(Android.Resource.Drawable.IcMenuGallery);
-
-				((AQuery)aq.Id(Resource.Id.miniature)).Image(imgUrl, true, true, 0, 0, imgLoading, 0, 1f);
-
-				//loadImage (ivMiniature, );
 
 				BiuroPoselskie biuroGlowne = posel.Biura.Where(item => item.Podstawowe.Equals("1")).FirstOrDefault();
 
@@ -71,27 +54,44 @@ namespace AplikacjaParlamentIOS
 						String firstpart = phones[1].Split('(')[1].Split(')')[0];
 						phone = String.Concat(firstpart, " ", phone1[2].Replace('-',' '));
 					}catch(Exception e){
-						Log.Error("PhoneParse", e.Message);
+						System.Diagnostics.Debug.WriteLine (e.Message);
 						phone = biuroGlowne.Telefon;
 					}
-					tvTelefon.Text = phone;
+					Telephone.Text = phone;
 
-					tvTelefon.Click += delegate {
+					/*
+					Telephone.Click += delegate {
 						var uri = Android.Net.Uri.Parse ("tel:" + phone.Replace(" ", string.Empty));
 						var intent = new Intent (Intent.ActionView, uri); 
 						StartActivity (intent);    
 					};
+					*/ // TODO : Telephone click
 
-					tvEmail.Text = biuroGlowne.Email;
+					Email.Text = biuroGlowne.Email;
 				}
-				*/
+
 
 				NameLabel.Text = posel.Imie + " " + posel.Nazwisko;
+				BirthdayOccupation.Text = String.Concat(posel.DataUrodzenia, ". ", posel.Zawod);
+				PartiaOkreg.Text = String.Concat(posel.SejmKlubyNazwa, ". Okręg nr: ", posel.OkregWyborczyNumer);
+				UstawyUchwaly.Text = String.Concat(
+					"Ustawy: ", posel.LiczbaProjektowUstaw.ToString(), 
+					"   Uchwały: ", posel.LiczbaProjektowUchwal.ToString()
+				);
+				Frequency.Text = String.Concat("Frekwencja: ", posel.Frekwencja.ToString(), "%");
+				FromWhere.Text = posel.MiejsceZamieszkania;
+
+				ParentViewController.Title = NameLabel.Text;
+				var imgUrl = posel.GetWebURL(); 
+				PoselImage.SetImage (
+					url: new NSUrl (imgUrl), 
+					placeholder: UIImage.FromBundle ("ImageLoad")
+				);
 
 				loadingOverlay.Hide();
 
 			} catch (ApiRequestException ex){
-				//personDetailsActivity.ShowErrorDialog (ex.Message);
+				//personDetailsActivity.ShowErrorDialog (ex.Message); // TODO : Dialog błędu
 			} catch (Exception exc){
 				//raportowanie błędów przy ładowaniu danych
 				//Xamarin.Insights.Report (exc);  // TODO : Insights?

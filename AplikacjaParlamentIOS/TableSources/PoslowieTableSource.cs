@@ -119,7 +119,6 @@ namespace AplikacjaParlamentIOS
 
 		public override void RowSelected (UITableView tableView, NSIndexPath indexPath)
 		{
-			Console.WriteLine ("test");
 			PoselController poselController = owner.Storyboard.InstantiateViewController("PoselController") as PoselController;
 			if (poselController != null)
 			{

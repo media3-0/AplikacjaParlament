@@ -39,6 +39,8 @@ namespace AplikacjaParlamentShared.Models
 		string MiejsceZamieszkania { get; set; }
 
 		List<BiuroPoselskie> Biura { get; set; }
+
+		string GetWebURL();
 	}
 }
 

@@ -77,18 +77,106 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="87" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                <rect key="frame" x="45" y="112" width="229" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Imię i nazwisko" lineBreakMode="tailTruncation" minimumFontSize="10" id="87" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES" textAlignment="center">
+                                <rect key="frame" x="20" y="138" width="280" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="512" translatesAutoresizingMaskIntoConstraints="NO" image="ImageLoad" misplaced="YES">
+                                <rect key="frame" x="105" y="20" width="110" height="110"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="2015-05-20" lineBreakMode="tailTruncation" minimumFontSize="10" id="521" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES" textAlignment="center">
+                                <rect key="frame" x="20" y="167" width="280" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Partia i okręg" lineBreakMode="tailTruncation" minimumFontSize="10" id="524" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES" textAlignment="center">
+                                <rect key="frame" x="20" y="196" width="280" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="00 000 00 00" lineBreakMode="tailTruncation" minimumFontSize="10" id="529" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES" textAlignment="center">
+                                <rect key="frame" x="20" y="233" width="280" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="email" lineBreakMode="tailTruncation" minimumFontSize="10" id="532" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES" textAlignment="center">
+                                <rect key="frame" x="20" y="262" width="280" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Ustawy i Uchwały" lineBreakMode="tailTruncation" minimumFontSize="10" id="535" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES" textAlignment="center">
+                                <rect key="frame" x="20" y="291" width="280" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" minimumFontSize="10" id="539" translatesAutoresizingMaskIntoConstraints="NO" text="Frekwencja" misplaced="YES" textAlignment="center">
+                                <rect key="frame" x="20" y="320" width="280" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Pochodzenie" lineBreakMode="tailTruncation" minimumFontSize="10" id="540" translatesAutoresizingMaskIntoConstraints="NO" textAlignment="center" misplaced="YES">
+                                <rect key="frame" x="20" y="349" width="280" height="21"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <constraints>
+                            <constraint id="513" firstItem="512" firstAttribute="centerX" secondItem="77" secondAttribute="centerX"/>
+                            <constraint id="514" firstItem="512" firstAttribute="top" secondItem="64" secondAttribute="bottom" constant="15"/>
+                            <constraint id="519" firstItem="77" firstAttribute="trailing" secondItem="87" secondAttribute="trailing" constant="20"/>
+                            <constraint id="520" firstItem="87" firstAttribute="leading" secondItem="77" secondAttribute="leading" constant="20"/>
+                            <constraint id="525" firstItem="77" firstAttribute="trailing" secondItem="524" secondAttribute="trailing" constant="20"/>
+                            <constraint id="526" firstItem="524" firstAttribute="leading" secondItem="77" secondAttribute="leading" constant="20"/>
+                            <constraint id="527" firstItem="521" firstAttribute="leading" secondItem="77" secondAttribute="leading" constant="20"/>
+                            <constraint id="530" firstItem="529" firstAttribute="leading" secondItem="77" secondAttribute="leading" constant="20"/>
+                            <constraint id="531" firstItem="77" firstAttribute="trailing" secondItem="529" secondAttribute="trailing" constant="20"/>
+                            <constraint id="533" firstItem="532" firstAttribute="leading" secondItem="77" secondAttribute="leading" constant="20"/>
+                            <constraint id="534" firstItem="77" firstAttribute="trailing" secondItem="532" secondAttribute="trailing" constant="20"/>
+                            <constraint id="536" firstItem="535" firstAttribute="leading" secondItem="77" secondAttribute="leading" constant="20"/>
+                            <constraint id="537" firstItem="77" firstAttribute="trailing" secondItem="535" secondAttribute="trailing" constant="20"/>
+                            <constraint id="538" firstItem="77" firstAttribute="trailing" secondItem="521" secondAttribute="trailing" constant="20"/>
+                            <constraint id="541" firstItem="77" firstAttribute="trailing" secondItem="539" secondAttribute="trailing" constant="20"/>
+                            <constraint id="542" firstItem="539" firstAttribute="leading" secondItem="77" secondAttribute="leading" constant="20"/>
+                            <constraint id="543" firstItem="540" firstAttribute="leading" secondItem="77" secondAttribute="leading" constant="20"/>
+                            <constraint id="544" firstItem="77" firstAttribute="trailing" secondItem="540" secondAttribute="trailing" constant="20"/>
+                            <constraint id="547" firstItem="521" firstAttribute="top" secondItem="87" secondAttribute="centerY" constant="18"/>
+                            <constraint id="548" firstItem="87" firstAttribute="top" secondItem="512" secondAttribute="bottom" constant="8"/>
+                            <constraint id="549" firstItem="524" firstAttribute="top" secondItem="521" secondAttribute="bottom" constant="8"/>
+                            <constraint id="550" firstItem="529" firstAttribute="top" secondItem="524" secondAttribute="bottom" constant="16"/>
+                            <constraint id="551" firstItem="532" firstAttribute="top" secondItem="529" secondAttribute="bottom" constant="8"/>
+                            <constraint id="552" firstItem="535" firstAttribute="top" secondItem="532" secondAttribute="bottom" constant="8"/>
+                            <constraint id="553" firstItem="539" firstAttribute="top" secondItem="535" secondAttribute="bottom" constant="8"/>
+                            <constraint id="554" firstItem="540" firstAttribute="top" secondItem="539" secondAttribute="bottom" constant="8"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profil" id="78"/>
+                    <tabBarItem key="tabBarItem" id="78" title="Profil" image="Profile"/>
                     <connections>
                         <outlet property="NameLabel" destination="87" id="name-outlet-87"/>
+                        <outlet property="PoselImage" destination="512" id="name-outlet-512"/>
+                        <outlet property="BirthdayOccupation" destination="521" id="name-outlet-521"/>
+                        <outlet property="PartiaOkreg" destination="524" id="name-outlet-524"/>
+                        <outlet property="Telephone" destination="529" id="name-outlet-529"/>
+                        <outlet property="Email" destination="532" id="name-outlet-532"/>
+                        <outlet property="UstawyUchwaly" destination="535" id="name-outlet-535"/>
+                        <outlet property="Frequency" destination="539" id="name-outlet-539"/>
+                        <outlet property="FromWhere" destination="540" id="name-outlet-540"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="79" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -107,7 +195,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Głosowania" id="82"/>
+                    <tabBarItem key="tabBarItem" title="Głosowania" id="82" image="Votes"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="83" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -125,7 +213,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Wystąpienia" id="255"/>
+                    <tabBarItem key="tabBarItem" title="Wystąpienia" id="255" image="Standups"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="208" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -144,7 +232,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Interpelacje" id="313"/>
+                    <tabBarItem key="tabBarItem" title="Interpelacje" id="313" image="Interpelations"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="263" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -214,5 +302,11 @@
     </simulatedMetricsContainer>
     <resources>
         <image name="ImageLoad" width="64" height="64"/>
+        <image name="Image" width="30" height="30"/>
+        <image name="Profile" width="30" height="30"/>
+        <image name="Image-1" width="64" height="64"/>
+        <image name="Standups" width="30" height="30"/>
+        <image name="Votes" width="30" height="30"/>
+        <image name="Interpelations" width="30" height="30"/>
     </resources>
 </document>

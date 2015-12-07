@@ -53,6 +53,7 @@ namespace AplikacjaParlamentIOS
 				TableView.Source = new PoslowieTableSource(list, this);
 				TableView.ReloadData();
 				TableView.AllowsSelection = true;
+				TableView.SectionIndexColor = UIColor.FromRGB(255, 0, 0);
 				this.loadingOverlay.Hide();
 			} catch (ApiRequestException ex){
 				System.Diagnostics.Debug.WriteLine (ex.Message);

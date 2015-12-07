@@ -45,6 +45,11 @@ namespace AplikacjaParlamentIOS
 			Xamarin.Calabash.Start();
 			#endif
 
+			var color = UIColor.FromRGB(255, 0, 0);
+
+			UITabBar.Appearance.TintColor = color;
+			UINavigationBar.Appearance.TintColor = color;
+
 			return true;
 		}
 
