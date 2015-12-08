@@ -10,11 +10,10 @@ using AplikacjaParlamentShared.Api;
 
 namespace AplikacjaParlamentIOS
 {
-	public partial class ListaPoslowController : UIViewController
+	public partial class ListaPoslowController : BaseController
 	{
 
 		LoadingOverlay loadingOverlay;
-		List<Posel> list;
 		UITableView TableView;
 		UISearchBar SearchBar;
 
@@ -49,14 +48,19 @@ namespace AplikacjaParlamentIOS
 		{
 			IPeopleRepository repository = PeopleRepository.Instance;
 			try {
-				list = await repository.GetPoselList();
+				var list = await repository.GetPoselList();
 				TableView.Source = new PoslowieTableSource(list, this);
 				TableView.ReloadData();
 				TableView.AllowsSelection = true;
 				TableView.SectionIndexColor = UIColor.FromRGB(255, 0, 0);
 				this.loadingOverlay.Hide();
 			} catch (ApiRequestException ex){
+				DisplayError(ex.Message);
 				System.Diagnostics.Debug.WriteLine (ex.Message);
+			} catch (Exception exc){
+				System.Diagnostics.Debug.WriteLine (exc.Message);
+			} finally {
+				loadingOverlay.Hide();
 			}
 		}
 	}

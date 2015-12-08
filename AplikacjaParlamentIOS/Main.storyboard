@@ -203,7 +203,7 @@
         </scene>
         <scene sceneID="205">
             <objects>
-                <viewController id="206" sceneMemberID="viewController">
+                <viewController id="206" sceneMemberID="viewController" customClass="PoselSpeechController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="203"/>
                         <viewControllerLayoutGuide type="bottom" id="204"/>
@@ -222,7 +222,7 @@
         </scene>
         <scene sceneID="260">
             <objects>
-                <viewController id="261" sceneMemberID="viewController">
+                <viewController id="261" sceneMemberID="viewController" customClass="PoselInterpelationsController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="258"/>
                         <viewControllerLayoutGuide type="bottom" id="259"/>
@@ -241,7 +241,7 @@
         </scene>
         <scene sceneID="267">
             <objects>
-                <viewController id="268" sceneMemberID="viewController">
+                <viewController id="268" sceneMemberID="viewController" customClass="PoselCoworkersController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="265"/>
                         <viewControllerLayoutGuide type="bottom" id="266"/>
@@ -260,7 +260,7 @@
         </scene>
         <scene sceneID="368">
             <objects>
-                <viewController id="369" sceneMemberID="viewController">
+                <viewController id="369" sceneMemberID="viewController" customClass="PoselOswiadczeniaMajatkoweController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="366"/>
                         <viewControllerLayoutGuide type="bottom" id="367"/>
@@ -279,7 +279,7 @@
         </scene>
         <scene sceneID="375">
             <objects>
-                <viewController id="376" sceneMemberID="viewController">
+                <viewController id="376" sceneMemberID="viewController" customClass="PoselRejestrKorzysciController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="373"/>
                         <viewControllerLayoutGuide type="bottom" id="374"/>
@@ -308,5 +308,7 @@
         <image name="Standups" width="30" height="30"/>
         <image name="Votes" width="30" height="30"/>
         <image name="Interpelations" width="30" height="30"/>
+        <image name="ThumbUp" width="32" height="32"/>
+        <image name="ThumbDown" width="32" height="32"/>
     </resources>
 </document>

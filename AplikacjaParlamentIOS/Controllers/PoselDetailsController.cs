@@ -12,7 +12,7 @@ using System.Linq;
 
 namespace AplikacjaParlamentIOS
 {
-	partial class PoselDetailsController : UIViewController
+	partial class PoselDetailsController : BaseController
 	{
 
 		private IPosel posel;
@@ -91,11 +91,12 @@ namespace AplikacjaParlamentIOS
 				loadingOverlay.Hide();
 
 			} catch (ApiRequestException ex){
-				//personDetailsActivity.ShowErrorDialog (ex.Message); // TODO : Dialog błędu
+				DisplayError(ex.Message);
+				System.Diagnostics.Debug.WriteLine (ex.Message);
 			} catch (Exception exc){
-				//raportowanie błędów przy ładowaniu danych
-				//Xamarin.Insights.Report (exc);  // TODO : Insights?
 				System.Diagnostics.Debug.WriteLine (exc.Message);
+			} finally {
+				loadingOverlay.Hide();
 			}
 		}
 	}

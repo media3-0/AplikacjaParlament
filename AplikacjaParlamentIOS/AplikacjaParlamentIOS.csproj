@@ -109,6 +109,10 @@
     <ImageAsset Include="Resources\Images.xcassets\Votes.imageset\election3.png" />
     <ImageAsset Include="Resources\Images.xcassets\Interpelations.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\Interpelations.imageset\paper98.png" />
+    <ImageAsset Include="Resources\Images.xcassets\ThumbUp.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\ThumbDown.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\ThumbUp.imageset\thumbs28.png" />
+    <ImageAsset Include="Resources\Images.xcassets\ThumbDown.imageset\thumbs27.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
@@ -140,6 +144,28 @@
       <DependentUpon>PoselVotesController.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\LoadingOverlay.cs" />
+    <Compile Include="Controllers\PoselSpeechController.cs" />
+    <Compile Include="Controllers\PoselSpeechController.designer.cs">
+      <DependentUpon>PoselSpeechController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\PoselInterpelationsController.cs" />
+    <Compile Include="Controllers\PoselInterpelationsController.designer.cs">
+      <DependentUpon>PoselInterpelationsController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\PoselCoworkersController.cs" />
+    <Compile Include="Controllers\PoselCoworkersController.designer.cs">
+      <DependentUpon>PoselCoworkersController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\PoselOswiadczeniaMajatkoweController.cs" />
+    <Compile Include="Controllers\PoselOswiadczeniaMajatkoweController.designer.cs">
+      <DependentUpon>PoselOswiadczeniaMajatkoweController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\PoselRejestrKorzysciController.cs" />
+    <Compile Include="Controllers\PoselRejestrKorzysciController.designer.cs">
+      <DependentUpon>PoselRejestrKorzysciController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TableSources\PoselVotesTableSource.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
   </ItemGroup>
   <Import Project="..\AplikacjaParlamentShared\AplikacjaParlamentShared.projitems" Label="Shared" Condition="Exists('..\AplikacjaParlamentShared\AplikacjaParlamentShared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
