@@ -166,6 +166,8 @@
     </Compile>
     <Compile Include="TableSources\PoselVotesTableSource.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="TableSources\PoselSpeechesTableSource.cs" />
+    <Compile Include="TableSources\PoselInterpellationsTableSource.cs" />
   </ItemGroup>
   <Import Project="..\AplikacjaParlamentShared\AplikacjaParlamentShared.projitems" Label="Shared" Condition="Exists('..\AplikacjaParlamentShared\AplikacjaParlamentShared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
