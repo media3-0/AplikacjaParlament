@@ -60,6 +60,7 @@
                         <segue id="436" destination="369" kind="relationship" relationship="viewControllers"/>
                         <segue id="494" destination="376" kind="relationship" relationship="viewControllers"/>
                     </connections>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="75" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -251,7 +252,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Współpracownicy" id="363"/>
+                    <tabBarItem key="tabBarItem" title="Współpracownicy" id="363" image="Hands"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="270" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -270,7 +271,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Oświadczenia majątkowe" id="435"/>
+                    <tabBarItem key="tabBarItem" title="Oświadczenia majątkowe" id="435" image="MoneyPaper"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="371" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -289,7 +290,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Rejestr Korzyści" id="493"/>
+                    <tabBarItem key="tabBarItem" title="Rejestr Korzyści" id="493" image="Money"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="378" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -310,5 +311,8 @@
         <image name="Interpelations" width="30" height="30"/>
         <image name="ThumbUp" width="32" height="32"/>
         <image name="ThumbDown" width="32" height="32"/>
+        <image name="Money" width="30" height="30"/>
+        <image name="MoneyPaper" width="30" height="30"/>
+        <image name="Hands" width="30" height="30"/>
     </resources>
 </document>

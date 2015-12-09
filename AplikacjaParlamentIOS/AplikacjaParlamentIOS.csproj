@@ -113,6 +113,12 @@
     <ImageAsset Include="Resources\Images.xcassets\ThumbDown.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\ThumbUp.imageset\thumbs28.png" />
     <ImageAsset Include="Resources\Images.xcassets\ThumbDown.imageset\thumbs27.png" />
+    <ImageAsset Include="Resources\Images.xcassets\Hands.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\Money.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\MoneyPaper.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\Money.imageset\hand132.png" />
+    <ImageAsset Include="Resources\Images.xcassets\MoneyPaper.imageset\paper101.png" />
+    <ImageAsset Include="Resources\Images.xcassets\Hands.imageset\hands17.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
@@ -168,6 +174,9 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="TableSources\PoselSpeechesTableSource.cs" />
     <Compile Include="TableSources\PoselInterpellationsTableSource.cs" />
+    <Compile Include="TableSources\PoselWspolpracownicyTableSource.cs" />
+    <Compile Include="TableSources\PoselOswiadczeniaMajatkoweTableSource.cs" />
+    <Compile Include="TableSources\PoselRejestrKorzysciTableSource.cs" />
   </ItemGroup>
   <Import Project="..\AplikacjaParlamentShared\AplikacjaParlamentShared.projitems" Label="Shared" Condition="Exists('..\AplikacjaParlamentShared\AplikacjaParlamentShared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

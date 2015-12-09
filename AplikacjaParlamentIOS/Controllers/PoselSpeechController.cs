@@ -22,7 +22,7 @@ namespace AplikacjaParlamentIOS
 		{
 			base.ViewDidLoad ();
 			TableView = new UITableView () {
-				Frame = new CoreGraphics.CGRect (0, 65, View.Bounds.Width, View.Bounds.Height - 115)
+				Frame = new CoreGraphics.CGRect (0, 0, View.Bounds.Width, View.Bounds.Height - 115)
 			};
 			View.AddSubviews (new UIView[] { TableView });
 			EdgesForExtendedLayout = UIRectEdge.None;
