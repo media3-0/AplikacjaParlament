@@ -89,6 +89,9 @@
     <Reference Include="SDWebImage">
       <HintPath>..\Components\sdwebimage-3.7.3.1\lib\ios-unified\SDWebImage.dll</HintPath>
     </Reference>
+    <Reference Include="ToastIOS">
+      <HintPath>..\Components\ToastIOS-1.5\lib\ios-unified\ToastIOS.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json" />
@@ -119,6 +122,8 @@
     <ImageAsset Include="Resources\Images.xcassets\Money.imageset\hand132.png" />
     <ImageAsset Include="Resources\Images.xcassets\MoneyPaper.imageset\paper101.png" />
     <ImageAsset Include="Resources\Images.xcassets\Hands.imageset\hands17.png" />
+    <ImageAsset Include="Resources\Images.xcassets\Downloaded.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\Downloaded.imageset\down arrows11.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
@@ -177,6 +182,8 @@
     <Compile Include="TableSources\PoselWspolpracownicyTableSource.cs" />
     <Compile Include="TableSources\PoselOswiadczeniaMajatkoweTableSource.cs" />
     <Compile Include="TableSources\PoselRejestrKorzysciTableSource.cs" />
+    <Compile Include="Helpers\DownloadHelper.cs" />
+    <Compile Include="Helpers\TableHandler.cs" />
   </ItemGroup>
   <Import Project="..\AplikacjaParlamentShared\AplikacjaParlamentShared.projitems" Label="Shared" Condition="Exists('..\AplikacjaParlamentShared\AplikacjaParlamentShared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
@@ -201,6 +208,10 @@
     </XamarinComponentReference>
     <XamarinComponentReference Include="sdwebimage">
       <Version>3.7.3.1</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="ToastIOS">
+      <Version>1.5</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>

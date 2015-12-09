@@ -53,6 +53,13 @@ namespace AplikacjaParlamentIOS
 			cell.TextLabel.Text = oswiadczenie.Label;
 			cell.DetailTextLabel.Text = oswiadczenie.Data;
 
+			var downloadHelper = new DownloadHelper (items [indexPath.Row].DokumentID, owner);
+			if (downloadHelper.IsDownloaded ()) {
+				cell.ImageView.Image = null;
+			} else {
+				cell.ImageView.Image = UIImage.FromBundle ("Downloaded");
+			}
+
 			return cell;
 		}
 
@@ -68,15 +75,8 @@ namespace AplikacjaParlamentIOS
 
 		public override void RowSelected (UITableView tableView, NSIndexPath indexPath)
 		{
-			/* 
-			PoselController poselController = owner.Storyboard.InstantiateViewController("PoselController") as PoselController;
-			if (poselController != null)
-			{
-				var vote = items[indexPath.Row];
-				poselController.PoselID = posel.Id;
-				owner.NavigationController.PushViewController(poselController, true);
-			}  
-			*/
+			var downloadHelper = new DownloadHelper (items [indexPath.Row].DokumentID, owner);
+			downloadHelper.DownloadOrOpen ();
 			tableView.DeselectRow (indexPath, true);
 		}
 	}

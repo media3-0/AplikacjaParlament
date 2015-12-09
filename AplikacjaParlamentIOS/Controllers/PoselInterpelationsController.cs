@@ -9,10 +9,10 @@ using System.Collections.Generic;
 
 namespace AplikacjaParlamentIOS
 {
-	public partial class PoselInterpelationsController : BaseController
+	public partial class PoselInterpelationsController : BaseController, TableHandler
 	{
 		LoadingOverlay loadingOverlay;
-		UITableView TableView;
+		public UITableView TableView { get; set; }
 
 		public PoselInterpelationsController (IntPtr handle) : base (handle)
 		{
