@@ -53,6 +53,8 @@ namespace AplikacjaParlamentIOS
 
 			indexedTableItems = new Dictionary<string, List<Posel>>();
 			foreach (var t in items) {
+				if (t.Nazwisko.Length == 0) // FIXME : Fast!
+					continue;
 				if (indexedTableItems.ContainsKey (t.Nazwisko[0].ToString ())) {
 					indexedTableItems[t.Nazwisko[0].ToString ()].Add(t);
 				} else {
