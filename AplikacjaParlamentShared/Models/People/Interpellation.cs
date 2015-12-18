@@ -37,6 +37,9 @@ namespace AplikacjaParlamentShared.Models
 		[JsonProperty("sejm_interpelacje.tytul_skrocony")]
 		public string TytulSkrocony { get; set; }
 
+		[JsonProperty("sejm_interpelacje.tytul")]
+		public string Tytul { get; set; }
+
 		[JsonProperty("sejm_interpelacje.data_wplywu")]
 		public string DataWplywu { get; set; }
 

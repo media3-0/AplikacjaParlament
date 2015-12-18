@@ -297,6 +297,25 @@
             </objects>
             <point key="canvasLocation" x="690" y="1587"/>
         </scene>
+        <scene sceneID="569">
+            <objects>
+                <viewController id="570" sceneMemberID="viewController" customClass="TextContentController" storyboardIdentifier="TextContentController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="567"/>
+                        <viewControllerLayoutGuide type="bottom" id="568"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="571">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews/>
+                    </view>
+                    <connections/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="572" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2062" y="-141"/>
+        </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedScreenMetrics key="destination" type="retina4"/>
@@ -314,5 +333,6 @@
         <image name="Money" width="30" height="30"/>
         <image name="MoneyPaper" width="30" height="30"/>
         <image name="Hands" width="30" height="30"/>
+        <image name="Downloaded" width="24" height="24"/>
     </resources>
 </document>

@@ -23,6 +23,9 @@ using UIKit;
 using Foundation;
 using System.Collections.Generic;
 using AplikacjaParlamentShared.Models;
+using AplikacjaParlamentShared.Repositories;
+using AplikacjaParlamentShared.Api;
+using System.Linq;
 
 namespace AplikacjaParlamentIOS
 {
@@ -68,16 +71,32 @@ namespace AplikacjaParlamentIOS
 
 		public override void RowSelected (UITableView tableView, NSIndexPath indexPath)
 		{
-			/* 
-			PoselController poselController = owner.Storyboard.InstantiateViewController("PoselController") as PoselController;
-			if (poselController != null)
-			{
-				var vote = items[indexPath.Row];
-				poselController.PoselID = posel.Id;
-				owner.NavigationController.PushViewController(poselController, true);
-			}  
-			*/
+			owner.ShowLoadingOverlay();
+			GetData(items[indexPath.Row].Id);
 			tableView.DeselectRow (indexPath, true);
+		}
+
+		private async void GetData(int id)
+		{
+			IPeopleRepository repository = PeopleRepository.Instance;
+			try {
+				var interpellation = await repository.GetPoselInterpellation (id);
+				string text = interpellation.Teksty.First();
+				if(text != null)
+					text = "<p><center><b>Brak tekstu interpelacji</b></center></p>";
+
+				TextContentController textContentController = owner.Storyboard.InstantiateViewController("TextContentController") as TextContentController;
+				if (textContentController != null)
+				{
+					textContentController.TextToView = text;
+					owner.NavigationController.PushViewController(textContentController, true);
+				}  
+
+			} catch (ApiRequestException ex){
+				owner.DisplayError (ex.Message);
+			} finally {
+				owner.loadingOverlay.Hide();
+			}
 		}
 	}
 }

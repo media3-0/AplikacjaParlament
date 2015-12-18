@@ -6,12 +6,14 @@ using AplikacjaParlamentShared.Repositories;
 using AplikacjaParlamentShared.Api;
 using AplikacjaParlamentShared.Models;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace AplikacjaParlamentIOS
 {
 	public partial class PoselInterpelationsController : BaseController, TableHandler
 	{
-		LoadingOverlay loadingOverlay;
+		public LoadingOverlay loadingOverlay;
 		public UITableView TableView { get; set; }
 
 		public PoselInterpelationsController (IntPtr handle) : base (handle)
@@ -25,10 +27,9 @@ namespace AplikacjaParlamentIOS
 				Frame = new CoreGraphics.CGRect (0, 0, View.Bounds.Width, View.Bounds.Height - 115)
 			};
 			View.AddSubviews (new UIView[] { TableView });
-			EdgesForExtendedLayout = UIRectEdge.None;
-			var bounds = UIScreen.MainScreen.Bounds;
-			loadingOverlay = new LoadingOverlay (bounds);
-			View.Add (loadingOverlay);
+
+			ShowLoadingOverlay();
+
 			GetData ();
 		}
 
@@ -49,6 +50,13 @@ namespace AplikacjaParlamentIOS
 			} finally {
 				loadingOverlay.Hide();
 			}
+		}
+
+		public void ShowLoadingOverlay(){
+			EdgesForExtendedLayout = UIRectEdge.None;
+			var bounds = UIScreen.MainScreen.Bounds;
+			loadingOverlay = new LoadingOverlay (bounds);
+			View.Add (loadingOverlay);
 		}
 	}
 }

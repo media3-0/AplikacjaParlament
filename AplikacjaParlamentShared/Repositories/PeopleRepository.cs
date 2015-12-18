@@ -254,10 +254,10 @@ namespace AplikacjaParlamentShared.Repositories
 				IJsonObjectRequestHandler<Interpellation> handler = new JsonObjectRequestHandler<Interpellation> (ConnectionProvider.Instance);
 
 				var request = new RequestParamsHandler (String.Concat (RepositoriesContants.API_BASE_URI, "sejm_interpelacje/", id));
-				request.AddField ("sejm_wystapienia.id");
-				request.AddField ("sejm_debaty.tytul");
-				request.AddField ("sejm_wystapienia.data");
-				request.AddField ("sejm_wystapienia.skrot");
+				request.AddField ("sejm_interpelacje.tytul");
+				request.AddField ("sejm_interpelacje.data_wplywu");
+				request.AddField ("sejm_interpelacje.adresaci_str");
+				request.AddField ("sejm_interpelacje.tytul_skrocony");
 
 				request.Layers.Add (new InterpelacjaLayer("dane"));
 

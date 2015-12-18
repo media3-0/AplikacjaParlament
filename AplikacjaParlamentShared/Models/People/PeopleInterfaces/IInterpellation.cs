@@ -26,6 +26,7 @@ namespace AplikacjaParlamentShared.Models
 	public interface IInterpellation
 	{
 		int Id { get; set; }
+		string Tytul { get; set; }
 		string TytulSkrocony { get; set; }
 		string DataWplywu { get; set; }
 		string Adresat { get; set; }
