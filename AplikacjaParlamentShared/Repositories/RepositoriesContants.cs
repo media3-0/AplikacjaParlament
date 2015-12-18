@@ -28,8 +28,8 @@ namespace AplikacjaParlamentShared.Repositories
 		{
 		}
 
-		public const string API_BASE_URI = "https://api.mojepanstwo.pl/dane/";
-		public const string API_DATASET_URI = API_BASE_URI + "dataset/";
+		public const string API_BASE_URI = "https://api-v3.mojepanstwo.pl/dane/";
+		public const string API_DATASET_URI = API_BASE_URI + "";
 	}
 }
 

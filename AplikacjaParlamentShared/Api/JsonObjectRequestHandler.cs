@@ -42,14 +42,19 @@ namespace AplikacjaParlamentShared.Api
 			response.EnsureSuccessStatusCode();
 
 			string content = await response.Content.ReadAsStringAsync();
+			/*
 			JToken obj;
-			bool hasValue = JObject.Parse (content).TryGetValue ("object", out obj);
+			bool hasValue = JObject.Parse(content).TryGetValue ("object", out obj);
 			if (!hasValue) //jeżeli nie istnieje element object w odpowiedzi json
 				throw new NoObjectJsonElementException ();
 			if(obj.Type == JTokenType.Boolean) //jeżeli element object z odpowiedzi json ma typ boolean (nie muszę sprawdzać wartości, wystarczy wiedza na temat typu)
 				throw new ObjectJsonBooleanElementException();
-
+			
 			T finalObject = DataObjectParser.ParseJObjectToType<T> (obj as JObject);
+			*/
+
+			JObject obj = JObject.Parse(content);
+			T finalObject = DataObjectParser.ParseJObjectToType<T>(obj);
 
 			if (request.Layers.Count > 0) {
 				//dodatkowe warstwy

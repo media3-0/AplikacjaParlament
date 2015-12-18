@@ -81,8 +81,9 @@ namespace AplikacjaParlamentShared.Repositories
 			try {
 				IJsonArrayRequestHandler<Posel> handler = new JsonArrayRequestHandler<Posel> (ConnectionProvider.Instance);
 
-				var request = new RequestParamsHandler (String.Concat (RepositoriesContants.API_DATASET_URI, "poslowie/search.json"));
-                request.AddCondition("mandat_wygasl", "0");
+				var request = new RequestParamsHandler (String.Concat (RepositoriesContants.API_DATASET_URI, "poslowie.json"));
+				request.AddCondition("poslowie.kadencja", "8");
+				request.AddCondition("poslowie.mandat_wygasl", "0");
 				request.AddField ("poslowie.id");
 				request.AddField ("poslowie.imie_pierwsze");
 				request.AddField ("poslowie.nazwisko");
@@ -110,7 +111,7 @@ namespace AplikacjaParlamentShared.Repositories
 			try {
 				IJsonArrayRequestHandler<Speech> handler = new JsonArrayRequestHandler<Speech> (ConnectionProvider.Instance);
 
-				var request = new RequestParamsHandler (String.Concat (RepositoriesContants.API_DATASET_URI, "sejm_wystapienia/search.json"));
+				var request = new RequestParamsHandler (String.Concat (RepositoriesContants.API_DATASET_URI, "sejm_wystapienia.json"));
 				request.AddCondition ("ludzie.posel_id", id.ToString ());
 				request.AddField ("sejm_wystapienia.id");
 				request.AddField ("sejm_debaty.tytul");
@@ -137,7 +138,7 @@ namespace AplikacjaParlamentShared.Repositories
 			try {
 				IJsonArrayRequestHandler<Vote> handler = new JsonArrayRequestHandler<Vote> (ConnectionProvider.Instance);
 
-				var request = new RequestParamsHandler (String.Concat (RepositoriesContants.API_DATASET_URI, "poslowie_glosy/search.json"));
+				var request = new RequestParamsHandler (String.Concat (RepositoriesContants.API_DATASET_URI, "poslowie_glosy.json"));
 				request.AddCondition ("posel_id", id.ToString ());
 				// Na chwilę obecną pobieramy tylko głosowania dotyczące tylko przyjęć całych projektów ustaw (pomijamy poprawki itd)
 				request.AddCondition ("sejm_glosowania.typ_id", 26.ToString ());
@@ -171,7 +172,7 @@ namespace AplikacjaParlamentShared.Repositories
 			try {
 				IJsonArrayRequestHandler<Voting> handler = new JsonArrayRequestHandler<Voting> (ConnectionProvider.Instance);
 
-				var request = new RequestParamsHandler (String.Concat (RepositoriesContants.API_DATASET_URI, "sejm_glosowania/search.json"));
+				var request = new RequestParamsHandler (String.Concat (RepositoriesContants.API_DATASET_URI, "sejm_glosowania.json"));
 
 				request.AddField ("sejm_glosowania.id");
 				request.AddField ("sejm_glosowania.wynik_id");
@@ -200,7 +201,7 @@ namespace AplikacjaParlamentShared.Repositories
 			try {
 				IJsonArrayRequestHandler<Interpellation> handler = new JsonArrayRequestHandler<Interpellation> (ConnectionProvider.Instance);
 
-				var request = new RequestParamsHandler (String.Concat (RepositoriesContants.API_DATASET_URI, "sejm_interpelacje/search.json"));
+				var request = new RequestParamsHandler (String.Concat (RepositoriesContants.API_DATASET_URI, "sejm_interpelacje.json"));
 				request.AddCondition ("sejm_interpelacje.mowca_id", id.ToString ());
                 request.AddField ("sejm_interpelacje.id");
                 request.AddField ("sejm_interpelacje.tytul_skrocony");
@@ -324,7 +325,7 @@ namespace AplikacjaParlamentShared.Repositories
             try {
                 IJsonArrayRequestHandler<PoselWspolpracownik> handler = new JsonArrayRequestHandler<PoselWspolpracownik>(ConnectionProvider.Instance);
 
-                var request = new RequestParamsHandler(String.Concat(RepositoriesContants.API_DATASET_URI, "poslowie_wspolpracownicy/search.json"));
+                var request = new RequestParamsHandler(String.Concat(RepositoriesContants.API_DATASET_URI, "poslowie_wspolpracownicy.json"));
                 request.AddCondition("poslowie.id", id.ToString());
                 request.AddField("poslowie_wspolpracownicy.data");
                 request.AddField("poslowie_wspolpracownicy.nazwa");
@@ -350,7 +351,7 @@ namespace AplikacjaParlamentShared.Repositories
 			try {
 				IJsonArrayRequestHandler<PoselOswiadczeniaMajatkowe> handler = new JsonArrayRequestHandler<PoselOswiadczeniaMajatkowe> (ConnectionProvider.Instance);
 
-				var request = new RequestParamsHandler (String.Concat (RepositoriesContants.API_DATASET_URI, "poslowie_oswiadczenia_majatkowe/search.json"));
+				var request = new RequestParamsHandler (String.Concat (RepositoriesContants.API_DATASET_URI, "poslowie_oswiadczenia_majatkowe.json"));
 				request.AddCondition("poslowie.id", id.ToString());
 				request.AddField("poslowie_oswiadczenia_majatkowe.data");
 				request.AddField("poslowie_oswiadczenia_majatkowe.label");
@@ -375,7 +376,7 @@ namespace AplikacjaParlamentShared.Repositories
 			try {
 				IJsonArrayRequestHandler<PoselRejestrKorzysci> handler = new JsonArrayRequestHandler<PoselRejestrKorzysci> (ConnectionProvider.Instance);
 
-				var request = new RequestParamsHandler (String.Concat (RepositoriesContants.API_DATASET_URI, "poslowie_rejestr_korzysci/search.json"));
+				var request = new RequestParamsHandler (String.Concat (RepositoriesContants.API_DATASET_URI, "poslowie_rejestr_korzysci.json"));
 				request.AddCondition("poslowie.id", id.ToString());
 				request.AddField("poslowie_rejestr_korzysci.data");
 				request.AddField("poslowie_rejestr_korzysci.label");

@@ -43,14 +43,17 @@ namespace AplikacjaParlamentShared.Api
 			response.EnsureSuccessStatusCode();
 
 			string content = await response.Content.ReadAsStringAsync();
+
+			/*
 			JToken obj;
 			bool hasValue = JObject.Parse (content).TryGetValue ("search", out obj);
 			if (!hasValue) //jeżeli nie istnieje element search w odpowiedzi json
 				throw new NoObjectJsonElementException ();
 			if(obj.Type == JTokenType.Boolean) //jeżeli element search z odpowiedzi json ma typ boolean (nie muszę sprawdzać wartości, wystarczy wiedza na temat typu)
 				throw new ObjectJsonBooleanElementException();
+			*/
 
-			JArray dataobjects = (JArray)obj ["dataobjects"];
+			JArray dataobjects = (JArray)JObject.Parse (content) ["Dataobject"];
 
 			List<T> list = new List<T> (dataobjects.Count);
 			foreach (var item in dataobjects) {
