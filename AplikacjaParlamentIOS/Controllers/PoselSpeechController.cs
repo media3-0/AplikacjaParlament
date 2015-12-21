@@ -11,7 +11,7 @@ namespace AplikacjaParlamentIOS
 {
 	public partial class PoselSpeechController : BaseController, TableHandler
 	{
-		LoadingOverlay loadingOverlay;
+		public LoadingOverlay loadingOverlay;
 		public UITableView TableView { get; set; }
 
 		public PoselSpeechController (IntPtr handle) : base (handle)
@@ -25,10 +25,9 @@ namespace AplikacjaParlamentIOS
 				Frame = new CoreGraphics.CGRect (0, 0, View.Bounds.Width, View.Bounds.Height - 115)
 			};
 			View.AddSubviews (new UIView[] { TableView });
-			EdgesForExtendedLayout = UIRectEdge.None;
-			var bounds = UIScreen.MainScreen.Bounds;
-			loadingOverlay = new LoadingOverlay (bounds);
-			View.Add (loadingOverlay);
+
+			ShowLoadingOverlay();
+
 			GetData ();
 		}
 
@@ -49,6 +48,13 @@ namespace AplikacjaParlamentIOS
 			} finally {
 				loadingOverlay.Hide();
 			}
+		}
+
+		public void ShowLoadingOverlay(){
+			EdgesForExtendedLayout = UIRectEdge.None;
+			var bounds = UIScreen.MainScreen.Bounds;
+			loadingOverlay = new LoadingOverlay (bounds);
+			View.Add (loadingOverlay);
 		}
 	}
 }
