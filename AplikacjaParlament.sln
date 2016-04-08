@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{83FBBC0F-B541-40F3-BE3B-C8F315E0C4E3}"
 	ProjectSection(SolutionItems) = preProject
@@ -16,27 +16,20 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AplikacjaParlamentIOS", "AplikacjaParlamentIOS\AplikacjaParlamentIOS.csproj", "{0751E6A1-832B-4D08-9004-76BE3F3B1BF7}"
 EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		AplikacjaParlamentShared\AplikacjaParlamentShared.projitems*{8eedefc0-ecab-4138-94b9-e905fd0883ac}*SharedItemsImports = 13
+		AplikacjaParlamentShared\AplikacjaParlamentShared.projitems*{0751e6a1-832b-4d08-9004-76be3f3b1bf7}*SharedItemsImports = 4
+		AplikacjaParlamentShared\AplikacjaParlamentShared.projitems*{8e404a50-7a2b-4900-9a75-9c7e0abf0d67}*SharedItemsImports = 4
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
+		Debug|iPhone = Debug|iPhone
 		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|Any CPU = Release|Any CPU
 		Release|iPhone = Release|iPhone
 		Release|iPhoneSimulator = Release|iPhoneSimulator
-		Debug|iPhone = Debug|iPhone
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0751E6A1-832B-4D08-9004-76BE3F3B1BF7}.Debug|Any CPU.ActiveCfg = Debug|iPhoneSimulator
-		{0751E6A1-832B-4D08-9004-76BE3F3B1BF7}.Debug|Any CPU.Build.0 = Debug|iPhoneSimulator
-		{0751E6A1-832B-4D08-9004-76BE3F3B1BF7}.Debug|iPhone.ActiveCfg = Debug|iPhone
-		{0751E6A1-832B-4D08-9004-76BE3F3B1BF7}.Debug|iPhone.Build.0 = Debug|iPhone
-		{0751E6A1-832B-4D08-9004-76BE3F3B1BF7}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
-		{0751E6A1-832B-4D08-9004-76BE3F3B1BF7}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
-		{0751E6A1-832B-4D08-9004-76BE3F3B1BF7}.Release|Any CPU.ActiveCfg = Release|iPhone
-		{0751E6A1-832B-4D08-9004-76BE3F3B1BF7}.Release|Any CPU.Build.0 = Release|iPhone
-		{0751E6A1-832B-4D08-9004-76BE3F3B1BF7}.Release|iPhone.ActiveCfg = Release|iPhone
-		{0751E6A1-832B-4D08-9004-76BE3F3B1BF7}.Release|iPhone.Build.0 = Release|iPhone
-		{0751E6A1-832B-4D08-9004-76BE3F3B1BF7}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
-		{0751E6A1-832B-4D08-9004-76BE3F3B1BF7}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 		{8E404A50-7A2B-4900-9A75-9C7E0ABF0D67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8E404A50-7A2B-4900-9A75-9C7E0ABF0D67}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E404A50-7A2B-4900-9A75-9C7E0ABF0D67}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
@@ -50,8 +43,21 @@ Global
 		{8E404A50-7A2B-4900-9A75-9C7E0ABF0D67}.Release|iPhone.Build.0 = Release|Any CPU
 		{8E404A50-7A2B-4900-9A75-9C7E0ABF0D67}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{8E404A50-7A2B-4900-9A75-9C7E0ABF0D67}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{0751E6A1-832B-4D08-9004-76BE3F3B1BF7}.Debug|Any CPU.ActiveCfg = Debug|iPhoneSimulator
+		{0751E6A1-832B-4D08-9004-76BE3F3B1BF7}.Debug|Any CPU.Build.0 = Debug|iPhoneSimulator
+		{0751E6A1-832B-4D08-9004-76BE3F3B1BF7}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{0751E6A1-832B-4D08-9004-76BE3F3B1BF7}.Debug|iPhone.Build.0 = Debug|iPhone
+		{0751E6A1-832B-4D08-9004-76BE3F3B1BF7}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{0751E6A1-832B-4D08-9004-76BE3F3B1BF7}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{0751E6A1-832B-4D08-9004-76BE3F3B1BF7}.Release|Any CPU.ActiveCfg = Release|iPhone
+		{0751E6A1-832B-4D08-9004-76BE3F3B1BF7}.Release|Any CPU.Build.0 = Release|iPhone
+		{0751E6A1-832B-4D08-9004-76BE3F3B1BF7}.Release|iPhone.ActiveCfg = Release|iPhone
+		{0751E6A1-832B-4D08-9004-76BE3F3B1BF7}.Release|iPhone.Build.0 = Release|iPhone
+		{0751E6A1-832B-4D08-9004-76BE3F3B1BF7}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{0751E6A1-832B-4D08-9004-76BE3F3B1BF7}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		Policies = $0
@@ -69,12 +75,5 @@ Global
 		$5.NamingStyle = None
 		$5.IncludeInstanceMembers = True
 		$5.IncludeStaticEntities = True
-	EndGlobalSection
-	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		AplikacjaParlamentShared\AplikacjaParlamentShared.projitems*{8eedefc0-ecab-4138-94b9-e905fd0883ac}*SharedItemsImports = 13
-		AplikacjaParlamentShared\AplikacjaParlamentShared.projitems*{8e404a50-7a2b-4900-9a75-9c7e0abf0d67}*SharedItemsImports = 4
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal

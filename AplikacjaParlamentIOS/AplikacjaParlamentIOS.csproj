@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -72,13 +72,18 @@
     <CodesignProvision>e8052500-5eb0-4451-a10b-9e0a0df3e32a</CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Calabash, Version=19.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.TestCloud.Agent.0.19.0\lib\Xamarin.iOS10\Calabash.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="ModernHttpClient">
       <HintPath>..\Components\modernhttpclient-2.4.2\lib\ios-unified\ModernHttpClient.dll</HintPath>
     </Reference>
@@ -89,41 +94,98 @@
     <Reference Include="ToastIOS">
       <HintPath>..\Components\ToastIOS-1.5\lib\ios-unified\ToastIOS.dll</HintPath>
     </Reference>
-    <Reference Include="Calabash">
-      <HintPath>..\packages\Xamarin.TestCloud.Agent.0.17.0\lib\Xamarin.iOS10\Calabash.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\ImageLoad.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\ImageLoad.imageset\load.png" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon_120x120.png" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon_180x180.png" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon_29x29.png" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon_58x58.png" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon_87x87.png" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon_80x80.png" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon_120x120_spot.png" />
-    <ImageAsset Include="Resources\Images.xcassets\Profile.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\Profile.imageset\man42.png" />
-    <ImageAsset Include="Resources\Images.xcassets\Votes.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\Standups.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\Standups.imageset\business112.png" />
-    <ImageAsset Include="Resources\Images.xcassets\Votes.imageset\election3.png" />
-    <ImageAsset Include="Resources\Images.xcassets\Interpelations.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\Interpelations.imageset\paper98.png" />
-    <ImageAsset Include="Resources\Images.xcassets\ThumbUp.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\ThumbDown.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\ThumbUp.imageset\thumbs28.png" />
-    <ImageAsset Include="Resources\Images.xcassets\ThumbDown.imageset\thumbs27.png" />
-    <ImageAsset Include="Resources\Images.xcassets\Hands.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\Money.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\MoneyPaper.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\Money.imageset\hand132.png" />
-    <ImageAsset Include="Resources\Images.xcassets\MoneyPaper.imageset\paper101.png" />
-    <ImageAsset Include="Resources\Images.xcassets\Hands.imageset\hands17.png" />
-    <ImageAsset Include="Resources\Images.xcassets\Downloaded.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\Downloaded.imageset\down arrows11.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\ImageLoad.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\ImageLoad.imageset\load.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon_120x120.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon_180x180.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon_29x29.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon_58x58.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon_87x87.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon_80x80.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon_120x120_spot.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\Profile.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\Profile.imageset\man42.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\Votes.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\Standups.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\Standups.imageset\business112.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\Votes.imageset\election3.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\Interpelations.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\Interpelations.imageset\paper98.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\ThumbUp.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\ThumbDown.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\ThumbUp.imageset\thumbs28.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\ThumbDown.imageset\thumbs27.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\Hands.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\Money.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\MoneyPaper.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\Money.imageset\hand132.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\MoneyPaper.imageset\paper101.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\Hands.imageset\hands17.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\Downloaded.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\Downloaded.imageset\down arrows11.png">
+      <InProject>false</InProject>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
@@ -192,14 +254,11 @@
   <Import Project="..\AplikacjaParlamentShared\AplikacjaParlamentShared.projitems" Label="Shared" Condition="Exists('..\AplikacjaParlamentShared\AplikacjaParlamentShared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
-    <Folder Include="TableSources\" />
     <Folder Include="Resources\Images.xcassets\ImageLoad.imageset\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Helpers\" />
-    <Folder Include="Resources\Images.xcassets\Profile.imageset\" />
-    <Folder Include="Resources\Images.xcassets\Votes.imageset\" />
-    <Folder Include="Resources\Images.xcassets\Standups.imageset\" />
     <Folder Include="Resources\Images.xcassets\Interpelations.imageset\" />
+    <Folder Include="Resources\Images.xcassets\Profile.imageset\" />
+    <Folder Include="Resources\Images.xcassets\Standups.imageset\" />
+    <Folder Include="Resources\Images.xcassets\Votes.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="json.net">
