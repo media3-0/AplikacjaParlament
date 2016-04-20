@@ -62,6 +62,9 @@ namespace AplikacjaParlamentShared.Models
 		[JsonProperty("poslowie.mowca_id")]
 		public int MowcaId { get; set; }
 
+        [JsonProperty("ludzie.id")]
+        public string LudzieId { get; set; }
+
 		[JsonProperty("poslowie.zawod")]
 		public string Zawod { get; set; }
 
@@ -77,7 +80,7 @@ namespace AplikacjaParlamentShared.Models
 		}
 		
 		public string GetWebURL(){
-			return System.String.Concat("https://images.weserv.nl/?w=100&h=100&t=square&trim=255&circle&a=t&url=", System.Net.WebUtility.UrlEncode("resources.sejmometr.pl/mowcy/a/0/" + this.MowcaId + ".jpg"));
+			return System.String.Concat("https://images.weserv.nl/?w=100&h=100&t=square&trim=255&circle&a=t&url=", System.Net.WebUtility.UrlEncode("resources.sejmometr.pl/mowcy/a/0/" + this.LudzieId + ".jpg"));
 		}
 	}
 }

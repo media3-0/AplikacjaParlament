@@ -123,8 +123,8 @@ namespace AplikacjaParlamentAndroid.Adapters
 			wrapper.Okreg.Text = posel.OkregWyborczyNumer.ToString();
 
 			string imgUrl = posel.GetWebURL ();
-			//wrapper.Miniature.SetImageResource (Android.Resource.Drawable.IcMenuGallery);
-			//loadImage (wrapper, );
+            //wrapper.Miniature.SetImageResource (Android.Resource.Drawable.IcMenuGallery);
+            //loadImage (wrapper, );
 
             try {
 

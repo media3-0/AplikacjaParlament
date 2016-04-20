@@ -131,7 +131,7 @@ namespace AplikacjaParlamentAndroid
 				tvFrekwencja.Text = String.Concat(posel.Frekwencja.ToString(), "%");
 				tvZamieszkanie.Text = posel.MiejsceZamieszkania;
 
-				string imgUrl = String.Concat ("http://images.weserv.nl/?w=220&h=220&t=square&trim=255&circle&a=t&url=", System.Net.WebUtility.UrlEncode("resources.sejmometr.pl/mowcy/a/0/" + posel.MowcaId + ".jpg"));
+				string imgUrl = posel.GetWebURL();
 
 				AQuery aq = new AQuery(Activity);
 

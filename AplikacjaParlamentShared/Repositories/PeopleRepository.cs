@@ -59,7 +59,8 @@ namespace AplikacjaParlamentShared.Repositories
 				request.AddField ("poslowie.liczba_projektow_ustaw");
 				request.AddField ("poslowie.data_urodzenia");
 				request.AddField ("poslowie.frekwencja");
-				request.AddField ("poslowie.mowca_id");
+                request.AddField("poslowie.mowca_id");
+				request.AddField ("ludzie.id");
 				request.AddField ("poslowie.miejsce_zamieszkania");
 
 				request.Layers.Add (new BiuraPoselskieLayer("biura"));
@@ -83,12 +84,13 @@ namespace AplikacjaParlamentShared.Repositories
 
 				var request = new RequestParamsHandler (String.Concat (RepositoriesContants.API_DATASET_URI, "poslowie.json"));
 				request.AddCondition("poslowie.kadencja", "8");
-				request.AddCondition("poslowie.mandat_wygasl", "0");
+				// request.AddCondition("poslowie.mandat_wygasl", "0");
 				request.AddField ("poslowie.id");
 				request.AddField ("poslowie.imie_pierwsze");
 				request.AddField ("poslowie.nazwisko");
-				request.AddField ("poslowie.mowca_id");
-				request.AddField ("sejm_kluby.nazwa");
+				request.AddField ("ludzie.id");
+                request.AddField("poslowie.mowca_id");
+                request.AddField ("sejm_kluby.nazwa");
 				request.AddField ("poslowie.okreg_wyborczy_numer");
 				request.Limit = 1000;
 				request.SetOrder ("_title asc");

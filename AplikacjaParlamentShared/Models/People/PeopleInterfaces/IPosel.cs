@@ -35,7 +35,8 @@ namespace AplikacjaParlamentShared.Models
 		string DataUrodzenia { get; set; }
 		float Frekwencja { get; set; }
 		int MowcaId { get; set; }
-		string Zawod { get; set; }
+        string LudzieId { get; set; }
+        string Zawod { get; set; }
 		string MiejsceZamieszkania { get; set; }
 
 		List<BiuroPoselskie> Biura { get; set; }

@@ -254,13 +254,6 @@
   <Import Project="..\AplikacjaParlamentShared\AplikacjaParlamentShared.projitems" Label="Shared" Condition="Exists('..\AplikacjaParlamentShared\AplikacjaParlamentShared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
-    <Folder Include="Resources\Images.xcassets\ImageLoad.imageset\" />
-    <Folder Include="Resources\Images.xcassets\Interpelations.imageset\" />
-    <Folder Include="Resources\Images.xcassets\Profile.imageset\" />
-    <Folder Include="Resources\Images.xcassets\Standups.imageset\" />
-    <Folder Include="Resources\Images.xcassets\Votes.imageset\" />
-  </ItemGroup>
-  <ItemGroup>
     <XamarinComponentReference Include="json.net">
       <Version>7.0.1</Version>
       <Visible>False</Visible>

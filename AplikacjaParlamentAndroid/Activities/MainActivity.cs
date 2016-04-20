@@ -41,7 +41,7 @@ using AlertDialog = Android.Support.V7.App.AlertDialog;
 
 namespace AplikacjaParlamentAndroid
 {
-	[Activity (Label = "Parlament", MainLauncher = true)]
+	[Activity (Label = "Parlament", MainLauncher = true, Theme = "@style/MyTheme")]
 	public class MainActivity : Android.Support.V7.App.AppCompatActivity
 	{
 
